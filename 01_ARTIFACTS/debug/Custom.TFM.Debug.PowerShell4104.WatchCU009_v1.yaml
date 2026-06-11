@@ -1,0 +1,136 @@
+# Version: v1 debug
+# Purpose:
+# - Live Client Monitoring test for CU-009 PowerShell 4104.
+# - Uses watch_evtx only.
+# - Does not perform historical parse/backtest.
+
+name: Custom.TFM.Debug.PowerShell4104.WatchCU009_v1
+description: |
+  Live client event artifact for TEC-009 / CU-009 PowerShell 4104 testing.
+
+  Use this artifact only in Client Monitoring after the parse_evtx backtest
+  artifact confirms CU009StrongCandidate=True.
+
+  Diagnostic only:
+  - No routing.
+  - No Discord.
+  - No lab path, script name, endpoint path or technique-label dependency.
+
+type: CLIENT_EVENT
+
+parameters:
+  - name: EvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\Microsoft-Windows-PowerShell%4Operational.evtx'
+  - name: UploadHttpRegex
+    default: '(?i)(Invoke-WebRequest|\biwr\b|\bwget\b|\bcurl\b)'
+    type: regex
+  - name: UploadFileRegex
+    default: '(?i)(-InFile\b|\bInFile\b)'
+    type: regex
+  - name: UploadPostRegex
+    default: '(?i)(-Method\s+POST|\bMethod\s+POST\b|\bPOST\b)'
+    type: regex
+  - name: UploadZipContentRegex
+    default: '(?i)(-ContentType\s+["'']?application/zip|application/zip)'
+    type: regex
+  - name: ZipFileRegex
+    default: '(?i)\.zip(\s|["'']|$)'
+    type: regex
+  - name: HashEvidenceRegex
+    default: '(?i)(Get-FileHash|SHA256|SHA1|MD5|LocalSHA256|FileHash)'
+    type: regex
+  - name: CryptoEncryptionRegex
+    default: '(?i)(System\.Security\.Cryptography|AesManaged|AesCng|AES|CryptoStream|CreateEncryptor|CreateDecryptor|Rfc2898DeriveBytes|\.aes)'
+    type: regex
+  - name: DestructionStrongRegex
+    default: '(?is)((Get-ChildItem|gci|dir|ls).*(Remove-Item|del\s+|erase\s+|rmdir\s+)|(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse|\$_\.FullName|\$PSItem\.FullName))'
+    type: regex
+
+precondition: SELECT OS FROM info() WHERE OS = "windows"
+
+sources:
+  - name: PowerShell4104_WatchEvtx_CU009_Filtered
+    description: |
+      Live CU-009 regexes over PowerShell 4104 using watch_evtx.
+      Runs as a temporary Client Monitoring artifact.
+    query: |
+      SELECT
+        DetectionTime,
+        EventID,
+        Provider,
+        Channel,
+        ScriptText,
+        EventData_ScriptBlockId AS ScriptBlockId,
+        EventData_MessageNumber AS MessageNumber,
+        EventData_MessageTotal AS MessageTotal,
+        EventRecordID,
+        ScriptText =~ '(?s).' AS HasScriptText,
+        ScriptText =~ UploadHttpRegex AS UploadHttpRegex,
+        ScriptText =~ UploadFileRegex AS UploadFileRegex,
+        ScriptText =~ UploadPostRegex AS UploadPostRegex,
+        ScriptText =~ UploadZipContentRegex AS UploadZipContentRegex,
+        ScriptText =~ HashEvidenceRegex AS HashEvidenceRegex,
+        ScriptText =~ CryptoEncryptionRegex AS CryptoEncryptionRegex,
+        ScriptText =~ DestructionStrongRegex AS DestructionStrongRegex,
+        (
+          (
+            ScriptText =~ UploadHttpRegex
+            AND ScriptText =~ UploadFileRegex
+            AND ScriptText =~ UploadPostRegex
+            AND ScriptText =~ UploadZipContentRegex
+          )
+          OR (
+            ScriptText =~ ZipFileRegex
+            AND ScriptText =~ UploadFileRegex
+            AND ScriptText =~ UploadPostRegex
+            AND ScriptText =~ UploadHttpRegex
+          )
+        )
+        AND NOT ScriptText =~ CryptoEncryptionRegex AS CU009StrongCandidate,
+        EventDataJSON,
+        SystemJSON
+      FROM foreach(
+        row={
+          SELECT
+            System.TimeCreated.SystemTime AS DetectionTime,
+            atoi(string=System.EventID.Value) AS EventID,
+            System.Provider.Name AS Provider,
+            System.Channel AS Channel,
+            System.EventRecordID.Value AS EventRecordID,
+            if(
+              condition=EventData.ScriptBlockText =~ '(?s).',
+              then=EventData.ScriptBlockText,
+              else=if(
+                condition=Message =~ '(?s).',
+                then=Message,
+                else=if(
+                  condition=EventData.Data =~ '(?s).',
+                  then=EventData.Data,
+                  else=if(
+                    condition=EventData.PayloadData =~ '(?s).',
+                    then=EventData.PayloadData,
+                    else=if(
+                      condition=PayloadData =~ '(?s).',
+                      then=PayloadData,
+                      else=serialize(item=EventData, format="json")
+                    )
+                  )
+                )
+              )
+            ) AS ScriptText,
+            EventData.ScriptBlockId AS EventData_ScriptBlockId,
+            EventData.MessageNumber AS EventData_MessageNumber,
+            EventData.MessageTotal AS EventData_MessageTotal,
+            serialize(item=EventData, format="json") AS EventDataJSON,
+            serialize(item=System, format="json") AS SystemJSON
+          FROM watch_evtx(filename=EvtxPath)
+          WHERE atoi(string=System.EventID.Value) = 4104
+        }
+      )
+      WHERE (
+        ScriptText =~ UploadHttpRegex
+        OR ScriptText =~ UploadFileRegex
+        OR ScriptText =~ UploadPostRegex
+        OR ScriptText =~ UploadZipContentRegex
+        OR ScriptText =~ HashEvidenceRegex
+      )

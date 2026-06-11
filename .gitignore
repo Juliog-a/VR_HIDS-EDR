@@ -1,0 +1,48 @@
+# Entornos
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# VM / laboratorio pesado
+lab/
+09_LAB/
+*.vmdk
+*.vdi
+*.vbox
+*.vbox-prev
+*.scoreboard
+*.nvram
+*.7z
+*.zip
+*.rar
+
+# Evidencias pesadas o sensibles
+04_EVIDENCE/
+05_LOGS/
+Carpeta_Compartida_TFM/
+*.evtx
+*.pcap
+*.pcapng
+*.log
+*.jsonl
+alerts.jsonl
+receiver_log.jsonl
+upload_*.zip
+
+# Memoria / documentos no necesarios para Codex
+08_MEMORIA/
+*.docx
+*.one
+*.pdf
+
+# Temporales
+*.tmp
+*.bak
+~$*
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,162 @@
+# Version: v4 debug
+# Purpose:
+# - Backtest the CU-009 PowerShell 4104 command shape.
+# - Accept real multiline/backtick Invoke-WebRequest upload blocks.
+# - Avoid false positives from validation commands, prompts and documentation.
+# - Uses parse_evtx only and is intended for Hunt/Collection manual execution.
+
+name: Custom.TFM.Debug.PowerShell4104.CU009Shape_v4
+description: |
+  Manual collection artifact for CU-009 PowerShell 4104 command-shape testing.
+
+  This artifact validates whether a 4104 event contains a real HTTP ZIP upload
+  command shape, not just isolated words or detection-engineering text.
+
+  Diagnostic only:
+  - No routing.
+  - No Discord.
+  - No fixed endpoint dependency.
+  - No lab path, script name, dummy-data marker or technique-label dependency.
+  - Does not treat local cleanup Remove-Item as a blocker for CU-009.
+
+type: CLIENT
+
+parameters:
+  - name: SinceMinutes
+    default: 240
+    type: int
+  - name: EvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\Microsoft-Windows-PowerShell%4Operational.evtx'
+  - name: CandidateWindowRegex
+    default: '(?i)(Invoke-WebRequest|\biwr\b|\bwget\b|\bcurl\b|-Uri\b|\bUri\b|-InFile\b|\bInFile\b|-Method\s+POST|\bMethod\s+POST\b|\bPOST\b|application/zip|Get-FileHash|SHA256|Get-WinEvent|UploadHttpRegex|UploadFileRegex|UploadPostRegex|UploadZipContentRegex|CU009StrongCandidate|PowerShell4104_|requisitos|objetivo|prompt|documentaci.n)'
+    type: regex
+  - name: UploadHttpRegex
+    default: '(?i)(Invoke-WebRequest|\biwr\b|\bwget\b|\bcurl\b)'
+    type: regex
+  - name: UploadFileRegex
+    default: '(?i)(-InFile\b|\bInFile\b)'
+    type: regex
+  - name: UploadPostRegex
+    default: '(?i)(-Method\s+POST|\bMethod\s+POST\b|\bPOST\b)'
+    type: regex
+  - name: UploadZipContentRegex
+    default: '(?i)(-ContentType\s+["'']?application/zip|application/zip)'
+    type: regex
+  - name: UploadUriRegex
+    default: '(?i)(-Uri\b|\bUri\b|https?://)'
+    type: regex
+  - name: HashEvidenceRegex
+    default: '(?i)(Get-FileHash|SHA256|SHA1|MD5|LocalSHA256|FileHash)'
+    type: regex
+  - name: CryptoEncryptionRegex
+    default: '(?i)(System\.Security\.Cryptography|AesManaged|AesCng|AES|CryptoStream|CreateEncryptor|CreateDecryptor|Rfc2898DeriveBytes|\.aes)'
+    type: regex
+  - name: DestructionStrongRegex
+    default: '(?is)((Get-ChildItem|gci|dir|ls).*(Remove-Item|del\s+|erase\s+|rmdir\s+)|(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse|\$_\.FullName|\$PSItem\.FullName))'
+    type: regex
+  - name: DetectionEngineeringNoiseRegex
+    default: '(?i)(Get-WinEvent|Where-Object|Select-Object|Format-List|\$_\.Message\s+-match|UploadHttpRegex|UploadFileRegex|UploadPostRegex|UploadZipContentRegex|HashEvidenceRegex|CryptoEncryptionRegex|CU009StrongCandidate|ActualInvokeWebRequestShape|ActualUploadCommandShape|ScriptBlockText|Custom\.TFM\.Debug|PowerShell4104_|regex)'
+    type: regex
+  - name: DocumentationNoiseRegex
+    default: '(?i)(^\s*[\*\-]\s*(Invoke-WebRequest\s*/\s*iwr|wget|curl)|debe\s+contener|requisitos|objetivo|texto\s+de\s+prompt|prompt|documentaci.n|listado?\s+tipo|candidate\s+(artifact|debug|yaml))'
+    type: regex
+
+precondition: SELECT OS FROM info() WHERE OS = "windows"
+
+sources:
+  - name: PowerShell4104_ParseEvtx_CU009_CommandShape_v4
+    description: |
+      Backtest PowerShell 4104 events for a real HTTP ZIP upload command shape.
+      The final candidate is based on structural coexistence in the same
+      normalized ScriptText:
+      HTTP tool + URI/destination + POST + InFile + application/zip.
+    query: |
+      SELECT
+        DetectionTime,
+        EventID,
+        Provider,
+        Channel,
+        ScriptText,
+        EventData_ScriptBlockId AS ScriptBlockId,
+        EventData_MessageNumber AS MessageNumber,
+        EventData_MessageTotal AS MessageTotal,
+        EventRecordID,
+        EventData_Path AS Path,
+        ScriptText =~ '(?s).' AS HasScriptText,
+        ScriptText =~ UploadHttpRegex AS UploadHttpRegex,
+        ScriptText =~ UploadFileRegex AS UploadFileRegex,
+        ScriptText =~ UploadPostRegex AS UploadPostRegex,
+        ScriptText =~ UploadZipContentRegex AS UploadZipContentRegex,
+        ScriptText =~ HashEvidenceRegex AS HashEvidenceRegex,
+        ScriptText =~ CryptoEncryptionRegex AS CryptoEncryptionRegex,
+        ScriptText =~ DetectionEngineeringNoiseRegex AS DetectionEngineeringNoiseRegex,
+        ScriptText =~ DocumentationNoiseRegex AS DocumentationNoiseRegex,
+        (
+          ScriptText =~ UploadHttpRegex
+          AND ScriptText =~ UploadUriRegex
+        ) AS ActualInvokeWebRequestShape,
+        (
+          ScriptText =~ UploadHttpRegex
+          AND ScriptText =~ UploadUriRegex
+          AND ScriptText =~ UploadPostRegex
+          AND ScriptText =~ UploadFileRegex
+          AND ScriptText =~ UploadZipContentRegex
+        ) AS ActualUploadCommandShape,
+        ScriptText =~ DestructionStrongRegex AS DestructionStrongRegex,
+        (
+          ScriptText =~ '(?s).'
+          AND ScriptText =~ UploadHttpRegex
+          AND ScriptText =~ UploadUriRegex
+          AND ScriptText =~ UploadPostRegex
+          AND ScriptText =~ UploadFileRegex
+          AND ScriptText =~ UploadZipContentRegex
+          AND NOT ScriptText =~ CryptoEncryptionRegex
+          AND NOT ScriptText =~ DetectionEngineeringNoiseRegex
+          AND NOT ScriptText =~ DocumentationNoiseRegex
+        ) AS CU009StrongCandidate_v4,
+        EventDataJSON,
+        SystemJSON
+      FROM foreach(
+        row={
+          SELECT
+            System.TimeCreated.SystemTime AS DetectionTime,
+            atoi(string=System.EventID.Value) AS EventID,
+            System.Provider.Name AS Provider,
+            System.Channel AS Channel,
+            System.EventRecordID.Value AS EventRecordID,
+            if(
+              condition=EventData.ScriptBlockText =~ '(?s).',
+              then=EventData.ScriptBlockText,
+              else=if(
+                condition=Message =~ '(?s).',
+                then=Message,
+                else=if(
+                  condition=EventData.Data =~ '(?s).',
+                  then=EventData.Data,
+                  else=if(
+                    condition=EventData.PayloadData =~ '(?s).',
+                    then=EventData.PayloadData,
+                    else=if(
+                      condition=PayloadData =~ '(?s).',
+                      then=PayloadData,
+                      else=serialize(item=EventData, format="json")
+                    )
+                  )
+                )
+              )
+            ) AS ScriptText,
+            EventData.ScriptBlockId AS EventData_ScriptBlockId,
+            EventData.MessageNumber AS EventData_MessageNumber,
+            EventData.MessageTotal AS EventData_MessageTotal,
+            EventData.Path AS EventData_Path,
+            serialize(item=EventData, format="json") AS EventDataJSON,
+            serialize(item=System, format="json") AS SystemJSON
+          FROM parse_evtx(filename=EvtxPath)
+          WHERE atoi(string=System.EventID.Value) = 4104
+            AND (
+              SinceMinutes <= 0
+              OR System.TimeCreated.SystemTime > timestamp(epoch=now() - (SinceMinutes * 60))
+            )
+        }
+      )
+      WHERE ScriptText =~ CandidateWindowRegex

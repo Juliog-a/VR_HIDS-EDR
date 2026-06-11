@@ -1,0 +1,310 @@
+# Version: v2 debug
+# Purpose:
+# - Fix v1 path/channel ambiguity for PowerShell 4104 troubleshooting.
+# - Use a physical EVTX path for parse_evtx/watch_evtx.
+# - Keep ChannelName only as metadata for interpretation.
+# - Test CU-009 regexes against normalized ScriptText before changing P3.
+
+name: Custom.TFM.Debug.PowerShell4104.Raw_v2
+description: |
+  Debug artifact for TEC-009 / CU-009 PowerShell 4104 troubleshooting.
+
+  v2 separates the logical channel name from the physical EVTX path.
+  It must not construct a file path from Microsoft-Windows-PowerShell/Operational.
+
+  Diagnostic only:
+  - No detection assertion.
+  - No routing.
+  - No Discord.
+  - No lab path, script name, endpoint path or technique-label dependency.
+
+type: CLIENT_EVENT
+
+parameters:
+  - name: ChannelName
+    default: Microsoft-Windows-PowerShell/Operational
+  - name: EvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\Microsoft-Windows-PowerShell%4Operational.evtx'
+  - name: SinceMinutes
+    default: 120
+    type: int
+  - name: FilterRegex
+    default: '(?i)(Invoke-WebRequest|\biwr\b|\bwget\b|\bcurl\b|-InFile\b|\bInFile\b|-Method\s+POST|\bPOST\b|application/zip|Get-FileHash|SHA256)'
+    type: regex
+  - name: UploadHttpRegex
+    default: '(?i)(Invoke-WebRequest|\biwr\b|\bwget\b|\bcurl\b)'
+    type: regex
+  - name: UploadFileRegex
+    default: '(?i)(-InFile\b|\bInFile\b)'
+    type: regex
+  - name: UploadPostRegex
+    default: '(?i)(-Method\s+POST|\bMethod\s+POST\b|\bPOST\b)'
+    type: regex
+  - name: UploadZipContentRegex
+    default: '(?i)(-ContentType\s+["'']?application/zip|application/zip)'
+    type: regex
+  - name: ZipFileRegex
+    default: '(?i)\.zip(\s|["'']|$)'
+    type: regex
+  - name: HashEvidenceRegex
+    default: '(?i)(Get-FileHash|SHA256|SHA1|MD5|LocalSHA256|FileHash)'
+    type: regex
+  - name: CryptoEncryptionRegex
+    default: '(?i)(System\.Security\.Cryptography|AesManaged|AesCng|AES|CryptoStream|CreateEncryptor|CreateDecryptor|Rfc2898DeriveBytes|\.aes)'
+    type: regex
+  - name: DestructionStrongRegex
+    default: '(?is)((Get-ChildItem|gci|dir|ls).*(Remove-Item|del\s+|erase\s+|rmdir\s+)|(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse|\$_\.FullName|\$PSItem\.FullName))'
+    type: regex
+
+precondition: SELECT OS FROM info() WHERE OS = "windows"
+
+sources:
+  - name: PowerShell4104_ParseEvtx_Backtest_Raw_v2
+    description: |
+      Historical/backtest raw 4104 inspection using parse_evtx over EvtxPath.
+      This source is for manual collection first.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        atoi(string=System.EventID.Value) AS EventID,
+        System.Provider.Name AS Provider,
+        System.Channel AS Channel,
+        ChannelName AS ExpectedChannelName,
+        EvtxPath AS SourceEvtxPath,
+        EventData.ScriptBlockText AS EventData_ScriptBlockText,
+        EventData.ScriptBlockId AS EventData_ScriptBlockId,
+        EventData.MessageNumber AS EventData_MessageNumber,
+        EventData.MessageTotal AS EventData_MessageTotal,
+        Message AS Message,
+        serialize(item=EventData, format="json") AS EventDataJSON,
+        serialize(item=System, format="json") AS SystemJSON,
+        serialize(format="json", item=dict(
+          System=System,
+          EventData=EventData,
+          Message=Message,
+          PayloadData=PayloadData
+        )) AS RawEventJSON
+      FROM parse_evtx(filename=EvtxPath)
+      WHERE atoi(string=System.EventID.Value) = 4104
+        AND (
+          SinceMinutes <= 0
+          OR System.TimeCreated.SystemTime > timestamp(epoch=now() - (SinceMinutes * 60))
+        )
+
+  - name: PowerShell4104_ParseEvtx_CU009_Filtered_v2
+    description: |
+      Historical/backtest CU-009 regex test using parse_evtx over EvtxPath.
+      Uses normalized ScriptText and emits booleans for each condition.
+    query: |
+      SELECT
+        DetectionTime,
+        EventID,
+        Provider,
+        Channel,
+        ExpectedChannelName,
+        SourceEvtxPath,
+        ScriptText =~ '(?s).' AS HasScriptText,
+        ScriptText,
+        ScriptText =~ UploadHttpRegex AS UploadHttpRegex,
+        ScriptText =~ UploadFileRegex AS UploadFileRegex,
+        ScriptText =~ UploadPostRegex AS UploadPostRegex,
+        ScriptText =~ UploadZipContentRegex AS UploadZipContentRegex,
+        ScriptText =~ HashEvidenceRegex AS HashEvidenceRegex,
+        ScriptText =~ CryptoEncryptionRegex AS CryptoEncryptionRegex,
+        ScriptText =~ DestructionStrongRegex AS DestructionStrongRegex,
+        (
+          (
+            ScriptText =~ UploadHttpRegex
+            AND ScriptText =~ UploadFileRegex
+            AND ScriptText =~ UploadPostRegex
+            AND ScriptText =~ UploadZipContentRegex
+          )
+          OR (
+            ScriptText =~ ZipFileRegex
+            AND ScriptText =~ UploadFileRegex
+            AND ScriptText =~ UploadPostRegex
+            AND ScriptText =~ UploadHttpRegex
+          )
+        )
+        AND NOT ScriptText =~ CryptoEncryptionRegex AS CU009StrongCandidate,
+        EventData_ScriptBlockText,
+        EventData_ScriptBlockId,
+        EventData_MessageNumber,
+        EventData_MessageTotal,
+        Message,
+        EventDataJSON,
+        SystemJSON,
+        RawEventJSON
+      FROM foreach(
+        row={
+          SELECT
+            System.TimeCreated.SystemTime AS DetectionTime,
+            atoi(string=System.EventID.Value) AS EventID,
+            System.Provider.Name AS Provider,
+            System.Channel AS Channel,
+            ChannelName AS ExpectedChannelName,
+            EvtxPath AS SourceEvtxPath,
+            if(
+              condition=EventData.ScriptBlockText =~ '(?s).',
+              then=EventData.ScriptBlockText,
+              else=if(
+                condition=Message =~ '(?s).',
+                then=Message,
+                else=if(
+                  condition=EventData.Data =~ '(?s).',
+                  then=EventData.Data,
+                  else=if(
+                    condition=EventData.PayloadData =~ '(?s).',
+                    then=EventData.PayloadData,
+                    else=if(
+                      condition=PayloadData =~ '(?s).',
+                      then=PayloadData,
+                      else=serialize(item=EventData, format="json")
+                    )
+                  )
+                )
+              )
+            ) AS ScriptText,
+            EventData.ScriptBlockText AS EventData_ScriptBlockText,
+            EventData.ScriptBlockId AS EventData_ScriptBlockId,
+            EventData.MessageNumber AS EventData_MessageNumber,
+            EventData.MessageTotal AS EventData_MessageTotal,
+            Message AS Message,
+            serialize(item=EventData, format="json") AS EventDataJSON,
+            serialize(item=System, format="json") AS SystemJSON,
+            serialize(format="json", item=dict(
+              System=System,
+              EventData=EventData,
+              Message=Message,
+              PayloadData=PayloadData
+            )) AS RawEventJSON
+          FROM parse_evtx(filename=EvtxPath)
+          WHERE atoi(string=System.EventID.Value) = 4104
+            AND (
+              SinceMinutes <= 0
+              OR System.TimeCreated.SystemTime > timestamp(epoch=now() - (SinceMinutes * 60))
+            )
+        }
+      )
+      WHERE ScriptText =~ FilterRegex
+
+  - name: PowerShell4104_WatchEvtx_Raw_v2
+    description: |
+      Live raw 4104 inspection using watch_evtx over the physical EvtxPath.
+      No detection regexes.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        atoi(string=System.EventID.Value) AS EventID,
+        System.Provider.Name AS Provider,
+        System.Channel AS Channel,
+        ChannelName AS ExpectedChannelName,
+        EvtxPath AS SourceEvtxPath,
+        EventData.ScriptBlockText AS EventData_ScriptBlockText,
+        EventData.ScriptBlockId AS EventData_ScriptBlockId,
+        EventData.MessageNumber AS EventData_MessageNumber,
+        EventData.MessageTotal AS EventData_MessageTotal,
+        Message AS Message,
+        serialize(item=EventData, format="json") AS EventDataJSON,
+        serialize(item=System, format="json") AS SystemJSON,
+        serialize(format="json", item=dict(
+          System=System,
+          EventData=EventData,
+          Message=Message,
+          PayloadData=PayloadData
+        )) AS RawEventJSON
+      FROM watch_evtx(filename=EvtxPath)
+      WHERE atoi(string=System.EventID.Value) = 4104
+
+  - name: PowerShell4104_WatchEvtx_CU009_Filtered_v2
+    description: |
+      Live CU-009 regex test using watch_evtx over EvtxPath.
+      Uses normalized ScriptText and emits booleans for each condition.
+    query: |
+      SELECT
+        DetectionTime,
+        EventID,
+        Provider,
+        Channel,
+        ExpectedChannelName,
+        SourceEvtxPath,
+        ScriptText =~ '(?s).' AS HasScriptText,
+        ScriptText,
+        ScriptText =~ UploadHttpRegex AS UploadHttpRegex,
+        ScriptText =~ UploadFileRegex AS UploadFileRegex,
+        ScriptText =~ UploadPostRegex AS UploadPostRegex,
+        ScriptText =~ UploadZipContentRegex AS UploadZipContentRegex,
+        ScriptText =~ HashEvidenceRegex AS HashEvidenceRegex,
+        ScriptText =~ CryptoEncryptionRegex AS CryptoEncryptionRegex,
+        ScriptText =~ DestructionStrongRegex AS DestructionStrongRegex,
+        (
+          (
+            ScriptText =~ UploadHttpRegex
+            AND ScriptText =~ UploadFileRegex
+            AND ScriptText =~ UploadPostRegex
+            AND ScriptText =~ UploadZipContentRegex
+          )
+          OR (
+            ScriptText =~ ZipFileRegex
+            AND ScriptText =~ UploadFileRegex
+            AND ScriptText =~ UploadPostRegex
+            AND ScriptText =~ UploadHttpRegex
+          )
+        )
+        AND NOT ScriptText =~ CryptoEncryptionRegex AS CU009StrongCandidate,
+        EventData_ScriptBlockText,
+        EventData_ScriptBlockId,
+        EventData_MessageNumber,
+        EventData_MessageTotal,
+        Message,
+        EventDataJSON,
+        SystemJSON,
+        RawEventJSON
+      FROM foreach(
+        row={
+          SELECT
+            System.TimeCreated.SystemTime AS DetectionTime,
+            atoi(string=System.EventID.Value) AS EventID,
+            System.Provider.Name AS Provider,
+            System.Channel AS Channel,
+            ChannelName AS ExpectedChannelName,
+            EvtxPath AS SourceEvtxPath,
+            if(
+              condition=EventData.ScriptBlockText =~ '(?s).',
+              then=EventData.ScriptBlockText,
+              else=if(
+                condition=Message =~ '(?s).',
+                then=Message,
+                else=if(
+                  condition=EventData.Data =~ '(?s).',
+                  then=EventData.Data,
+                  else=if(
+                    condition=EventData.PayloadData =~ '(?s).',
+                    then=EventData.PayloadData,
+                    else=if(
+                      condition=PayloadData =~ '(?s).',
+                      then=PayloadData,
+                      else=serialize(item=EventData, format="json")
+                    )
+                  )
+                )
+              )
+            ) AS ScriptText,
+            EventData.ScriptBlockText AS EventData_ScriptBlockText,
+            EventData.ScriptBlockId AS EventData_ScriptBlockId,
+            EventData.MessageNumber AS EventData_MessageNumber,
+            EventData.MessageTotal AS EventData_MessageTotal,
+            Message AS Message,
+            serialize(item=EventData, format="json") AS EventDataJSON,
+            serialize(item=System, format="json") AS SystemJSON,
+            serialize(format="json", item=dict(
+              System=System,
+              EventData=EventData,
+              Message=Message,
+              PayloadData=PayloadData
+            )) AS RawEventJSON
+          FROM watch_evtx(filename=EvtxPath)
+          WHERE atoi(string=System.EventID.Value) = 4104
+        }
+      )
+      WHERE ScriptText =~ FilterRegex

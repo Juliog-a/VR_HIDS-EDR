@@ -1,0 +1,835 @@
+﻿# Version: v3_fix3 candidate
+# Purpose:
+# - Fix JSONL write failure caused by PowerShell $args binding.
+# - Router only routes CLIENT_EVENT alerts to JSONL. It does not detect.
+# - Discord remains disabled by default and no http_client sink is used.
+
+name: Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3
+description: |
+  SERVER_EVENT router for the TFM Velociraptor P4 v2 / P3 v3 iteration.
+
+  Function:
+  - Listen to versioned P4_v2/P3_v3 internal sources.
+  - Route already generated CLIENT_EVENT alerts to JSONL.
+  - Keep JSONL as output/persistence, not detection.
+  - Keep router as routing/output layer, not detector.
+  - Exclude Sysmon ID 26 / FileDeleteDetected individual events.
+  - Keep Discord disabled by default.
+
+  Technical fix:
+  - Alert JSON is serialized and Base64-encoded in AlertB64 before execve().
+  - PowerShell uses an explicit param([string]$p,[string]$b64) block.
+  - execve() receives JsonlPath and AlertB64 as separate argv arguments.
+
+required_permissions:
+  - EXECVE
+
+type: SERVER_EVENT
+
+parameters:
+  - name: EnableJSONL
+    type: bool
+    default: true
+
+  - name: JsonlPath
+    default: '\\VBOXSVR\Carpeta_Compartida_TFM\inbox\alerts.jsonl'
+
+  - name: EnableDiscord
+    type: bool
+    default: false
+    description: "Discord remains disabled in this iteration."
+
+  - name: SeverityRegex
+    type: regex
+    default: '(?i)(Critical|High|Medium)'
+
+  - name: OutputRegex
+    type: regex
+    default: '(?i)(Discord|Alerta|Alert|Resumen|Summary|JSONL|Deteccion|DetecciÃ³n)'
+
+  - name: ExcludeFileDeleteDetected
+    type: bool
+    default: true
+
+  - name: ExcludeRouterSelfEvents
+    type: bool
+    default: true
+
+  - name: RouterSelfEventRegex
+    type: regex
+    default: '(?i)(alerts\.jsonl|FromBase64String|Add-Content|RouterArtifact|JSONL_WRITE_ATTEMPT|Carpeta_Compartida_TFM)'
+
+sources:
+  - name: Route_P4_v2_CU001
+    query: |
+      SELECT * FROM foreach(
+        row={
+          SELECT
+            timestamp(epoch=now()) AS RouterTime,
+            "P4" AS RouterProfile,
+            "Custom.TFM.HIDS.P4.Low.Basic_v2/CU001_Source_TEC001_PowerShell_Basic" AS SourceArtifact,
+            base64encode(string=serialize(format="json", item=dict(
+              RouterTime=timestamp(epoch=now()),
+              DetectionTime=DetectionTime,
+              ClientId=ClientId,
+              Hostname=Hostname,
+              CU_ID=CU_ID,
+              ID_Tecnica_Interna=ID_Tecnica_Interna,
+              MITRE_ID=MITRE_ID,
+              MITRE_Tactic=MITRE_Tactic,
+              MITRE_Tactic_Context=MITRE_Tactic_Context,
+              SignalType=SignalType,
+              AlertName=AlertName,
+              Severity=Severity,
+              Priority=Priority,
+              Confidence=Confidence,
+              DetectionScope=DetectionScope,
+              OutputType=OutputType,
+              FP_Risk=FP_Risk,
+              CU_Reason=CU_Reason,
+              CU_Evidence=CU_Evidence,
+              EventID=EventID,
+              Channel=Channel,
+              Provider=Provider,
+              Image=Image,
+              CommandLine=CommandLine,
+              ParentImage=ParentImage,
+              ParentCommandLine=ParentCommandLine,
+              User=User,
+              TargetFilename=TargetFilename,
+              DetectionLogic=DetectionLogic,
+              FalsePositiveReduction=FalsePositiveReduction,
+              BenchmarkScenario=BenchmarkScenario,
+              ArtifactProfile=ArtifactProfile,
+              RouterProfile="P4",
+              SourceArtifact="Custom.TFM.HIDS.P4.Low.Basic_v2/CU001_Source_TEC001_PowerShell_Basic",
+              RouterArtifact="Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3"
+            ))) AS AlertB64,
+            *
+          FROM watch_monitoring(artifact="Custom.TFM.HIDS.P4.Low.Basic_v2/CU001_Source_TEC001_PowerShell_Basic")
+          WHERE Severity =~ SeverityRegex
+            AND OutputType =~ OutputRegex
+            AND NOT (ExcludeFileDeleteDetected AND (EventID = 26 OR SignalType =~ "(?i)FileDeleteDetected"))
+            AND NOT (ExcludeRouterSelfEvents AND CommandLine =~ RouterSelfEventRegex)
+        },
+        query={
+          SELECT
+            "JSONL_WRITE_ATTEMPT" AS Sink,
+            JsonlPath AS Destination,
+            ReturnCode,
+            Stdout,
+            Stderr,
+            CU_ID,
+            MITRE_ID,
+            Severity,
+            RouterProfile,
+            SourceArtifact
+          FROM execve(argv=[
+            "powershell.exe",
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy", "Bypass",
+            "-Command",
+            "& { param([string]$p,[string]$b64) $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $compact=($json | ConvertFrom-Json | ConvertTo-Json -Compress -Depth 20); $d=Split-Path -Parent $p; if (!(Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }; Add-Content -LiteralPath $p -Value $compact -Encoding UTF8 }",
+            JsonlPath,
+            AlertB64
+          ])
+          WHERE EnableJSONL
+        }
+      )
+
+  - name: Route_P4_v2_CU002
+    query: |
+      SELECT * FROM foreach(
+        row={
+          SELECT
+            timestamp(epoch=now()) AS RouterTime,
+            "P4" AS RouterProfile,
+            "Custom.TFM.HIDS.P4.Low.Basic_v2/CU002_Source_TEC002_CMD_Basic" AS SourceArtifact,
+            base64encode(string=serialize(format="json", item=dict(
+              RouterTime=timestamp(epoch=now()),
+              DetectionTime=DetectionTime,
+              ClientId=ClientId,
+              Hostname=Hostname,
+              CU_ID=CU_ID,
+              ID_Tecnica_Interna=ID_Tecnica_Interna,
+              MITRE_ID=MITRE_ID,
+              MITRE_Tactic=MITRE_Tactic,
+              MITRE_Tactic_Context=MITRE_Tactic_Context,
+              SignalType=SignalType,
+              AlertName=AlertName,
+              Severity=Severity,
+              Priority=Priority,
+              Confidence=Confidence,
+              DetectionScope=DetectionScope,
+              OutputType=OutputType,
+              FP_Risk=FP_Risk,
+              CU_Reason=CU_Reason,
+              CU_Evidence=CU_Evidence,
+              EventID=EventID,
+              Channel=Channel,
+              Provider=Provider,
+              Image=Image,
+              CommandLine=CommandLine,
+              ParentImage=ParentImage,
+              ParentCommandLine=ParentCommandLine,
+              User=User,
+              TargetFilename=TargetFilename,
+              DetectionLogic=DetectionLogic,
+              FalsePositiveReduction=FalsePositiveReduction,
+              BenchmarkScenario=BenchmarkScenario,
+              ArtifactProfile=ArtifactProfile,
+              RouterProfile="P4",
+              SourceArtifact="Custom.TFM.HIDS.P4.Low.Basic_v2/CU002_Source_TEC002_CMD_Basic",
+              RouterArtifact="Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3"
+            ))) AS AlertB64,
+            *
+          FROM watch_monitoring(artifact="Custom.TFM.HIDS.P4.Low.Basic_v2/CU002_Source_TEC002_CMD_Basic")
+          WHERE Severity =~ SeverityRegex
+            AND OutputType =~ OutputRegex
+            AND NOT (ExcludeFileDeleteDetected AND (EventID = 26 OR SignalType =~ "(?i)FileDeleteDetected"))
+            AND NOT (ExcludeRouterSelfEvents AND CommandLine =~ RouterSelfEventRegex)
+        },
+        query={
+          SELECT
+            "JSONL_WRITE_ATTEMPT" AS Sink,
+            JsonlPath AS Destination,
+            ReturnCode,
+            Stdout,
+            Stderr,
+            CU_ID,
+            MITRE_ID,
+            Severity,
+            RouterProfile,
+            SourceArtifact
+          FROM execve(argv=[
+            "powershell.exe",
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy", "Bypass",
+            "-Command",
+            "& { param([string]$p,[string]$b64) $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $compact=($json | ConvertFrom-Json | ConvertTo-Json -Compress -Depth 20); $d=Split-Path -Parent $p; if (!(Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }; Add-Content -LiteralPath $p -Value $compact -Encoding UTF8 }",
+            JsonlPath,
+            AlertB64
+          ])
+          WHERE EnableJSONL
+        }
+      )
+
+  - name: Route_P4_v2_CU003
+    query: |
+      SELECT * FROM foreach(
+        row={
+          SELECT
+            timestamp(epoch=now()) AS RouterTime,
+            "P4" AS RouterProfile,
+            "Custom.TFM.HIDS.P4.Low.Basic_v2/CU003_Source_TEC003_ScheduledTask_Basic" AS SourceArtifact,
+            base64encode(string=serialize(format="json", item=dict(
+              RouterTime=timestamp(epoch=now()),
+              DetectionTime=DetectionTime,
+              ClientId=ClientId,
+              Hostname=Hostname,
+              CU_ID=CU_ID,
+              ID_Tecnica_Interna=ID_Tecnica_Interna,
+              MITRE_ID=MITRE_ID,
+              MITRE_Tactic=MITRE_Tactic,
+              MITRE_Tactic_Context=MITRE_Tactic_Context,
+              SignalType=SignalType,
+              AlertName=AlertName,
+              Severity=Severity,
+              Priority=Priority,
+              Confidence=Confidence,
+              DetectionScope=DetectionScope,
+              OutputType=OutputType,
+              FP_Risk=FP_Risk,
+              CU_Reason=CU_Reason,
+              CU_Evidence=CU_Evidence,
+              EventID=EventID,
+              Channel=Channel,
+              Provider=Provider,
+              Image=Image,
+              CommandLine=CommandLine,
+              ParentImage=ParentImage,
+              ParentCommandLine=ParentCommandLine,
+              User=User,
+              TargetFilename=TargetFilename,
+              DetectionLogic=DetectionLogic,
+              FalsePositiveReduction=FalsePositiveReduction,
+              BenchmarkScenario=BenchmarkScenario,
+              ArtifactProfile=ArtifactProfile,
+              RouterProfile="P4",
+              SourceArtifact="Custom.TFM.HIDS.P4.Low.Basic_v2/CU003_Source_TEC003_ScheduledTask_Basic",
+              RouterArtifact="Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3"
+            ))) AS AlertB64,
+            *
+          FROM watch_monitoring(artifact="Custom.TFM.HIDS.P4.Low.Basic_v2/CU003_Source_TEC003_ScheduledTask_Basic")
+          WHERE Severity =~ SeverityRegex
+            AND OutputType =~ OutputRegex
+            AND NOT (ExcludeFileDeleteDetected AND (EventID = 26 OR SignalType =~ "(?i)FileDeleteDetected"))
+        },
+        query={
+          SELECT
+            "JSONL_WRITE_ATTEMPT" AS Sink,
+            JsonlPath AS Destination,
+            ReturnCode,
+            Stdout,
+            Stderr,
+            CU_ID,
+            MITRE_ID,
+            Severity,
+            RouterProfile,
+            SourceArtifact
+          FROM execve(argv=[
+            "powershell.exe",
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy", "Bypass",
+            "-Command",
+            "& { param([string]$p,[string]$b64) $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $compact=($json | ConvertFrom-Json | ConvertTo-Json -Compress -Depth 20); $d=Split-Path -Parent $p; if (!(Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }; Add-Content -LiteralPath $p -Value $compact -Encoding UTF8 }",
+            JsonlPath,
+            AlertB64
+          ])
+          WHERE EnableJSONL
+        }
+      )
+
+  - name: Route_P4_v2_CU004
+    query: |
+      SELECT * FROM foreach(
+        row={
+          SELECT
+            timestamp(epoch=now()) AS RouterTime,
+            "P4" AS RouterProfile,
+            "Custom.TFM.HIDS.P4.Low.Basic_v2/CU004_Source_TEC004_RunKeys_Basic" AS SourceArtifact,
+            base64encode(string=serialize(format="json", item=dict(
+              RouterTime=timestamp(epoch=now()),
+              DetectionTime=DetectionTime,
+              ClientId=ClientId,
+              Hostname=Hostname,
+              CU_ID=CU_ID,
+              ID_Tecnica_Interna=ID_Tecnica_Interna,
+              MITRE_ID=MITRE_ID,
+              MITRE_Tactic=MITRE_Tactic,
+              MITRE_Tactic_Context=MITRE_Tactic_Context,
+              SignalType=SignalType,
+              AlertName=AlertName,
+              Severity=Severity,
+              Priority=Priority,
+              Confidence=Confidence,
+              DetectionScope=DetectionScope,
+              OutputType=OutputType,
+              FP_Risk=FP_Risk,
+              CU_Reason=CU_Reason,
+              CU_Evidence=CU_Evidence,
+              EventID=EventID,
+              Channel=Channel,
+              Provider=Provider,
+              Image=Image,
+              CommandLine=CommandLine,
+              ParentImage=ParentImage,
+              ParentCommandLine=ParentCommandLine,
+              User=User,
+              TargetFilename=TargetFilename,
+              DetectionLogic=DetectionLogic,
+              FalsePositiveReduction=FalsePositiveReduction,
+              BenchmarkScenario=BenchmarkScenario,
+              ArtifactProfile=ArtifactProfile,
+              RouterProfile="P4",
+              SourceArtifact="Custom.TFM.HIDS.P4.Low.Basic_v2/CU004_Source_TEC004_RunKeys_Basic",
+              RouterArtifact="Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3"
+            ))) AS AlertB64,
+            *
+          FROM watch_monitoring(artifact="Custom.TFM.HIDS.P4.Low.Basic_v2/CU004_Source_TEC004_RunKeys_Basic")
+          WHERE Severity =~ SeverityRegex
+            AND OutputType =~ OutputRegex
+            AND NOT (ExcludeFileDeleteDetected AND (EventID = 26 OR SignalType =~ "(?i)FileDeleteDetected"))
+        },
+        query={
+          SELECT
+            "JSONL_WRITE_ATTEMPT" AS Sink,
+            JsonlPath AS Destination,
+            ReturnCode,
+            Stdout,
+            Stderr,
+            CU_ID,
+            MITRE_ID,
+            Severity,
+            RouterProfile,
+            SourceArtifact
+          FROM execve(argv=[
+            "powershell.exe",
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy", "Bypass",
+            "-Command",
+            "& { param([string]$p,[string]$b64) $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $compact=($json | ConvertFrom-Json | ConvertTo-Json -Compress -Depth 20); $d=Split-Path -Parent $p; if (!(Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }; Add-Content -LiteralPath $p -Value $compact -Encoding UTF8 }",
+            JsonlPath,
+            AlertB64
+          ])
+          WHERE EnableJSONL
+        }
+      )
+
+  - name: Route_P4_v2_CU005
+    query: |
+      SELECT * FROM foreach(
+        row={
+          SELECT
+            timestamp(epoch=now()) AS RouterTime,
+            "P4" AS RouterProfile,
+            "Custom.TFM.HIDS.P4.Low.Basic_v2/CU005_Source_TEC005_ServiceCreation_7045" AS SourceArtifact,
+            base64encode(string=serialize(format="json", item=dict(
+              RouterTime=timestamp(epoch=now()),
+              DetectionTime=DetectionTime,
+              ClientId=ClientId,
+              Hostname=Hostname,
+              CU_ID=CU_ID,
+              ID_Tecnica_Interna=ID_Tecnica_Interna,
+              MITRE_ID=MITRE_ID,
+              MITRE_Tactic=MITRE_Tactic,
+              MITRE_Tactic_Context=MITRE_Tactic_Context,
+              SignalType=SignalType,
+              AlertName=AlertName,
+              Severity=Severity,
+              Priority=Priority,
+              Confidence=Confidence,
+              DetectionScope=DetectionScope,
+              OutputType=OutputType,
+              FP_Risk=FP_Risk,
+              CU_Reason=CU_Reason,
+              CU_Evidence=CU_Evidence,
+              EventID=EventID,
+              Channel=Channel,
+              Provider=Provider,
+              Image=Image,
+              CommandLine=CommandLine,
+              ParentImage=ParentImage,
+              ParentCommandLine=ParentCommandLine,
+              User=User,
+              TargetFilename=TargetFilename,
+              DetectionLogic=DetectionLogic,
+              FalsePositiveReduction=FalsePositiveReduction,
+              BenchmarkScenario=BenchmarkScenario,
+              ArtifactProfile=ArtifactProfile,
+              RouterProfile="P4",
+              SourceArtifact="Custom.TFM.HIDS.P4.Low.Basic_v2/CU005_Source_TEC005_ServiceCreation_7045",
+              RouterArtifact="Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3"
+            ))) AS AlertB64,
+            *
+          FROM watch_monitoring(artifact="Custom.TFM.HIDS.P4.Low.Basic_v2/CU005_Source_TEC005_ServiceCreation_7045")
+          WHERE Severity =~ SeverityRegex
+            AND OutputType =~ OutputRegex
+            AND NOT (ExcludeFileDeleteDetected AND (EventID = 26 OR SignalType =~ "(?i)FileDeleteDetected"))
+        },
+        query={
+          SELECT
+            "JSONL_WRITE_ATTEMPT" AS Sink,
+            JsonlPath AS Destination,
+            ReturnCode,
+            Stdout,
+            Stderr,
+            CU_ID,
+            MITRE_ID,
+            Severity,
+            RouterProfile,
+            SourceArtifact
+          FROM execve(argv=[
+            "powershell.exe",
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy", "Bypass",
+            "-Command",
+            "& { param([string]$p,[string]$b64) $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $compact=($json | ConvertFrom-Json | ConvertTo-Json -Compress -Depth 20); $d=Split-Path -Parent $p; if (!(Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }; Add-Content -LiteralPath $p -Value $compact -Encoding UTF8 }",
+            JsonlPath,
+            AlertB64
+          ])
+          WHERE EnableJSONL
+        }
+      )
+
+  - name: Route_P3_v2_CU001
+    query: |
+      SELECT * FROM foreach(
+        row={
+          SELECT
+            timestamp(epoch=now()) AS RouterTime,
+            "P3" AS RouterProfile,
+            "Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU001_Source_TEC001_PowerShell_Behavioral" AS SourceArtifact,
+            base64encode(string=serialize(format="json", item=dict(
+              RouterTime=timestamp(epoch=now()),
+              DetectionTime=DetectionTime,
+              ClientId=ClientId,
+              Hostname=Hostname,
+              CU_ID=CU_ID,
+              ID_Tecnica_Interna=ID_Tecnica_Interna,
+              MITRE_ID=MITRE_ID,
+              MITRE_Tactic=MITRE_Tactic,
+              MITRE_Tactic_Context=MITRE_Tactic_Context,
+              SignalType=SignalType,
+              AlertName=AlertName,
+              Severity=Severity,
+              Priority=Priority,
+              Confidence=Confidence,
+              DetectionScope=DetectionScope,
+              OutputType=OutputType,
+              FP_Risk=FP_Risk,
+              CU_Reason=CU_Reason,
+              CU_Evidence=CU_Evidence,
+              EventID=EventID,
+              Channel=Channel,
+              Provider=Provider,
+              Image=Image,
+              CommandLine=CommandLine,
+              ParentImage=ParentImage,
+              ParentCommandLine=ParentCommandLine,
+              User=User,
+              TargetFilename=TargetFilename,
+              DetectionLogic=DetectionLogic,
+              FalsePositiveReduction=FalsePositiveReduction,
+              BenchmarkScenario=BenchmarkScenario,
+              ArtifactProfile=ArtifactProfile,
+              RouterProfile="P3",
+              SourceArtifact="Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU001_Source_TEC001_PowerShell_Behavioral",
+              RouterArtifact="Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3"
+            ))) AS AlertB64,
+            *
+          FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU001_Source_TEC001_PowerShell_Behavioral")
+          WHERE Severity =~ SeverityRegex
+            AND OutputType =~ OutputRegex
+            AND NOT (ExcludeRouterSelfEvents AND CommandLine =~ RouterSelfEventRegex)
+        },
+        query={
+          SELECT
+            "JSONL_WRITE_ATTEMPT" AS Sink,
+            JsonlPath AS Destination,
+            ReturnCode,
+            Stdout,
+            Stderr,
+            CU_ID,
+            MITRE_ID,
+            Severity,
+            RouterProfile,
+            SourceArtifact
+          FROM execve(argv=[
+            "powershell.exe",
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy", "Bypass",
+            "-Command",
+            "& { param([string]$p,[string]$b64) $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $compact=($json | ConvertFrom-Json | ConvertTo-Json -Compress -Depth 20); $d=Split-Path -Parent $p; if (!(Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }; Add-Content -LiteralPath $p -Value $compact -Encoding UTF8 }",
+            JsonlPath,
+            AlertB64
+          ])
+          WHERE EnableJSONL
+        }
+      )
+
+  - name: Route_P3_v2_CU006
+    query: |
+      SELECT * FROM foreach(
+        row={
+          SELECT
+            timestamp(epoch=now()) AS RouterTime,
+            "P3" AS RouterProfile,
+            "Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU006_Source_TEC006_Discovery_Behavioral" AS SourceArtifact,
+            base64encode(string=serialize(format="json", item=dict(
+              RouterTime=timestamp(epoch=now()),
+              DetectionTime=DetectionTime,
+              ClientId=ClientId,
+              Hostname=Hostname,
+              CU_ID=CU_ID,
+              ID_Tecnica_Interna=ID_Tecnica_Interna,
+              MITRE_ID=MITRE_ID,
+              MITRE_Tactic=MITRE_Tactic,
+              MITRE_Tactic_Context=MITRE_Tactic_Context,
+              SignalType=SignalType,
+              AlertName=AlertName,
+              Severity=Severity,
+              Priority=Priority,
+              Confidence=Confidence,
+              DetectionScope=DetectionScope,
+              OutputType=OutputType,
+              FP_Risk=FP_Risk,
+              CU_Reason=CU_Reason,
+              CU_Evidence=CU_Evidence,
+              EventID=EventID,
+              Channel=Channel,
+              Provider=Provider,
+              Image=Image,
+              CommandLine=CommandLine,
+              ParentImage=ParentImage,
+              ParentCommandLine=ParentCommandLine,
+              User=User,
+              TargetFilename=TargetFilename,
+              DetectionLogic=DetectionLogic,
+              FalsePositiveReduction=FalsePositiveReduction,
+              BenchmarkScenario=BenchmarkScenario,
+              ArtifactProfile=ArtifactProfile,
+              RouterProfile="P3",
+              SourceArtifact="Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU006_Source_TEC006_Discovery_Behavioral",
+              RouterArtifact="Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3"
+            ))) AS AlertB64,
+            *
+          FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU006_Source_TEC006_Discovery_Behavioral")
+          WHERE Severity =~ SeverityRegex
+            AND OutputType =~ OutputRegex
+            AND NOT (ExcludeFileDeleteDetected AND (EventID = 26 OR SignalType =~ "(?i)FileDeleteDetected"))
+        },
+        query={
+          SELECT
+            "JSONL_WRITE_ATTEMPT" AS Sink,
+            JsonlPath AS Destination,
+            ReturnCode,
+            Stdout,
+            Stderr,
+            CU_ID,
+            MITRE_ID,
+            Severity,
+            RouterProfile,
+            SourceArtifact
+          FROM execve(argv=[
+            "powershell.exe",
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy", "Bypass",
+            "-Command",
+            "& { param([string]$p,[string]$b64) $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $compact=($json | ConvertFrom-Json | ConvertTo-Json -Compress -Depth 20); $d=Split-Path -Parent $p; if (!(Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }; Add-Content -LiteralPath $p -Value $compact -Encoding UTF8 }",
+            JsonlPath,
+            AlertB64
+          ])
+          WHERE EnableJSONL
+        }
+      )
+
+  - name: Route_P3_v2_CU007
+    query: |
+      SELECT * FROM foreach(
+        row={
+          SELECT
+            timestamp(epoch=now()) AS RouterTime,
+            "P3" AS RouterProfile,
+            "Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU007_Source_TEC007_Ransomware_Behavioral" AS SourceArtifact,
+            base64encode(string=serialize(format="json", item=dict(
+              RouterTime=timestamp(epoch=now()),
+              DetectionTime=DetectionTime,
+              ClientId=ClientId,
+              Hostname=Hostname,
+              CU_ID=CU_ID,
+              ID_Tecnica_Interna=ID_Tecnica_Interna,
+              MITRE_ID=MITRE_ID,
+              MITRE_Tactic=MITRE_Tactic,
+              MITRE_Tactic_Context=MITRE_Tactic_Context,
+              SignalType=SignalType,
+              AlertName=AlertName,
+              Severity=Severity,
+              Priority=Priority,
+              Confidence=Confidence,
+              DetectionScope=DetectionScope,
+              OutputType=OutputType,
+              FP_Risk=FP_Risk,
+              CU_Reason=CU_Reason,
+              CU_Evidence=CU_Evidence,
+              EventID=EventID,
+              Channel=Channel,
+              Provider=Provider,
+              Image=Image,
+              CommandLine=CommandLine,
+              ParentImage=ParentImage,
+              ParentCommandLine=ParentCommandLine,
+              User=User,
+              TargetFilename=TargetFilename,
+              DetectionLogic=DetectionLogic,
+              FalsePositiveReduction=FalsePositiveReduction,
+              BenchmarkScenario=BenchmarkScenario,
+              ArtifactProfile=ArtifactProfile,
+              RouterProfile="P3",
+              SourceArtifact="Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU007_Source_TEC007_Ransomware_Behavioral",
+              RouterArtifact="Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3"
+            ))) AS AlertB64,
+            *
+          FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU007_Source_TEC007_Ransomware_Behavioral")
+          WHERE Severity =~ SeverityRegex
+            AND OutputType =~ OutputRegex
+            AND NOT (ExcludeFileDeleteDetected AND (EventID = 26 OR SignalType =~ "(?i)FileDeleteDetected"))
+        },
+        query={
+          SELECT
+            "JSONL_WRITE_ATTEMPT" AS Sink,
+            JsonlPath AS Destination,
+            ReturnCode,
+            Stdout,
+            Stderr,
+            CU_ID,
+            MITRE_ID,
+            Severity,
+            RouterProfile,
+            SourceArtifact
+          FROM execve(argv=[
+            "powershell.exe",
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy", "Bypass",
+            "-Command",
+            "& { param([string]$p,[string]$b64) $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $compact=($json | ConvertFrom-Json | ConvertTo-Json -Compress -Depth 20); $d=Split-Path -Parent $p; if (!(Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }; Add-Content -LiteralPath $p -Value $compact -Encoding UTF8 }",
+            JsonlPath,
+            AlertB64
+          ])
+          WHERE EnableJSONL
+        }
+      )
+
+  - name: Route_P3_v2_CU008
+    query: |
+      SELECT * FROM foreach(
+        row={
+          SELECT
+            timestamp(epoch=now()) AS RouterTime,
+            "P3" AS RouterProfile,
+            "Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU008_Source_TEC008_Destruction_Behavioral" AS SourceArtifact,
+            base64encode(string=serialize(format="json", item=dict(
+              RouterTime=timestamp(epoch=now()),
+              DetectionTime=DetectionTime,
+              ClientId=ClientId,
+              Hostname=Hostname,
+              CU_ID=CU_ID,
+              ID_Tecnica_Interna=ID_Tecnica_Interna,
+              MITRE_ID=MITRE_ID,
+              MITRE_Tactic=MITRE_Tactic,
+              MITRE_Tactic_Context=MITRE_Tactic_Context,
+              SignalType=SignalType,
+              AlertName=AlertName,
+              Severity=Severity,
+              Priority=Priority,
+              Confidence=Confidence,
+              DetectionScope=DetectionScope,
+              OutputType=OutputType,
+              FP_Risk=FP_Risk,
+              CU_Reason=CU_Reason,
+              CU_Evidence=CU_Evidence,
+              EventID=EventID,
+              Channel=Channel,
+              Provider=Provider,
+              Image=Image,
+              CommandLine=CommandLine,
+              ParentImage=ParentImage,
+              ParentCommandLine=ParentCommandLine,
+              User=User,
+              TargetFilename=TargetFilename,
+              DetectionLogic=DetectionLogic,
+              FalsePositiveReduction=FalsePositiveReduction,
+              BenchmarkScenario=BenchmarkScenario,
+              ArtifactProfile=ArtifactProfile,
+              RouterProfile="P3",
+              SourceArtifact="Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU008_Source_TEC008_Destruction_Behavioral",
+              RouterArtifact="Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3"
+            ))) AS AlertB64,
+            *
+          FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU008_Source_TEC008_Destruction_Behavioral")
+          WHERE Severity =~ SeverityRegex
+            AND OutputType =~ OutputRegex
+            AND NOT (ExcludeFileDeleteDetected AND (EventID = 26 OR SignalType =~ "(?i)FileDeleteDetected"))
+        },
+        query={
+          SELECT
+            "JSONL_WRITE_ATTEMPT" AS Sink,
+            JsonlPath AS Destination,
+            ReturnCode,
+            Stdout,
+            Stderr,
+            CU_ID,
+            MITRE_ID,
+            Severity,
+            RouterProfile,
+            SourceArtifact
+          FROM execve(argv=[
+            "powershell.exe",
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy", "Bypass",
+            "-Command",
+            "& { param([string]$p,[string]$b64) $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $compact=($json | ConvertFrom-Json | ConvertTo-Json -Compress -Depth 20); $d=Split-Path -Parent $p; if (!(Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }; Add-Content -LiteralPath $p -Value $compact -Encoding UTF8 }",
+            JsonlPath,
+            AlertB64
+          ])
+          WHERE EnableJSONL
+        }
+      )
+
+  - name: Route_P3_v2_CU009
+    query: |
+      SELECT * FROM foreach(
+        row={
+          SELECT
+            timestamp(epoch=now()) AS RouterTime,
+            "P3" AS RouterProfile,
+            "Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU009_Source_TEC009_Staging_Network_Behavioral" AS SourceArtifact,
+            base64encode(string=serialize(format="json", item=dict(
+              RouterTime=timestamp(epoch=now()),
+              DetectionTime=DetectionTime,
+              ClientId=ClientId,
+              Hostname=Hostname,
+              CU_ID=CU_ID,
+              ID_Tecnica_Interna=ID_Tecnica_Interna,
+              MITRE_ID=MITRE_ID,
+              MITRE_Tactic=MITRE_Tactic,
+              MITRE_Tactic_Context=MITRE_Tactic_Context,
+              SignalType=SignalType,
+              AlertName=AlertName,
+              Severity=Severity,
+              Priority=Priority,
+              Confidence=Confidence,
+              DetectionScope=DetectionScope,
+              OutputType=OutputType,
+              FP_Risk=FP_Risk,
+              CU_Reason=CU_Reason,
+              CU_Evidence=CU_Evidence,
+              EventID=EventID,
+              Channel=Channel,
+              Provider=Provider,
+              Image=Image,
+              CommandLine=CommandLine,
+              ParentImage=ParentImage,
+              ParentCommandLine=ParentCommandLine,
+              User=User,
+              TargetFilename=TargetFilename,
+              DetectionLogic=DetectionLogic,
+              FalsePositiveReduction=FalsePositiveReduction,
+              BenchmarkScenario=BenchmarkScenario,
+              ArtifactProfile=ArtifactProfile,
+              RouterProfile="P3",
+              SourceArtifact="Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU009_Source_TEC009_Staging_Network_Behavioral",
+              RouterArtifact="Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3"
+            ))) AS AlertB64,
+            *
+          FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral_v3/CU009_Source_TEC009_Staging_Network_Behavioral")
+          WHERE Severity =~ SeverityRegex
+            AND OutputType =~ OutputRegex
+            AND NOT (ExcludeFileDeleteDetected AND (EventID = 26 OR SignalType =~ "(?i)FileDeleteDetected"))
+        },
+        query={
+          SELECT
+            "JSONL_WRITE_ATTEMPT" AS Sink,
+            JsonlPath AS Destination,
+            ReturnCode,
+            Stdout,
+            Stderr,
+            CU_ID,
+            MITRE_ID,
+            Severity,
+            RouterProfile,
+            SourceArtifact
+          FROM execve(argv=[
+            "powershell.exe",
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy", "Bypass",
+            "-Command",
+            "& { param([string]$p,[string]$b64) $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $compact=($json | ConvertFrom-Json | ConvertTo-Json -Compress -Depth 20); $d=Split-Path -Parent $p; if (!(Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }; Add-Content -LiteralPath $p -Value $compact -Encoding UTF8 }",
+            JsonlPath,
+            AlertB64
+          ])
+          WHERE EnableJSONL
+        }
+      )
+
+

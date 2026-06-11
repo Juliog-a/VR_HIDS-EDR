@@ -1,0 +1,24 @@
+CHECKLIST DE USO
+
+1. Copiar estos archivos a C:\Users\julio\Desktop\TFM:
+   - Prompt_Contexto_TFM_Velociraptor_MASTER_v6_FINAL.txt
+   - Prompt_Codex_Analisis_Iteracion_TFM_Velociraptor_v1.txt
+
+2. Asegurar que también están:
+   - alerts.jsonl
+   - TFM_TEC_Run_FIXED_*.log
+   - TFM_Run_All_TEC_Tests.ps1
+   - artifacts YAML actuales
+
+3. Abrir Codex en:
+   cd C:\Users\julio\Desktop\TFM
+   codex
+
+4. Pegar el contenido de:
+   Prompt_Codex_Analisis_Iteracion_TFM_Velociraptor_v1.txt
+
+5. Si Codex pide permiso para editar:
+   Deny
+
+6. Primero obtener diagnóstico.
+7. Después autorizar creación en artifacts_candidate si el análisis es correcto.

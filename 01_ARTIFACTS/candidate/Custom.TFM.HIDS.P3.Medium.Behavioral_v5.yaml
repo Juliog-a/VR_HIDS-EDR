@@ -1,0 +1,741 @@
+﻿# Version: v5 candidate
+# Changes:
+# - Keeps P3_v3 PowerShell 4104 detections.
+# - Keeps CU-006/CU-008 Sysmon and CU-007 4104 behavior from v4.
+# - Adds CU-009 Sysmon ID 22 DNS, ID 3 network and optional ID 11 ZIP context.
+# - Keeps semantic priority with crypto exclusions for CU-008/CU-009.
+# - Does not use lab paths, script names or technique labels as IOC.
+
+name: Custom.TFM.HIDS.P3.Medium.Behavioral_v5
+description: |
+  Candidate v5 for P3 Medium Behavioral.
+
+  Scope:
+  - Behavioral detections from PowerShell 4104 and Sysmon process telemetry.
+  - Separates discovery, encryption, destruction and staging.
+  - Maintains methodological distinction between detection, forensic evidence,
+    real-time alerting and external output.
+
+  Semantic priority:
+  1. CU-007 crypto/encryption impact.
+  2. CU-009 staging/archive/network contextual.
+  3. CU-008 destructive deletion.
+  4. CU-006 security software discovery.
+  5. CU-001 generic suspicious PowerShell.
+
+type: CLIENT_EVENT
+
+parameters:
+  - name: HostnameOverride
+    default: LT29.ait.us.es
+  - name: ClientIdOverride
+    default: C.364907172793f8c7
+  - name: PowerShellLog
+    default: C:/Windows/System32/Winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx
+  - name: SysmonLog
+    default: C:/Windows/System32/Winevt/Logs/Microsoft-Windows-Sysmon%4Operational.evtx
+  - name: PSNoiseRegex
+    default: (?i)(__cmdletization|Export-ModuleMember|MSFT_ScheduledTask|Microsoft\.PowerShell\.Cmdletization|cim:DeleteInstance|\.EXTERNALHELP)
+    type: regex
+  - name: GenericPSRegex
+    default: (?i)(-EncodedCommand|FromBase64String|IEX|Invoke-Expression|DownloadString|Invoke-WebRequest|ExecutionPolicy\s+Bypass|NoProfile)
+    type: regex
+  - name: RouterSelfRegex
+    default: (?i)(alerts\.jsonl|Add-Content|RouterArtifact|JSONL_WRITE_ATTEMPT|ConvertFrom-Json|ConvertTo-Json)
+    type: regex
+  - name: DiscoveryRegex
+    default: '(?i)(root[/\\]SecurityCenter2|SecurityCenter2|AntivirusProduct|AntiSpywareProduct|Get-CimInstance|Get-WmiObject|\bgwmi\b|\bgcim\b|\bwmic(?:\.exe)?\b|Win32_Service|SecurityHealthService|WinDefend|Windows Defender|Defender|EDR|antivirus|anti[- ]?malware|CrowdStrike|SentinelOne|CarbonBlack|Elastic\s*Endpoint|Sophos|McAfee|Symantec|Trend\s*Micro|ESET|Kaspersky)'
+    type: regex
+  - name: DiscoveryMethodRegex
+    default: '(?i)(root[/\\]SecurityCenter2|SecurityCenter2|AntivirusProduct|AntiSpywareProduct|Get-CimInstance|Get-WmiObject|\bgwmi\b|\bgcim\b|\bwmic(?:\.exe)?\b|Win32_Service)'
+    type: regex
+  - name: DiscoveryProductRegex
+    default: '(?i)(root[/\\]SecurityCenter2|SecurityCenter2|AntivirusProduct|AntiSpywareProduct|Win32_Service|SecurityHealthService|WinDefend|Windows Defender|Defender|EDR|antivirus|anti[- ]?malware|CrowdStrike|SentinelOne|CarbonBlack|Elastic\s*Endpoint|Sophos|McAfee|Symantec|Trend\s*Micro|ESET|Kaspersky)'
+    type: regex
+  - name: CryptoStrongRegex
+    default: (?i)(System\.Security\.Cryptography|AesManaged|AesCng|AES|CryptoStream|CreateEncryptor|CreateDecryptor|Rfc2898DeriveBytes|SHA256|\.aes)
+    type: regex
+  - name: DestructionCoreRegex
+    default: '(?i)(Remove-Item|Remove-Item\s+|Microsoft\.PowerShell\.Management\\Remove-Item|\bdel\s+|\berase\s+|\brmdir\s+)'
+    type: regex
+  - name: DestructionContextRegex
+    default: '(?i)(Get-ChildItem|ForEach-Object|ForEach|-Recurse|-Force|-LiteralPath|-Path|\$_\.FullName|\$PSItem\.FullName)'
+    type: regex
+  - name: DestructionStrongRegex
+    default: '(?is)((Get-ChildItem|gci|dir|ls).*(Remove-Item|del\s+|erase\s+|rmdir\s+)|(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse|\$_\.FullName|\$PSItem\.FullName))'
+    type: regex
+  - name: StagingArchiveRegex
+    default: '(?i)(Compress-Archive|System\.IO\.Compression|ZipFile|\.zip\b|\.7z\b|\.rar\b)'
+    type: regex
+  - name: StagingCopyRegex
+    default: '(?i)(Copy-Item|Move-Item|DestinationPath|-Destination|\bcopy\s+|\bmove\s+)'
+    type: regex
+  - name: StagingStrongRegex
+    default: '(?is)(Compress-Archive.*(Copy-Item|Move-Item|DestinationPath|-Destination|TcpClient|System\.Net\.Sockets|\.Connect\(|Connect\()|(Copy-Item|Move-Item).*(\.zip\b|\.7z\b|\.rar\b|Compress-Archive)|TcpClient.*(\.zip\b|Compress-Archive|Copy-Item|Move-Item))'
+    type: regex
+  - name: NetworkContextRegex
+    default: (?i)(TcpClient|System\.Net\.Sockets|\.Connect\(|Connect\(|Invoke-WebRequest|curl|wget|bitsadmin|rclone|scp|ftp)
+    type: regex
+
+  - name: SysmonPSHostRegex
+    default: '(?i)\\(powershell|pwsh)\.exe$'
+    type: regex
+  - name: SysmonShellRegex
+    default: '(?i)\\(powershell|pwsh|cmd|wmic)\.exe$'
+    type: regex
+  - name: SysmonDiscoveryCommandRegex
+    default: '(?i)((Get-CimInstance|Get-WmiObject|\bgwmi\b|\bgcim\b).*(root[/\\]SecurityCenter2|SecurityCenter2|AntivirusProduct|AntiSpywareProduct|Win32_Service|SecurityHealthService|WinDefend|Windows Defender|Defender|EDR|antivirus|anti[- ]?malware)|(wmic(?:\.exe)?\s+.*(root[/\\]SecurityCenter2|SecurityCenter2|AntivirusProduct|AntiSpywareProduct))|(Win32_Service.*(SecurityHealthService|WinDefend|Defender|EDR|antivirus|anti[- ]?malware)))'
+    type: regex
+  - name: SysmonDestructionCommandRegex
+    default: '(?is)((Get-ChildItem|gci|dir|ls).*(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse|\$_\.FullName|\$PSItem\.FullName)|(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse).*(Get-ChildItem|gci|dir|ls|\$_\.FullName|\$PSItem\.FullName))'
+    type: regex
+  - name: SysmonStagingCommandRegex
+    default: '(?is)((Compress-Archive|System\.IO\.Compression|ZipFile|\.zip\b).*(Copy-Item|Move-Item|-Destination|DestinationPath|TcpClient|System\.Net\.Sockets|\.Connect\(|Connect\())|((Copy-Item|Move-Item).*(Compress-Archive|\.zip\b|\.7z\b|\.rar\b|-Destination|DestinationPath))|((-SourcePath|-StagingPath).*(-RemoteHost|-RemotePort))|((TcpClient|System\.Net\.Sockets|\.Connect\(|Connect\()).*(Compress-Archive|\.zip\b|Copy-Item|Move-Item|-StagingPath)))'
+    type: regex
+  - name: ExternalDnsRegex
+    default: '(?i)^[A-Za-z0-9][A-Za-z0-9.-]*\.[A-Za-z]{2,}$'
+    type: regex
+  - name: LocalDnsRegex
+    default: '(?i)(^localhost$|(^|\.)(local|lan|internal|home|corp)$)'
+    type: regex
+  - name: ExternalDestinationDenyRegex
+    default: '(?i)^(127\.|10\.|192\.168\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|169\.254\.|0\.|255\.|::1$|fe80:|fc[0-9a-f]|fd[0-9a-f])'
+    type: regex
+  - name: WebDestinationPortRegex
+    default: '^(80|443)$'
+    type: regex
+  - name: ZipFileRegex
+    default: '(?i)\.zip$'
+    type: regex
+precondition: SELECT OS FROM info() WHERE OS = "windows"
+
+sources:
+  - name: CU001_Source_TEC001_PowerShell_Behavioral
+    description: |
+      CU-001 / T1059.001.
+      Generic suspicious PowerShell script block, after more specific CU have priority.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-001" AS CU_ID,
+        "TEC-001" AS ID_Tecnica_Interna,
+        "T1059.001" AS MITRE_ID,
+        "Execution" AS MITRE_Tactic,
+        "" AS MITRE_Tactic_Context,
+        "PowerShell 4104" AS SignalType,
+        "PowerShell suspicious script block - behavioral profile v5" AS AlertName,
+        "Medium" AS Severity,
+        "P3" AS Priority,
+        "Medium" AS Confidence,
+        "PowerShell Script Block Logging" AS DetectionScope,
+        "Deteccion / Alerta RT si se enruta" AS OutputType,
+        "Medio" AS FP_Risk,
+        "Generic suspicious PowerShell after excluding higher-specificity behavior" AS CU_Reason,
+        EventData.ScriptBlockText AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-PowerShell/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        "powershell.exe" AS Image,
+        EventData.ScriptBlockText AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.UserId AS User,
+        "" AS Hashes,
+        "" AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "4104 + generic suspicious PowerShell; excludes noise, router self-events and higher-specificity CU behavior" AS DetectionLogic,
+        "Does not globally exclude ForEach-Object, Where-Object or Select-Object; excludes router JSONL self-events" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P3 Medium Behavioral v5" AS ArtifactProfile
+      FROM watch_evtx(filename=PowerShellLog)
+      WHERE atoi(string=System.EventID.Value) = 4104
+        AND NOT EventData.ScriptBlockText =~ PSNoiseRegex
+        AND NOT EventData.ScriptBlockText =~ RouterSelfRegex
+        AND EventData.ScriptBlockText =~ GenericPSRegex
+        AND NOT EventData.ScriptBlockText =~ CryptoStrongRegex
+        AND NOT (
+          EventData.ScriptBlockText =~ DiscoveryMethodRegex
+          AND EventData.ScriptBlockText =~ DiscoveryProductRegex
+        )
+        AND NOT (
+          EventData.ScriptBlockText =~ StagingArchiveRegex
+          AND (
+            EventData.ScriptBlockText =~ StagingCopyRegex
+            OR EventData.ScriptBlockText =~ NetworkContextRegex
+          )
+        )
+        AND NOT (
+          EventData.ScriptBlockText =~ DestructionStrongRegex
+          OR (
+            EventData.ScriptBlockText =~ DestructionCoreRegex
+            AND EventData.ScriptBlockText =~ DestructionContextRegex
+          )
+        )
+
+  - name: CU006_Source_TEC006_Discovery_Behavioral
+    description: |
+      CU-006 / T1518.001.
+      Security Software Discovery via PowerShell 4104.
+      Contextual detection, not critical if isolated.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-006" AS CU_ID,
+        "TEC-006" AS ID_Tecnica_Interna,
+        "T1518.001" AS MITRE_ID,
+        "Discovery" AS MITRE_Tactic,
+        "" AS MITRE_Tactic_Context,
+        "PowerShell 4104" AS SignalType,
+        "Security software discovery detected - behavioral profile v5" AS AlertName,
+        "Medium" AS Severity,
+        "P3" AS Priority,
+        "Medium" AS Confidence,
+        "PowerShell Script Block Logging" AS DetectionScope,
+        "Deteccion contextual / Alerta si se enruta" AS OutputType,
+        "Medio" AS FP_Risk,
+        "SecurityCenter2/AntivirusProduct or AV/EDR discovery query" AS CU_Reason,
+        EventData.ScriptBlockText AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-PowerShell/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        "powershell.exe" AS Image,
+        EventData.ScriptBlockText AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.UserId AS User,
+        "" AS Hashes,
+        "" AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "4104 + SecurityCenter2/AntivirusProduct/Get-CimInstance/Get-WmiObject/wmic-like discovery" AS DetectionLogic,
+        "Legitimate administration possible; keep as contextual unless combined with stronger behavior" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P3 Medium Behavioral v5" AS ArtifactProfile
+      FROM watch_evtx(filename=PowerShellLog)
+      WHERE atoi(string=System.EventID.Value) = 4104
+        AND NOT EventData.ScriptBlockText =~ RouterSelfRegex
+        AND EventData.ScriptBlockText =~ DiscoveryMethodRegex
+        AND EventData.ScriptBlockText =~ DiscoveryProductRegex
+        AND NOT EventData.ScriptBlockText =~ CryptoStrongRegex
+        AND NOT (
+          EventData.ScriptBlockText =~ StagingArchiveRegex
+          AND (
+            EventData.ScriptBlockText =~ StagingCopyRegex
+            OR EventData.ScriptBlockText =~ NetworkContextRegex
+          )
+        )
+        AND NOT (
+          EventData.ScriptBlockText =~ DestructionCoreRegex
+          AND EventData.ScriptBlockText =~ DestructionContextRegex
+        )
+
+  - name: CU007_Source_TEC007_Ransomware_Behavioral
+    description: |
+      CU-007 / T1486.
+      Controlled ransomware-like encryption behavior.
+      Requires strong crypto/AES/CryptoStream/.aes evidence.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-007" AS CU_ID,
+        "TEC-007" AS ID_Tecnica_Interna,
+        "T1486" AS MITRE_ID,
+        "Impact" AS MITRE_Tactic,
+        "" AS MITRE_Tactic_Context,
+        "PowerShell 4104" AS SignalType,
+        "Possible ransomware-like encryption behavior - behavioral profile v5" AS AlertName,
+        "Critical" AS Severity,
+        "P1" AS Priority,
+        "High" AS Confidence,
+        "PowerShell Script Block Logging" AS DetectionScope,
+        "Alerta RT / Discord recomendado solo tras validar JSONL" AS OutputType,
+        "Bajo/Medio" AS FP_Risk,
+        "Strong PowerShell crypto/encryption indicators" AS CU_Reason,
+        EventData.ScriptBlockText AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-PowerShell/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        "powershell.exe" AS Image,
+        EventData.ScriptBlockText AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.UserId AS User,
+        "" AS Hashes,
+        "" AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "4104 + strong crypto regex; priority over CU-008/CU-009 when crypto is present" AS DetectionLogic,
+        "May match legitimate encryption tools; no script-name or lab-path dependency" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P3 Medium Behavioral v5" AS ArtifactProfile
+      FROM watch_evtx(filename=PowerShellLog)
+      WHERE atoi(string=System.EventID.Value) = 4104
+        AND NOT EventData.ScriptBlockText =~ PSNoiseRegex
+        AND EventData.ScriptBlockText =~ CryptoStrongRegex
+
+  - name: CU008_Source_TEC008_Destruction_Behavioral
+    description: |
+      CU-008 / T1485.
+      Destructive deletion behavior. Sysmon ID 26 remains forensic evidence,
+      not an individual operational alert.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-008" AS CU_ID,
+        "TEC-008" AS ID_Tecnica_Interna,
+        "T1485" AS MITRE_ID,
+        "Impact" AS MITRE_Tactic,
+        "" AS MITRE_Tactic_Context,
+        "PowerShell 4104" AS SignalType,
+        "Possible destructive deletion behavior - behavioral profile v5" AS AlertName,
+        "Critical" AS Severity,
+        "P1" AS Priority,
+        "High" AS Confidence,
+        "PowerShell Script Block Logging" AS DetectionScope,
+        "Alerta RT / Discord recomendado solo tras validar JSONL" AS OutputType,
+        "Medio" AS FP_Risk,
+        "Remove-Item with force/recursive or pipeline deletion context" AS CU_Reason,
+        EventData.ScriptBlockText AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-PowerShell/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        "powershell.exe" AS Image,
+        EventData.ScriptBlockText AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.UserId AS User,
+        "" AS Hashes,
+        "" AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "4104 + destructive core + destructive context; excludes crypto and staging/archive blocks" AS DetectionLogic,
+        "Does not alert on Sysmon ID 26 individual events; does not globally remove ForEach-Object/Where-Object/Select-Object" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P3 Medium Behavioral v5" AS ArtifactProfile
+      FROM watch_evtx(filename=PowerShellLog)
+      WHERE atoi(string=System.EventID.Value) = 4104
+        AND NOT EventData.ScriptBlockText =~ PSNoiseRegex
+        AND NOT EventData.ScriptBlockText =~ RouterSelfRegex
+        AND (
+          EventData.ScriptBlockText =~ DestructionStrongRegex
+          OR (
+            EventData.ScriptBlockText =~ DestructionCoreRegex
+            AND EventData.ScriptBlockText =~ DestructionContextRegex
+          )
+        )
+        AND NOT EventData.ScriptBlockText =~ CryptoStrongRegex
+        AND NOT (
+          EventData.ScriptBlockText =~ StagingArchiveRegex
+          AND (
+            EventData.ScriptBlockText =~ StagingCopyRegex
+            OR EventData.ScriptBlockText =~ NetworkContextRegex
+          )
+        )
+
+  - name: CU009_Source_TEC009_Staging_Network_Behavioral
+    description: |
+      CU-009 / T1074.001 + T1560.001.
+      Local staging/archive with optional network context.
+      This does not prove data transfer without demonstrated movement of archive contents.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-009" AS CU_ID,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "T1074.001 / T1560.001" AS MITRE_ID,
+        "Collection" AS MITRE_Tactic,
+        "Exfiltration contextual only if external network telemetry is documented; no real data transfer asserted" AS MITRE_Tactic_Context,
+        "PowerShell 4104" AS SignalType,
+        "Staging/archive/network contextual behavior detected - behavioral profile v5" AS AlertName,
+        "High" AS Severity,
+        "P2" AS Priority,
+        if(condition=EventData.ScriptBlockText =~ NetworkContextRegex, then="High", else="Medium") AS Confidence,
+        "PowerShell Script Block Logging" AS DetectionScope,
+        "Alerta RT / JSONL summary; Discord solo tras validar JSONL" AS OutputType,
+        "Medio" AS FP_Risk,
+        if(condition=EventData.ScriptBlockText =~ NetworkContextRegex, then="Archive/staging plus network context", else="Archive/staging without demonstrated transfer") AS CU_Reason,
+        EventData.ScriptBlockText AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-PowerShell/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        "powershell.exe" AS Image,
+        EventData.ScriptBlockText AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.UserId AS User,
+        "" AS Hashes,
+        "" AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "4104 + Compress-Archive/.zip + Copy-Item/Move-Item; TcpClient/Connect raises confidence as network context only" AS DetectionLogic,
+        "Does not classify as data transfer without transfer evidence; excludes crypto blocks to avoid ransomware misclassification" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P3 Medium Behavioral v5" AS ArtifactProfile
+      FROM watch_evtx(filename=PowerShellLog)
+      WHERE atoi(string=System.EventID.Value) = 4104
+        AND NOT EventData.ScriptBlockText =~ PSNoiseRegex
+        AND NOT EventData.ScriptBlockText =~ RouterSelfRegex
+        AND (
+          EventData.ScriptBlockText =~ StagingStrongRegex
+          OR (
+            EventData.ScriptBlockText =~ StagingArchiveRegex
+            AND EventData.ScriptBlockText =~ StagingCopyRegex
+          )
+          OR (
+            EventData.ScriptBlockText =~ StagingArchiveRegex
+            AND EventData.ScriptBlockText =~ NetworkContextRegex
+          )
+        )
+        AND NOT EventData.ScriptBlockText =~ CryptoStrongRegex
+        AND NOT (
+          EventData.ScriptBlockText =~ DestructionCoreRegex
+          AND EventData.ScriptBlockText =~ DestructionContextRegex
+        )
+
+
+
+  - name: CU006_Source_TEC006_Discovery_Behavioral_Sysmon
+    description: |
+      CU-006 / T1518.001.
+      Security software discovery from Sysmon process creation telemetry.
+      Contextual detection, not ransomware or staging.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-006" AS CU_ID,
+        "TEC-006" AS ID_Tecnica_Interna,
+        "T1518.001" AS MITRE_ID,
+        "Discovery" AS MITRE_Tactic,
+        "" AS MITRE_Tactic_Context,
+        "Sysmon Process Create" AS SignalType,
+        "Security software discovery detected - behavioral profile v5" AS AlertName,
+        "Medium" AS Severity,
+        "P3" AS Priority,
+        "Medium" AS Confidence,
+        "Sysmon ID 1 process command line" AS DetectionScope,
+        "Deteccion contextual / Alerta si se enruta" AS OutputType,
+        "Medio" AS FP_Risk,
+        "Security software discovery via WMI/CIM/WMIC command line" AS CU_Reason,
+        EventData.CommandLine AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        EventData.CommandLine AS CommandLine,
+        EventData.ParentImage AS ParentImage,
+        EventData.ParentCommandLine AS ParentCommandLine,
+        EventData.User AS User,
+        EventData.Hashes AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        EventData.ParentProcessId AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "Sysmon ID 1 + WMI/CIM/WMIC method + security software target" AS DetectionLogic,
+        "Requires discovery method and defensive product/service context; excludes crypto, destruction, staging and router self-events" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P3 Medium Behavioral v5" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 1
+        AND EventData.Image =~ SysmonShellRegex
+        AND EventData.CommandLine =~ SysmonDiscoveryCommandRegex
+        AND NOT EventData.CommandLine =~ RouterSelfRegex
+        AND NOT EventData.CommandLine =~ CryptoStrongRegex
+        AND NOT EventData.CommandLine =~ SysmonDestructionCommandRegex
+        AND NOT EventData.CommandLine =~ SysmonStagingCommandRegex
+
+  - name: CU008_Source_TEC008_Destruction_Behavioral_Sysmon
+    description: |
+      CU-008 / T1485.
+      Destructive deletion behavior from Sysmon process creation telemetry.
+      Sysmon ID 26 remains forensic evidence, not an individual operational alert.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-008" AS CU_ID,
+        "TEC-008" AS ID_Tecnica_Interna,
+        "T1485" AS MITRE_ID,
+        "Impact" AS MITRE_Tactic,
+        "" AS MITRE_Tactic_Context,
+        "Sysmon Process Create" AS SignalType,
+        "Possible destructive deletion behavior - behavioral profile v5" AS AlertName,
+        "Critical" AS Severity,
+        "P1" AS Priority,
+        "High" AS Confidence,
+        "Sysmon ID 1 process command line" AS DetectionScope,
+        "Alerta RT / Discord recomendado solo tras validar JSONL" AS OutputType,
+        "Medio" AS FP_Risk,
+        "Destructive deletion command line with recursive, forced or pipeline context" AS CU_Reason,
+        EventData.CommandLine AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        EventData.CommandLine AS CommandLine,
+        EventData.ParentImage AS ParentImage,
+        EventData.ParentCommandLine AS ParentCommandLine,
+        EventData.User AS User,
+        EventData.Hashes AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        EventData.ParentProcessId AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "Sysmon ID 1 + destructive deletion regex; excludes crypto and staging/archive/network context" AS DetectionLogic,
+        "Does not alert on Sysmon ID 26 individual events; requires destructive verb and scope/force/pipeline context" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P3 Medium Behavioral v5" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 1
+        AND EventData.Image =~ SysmonShellRegex
+        AND EventData.CommandLine =~ SysmonDestructionCommandRegex
+        AND NOT EventData.CommandLine =~ RouterSelfRegex
+        AND NOT EventData.CommandLine =~ CryptoStrongRegex
+        AND NOT EventData.CommandLine =~ SysmonStagingCommandRegex
+
+  - name: CU009_Source_TEC009_Staging_Network_Behavioral_Sysmon
+    description: |
+      CU-009 / T1074.001 + T1560.001.
+      Local staging/archive with optional network context from Sysmon process telemetry.
+      This does not prove data transfer without demonstrated movement of archive contents.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-009" AS CU_ID,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "T1074.001 / T1560.001" AS MITRE_ID,
+        "Collection" AS MITRE_Tactic,
+        "Exfiltration contextual only if external network telemetry is documented; no real data transfer asserted" AS MITRE_Tactic_Context,
+        "Sysmon Process Create" AS SignalType,
+        "Staging/archive/network contextual behavior detected - behavioral profile v5" AS AlertName,
+        "High" AS Severity,
+        "P2" AS Priority,
+        if(condition=EventData.CommandLine =~ NetworkContextRegex, then="High", else="Medium") AS Confidence,
+        "Sysmon ID 1 process command line" AS DetectionScope,
+        "Alerta RT / JSONL summary; Discord solo tras validar JSONL" AS OutputType,
+        "Medio" AS FP_Risk,
+        if(condition=EventData.CommandLine =~ NetworkContextRegex, then="Archive/staging plus network context", else="Archive/staging without demonstrated transfer") AS CU_Reason,
+        EventData.CommandLine AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        EventData.CommandLine AS CommandLine,
+        EventData.ParentImage AS ParentImage,
+        EventData.ParentCommandLine AS ParentCommandLine,
+        EventData.User AS User,
+        EventData.Hashes AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        EventData.ParentProcessId AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "Sysmon ID 1 + archive/staging/copy or staging plus remote context; network remains contextual only" AS DetectionLogic,
+        "Does not classify as data transfer without transfer evidence; excludes crypto and destructive deletion command lines" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P3 Medium Behavioral v5" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 1
+        AND EventData.Image =~ SysmonShellRegex
+        AND EventData.CommandLine =~ SysmonStagingCommandRegex
+        AND NOT EventData.CommandLine =~ RouterSelfRegex
+        AND NOT EventData.CommandLine =~ CryptoStrongRegex
+        AND NOT EventData.CommandLine =~ SysmonDestructionCommandRegex
+
+
+  - name: CU009_Source_TEC009_Staging_Network_Behavioral_Sysmon_DNS
+    description: |
+      CU-009 / T1074.001 + T1560.001.
+      Contextual external DNS telemetry from PowerShell.
+      This does not prove ZIP transfer or data transfer.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-009" AS CU_ID,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "T1074.001 / T1560.001" AS MITRE_ID,
+        "Collection" AS MITRE_Tactic,
+        "Exfiltration contextual only if network telemetry is present" AS MITRE_Tactic_Context,
+        "Sysmon DNS Query" AS SignalType,
+        "Staging/archive with contextual external network telemetry - behavioral profile v5" AS AlertName,
+        "High" AS Severity,
+        "P2" AS Priority,
+        "Medium" AS Confidence,
+        "Sysmon ID 22 DNS query" AS DetectionScope,
+        "Alerta RT / JSONL summary; Discord solo tras validar JSONL" AS OutputType,
+        "Medio/Alto" AS FP_Risk,
+        "PowerShell issued an external DNS query; contextual network evidence only, no data transfer asserted" AS CU_Reason,
+        EventData.QueryName AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        "" AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.User AS User,
+        "" AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        EventData.QueryName AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        EventData.QueryName AS DestinationHostname,
+        "Sysmon ID 22 + PowerShell image + external-looking DNS name; network is contextual only" AS DetectionLogic,
+        "Requires PowerShell and non-local FQDN; does not depend on lab paths, script names, ZIP names or transfer proof" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P3 Medium Behavioral v5" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 22
+        AND EventData.Image =~ SysmonPSHostRegex
+        AND EventData.QueryName =~ ExternalDnsRegex
+        AND NOT EventData.QueryName =~ LocalDnsRegex
+
+  - name: CU009_Source_TEC009_Staging_Network_Behavioral_Sysmon_Network
+    description: |
+      CU-009 / T1074.001 + T1560.001.
+      Contextual external TCP connection from PowerShell.
+      This does not prove ZIP transfer or data transfer.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-009" AS CU_ID,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "T1074.001 / T1560.001" AS MITRE_ID,
+        "Collection" AS MITRE_Tactic,
+        "Exfiltration contextual only if network telemetry is present" AS MITRE_Tactic_Context,
+        "Sysmon Network Connection" AS SignalType,
+        "Staging/archive with contextual external network telemetry - behavioral profile v5" AS AlertName,
+        "High" AS Severity,
+        "P2" AS Priority,
+        "Medium" AS Confidence,
+        "Sysmon ID 3 network connection" AS DetectionScope,
+        "Alerta RT / JSONL summary; Discord solo tras validar JSONL" AS OutputType,
+        "Medio/Alto" AS FP_Risk,
+        "PowerShell initiated an external web connection; contextual network evidence only, no data transfer asserted" AS CU_Reason,
+        EventData.DestinationIp AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        "" AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.User AS User,
+        "" AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        "" AS TargetFilename,
+        EventData.DestinationIp AS DestinationIp,
+        EventData.DestinationPort AS DestinationPort,
+        EventData.DestinationHostname AS DestinationHostname,
+        "Sysmon ID 3 + PowerShell image + initiated connection to external web port; network is contextual only" AS DetectionLogic,
+        "Requires initiated PowerShell connection to 80/443 and excludes local/private/link-local destinations" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P3 Medium Behavioral v5" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 3
+        AND EventData.Image =~ SysmonPSHostRegex
+        AND EventData.Initiated =~ "(?i)true"
+        AND EventData.DestinationPort =~ WebDestinationPortRegex
+        AND NOT EventData.DestinationIp =~ ExternalDestinationDenyRegex
+
+  - name: CU009_Source_TEC009_Staging_Network_Behavioral_Sysmon_Zip
+    description: |
+      CU-009 / T1074.001 + T1560.001.
+      Optional ZIP creation telemetry from PowerShell when Sysmon ID 11 is available.
+      This source is not required for CU-009 because ZIP FileCreate may be absent.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-009" AS CU_ID,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "T1074.001 / T1560.001" AS MITRE_ID,
+        "Collection" AS MITRE_Tactic,
+        "Exfiltration contextual only if network telemetry is present" AS MITRE_Tactic_Context,
+        "Sysmon File Create" AS SignalType,
+        "Archive/staging ZIP creation observed - behavioral profile v5" AS AlertName,
+        "Medium" AS Severity,
+        "P2" AS Priority,
+        "Medium" AS Confidence,
+        "Sysmon ID 11 file creation" AS DetectionScope,
+        "JSONL summary; Discord solo tras validar JSONL" AS OutputType,
+        "Medio" AS FP_Risk,
+        "PowerShell created a ZIP archive; archive/staging evidence only, no data transfer asserted" AS CU_Reason,
+        EventData.TargetFilename AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        "" AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.User AS User,
+        "" AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        EventData.TargetFilename AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "Sysmon ID 11 + PowerShell image + ZIP extension; optional staging/archive evidence" AS DetectionLogic,
+        "Does not depend on archive filename or lab path; optional because Sysmon FileCreate for ZIP may be absent" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P3 Medium Behavioral v5" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 11
+        AND EventData.Image =~ SysmonPSHostRegex
+        AND EventData.TargetFilename =~ ZipFileRegex
+

