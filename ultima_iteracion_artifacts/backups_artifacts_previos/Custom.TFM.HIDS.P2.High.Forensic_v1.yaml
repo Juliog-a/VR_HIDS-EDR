@@ -1,0 +1,596 @@
+# Version: v1 candidate
+# Purpose:
+# - Specialized P2 artifact for CU-007, CU-008 and CU-009.
+# - Smaller and more auditable than P3_v9/P3_v10.
+# - Integrates validated CU009Shape_v4 logic inside P2, not P3.
+# - No lab paths, script names, fixed endpoints, users or hostnames are used as IOC.
+
+name: Custom.TFM.HIDS.P2.High.Forensic_v1
+description: |
+  Candidate v1 for P2 High Forensic.
+
+  Scope:
+  - CU-007 ransomware-like encryption/file impact.
+  - CU-008 sabotage/destruction.
+  - CU-009 staging + ZIP + HTTP upload.
+
+  P2 is a technique-specific detection layer. It emits high-confidence
+  candidate detections and supporting forensic context, while P1 remains
+  reserved for final critical correlation.
+
+type: CLIENT_EVENT
+
+parameters:
+  - name: HostnameOverride
+    default: ""
+  - name: ClientIdOverride
+    default: ""
+  - name: PowerShellLog
+    default: C:/Windows/System32/Winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx
+  - name: SysmonLog
+    default: C:/Windows/System32/Winevt/Logs/Microsoft-Windows-Sysmon%4Operational.evtx
+  - name: PSNoiseRegex
+    default: (?i)(__cmdletization|Export-ModuleMember|MSFT_ScheduledTask|Microsoft\.PowerShell\.Cmdletization|cim:DeleteInstance|\.EXTERNALHELP)
+    type: regex
+  - name: RouterSelfRegex
+    default: (?i)(alerts\.jsonl|Add-Content|RouterArtifact|JSONL_WRITE_ATTEMPT|ConvertFrom-Json|ConvertTo-Json)
+    type: regex
+  - name: CryptoEncryptionRegex
+    default: '(?i)(System\.Security\.Cryptography|AesManaged|AesCng|AES|CryptoStream|CreateEncryptor|CreateDecryptor|Rfc2898DeriveBytes|\.aes)'
+    type: regex
+  - name: EncryptionFileImpactRegex
+    default: '(?i)(\.aes\b|Move-Item|Remove-Item|Copy-Item|CreateEncryptor|CryptoStream)'
+    type: regex
+  - name: DestructionCoreRegex
+    default: '(?i)(Remove-Item|Microsoft\.PowerShell\.Management\\Remove-Item|\bdel\s+|\berase\s+|\brmdir\s+)'
+    type: regex
+  - name: DestructionStrongRegex
+    default: '(?is)((Get-ChildItem|gci|dir|ls).*(Remove-Item|del\s+|erase\s+|rmdir\s+)|(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse|\$_\.FullName|\$PSItem\.FullName))'
+    type: regex
+  - name: StagingArchiveRegex
+    default: '(?i)(Compress-Archive|System\.IO\.Compression|ZipFile|\.zip\b|\.7z\b|\.rar\b)'
+    type: regex
+  - name: StagingCopyHashRegex
+    default: '(?i)(Copy-Item|Move-Item|DestinationPath|-Destination|Get-FileHash|SHA256|SHA1|MD5|LocalSHA256|FileHash)'
+    type: regex
+  - name: UploadHttpRegex
+    default: '(?i)(Invoke-WebRequest|\biwr\b|\bwget\b|\bcurl\b)'
+    type: regex
+  - name: UploadUriRegex
+    default: '(?i)(-Uri\b|\bUri\b|https?://)'
+    type: regex
+  - name: UploadFileRegex
+    default: '(?i)(-InFile\b|\bInFile\b)'
+    type: regex
+  - name: UploadPostRegex
+    default: '(?i)(-Method\s+POST|\bMethod\s+POST\b|\bPOST\b)'
+    type: regex
+  - name: UploadZipContentRegex
+    default: '(?i)(-ContentType\s+["'']?application/zip|application/zip)'
+    type: regex
+  - name: HashEvidenceRegex
+    default: '(?i)(Get-FileHash|SHA256|SHA1|MD5|LocalSHA256|FileHash)'
+    type: regex
+  - name: DetectionEngineeringNoiseRegex
+    default: '(?i)(Get-WinEvent|Where-Object|Select-Object|Format-List|\$_\.Message\s+-match|UploadHttpRegex|UploadFileRegex|UploadPostRegex|UploadZipContentRegex|HashEvidenceRegex|CryptoEncryptionRegex|CU009StrongCandidate|ActualInvokeWebRequestShape|ActualUploadCommandShape|ScriptBlockText|Custom\.TFM\.Debug|PowerShell4104_|regex)'
+    type: regex
+  - name: DocumentationNoiseRegex
+    default: '(?i)(^\s*[\*\-]\s*(Invoke-WebRequest\s*/\s*iwr|wget|curl)|debe\s+contener|requisitos|objetivo|texto\s+de\s+prompt|prompt|documentaci.n|listado?\s+tipo|candidate\s+(artifact|debug|yaml))'
+    type: regex
+  - name: SysmonPSHostRegex
+    default: '(?i)\\(powershell|pwsh)\.exe$'
+    type: regex
+  - name: SysmonShellRegex
+    default: '(?i)\\(powershell|pwsh|cmd)\.exe$'
+    type: regex
+  - name: SysmonCU007CommandRegex
+    default: '(?is)(System\.Security\.Cryptography|AesManaged|AesCng|AES|CryptoStream|CreateEncryptor|Rfc2898DeriveBytes|\.aes)'
+    type: regex
+  - name: SysmonCU008CommandRegex
+    default: '(?is)((Get-ChildItem|gci|dir|ls).*(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse|\$_\.FullName|\$PSItem\.FullName)|(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse).*(Get-ChildItem|gci|dir|ls|\$_\.FullName|\$PSItem\.FullName))'
+    type: regex
+  - name: ZipFileRegex
+    default: '(?i)\.zip(\s|["'']|$)'
+    type: regex
+  - name: AesFileRegex
+    default: '(?i)\.aes(\s|["'']|$)'
+    type: regex
+  - name: WebDestinationPortRegex
+    default: '^(80|443|8080|8088|8000|8008|8443)$'
+    type: regex
+
+precondition: SELECT OS FROM info() WHERE OS = "windows"
+
+sources:
+  - name: CU007_Source_RansomwareLike_Encryption_4104
+    description: |
+      CU-007 / T1486.
+      Ransomware-like encryption/file-impact behavior from PowerShell 4104.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-007" AS CU_ID,
+        "TEC-007" AS ID_Tecnica_Interna,
+        "T1486" AS MITRE_ID,
+        "Impact" AS MITRE_Tactic,
+        "Ransomware-like encryption/file impact candidate; P1 reserved for final correlation." AS MITRE_Tactic_Context,
+        "PowerShell 4104" AS SignalType,
+        "Ransomware-like Encryption/File Impact" AS AlertName,
+        "High" AS Severity,
+        "P2" AS Priority,
+        "High" AS Confidence,
+        "PowerShell Script Block Logging" AS DetectionScope,
+        "Detection / Alert RT candidate" AS OutputType,
+        "Medio" AS FP_Risk,
+        "PowerShell script block contains strong encryption and file-impact indicators." AS CU_Reason,
+        EventData.ScriptBlockText AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-PowerShell/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        "powershell.exe" AS Image,
+        EventData.ScriptBlockText AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.UserId AS User,
+        "" AS Hashes,
+        "" AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "4104 + CryptoEncryptionRegex + EncryptionFileImpactRegex" AS DetectionLogic,
+        "Requires combined crypto and file-impact terms; no script name or lab path dependency" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P2 High Forensic v1" AS ArtifactProfile
+      FROM watch_evtx(filename=PowerShellLog)
+      WHERE atoi(string=System.EventID.Value) = 4104
+        AND NOT EventData.ScriptBlockText =~ PSNoiseRegex
+        AND NOT EventData.ScriptBlockText =~ RouterSelfRegex
+        AND EventData.ScriptBlockText =~ CryptoEncryptionRegex
+        AND EventData.ScriptBlockText =~ EncryptionFileImpactRegex
+
+  - name: CU007_Source_Encrypted_FileCreate_Sysmon_Optional
+    description: |
+      CU-007 / T1486.
+      Optional Sysmon file-create evidence for encrypted extension.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-007" AS CU_ID,
+        "TEC-007" AS ID_Tecnica_Interna,
+        "T1486" AS MITRE_ID,
+        "Impact" AS MITRE_Tactic,
+        "Forensic file-create support for ransomware-like encryption candidate." AS MITRE_Tactic_Context,
+        "Sysmon File Create" AS SignalType,
+        "Encrypted-extension file creation context" AS AlertName,
+        "Medium" AS Severity,
+        "P2" AS Priority,
+        "Medium" AS Confidence,
+        "Sysmon ID 11 file creation" AS DetectionScope,
+        "Forensic Evidence / Supporting Context" AS OutputType,
+        "Medio" AS FP_Risk,
+        "File creation with encrypted-extension pattern; supports CU-007 when combined with 4104/process evidence." AS CU_Reason,
+        EventData.TargetFilename AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        "" AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.User AS User,
+        "" AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        EventData.TargetFilename AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "Sysmon ID 11 + .aes extension" AS DetectionLogic,
+        "File-create alone is supporting evidence, not final P1 correlation" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P2 High Forensic v1" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 11
+        AND EventData.TargetFilename =~ AesFileRegex
+
+  - name: CU008_Source_Sabotage_Destruction_4104
+    description: |
+      CU-008 / T1485.
+      Sabotage/destruction behavior from PowerShell 4104.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-008" AS CU_ID,
+        "TEC-008" AS ID_Tecnica_Interna,
+        "T1485" AS MITRE_ID,
+        "Impact" AS MITRE_Tactic,
+        "Destructive deletion candidate; Sysmon ID 26 remains forensic evidence." AS MITRE_Tactic_Context,
+        "PowerShell 4104" AS SignalType,
+        "Sabotage / Destructive Deletion Behavior" AS AlertName,
+        "High" AS Severity,
+        "P2" AS Priority,
+        "High" AS Confidence,
+        "PowerShell Script Block Logging" AS DetectionScope,
+        "Detection / Alert RT candidate" AS OutputType,
+        "Medio" AS FP_Risk,
+        "PowerShell script block shows recursive or forced deletion behavior." AS CU_Reason,
+        EventData.ScriptBlockText AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-PowerShell/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        "powershell.exe" AS Image,
+        EventData.ScriptBlockText AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.UserId AS User,
+        "" AS Hashes,
+        "" AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "4104 + DestructionStrongRegex or destructive core with Force/Recurse/pipeline context" AS DetectionLogic,
+        "Does not use file paths or script names; excludes crypto blocks to avoid CU-007 overlap" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P2 High Forensic v1" AS ArtifactProfile
+      FROM watch_evtx(filename=PowerShellLog)
+      WHERE atoi(string=System.EventID.Value) = 4104
+        AND NOT EventData.ScriptBlockText =~ PSNoiseRegex
+        AND NOT EventData.ScriptBlockText =~ RouterSelfRegex
+        AND EventData.ScriptBlockText =~ DestructionCoreRegex
+        AND EventData.ScriptBlockText =~ DestructionStrongRegex
+        AND NOT EventData.ScriptBlockText =~ CryptoEncryptionRegex
+
+  - name: CU008_Source_Sabotage_Destruction_Sysmon_Process
+    description: |
+      CU-008 / T1485.
+      Sabotage/destruction behavior from Sysmon process creation telemetry.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-008" AS CU_ID,
+        "TEC-008" AS ID_Tecnica_Interna,
+        "T1485" AS MITRE_ID,
+        "Impact" AS MITRE_Tactic,
+        "Process command line evidence for destructive deletion candidate." AS MITRE_Tactic_Context,
+        "Sysmon Process Create" AS SignalType,
+        "Sabotage / Destructive Deletion Process" AS AlertName,
+        "High" AS Severity,
+        "P2" AS Priority,
+        "High" AS Confidence,
+        "Sysmon ID 1 process command line" AS DetectionScope,
+        "Detection / Alert RT candidate" AS OutputType,
+        "Medio" AS FP_Risk,
+        "Process command line shows recursive or forced deletion behavior." AS CU_Reason,
+        EventData.CommandLine AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        EventData.CommandLine AS CommandLine,
+        EventData.ParentImage AS ParentImage,
+        EventData.ParentCommandLine AS ParentCommandLine,
+        EventData.User AS User,
+        EventData.Hashes AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        EventData.ParentProcessId AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "Sysmon ID 1 + shell image + destructive deletion command shape" AS DetectionLogic,
+        "Does not use file paths or script names; Sysmon ID 26 is not treated as individual alert" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P2 High Forensic v1" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 1
+        AND EventData.Image =~ SysmonShellRegex
+        AND EventData.CommandLine =~ SysmonCU008CommandRegex
+        AND NOT EventData.CommandLine =~ RouterSelfRegex
+        AND NOT EventData.CommandLine =~ CryptoEncryptionRegex
+
+  - name: CU008_Source_FileDelete_Sysmon26_Forensic
+    description: |
+      CU-008 / T1485.
+      Sysmon ID 26 file-delete telemetry as forensic evidence only.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-008" AS CU_ID,
+        "TEC-008" AS ID_Tecnica_Interna,
+        "T1485" AS MITRE_ID,
+        "Impact" AS MITRE_Tactic,
+        "Sysmon ID 26 is forensic evidence, not an individual alert." AS MITRE_Tactic_Context,
+        "Sysmon File Delete" AS SignalType,
+        "File deletion forensic evidence" AS AlertName,
+        "Medium" AS Severity,
+        "P2" AS Priority,
+        "Medium" AS Confidence,
+        "Sysmon ID 26 file deletion" AS DetectionScope,
+        "Forensic Evidence / Supporting Context" AS OutputType,
+        "Medio" AS FP_Risk,
+        "File deletion event supporting CU-008 investigation; not an isolated alert condition." AS CU_Reason,
+        EventData.TargetFilename AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        "" AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.User AS User,
+        "" AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        EventData.TargetFilename AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "Sysmon ID 26 only; forensic support for destructive activity" AS DetectionLogic,
+        "Explicitly not an individual alert; use with CU008 4104/ID1 evidence" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P2 High Forensic v1" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 26
+
+  - name: CU009_Source_Staging_ZIP_HTTP_Upload_4104
+    description: |
+      CU-009 / T1074.001 + T1560.001 + T1048.003.
+      Strong PowerShell 4104 detection for staging + ZIP + HTTP upload.
+      Integrates validated CU009Shape_v4 structural coexistence logic.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-009" AS CU_ID,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "T1074.001 / T1560.001 / T1048.003" AS MITRE_ID,
+        "Collection / Exfiltration" AS MITRE_Tactic,
+        "Controlled HTTP exfiltration of dummy ZIP data in lab; no sensitive real data involved." AS MITRE_Tactic_Context,
+        "PowerShell 4104" AS SignalType,
+        "Controlled HTTP Exfiltration of Dummy ZIP Data" AS AlertName,
+        "High" AS Severity,
+        "P2" AS Priority,
+        "High" AS Confidence,
+        "PowerShell Script Block Logging" AS DetectionScope,
+        "Detection / Alert RT candidate" AS OutputType,
+        "Medio" AS FP_Risk,
+        "PowerShell script block shows staging/archive plus HTTP upload command shape with URI, POST, InFile and ZIP content evidence." AS CU_Reason,
+        EventData.ScriptBlockText AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-PowerShell/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        "powershell.exe" AS Image,
+        EventData.ScriptBlockText AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.UserId AS User,
+        "" AS Hashes,
+        "" AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "CU009Shape_v4: HTTP tool + URI + POST + InFile + application/zip; optional staging/hash context; excludes crypto and validation/documentation noise" AS DetectionLogic,
+        "No endpoint, path, script name, user, hostname or lab-marker dependency" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P2 High Forensic v1" AS ArtifactProfile,
+        EventData.ScriptBlockText =~ UploadHttpRegex AS UploadHttpRegex,
+        EventData.ScriptBlockText =~ UploadUriRegex AS UploadUriRegex,
+        EventData.ScriptBlockText =~ UploadPostRegex AS UploadPostRegex,
+        EventData.ScriptBlockText =~ UploadFileRegex AS UploadFileRegex,
+        EventData.ScriptBlockText =~ UploadZipContentRegex AS UploadZipContentRegex,
+        EventData.ScriptBlockText =~ StagingArchiveRegex AS StagingArchiveRegex,
+        EventData.ScriptBlockText =~ StagingCopyHashRegex AS StagingCopyHashRegex,
+        EventData.ScriptBlockText =~ HashEvidenceRegex AS HashEvidenceRegex,
+        EventData.ScriptBlockText =~ CryptoEncryptionRegex AS CryptoEncryptionRegex,
+        EventData.ScriptBlockText =~ DetectionEngineeringNoiseRegex AS DetectionEngineeringNoiseRegex,
+        EventData.ScriptBlockText =~ DocumentationNoiseRegex AS DocumentationNoiseRegex,
+        (
+          EventData.ScriptBlockText =~ UploadHttpRegex
+          AND EventData.ScriptBlockText =~ UploadUriRegex
+        ) AS ActualInvokeWebRequestShape,
+        (
+          EventData.ScriptBlockText =~ UploadHttpRegex
+          AND EventData.ScriptBlockText =~ UploadUriRegex
+          AND EventData.ScriptBlockText =~ UploadPostRegex
+          AND EventData.ScriptBlockText =~ UploadFileRegex
+          AND EventData.ScriptBlockText =~ UploadZipContentRegex
+        ) AS ActualUploadCommandShape,
+        (
+          EventData.ScriptBlockText =~ '(?s).'
+          AND EventData.ScriptBlockText =~ UploadHttpRegex
+          AND EventData.ScriptBlockText =~ UploadUriRegex
+          AND EventData.ScriptBlockText =~ UploadPostRegex
+          AND EventData.ScriptBlockText =~ UploadFileRegex
+          AND EventData.ScriptBlockText =~ UploadZipContentRegex
+          AND NOT EventData.ScriptBlockText =~ CryptoEncryptionRegex
+          AND NOT EventData.ScriptBlockText =~ DetectionEngineeringNoiseRegex
+          AND NOT EventData.ScriptBlockText =~ DocumentationNoiseRegex
+        ) AS CU009StrongCandidate
+      FROM watch_evtx(filename=PowerShellLog)
+      WHERE atoi(string=System.EventID.Value) = 4104
+        AND EventData.ScriptBlockText =~ '(?s).'
+        AND NOT EventData.ScriptBlockText =~ PSNoiseRegex
+        AND NOT EventData.ScriptBlockText =~ RouterSelfRegex
+        AND EventData.ScriptBlockText =~ UploadHttpRegex
+        AND EventData.ScriptBlockText =~ UploadUriRegex
+        AND EventData.ScriptBlockText =~ UploadPostRegex
+        AND EventData.ScriptBlockText =~ UploadFileRegex
+        AND EventData.ScriptBlockText =~ UploadZipContentRegex
+        AND NOT EventData.ScriptBlockText =~ CryptoEncryptionRegex
+        AND NOT EventData.ScriptBlockText =~ DetectionEngineeringNoiseRegex
+        AND NOT EventData.ScriptBlockText =~ DocumentationNoiseRegex
+
+  - name: CU009_Source_Staging_ZIP_HTTP_Upload_Sysmon_Process
+    description: |
+      CU-009 / T1074.001 + T1560.001 + T1048.003.
+      Sysmon process command-line evidence for HTTP ZIP upload.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-009" AS CU_ID,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "T1074.001 / T1560.001 / T1048.003" AS MITRE_ID,
+        "Collection / Exfiltration" AS MITRE_Tactic,
+        "Controlled HTTP exfiltration of dummy ZIP data in lab; no sensitive real data involved." AS MITRE_Tactic_Context,
+        "Sysmon Process Create" AS SignalType,
+        "Controlled HTTP Exfiltration of Dummy ZIP Data - Process" AS AlertName,
+        "High" AS Severity,
+        "P2" AS Priority,
+        "High" AS Confidence,
+        "Sysmon ID 1 process command line" AS DetectionScope,
+        "Detection / Alert RT candidate" AS OutputType,
+        "Medio" AS FP_Risk,
+        "PowerShell command line shows HTTP upload tooling with POST, InFile and ZIP content evidence." AS CU_Reason,
+        EventData.CommandLine AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        EventData.CommandLine AS CommandLine,
+        EventData.ParentImage AS ParentImage,
+        EventData.ParentCommandLine AS ParentCommandLine,
+        EventData.User AS User,
+        EventData.Hashes AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        EventData.ParentProcessId AS ParentProcessId,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "Sysmon ID 1 + PowerShell + HTTP tool + POST + InFile + application/zip" AS DetectionLogic,
+        "No endpoint, path, script name, user, hostname or lab-marker dependency" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P2 High Forensic v1" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 1
+        AND EventData.Image =~ SysmonPSHostRegex
+        AND EventData.CommandLine =~ UploadHttpRegex
+        AND EventData.CommandLine =~ UploadPostRegex
+        AND EventData.CommandLine =~ UploadFileRegex
+        AND EventData.CommandLine =~ UploadZipContentRegex
+        AND NOT EventData.CommandLine =~ RouterSelfRegex
+        AND NOT EventData.CommandLine =~ CryptoEncryptionRegex
+
+  - name: CU009_Source_HTTP_Network_Sysmon_Context
+    description: |
+      CU-009 / T1048.003 context.
+      PowerShell HTTP-like network connection. Supporting context only.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-009" AS CU_ID,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "T1048.003 context" AS MITRE_ID,
+        "Exfiltration" AS MITRE_Tactic,
+        "Network-only context; does not prove ZIP transfer without 4104/ID1/receiver evidence." AS MITRE_Tactic_Context,
+        "Sysmon Network Connection" AS SignalType,
+        "PowerShell HTTP network context for CU-009" AS AlertName,
+        "Medium" AS Severity,
+        "P2" AS Priority,
+        "Medium" AS Confidence,
+        "Sysmon ID 3 network connection" AS DetectionScope,
+        "Context / Supporting Evidence" AS OutputType,
+        "Medio/Alto" AS FP_Risk,
+        "PowerShell initiated HTTP-like network connection supporting CU-009 when correlated with upload evidence." AS CU_Reason,
+        EventData.DestinationIp AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        "" AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.User AS User,
+        "" AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        "" AS TargetFilename,
+        EventData.DestinationIp AS DestinationIp,
+        EventData.DestinationPort AS DestinationPort,
+        EventData.DestinationHostname AS DestinationHostname,
+        "Sysmon ID 3 + PowerShell image + initiated connection to HTTP-like port" AS DetectionLogic,
+        "Network-only evidence is context; no DNS or public destination requirement" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P2 High Forensic v1" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 3
+        AND EventData.Image =~ SysmonPSHostRegex
+        AND EventData.Initiated =~ "(?i)true"
+        AND EventData.DestinationPort =~ WebDestinationPortRegex
+
+  - name: CU009_Source_ZIP_FileCreate_Sysmon_Context
+    description: |
+      CU-009 / T1560.001 context.
+      Optional ZIP file creation telemetry. Supporting context only.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        ClientIdOverride AS ClientId,
+        HostnameOverride AS Hostname,
+        "CU-009" AS CU_ID,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "T1560.001 context" AS MITRE_ID,
+        "Collection" AS MITRE_Tactic,
+        "ZIP creation is archive/staging evidence only when isolated." AS MITRE_Tactic_Context,
+        "Sysmon File Create" AS SignalType,
+        "ZIP archive creation context for CU-009" AS AlertName,
+        "Medium" AS Severity,
+        "P2" AS Priority,
+        "Medium" AS Confidence,
+        "Sysmon ID 11 file creation" AS DetectionScope,
+        "Context / Supporting Evidence" AS OutputType,
+        "Medio" AS FP_Risk,
+        "ZIP archive creation supports CU-009 when correlated with upload or receiver evidence." AS CU_Reason,
+        EventData.TargetFilename AS CU_Evidence,
+        atoi(string=System.EventID.Value) AS EventID,
+        "Microsoft-Windows-Sysmon/Operational" AS Channel,
+        System.Provider.Name AS Provider,
+        EventData.Image AS Image,
+        "" AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.User AS User,
+        "" AS Hashes,
+        EventData.ProcessGuid AS ProcessGuid,
+        EventData.ProcessId AS ProcessId,
+        "" AS ParentProcessId,
+        EventData.TargetFilename AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        "" AS DestinationHostname,
+        "Sysmon ID 11 + ZIP extension" AS DetectionLogic,
+        "ZIP file creation alone does not prove transfer" AS FalsePositiveReduction,
+        "B6" AS BenchmarkScenario,
+        "P2 High Forensic v1" AS ArtifactProfile
+      FROM watch_evtx(filename=SysmonLog)
+      WHERE atoi(string=System.EventID.Value) = 11
+        AND EventData.TargetFilename =~ ZipFileRegex

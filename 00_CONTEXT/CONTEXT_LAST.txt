@@ -1,0 +1,39 @@
+Cambio de estrategia arquitectónica.
+
+No seguir intentando integrar CU-009 fuerte dentro de P3.
+
+Nueva decisión:
+P3 debe quedar como capa media de comportamiento general, no como artifact masivo para las técnicas críticas.
+
+Tarea:
+Reorganizar arquitectura candidate:
+
+1. Crear P3_v11 candidate:
+- Mantener señales medias y contexto.
+- Eliminar o degradar CU-007, CU-008 y CU-009 fuertes.
+- P3 puede conservar contexto de staging, PowerShell, archivo o actividad sospechosa, pero no debe ser responsable de validar ransomware/sabotaje/exfiltración fuerte.
+- No tocar P1, P2, router, Discord ni scripts de prueba.
+
+2. Crear P2_v1 candidate:
+- Artifact especializado en CU-007, CU-008 y CU-009.
+- Debe ser más pequeño, específico y auditable.
+- CU-007: ransomware-like/encryption/file impact.
+- CU-008: sabotaje/destrucción.
+- CU-009: staging + ZIP + HTTP upload + 4104/Sysmon si aplica.
+- Integrar lógica validada de CU009Shape_v4, pero dentro de P2, no P3.
+
+3. Mantener P1 reservado para correlación crítica final:
+- Solo alertas de máxima confianza.
+- No implementarlo aún salvo que sea necesario.
+
+Justificación:
+P3_v9/P3_v10 se volvió demasiado masivo y difícil de depurar. La validación demuestra que la telemetría existe, pero la arquitectura actual complica CU-009. Se separan responsabilidades para mejorar rendimiento, mantenibilidad y claridad metodológica.
+
+Restricciones:
+- No tocar router.
+- No activar Discord.
+- No modificar exfiltracion_v3.ps1.
+- No usar rutas, nombres de scripts, /upload, datos dummy, usuario ni hostname como IOC.
+- No mover nada a validated todavía.
+
+LEETE TODOS LOS PROMPT DE CONTEXTO ARTIFACTS CREADOS HASTA AHORA PARA TENER EJEMPLOS Y SCRIPTS PARA TENER CONTEXTO

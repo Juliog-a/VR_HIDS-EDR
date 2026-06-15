@@ -1,0 +1,547 @@
+# Version: v2 candidate
+# Purpose:
+# - High-detail historical hunt/backtesting for TEC-001 to TEC-009.
+# - Uses parse_evtx() only.
+# - Separates detection evidence from forensic context.
+# - TEC-007/008/009 do not depend on Sysmon ID 11, 23/26 or 3 if strong 4104 exists.
+# - Lab paths, script names, DUMB_LAB markers and TEC labels are not IOC filters.
+
+name: Custom.TFM.HIDS.P2.High.Forensic_v2
+description: |
+  P2 High Forensic v2 for historical hunt/backtesting.
+
+  This artifact returns detailed rows for analysis of all nine TFM techniques.
+  It includes raw EventData/System JSON and normalized fields to audit the
+  evidence shape observed by Velociraptor.
+
+  Detection model:
+  - PowerShell 4104 strong evidence can produce HIGH confidence for TEC-001,
+    TEC-006, TEC-007, TEC-008 and TEC-009.
+  - Sysmon ID 1 covers process-oriented techniques and provides alternatives.
+  - Sysmon ID 3, ID 11, ID 23/26, Security and System are context/enrichment
+    unless explicitly noted.
+
+type: CLIENT
+
+parameters:
+  - name: LookbackHours
+    default: 2
+    type: int
+  - name: HostnameOverride
+    default: ""
+  - name: ClientIdOverride
+    default: ""
+  - name: PowerShellEvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\Microsoft-Windows-PowerShell%4Operational.evtx'
+  - name: SysmonEvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\Microsoft-Windows-Sysmon%4Operational.evtx'
+  - name: SystemEvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\System.evtx'
+  - name: SecurityEvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\Security.evtx'
+  - name: ReceiverIP
+    default: '192.168.1.129'
+  - name: ReceiverPort
+    default: 8088
+    type: int
+  - name: BasePathRegex
+    default: '^$'
+    type: regex
+  - name: NoiseRegex
+    default: '(?i)(alerts\.jsonl|RouterArtifact|JSONL_WRITE_ATTEMPT|ConvertFrom-Json|ConvertTo-Json|Custom\.TFM\.Debug|Get-WinEvent|UploadHttpRegex|CU009StrongCandidate|DetectionEngineeringNoiseRegex)'
+    type: regex
+  - name: TEC001_PS
+    default: '(?i)(ExecutionPolicy\s+Bypass|-EncodedCommand|FromBase64String|Invoke-Expression|\bIEX\b|DownloadString)'
+    type: regex
+  - name: TEC002_CMD
+    default: '(?i)(\bcmd(?:\.exe)?\b.*\s/c\b|\s&&\s|\s\|\|\s|cmd(?:\.exe)?.*(powershell|pwsh))'
+    type: regex
+  - name: TEC003_Task
+    default: '(?i)(\bschtasks(?:\.exe)?\b.*(/create|/run|/delete|/change))'
+    type: regex
+  - name: TEC004_RunKey
+    default: '(?i)(\\Software\\Microsoft\\Windows\\CurrentVersion\\(Run|RunOnce)|\breg(?:\.exe)?\b.*\b(add|delete)\b.*Run)'
+    type: regex
+  - name: TEC005_Service
+    default: '(?i)(\bsc(?:\.exe)?\b.*\b(create|start|delete|config)\b|Service Control Manager)'
+    type: regex
+  - name: TEC006_Discovery
+    default: '(?i)(root[/\\]SecurityCenter2|SecurityCenter2|AntivirusProduct|AntiSpywareProduct|Windows Defender|Defender|WinDefend|SecurityHealthService|Get-CimInstance|Get-WmiObject|\bwmic\b)'
+    type: regex
+  - name: TEC007_Crypto
+    default: '(?i)(System\.Security\.Cryptography|Aes|CryptoStream|CreateEncryptor|Rfc2898DeriveBytes|\.aes\b)'
+    type: regex
+  - name: TEC008_Destruction
+    default: '(?is)((Get-ChildItem|gci|dir|ls).*(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse|\$_\.FullName|\$PSItem\.FullName)|(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse).*(Get-ChildItem|gci|dir|ls|\$_\.FullName|\$PSItem\.FullName))'
+    type: regex
+  - name: TEC009_HTTPTool
+    default: '(?i)(Invoke-WebRequest|\biwr\b|\bwget\b|\bcurl\b)'
+    type: regex
+  - name: TEC009_InFile
+    default: '(?i)(-InFile\b|\bInFile\b)'
+    type: regex
+  - name: TEC009_POST
+    default: '(?i)(-Method\s+POST|\bMethod\s+POST\b|\bPOST\b)'
+    type: regex
+  - name: TEC009_ZipUpload
+    default: '(?i)(application/zip|\.zip\b|\bupload\b)'
+    type: regex
+  - name: ArchiveRegex
+    default: '(?i)(Compress-Archive|System\.IO\.Compression|ZipFile|\.zip\b|\.7z\b|\.rar\b|Copy-Item|Get-FileHash|SHA256)'
+    type: regex
+  - name: PowerShellImage
+    default: '(?i)\\(powershell|pwsh)\.exe$'
+    type: regex
+  - name: ShellImage
+    default: '(?i)\\(powershell|pwsh|cmd|wmic|schtasks|reg|sc)\.exe$'
+    type: regex
+
+precondition: SELECT OS FROM info() WHERE OS = "windows"
+
+sources:
+  - name: Forensic_PowerShell4104_Strong_By_Technique
+    description: |
+      Primary strong source for TEC-001, TEC-006, TEC-007, TEC-008 and TEC-009.
+      TEC-009 is HIGH when HTTP tool + InFile + POST + ZIP/upload evidence exists.
+    query: |
+      SELECT
+        DetectionTime,
+        Hostname,
+        ClientIdOverride AS ClientId,
+        if(condition=ScriptText =~ TEC001_PS, then="TEC-001",
+          else=if(condition=ScriptText =~ TEC006_Discovery, then="TEC-006",
+          else=if(condition=ScriptText =~ TEC007_Crypto, then="TEC-007",
+          else=if(condition=ScriptText =~ TEC008_Destruction, then="TEC-008",
+          else="TEC-009")))) AS ID_Tecnica_Interna,
+        if(condition=ScriptText =~ TEC001_PS, then="CU-001",
+          else=if(condition=ScriptText =~ TEC006_Discovery, then="CU-006",
+          else=if(condition=ScriptText =~ TEC007_Crypto, then="CU-007",
+          else=if(condition=ScriptText =~ TEC008_Destruction, then="CU-008",
+          else="CU-009")))) AS CU_ID,
+        if(condition=ScriptText =~ TEC001_PS, then="T1059.001",
+          else=if(condition=ScriptText =~ TEC006_Discovery, then="T1518.001",
+          else=if(condition=ScriptText =~ TEC007_Crypto, then="T1486",
+          else=if(condition=ScriptText =~ TEC008_Destruction, then="T1485",
+          else="T1074.001 / T1560.001 / T1048.003")))) AS MITRE_ID,
+        if(condition=ScriptText =~ TEC006_Discovery, then="Discovery",
+          else=if(condition=ScriptText =~ TEC007_Crypto OR ScriptText =~ TEC008_Destruction, then="Impact",
+          else=if(condition=ScriptText =~ TEC009_HTTPTool, then="Collection / Exfiltration", else="Execution"))) AS MITRE_Tactic,
+        "PowerShell 4104" AS SignalType,
+        "Detection" AS EvidenceRole,
+        "HIGH" AS Confidence,
+        if(condition=ScriptText =~ TEC006_Discovery, then="MEDIUM", else="HIGH") AS Severity,
+        EventID,
+        Provider,
+        Channel,
+        EventRecordID,
+        ScriptBlockId,
+        MessageNumber,
+        MessageTotal,
+        Path,
+        "" AS Image,
+        ScriptText AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        ScriptText AS Evidence,
+        EventDataJSON,
+        SystemJSON,
+        "parse_evtx PowerShell Operational" AS DetectionSource,
+        if(condition=ScriptText =~ TEC009_HTTPTool, then="HTTP tool + InFile + POST + ZIP/upload in 4104",
+          else=if(condition=ScriptText =~ TEC008_Destruction, then="Enumeration + forced/recursive deletion in 4104",
+          else=if(condition=ScriptText =~ TEC007_Crypto, then="AES/CryptoStream/CreateEncryptor or .aes in 4104",
+          else=if(condition=ScriptText =~ TEC006_Discovery, then="Security software discovery in 4104",
+          else="PowerShell execution bypass/decoder/IEX in 4104")))) AS DetectionLogic,
+        if(condition=ScriptText =~ BasePathRegex, then="BasePathRegex matched as context only", else="No BasePathRegex context match") AS BasePathContext
+      FROM foreach(row={
+        SELECT
+          System.TimeCreated.SystemTime AS DetectionTime,
+          if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+          atoi(string=System.EventID.Value) AS EventID,
+          System.Provider.Name AS Provider,
+          System.Channel AS Channel,
+          System.EventRecordID.Value AS EventRecordID,
+          EventData.ScriptBlockId AS ScriptBlockId,
+          EventData.MessageNumber AS MessageNumber,
+          EventData.MessageTotal AS MessageTotal,
+          EventData.Path AS Path,
+          if(condition=EventData.ScriptBlockText =~ '(?s).', then=EventData.ScriptBlockText, else=if(condition=Message =~ '(?s).', then=Message, else=serialize(item=EventData, format="json"))) AS ScriptText,
+          serialize(item=EventData, format="json") AS EventDataJSON,
+          serialize(item=System, format="json") AS SystemJSON
+        FROM parse_evtx(filename=PowerShellEvtxPath)
+        WHERE atoi(string=System.EventID.Value) = 4104
+          AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))
+      })
+      WHERE (
+          ScriptText =~ TEC001_PS
+          OR ScriptText =~ TEC006_Discovery
+          OR ScriptText =~ TEC007_Crypto
+          OR ScriptText =~ TEC008_Destruction
+          OR (
+            ScriptText =~ TEC009_HTTPTool
+            AND ScriptText =~ TEC009_InFile
+            AND ScriptText =~ TEC009_POST
+            AND ScriptText =~ TEC009_ZipUpload
+            AND NOT ScriptText =~ TEC007_Crypto
+          )
+        )
+        AND NOT ScriptText =~ NoiseRegex
+
+  - name: Forensic_Sysmon_ID1_Process_By_Technique
+    description: |
+      Process-creation source for TEC-002 to TEC-005 and MEDIUM alternatives
+      for TEC-006/007/008/009 when command lines contain enough behavior.
+    query: |
+      SELECT
+        DetectionTime,
+        Hostname,
+        ClientIdOverride AS ClientId,
+        if(condition=CommandText =~ TEC002_CMD, then="TEC-002",
+          else=if(condition=CommandText =~ TEC003_Task, then="TEC-003",
+          else=if(condition=CommandText =~ TEC004_RunKey, then="TEC-004",
+          else=if(condition=CommandText =~ TEC005_Service, then="TEC-005",
+          else=if(condition=CommandText =~ TEC006_Discovery, then="TEC-006",
+          else=if(condition=CommandText =~ TEC007_Crypto, then="TEC-007",
+          else=if(condition=CommandText =~ TEC008_Destruction, then="TEC-008",
+          else="TEC-009"))))))) AS ID_Tecnica_Interna,
+        if(condition=CommandText =~ TEC002_CMD, then="CU-002",
+          else=if(condition=CommandText =~ TEC003_Task, then="CU-003",
+          else=if(condition=CommandText =~ TEC004_RunKey, then="CU-004",
+          else=if(condition=CommandText =~ TEC005_Service, then="CU-005",
+          else=if(condition=CommandText =~ TEC006_Discovery, then="CU-006",
+          else=if(condition=CommandText =~ TEC007_Crypto, then="CU-007",
+          else=if(condition=CommandText =~ TEC008_Destruction, then="CU-008",
+          else="CU-009"))))))) AS CU_ID,
+        if(condition=CommandText =~ TEC002_CMD, then="T1059.003",
+          else=if(condition=CommandText =~ TEC003_Task, then="T1053.005",
+          else=if(condition=CommandText =~ TEC004_RunKey, then="T1547.001",
+          else=if(condition=CommandText =~ TEC005_Service, then="T1569.002",
+          else=if(condition=CommandText =~ TEC006_Discovery, then="T1518.001",
+          else=if(condition=CommandText =~ TEC007_Crypto, then="T1486",
+          else=if(condition=CommandText =~ TEC008_Destruction, then="T1485",
+          else="T1074.001 / T1560.001 / T1048.003"))))))) AS MITRE_ID,
+        if(condition=CommandText =~ TEC003_Task OR CommandText =~ TEC004_RunKey, then="Persistence",
+          else=if(condition=CommandText =~ TEC006_Discovery, then="Discovery",
+          else=if(condition=CommandText =~ TEC007_Crypto OR CommandText =~ TEC008_Destruction, then="Impact",
+          else=if(condition=CommandText =~ TEC009_HTTPTool OR CommandText =~ ArchiveRegex, then="Collection / Exfiltration context", else="Execution")))) AS MITRE_Tactic,
+        "Sysmon ID 1" AS SignalType,
+        if(condition=CommandText =~ TEC007_Crypto OR CommandText =~ TEC008_Destruction OR CommandText =~ TEC009_HTTPTool, then="Context", else="Detection") AS EvidenceRole,
+        "MEDIUM" AS Confidence,
+        if(condition=CommandText =~ TEC003_Task OR CommandText =~ TEC004_RunKey OR CommandText =~ TEC005_Service OR CommandText =~ TEC007_Crypto OR CommandText =~ TEC008_Destruction OR CommandText =~ TEC009_HTTPTool, then="HIGH", else="MEDIUM") AS Severity,
+        EventID,
+        Provider,
+        Channel,
+        EventRecordID,
+        "" AS ScriptBlockId,
+        "" AS MessageNumber,
+        "" AS MessageTotal,
+        "" AS Path,
+        Image,
+        CommandText AS CommandLine,
+        ParentImage,
+        ParentCommandLine,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        CommandText AS Evidence,
+        EventDataJSON,
+        SystemJSON,
+        "parse_evtx Sysmon Operational" AS DetectionSource,
+        "Sysmon ID 1 command-line behavior" AS DetectionLogic,
+        if(condition=CommandText =~ BasePathRegex, then="BasePathRegex matched as context only", else="No BasePathRegex context match") AS BasePathContext
+      FROM foreach(row={
+        SELECT
+          System.TimeCreated.SystemTime AS DetectionTime,
+          if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+          atoi(string=System.EventID.Value) AS EventID,
+          System.Provider.Name AS Provider,
+          System.Channel AS Channel,
+          System.EventRecordID.Value AS EventRecordID,
+          EventData.Image AS Image,
+          EventData.ParentImage AS ParentImage,
+          EventData.ParentCommandLine AS ParentCommandLine,
+          if(condition=EventData.CommandLine =~ '(?s).', then=EventData.CommandLine, else=if(condition=Message =~ '(?s).', then=Message, else=serialize(item=EventData, format="json"))) AS CommandText,
+          serialize(item=EventData, format="json") AS EventDataJSON,
+          serialize(item=System, format="json") AS SystemJSON
+        FROM parse_evtx(filename=SysmonEvtxPath)
+        WHERE atoi(string=System.EventID.Value) = 1
+          AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))
+      })
+      WHERE (
+          CommandText =~ TEC002_CMD
+          OR CommandText =~ TEC003_Task
+          OR CommandText =~ TEC004_RunKey
+          OR CommandText =~ TEC005_Service
+          OR CommandText =~ TEC006_Discovery
+          OR CommandText =~ TEC007_Crypto
+          OR CommandText =~ TEC008_Destruction
+          OR CommandText =~ TEC009_HTTPTool
+          OR CommandText =~ ArchiveRegex
+        )
+        AND NOT CommandText =~ NoiseRegex
+
+  - name: Forensic_System_7045_ServiceCreation
+    description: |
+      Primary Windows evidence for TEC-005 service creation.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+        ClientIdOverride AS ClientId,
+        "TEC-005" AS ID_Tecnica_Interna,
+        "CU-005" AS CU_ID,
+        "T1569.002" AS MITRE_ID,
+        "Execution" AS MITRE_Tactic,
+        "System 7045" AS SignalType,
+        "Detection" AS EvidenceRole,
+        "HIGH" AS Confidence,
+        "HIGH" AS Severity,
+        atoi(string=System.EventID.Value) AS EventID,
+        System.Provider.Name AS Provider,
+        System.Channel AS Channel,
+        System.EventRecordID.Value AS EventRecordID,
+        "" AS ScriptBlockId,
+        "" AS MessageNumber,
+        "" AS MessageTotal,
+        "" AS Path,
+        EventData.ImagePath AS Image,
+        EventData.ImagePath AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.ServiceName AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        serialize(item=EventData, format="json") AS Evidence,
+        serialize(item=EventData, format="json") AS EventDataJSON,
+        serialize(item=System, format="json") AS SystemJSON,
+        "parse_evtx System" AS DetectionSource,
+        "System Event ID 7045 service installation" AS DetectionLogic,
+        "N/A" AS BasePathContext
+      FROM parse_evtx(filename=SystemEvtxPath)
+      WHERE atoi(string=System.EventID.Value) = 7045
+        AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))
+
+  - name: Forensic_Sysmon_Registry_RunKey_Context
+    description: |
+      Optional TEC-004 context from Sysmon registry events 12/13/14.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+        ClientIdOverride AS ClientId,
+        "TEC-004" AS ID_Tecnica_Interna,
+        "CU-004" AS CU_ID,
+        "T1547.001" AS MITRE_ID,
+        "Persistence" AS MITRE_Tactic,
+        "Sysmon Registry" AS SignalType,
+        "Context" AS EvidenceRole,
+        "MEDIUM" AS Confidence,
+        "HIGH" AS Severity,
+        atoi(string=System.EventID.Value) AS EventID,
+        System.Provider.Name AS Provider,
+        System.Channel AS Channel,
+        System.EventRecordID.Value AS EventRecordID,
+        "" AS ScriptBlockId,
+        "" AS MessageNumber,
+        "" AS MessageTotal,
+        "" AS Path,
+        EventData.Image AS Image,
+        EventData.Details AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.TargetObject AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        serialize(item=EventData, format="json") AS Evidence,
+        serialize(item=EventData, format="json") AS EventDataJSON,
+        serialize(item=System, format="json") AS SystemJSON,
+        "parse_evtx Sysmon Operational" AS DetectionSource,
+        "Sysmon ID 12/13/14 Run/RunOnce registry context" AS DetectionLogic,
+        "N/A" AS BasePathContext
+      FROM parse_evtx(filename=SysmonEvtxPath)
+      WHERE (
+          atoi(string=System.EventID.Value) = 12
+          OR atoi(string=System.EventID.Value) = 13
+          OR atoi(string=System.EventID.Value) = 14
+        )
+        AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))
+        AND serialize(item=EventData, format="json") =~ TEC004_RunKey
+
+  - name: Forensic_Sysmon_FileCreate_Zip_Aes_Context
+    description: |
+      Optional context for TEC-007 (.aes) and TEC-009 (.zip). FileCreate alone
+      is not required for detection.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+        ClientIdOverride AS ClientId,
+        if(condition=EventData.TargetFilename =~ '(?i)\.aes\b', then="TEC-007", else="TEC-009") AS ID_Tecnica_Interna,
+        if(condition=EventData.TargetFilename =~ '(?i)\.aes\b', then="CU-007", else="CU-009") AS CU_ID,
+        if(condition=EventData.TargetFilename =~ '(?i)\.aes\b', then="T1486", else="T1560.001 context") AS MITRE_ID,
+        if(condition=EventData.TargetFilename =~ '(?i)\.aes\b', then="Impact", else="Collection context") AS MITRE_Tactic,
+        "Sysmon ID 11" AS SignalType,
+        "Context" AS EvidenceRole,
+        "MEDIUM" AS Confidence,
+        if(condition=EventData.TargetFilename =~ '(?i)\.aes\b', then="HIGH", else="HIGH") AS Severity,
+        atoi(string=System.EventID.Value) AS EventID,
+        System.Provider.Name AS Provider,
+        System.Channel AS Channel,
+        System.EventRecordID.Value AS EventRecordID,
+        "" AS ScriptBlockId,
+        "" AS MessageNumber,
+        "" AS MessageTotal,
+        "" AS Path,
+        EventData.Image AS Image,
+        "" AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.TargetFilename AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        EventData.TargetFilename AS Evidence,
+        serialize(item=EventData, format="json") AS EventDataJSON,
+        serialize(item=System, format="json") AS SystemJSON,
+        "parse_evtx Sysmon Operational" AS DetectionSource,
+        "Sysmon ID 11 file creation of .aes or .zip artifact" AS DetectionLogic,
+        if(condition=EventData.TargetFilename =~ BasePathRegex, then="BasePathRegex matched as context only", else="No BasePathRegex context match") AS BasePathContext
+      FROM parse_evtx(filename=SysmonEvtxPath)
+      WHERE atoi(string=System.EventID.Value) = 11
+        AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))
+        AND EventData.TargetFilename =~ '(?i)(\.aes\b|\.zip\b)'
+
+  - name: Forensic_Sysmon_Network_Receiver_Context
+    description: |
+      Optional TEC-009 context. Network evidence is not mandatory and does not
+      prove ZIP transfer without 4104/receiver evidence.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+        ClientIdOverride AS ClientId,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "CU-009" AS CU_ID,
+        "T1048.003 context" AS MITRE_ID,
+        "Exfiltration context" AS MITRE_Tactic,
+        "Sysmon ID 3" AS SignalType,
+        "Context" AS EvidenceRole,
+        "MEDIUM" AS Confidence,
+        "HIGH" AS Severity,
+        atoi(string=System.EventID.Value) AS EventID,
+        System.Provider.Name AS Provider,
+        System.Channel AS Channel,
+        System.EventRecordID.Value AS EventRecordID,
+        "" AS ScriptBlockId,
+        "" AS MessageNumber,
+        "" AS MessageTotal,
+        "" AS Path,
+        EventData.Image AS Image,
+        "" AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        "" AS TargetFilename,
+        EventData.DestinationIp AS DestinationIp,
+        EventData.DestinationPort AS DestinationPort,
+        serialize(item=EventData, format="json") AS Evidence,
+        serialize(item=EventData, format="json") AS EventDataJSON,
+        serialize(item=System, format="json") AS SystemJSON,
+        "parse_evtx Sysmon Operational" AS DetectionSource,
+        "Sysmon ID 3 PowerShell connection to configured receiver" AS DetectionLogic,
+        "N/A" AS BasePathContext
+      FROM parse_evtx(filename=SysmonEvtxPath)
+      WHERE atoi(string=System.EventID.Value) = 3
+        AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))
+        AND EventData.Image =~ PowerShellImage
+        AND EventData.DestinationIp = ReceiverIP
+        AND atoi(string=EventData.DestinationPort) = ReceiverPort
+
+  - name: Forensic_Sysmon_FileDelete_23_26_Context
+    description: |
+      Optional TEC-008 forensic evidence. In this environment ID 23/26 may be
+      absent, so this source must not be used as a mandatory alert condition.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+        ClientIdOverride AS ClientId,
+        "TEC-008" AS ID_Tecnica_Interna,
+        "CU-008" AS CU_ID,
+        "T1485 context" AS MITRE_ID,
+        "Impact context" AS MITRE_Tactic,
+        "Sysmon ID 23/26" AS SignalType,
+        "Forensic context" AS EvidenceRole,
+        "MEDIUM" AS Confidence,
+        "HIGH" AS Severity,
+        atoi(string=System.EventID.Value) AS EventID,
+        System.Provider.Name AS Provider,
+        System.Channel AS Channel,
+        System.EventRecordID.Value AS EventRecordID,
+        "" AS ScriptBlockId,
+        "" AS MessageNumber,
+        "" AS MessageTotal,
+        "" AS Path,
+        EventData.Image AS Image,
+        "" AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        EventData.TargetFilename AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        EventData.TargetFilename AS Evidence,
+        serialize(item=EventData, format="json") AS EventDataJSON,
+        serialize(item=System, format="json") AS SystemJSON,
+        "parse_evtx Sysmon Operational" AS DetectionSource,
+        "Sysmon ID 23/26 file delete context only" AS DetectionLogic,
+        if(condition=EventData.TargetFilename =~ BasePathRegex, then="BasePathRegex matched as context only", else="No BasePathRegex context match") AS BasePathContext
+      FROM parse_evtx(filename=SysmonEvtxPath)
+      WHERE (
+          atoi(string=System.EventID.Value) = 23
+          OR atoi(string=System.EventID.Value) = 26
+        )
+        AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))
+
+  - name: Forensic_Security_Optional_4698_4699
+    description: |
+      Optional Security auditing context for TEC-003 scheduled tasks if enabled.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+        ClientIdOverride AS ClientId,
+        "TEC-003" AS ID_Tecnica_Interna,
+        "CU-003" AS CU_ID,
+        "T1053.005 context" AS MITRE_ID,
+        "Persistence context" AS MITRE_Tactic,
+        "Security 4698/4699" AS SignalType,
+        "Context" AS EvidenceRole,
+        "MEDIUM" AS Confidence,
+        "HIGH" AS Severity,
+        atoi(string=System.EventID.Value) AS EventID,
+        System.Provider.Name AS Provider,
+        System.Channel AS Channel,
+        System.EventRecordID.Value AS EventRecordID,
+        "" AS ScriptBlockId,
+        "" AS MessageNumber,
+        "" AS MessageTotal,
+        "" AS Path,
+        "" AS Image,
+        serialize(item=EventData, format="json") AS CommandLine,
+        "" AS ParentImage,
+        "" AS ParentCommandLine,
+        "" AS TargetFilename,
+        "" AS DestinationIp,
+        "" AS DestinationPort,
+        serialize(item=EventData, format="json") AS Evidence,
+        serialize(item=EventData, format="json") AS EventDataJSON,
+        serialize(item=System, format="json") AS SystemJSON,
+        "parse_evtx Security" AS DetectionSource,
+        "Security scheduled task auditing context" AS DetectionLogic,
+        "N/A" AS BasePathContext
+      FROM parse_evtx(filename=SecurityEvtxPath)
+      WHERE (
+          atoi(string=System.EventID.Value) = 4698
+          OR atoi(string=System.EventID.Value) = 4699
+        )
+        AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))

@@ -1,0 +1,206 @@
+# Version: v3 candidate
+# Purpose:
+# - Low-cost historical backtesting for TEC-001 to TEC-009.
+# - Uses simple parse_evtx() predicates with stable sources.
+# - Avoids strict correlation. Each technique can emit partial evidence.
+# - Lab paths, script names, DUMB_LAB markers and TEC labels are not IOC filters.
+
+name: Custom.TFM.HIDS.P1.Low.Basic_v3
+description: |
+  P1 Low Basic v3 for historical hunt/backtesting.
+
+  This artifact favors simple, stable evidence over strict correlation.
+  It covers all nine internal techniques TEC-001 to TEC-009.
+
+  TEC-007, TEC-008 and TEC-009 are detected by strong PowerShell 4104 when
+  available. Sysmon file/network telemetry is not mandatory.
+
+type: CLIENT
+
+parameters:
+  - name: LookbackHours
+    default: 2
+    type: int
+  - name: PowerShellEvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\Microsoft-Windows-PowerShell%4Operational.evtx'
+  - name: SysmonEvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\Microsoft-Windows-Sysmon%4Operational.evtx'
+  - name: SystemEvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\System.evtx'
+  - name: SecurityEvtxPath
+    default: 'C:\Windows\System32\winevt\Logs\Security.evtx'
+  - name: ReceiverIP
+    default: '192.168.1.129'
+  - name: ReceiverPort
+    default: 8088
+    type: int
+  - name: BasePathRegex
+    default: '^$'
+    type: regex
+  - name: NoiseRegex
+    default: '(?i)(alerts\.jsonl|RouterArtifact|JSONL_WRITE_ATTEMPT|Custom\.TFM\.Debug|Get-WinEvent|UploadHttpRegex|CU009StrongCandidate)'
+    type: regex
+  - name: PS4104_TEC001
+    default: '(?i)(ExecutionPolicy\s+Bypass|-EncodedCommand|FromBase64String|\bIEX\b|Invoke-Expression)'
+    type: regex
+  - name: PS4104_TEC006
+    default: '(?i)(SecurityCenter2|AntivirusProduct|AntiSpywareProduct|Defender|WinDefend|Get-CimInstance|Get-WmiObject|\bwmic\b)'
+    type: regex
+  - name: PS4104_TEC007
+    default: '(?i)(System\.Security\.Cryptography|Aes|CryptoStream|CreateEncryptor|\.aes\b)'
+    type: regex
+  - name: PS4104_TEC008
+    default: '(?is)(Get-ChildItem|gci|dir|ls).*(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse|\$_\.FullName|\$PSItem\.FullName)'
+    type: regex
+  - name: PS4104_TEC009
+    default: '(?is)(Invoke-WebRequest|\biwr\b|\bwget\b|\bcurl\b).*(-InFile\b|\bInFile\b).*(-Method\s+POST|\bPOST\b).*(application/zip|\.zip\b|\bupload\b)'
+    type: regex
+  - name: Sysmon_TEC002
+    default: '(?i)(\bcmd(?:\.exe)?\b.*\s/c\b|\s&&\s|\s\|\|\s|cmd(?:\.exe)?.*(powershell|pwsh))'
+    type: regex
+  - name: Sysmon_TEC003
+    default: '(?i)\bschtasks(?:\.exe)?\b.*(/create|/run|/delete|/change)'
+    type: regex
+  - name: Sysmon_TEC004
+    default: '(?i)\breg(?:\.exe)?\b.*\b(add|delete)\b.*\\Software\\Microsoft\\Windows\\CurrentVersion\\(Run|RunOnce)'
+    type: regex
+  - name: Sysmon_TEC005
+    default: '(?i)\bsc(?:\.exe)?\b.*\b(create|start|delete|config)\b'
+    type: regex
+  - name: Sysmon_TEC009_Context
+    default: '(?i)(Compress-Archive|Invoke-WebRequest|-InFile|application/zip|\.zip\b)'
+    type: regex
+
+precondition: SELECT OS FROM info() WHERE OS = "windows"
+
+sources:
+  - name: P1_PowerShell4104_Basic
+    description: |
+      Low-cost PowerShell 4104 detections for TEC-001, TEC-006, TEC-007,
+      TEC-008 and TEC-009. Uses one historical EVTX pass and simple predicates.
+    query: |
+      SELECT
+        DetectionTime,
+        Hostname,
+        if(condition=ScriptText =~ PS4104_TEC001, then="TEC-001",
+          else=if(condition=ScriptText =~ PS4104_TEC006, then="TEC-006",
+          else=if(condition=ScriptText =~ PS4104_TEC007, then="TEC-007",
+          else=if(condition=ScriptText =~ PS4104_TEC008, then="TEC-008",
+          else="TEC-009")))) AS ID_Tecnica_Interna,
+        if(condition=ScriptText =~ PS4104_TEC001, then="T1059.001",
+          else=if(condition=ScriptText =~ PS4104_TEC006, then="T1518.001",
+          else=if(condition=ScriptText =~ PS4104_TEC007, then="T1486",
+          else=if(condition=ScriptText =~ PS4104_TEC008, then="T1485",
+          else="T1074.001 / T1560.001 / T1048.003")))) AS MITRE_ID,
+        if(condition=ScriptText =~ PS4104_TEC006, then="Discovery",
+          else=if(condition=ScriptText =~ PS4104_TEC007 OR ScriptText =~ PS4104_TEC008, then="Impact",
+          else=if(condition=ScriptText =~ PS4104_TEC009, then="Collection / Exfiltration",
+          else="Execution"))) AS MITRE_Tactic,
+        "PowerShell 4104" AS Source,
+        EventID,
+        if(condition=ScriptText =~ PS4104_TEC007 OR ScriptText =~ PS4104_TEC008 OR ScriptText =~ PS4104_TEC009 OR ScriptText =~ PS4104_TEC001, then="HIGH", else="MEDIUM") AS Confidence,
+        if(condition=ScriptText =~ PS4104_TEC007 OR ScriptText =~ PS4104_TEC008 OR ScriptText =~ PS4104_TEC009, then="HIGH", else="MEDIUM") AS Severity,
+        ScriptText AS Evidence
+      FROM foreach(row={
+        SELECT
+          System.TimeCreated.SystemTime AS DetectionTime,
+          System.Computer AS Hostname,
+          atoi(string=System.EventID.Value) AS EventID,
+          if(condition=EventData.ScriptBlockText =~ '(?s).', then=EventData.ScriptBlockText, else=if(condition=Message =~ '(?s).', then=Message, else=serialize(item=EventData, format="json"))) AS ScriptText
+        FROM parse_evtx(filename=PowerShellEvtxPath)
+        WHERE atoi(string=System.EventID.Value) = 4104
+          AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))
+      })
+      WHERE (
+          ScriptText =~ PS4104_TEC001
+          OR ScriptText =~ PS4104_TEC006
+          OR ScriptText =~ PS4104_TEC007
+          OR ScriptText =~ PS4104_TEC008
+          OR ScriptText =~ PS4104_TEC009
+        )
+        AND NOT ScriptText =~ NoiseRegex
+
+  - name: P1_Sysmon_Process_Basic
+    description: |
+      Low-cost Sysmon ID 1 process detections for TEC-002 to TEC-005 and
+      fallback/context for TEC-009. This source is intentionally simple.
+    query: |
+      SELECT
+        DetectionTime,
+        Hostname,
+        if(condition=CommandText =~ Sysmon_TEC002, then="TEC-002",
+          else=if(condition=CommandText =~ Sysmon_TEC003, then="TEC-003",
+          else=if(condition=CommandText =~ Sysmon_TEC004, then="TEC-004",
+          else=if(condition=CommandText =~ Sysmon_TEC005, then="TEC-005",
+          else="TEC-009")))) AS ID_Tecnica_Interna,
+        if(condition=CommandText =~ Sysmon_TEC002, then="T1059.003",
+          else=if(condition=CommandText =~ Sysmon_TEC003, then="T1053.005",
+          else=if(condition=CommandText =~ Sysmon_TEC004, then="T1547.001",
+          else=if(condition=CommandText =~ Sysmon_TEC005, then="T1569.002",
+          else="T1074.001 / T1560.001")))) AS MITRE_ID,
+        if(condition=CommandText =~ Sysmon_TEC003 OR CommandText =~ Sysmon_TEC004, then="Persistence",
+          else=if(condition=CommandText =~ Sysmon_TEC009_Context, then="Collection", else="Execution")) AS MITRE_Tactic,
+        "Sysmon ID 1" AS Source,
+        EventID,
+        "MEDIUM" AS Confidence,
+        if(condition=CommandText =~ Sysmon_TEC003 OR CommandText =~ Sysmon_TEC004 OR CommandText =~ Sysmon_TEC005, then="HIGH", else="MEDIUM") AS Severity,
+        CommandText AS Evidence
+      FROM foreach(row={
+        SELECT
+          System.TimeCreated.SystemTime AS DetectionTime,
+          System.Computer AS Hostname,
+          atoi(string=System.EventID.Value) AS EventID,
+          if(condition=EventData.CommandLine =~ '(?s).', then=EventData.CommandLine, else=if(condition=Message =~ '(?s).', then=Message, else=serialize(item=EventData, format="json"))) AS CommandText
+        FROM parse_evtx(filename=SysmonEvtxPath)
+        WHERE atoi(string=System.EventID.Value) = 1
+          AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))
+      })
+      WHERE (
+          CommandText =~ Sysmon_TEC002
+          OR CommandText =~ Sysmon_TEC003
+          OR CommandText =~ Sysmon_TEC004
+          OR CommandText =~ Sysmon_TEC005
+          OR CommandText =~ Sysmon_TEC009_Context
+        )
+        AND NOT CommandText =~ NoiseRegex
+
+  - name: P1_ServiceCreation_7045_Basic
+    description: |
+      Low-cost System 7045 service-creation evidence for TEC-005.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        System.Computer AS Hostname,
+        "TEC-005" AS ID_Tecnica_Interna,
+        "T1569.002" AS MITRE_ID,
+        "Execution" AS MITRE_Tactic,
+        "System 7045" AS Source,
+        atoi(string=System.EventID.Value) AS EventID,
+        "HIGH" AS Confidence,
+        "HIGH" AS Severity,
+        serialize(item=EventData, format="json") AS Evidence
+      FROM parse_evtx(filename=SystemEvtxPath)
+      WHERE atoi(string=System.EventID.Value) = 7045
+        AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))
+
+  - name: P1_TEC009_Network_Context
+    description: |
+      Optional TEC-009 context. Sysmon ID 3 to ReceiverIP:ReceiverPort is not
+      required for detection; it only supports interpretation if present.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        System.Computer AS Hostname,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "T1048.003 context" AS MITRE_ID,
+        "Exfiltration context" AS MITRE_Tactic,
+        "Sysmon ID 3" AS Source,
+        atoi(string=System.EventID.Value) AS EventID,
+        "MEDIUM" AS Confidence,
+        "HIGH" AS Severity,
+        serialize(item=EventData, format="json") AS Evidence
+      FROM parse_evtx(filename=SysmonEvtxPath)
+      WHERE atoi(string=System.EventID.Value) = 3
+        AND System.TimeCreated.SystemTime > timestamp(epoch=now() - (LookbackHours * 3600))
+        AND EventData.DestinationIp = ReceiverIP
+        AND atoi(string=EventData.DestinationPort) = ReceiverPort

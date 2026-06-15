@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="TFM Velociraptor" company="" webLink="" view-date="2026-03-13" view-index="0" gantt-divider-location="285" resource-divider-location="300" version="3.3.3316" locale="es_ES">
+    <description/>
+    <view zooming-state="default:1" id="gantt-chart">
+        <field id="tpd3" name="Nombre" width="162" order="0"/>
+        <field id="tpd4" name="Fecha de inicio" width="61" order="1"/>
+        <field id="tpd5" name="Fecha de fin" width="61" order="2"/>
+        <field id="tpd15" name="Notas" width="20" order="3"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+        <option id="color.recent"><![CDATA[#ffccff #663300 #ff33cc #ff0000 #ff9933 #ffff33 #99ff33 #99ff99 #f4f4f4 #ff33ff]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nombre" width="210" order="0"/>
+        <field id="1" name="Función" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="0" mon="0" tue="0" wed="0" thu="0" fri="0" sat="0"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="1" uid="49a01a2044794912bd89e4015a54a2ac" name="Capítulo I: Introducción" color="#663300" meeting="false" start="2026-03-05" duration="8" complete="0" expand="false">
+            <task id="2" uid="71c6a87101034030b24d475e15bd366d" name="1.1 Motivación y descripción del problema" color="#663300" meeting="false" start="2026-03-05" duration="2" complete="0" expand="true"/>
+            <task id="3" uid="e6d648f71a4b4eb5863990953dfc0a31" name="1.2 Objetivos del proyecto" color="#663300" meeting="false" start="2026-03-07" duration="2" complete="0" expand="true"/>
+            <task id="4" uid="b4180e3de1b04885930255fd24902907" name="1.3 Estado del arte" color="#663300" meeting="false" start="2026-03-10" duration="3" complete="0" expand="true"/>
+        </task>
+        <task id="5" uid="e3032128926945ffba60ad8585e9a5e2" name="Capítulo II: Planificación" color="#99ff99" meeting="false" start="2026-03-13" duration="8" complete="0" expand="false">
+            <task id="6" uid="3673f784462f49f59b93dc160cc4e8dd" name="2.1 Estimación de tiempos" color="#99ff99" meeting="false" start="2026-03-13" duration="2" complete="0" expand="true"/>
+            <task id="7" uid="1adb02bde6e346f380e4d3d8618a2dbb" name="2.2 Presupuesto" color="#99ff99" meeting="false" start="2026-03-15" duration="1" complete="0" expand="true"/>
+            <task id="8" uid="f409b2ae6bd0417a9090e852a8615cea" name="2.3 Planificación general" color="#99ff99" meeting="false" start="2026-03-16" duration="1" complete="0" expand="true"/>
+            <task id="9" uid="11f61222407f4a06898e0706589910ad" name="2.4 Planificación por capítulos" color="#99ff99" meeting="false" start="2026-03-17" duration="1" complete="0" expand="true"/>
+            <task id="10" uid="0615204081104ac69eca6c403e17d6ab" name="2.5 Diagrama de Gantt" color="#99ff99" meeting="false" start="2026-03-18" duration="3" complete="0" expand="true"/>
+        </task>
+        <task id="11" uid="feaf50085a9347eea4cda401362622f3" name="Capítulo III: Fundamentos teóricos" color="#99ff33" meeting="false" start="2026-03-21" duration="8" complete="0" expand="true">
+            <task id="12" uid="87f6fa15c96b4a00885f8fd6d0d65bfe" name="3.1 Arquitectura Velociraptor" color="#99ff33" meeting="false" start="2026-03-21" duration="1" complete="0" expand="true"/>
+            <task id="13" uid="918fae98b5c141c1abf35ce99ca61458" name="3.2 Velociraptor Query Language" color="#99ff33" meeting="false" start="2026-03-22" duration="2" complete="0" expand="true"/>
+            <task id="14" uid="5da3efe9cb534010abc257ac6d8fec4e" name="3.3 Artifacts y modelo ejecución" color="#99ff33" meeting="false" start="2026-03-24" duration="2" complete="0" expand="true"/>
+            <task id="15" uid="b8ed94b0c5a449f59766762ca57590a0" name="3.4 Telemetría endpoint" color="#99ff33" meeting="false" start="2026-03-26" duration="1" complete="0" expand="true"/>
+            <task id="16" uid="80af351ced644da0adbc024833f905bd" name="3.5 Limitaciones HIDS" color="#99ff33" meeting="false" start="2026-03-27" duration="2" complete="0" expand="true"/>
+        </task>
+        <task id="17" uid="054cddb0cc7f4fe19e7cbf143a91fed9" name="Capítulo IV: Entorno y metodología" color="#ffff33" meeting="false" start="2026-03-29" duration="14" complete="0" expand="false">
+            <task id="18" uid="5955c808568a41f59c9fb44eb885f25d" name="4.1 Diseño del entorno" color="#ffff33" meeting="false" start="2026-03-29" duration="3" complete="0" expand="true"/>
+            <task id="19" uid="9635c7d7771841cc94dea45710b1699f" name="4.2 Instalación Velociraptor" color="#ffff33" meeting="false" start="2026-04-01" duration="3" complete="0" expand="true"/>
+            <task id="20" uid="c1fedf3320994d5583edaae8c70311a4" name="4.3 Configuración artifacts" color="#ffff33" meeting="false" start="2026-04-04" duration="3" complete="0" expand="true"/>
+            <task id="21" uid="acbb1bd8678a46a8891b22cb3965d180" name="4.4 Metodología experimental" color="#ffff33" meeting="false" start="2026-04-07" duration="2" complete="0" expand="true"/>
+            <task id="22" uid="5355dc5610c8453bab5a755077fb9cf6" name="4.5 Escenarios de ataque" color="#ffff33" meeting="false" start="2026-04-09" duration="3" complete="0" expand="true"/>
+        </task>
+        <task id="23" uid="348e127f973444dba4f9c1f8a4c195ed" name="Capítulo V: Desarrollo experimental" color="#ff9933" meeting="false" start="2026-04-12" duration="19" complete="0" expand="false">
+            <task id="24" uid="d14d5de1a3084797b57da92022fa2a05" name="5.1 Escenarios ataque" color="#ff9933" meeting="false" start="2026-04-12" duration="4" complete="0" expand="true"/>
+            <task id="25" uid="73f2dcf7e15d47329de8dfa4b95cecea" name="5.2 Ejecución ataques" color="#ff9933" meeting="false" start="2026-04-16" duration="5" complete="0" expand="true"/>
+            <task id="26" uid="dc877fa45d8f43e79c4618ec1c8d8ee0" name="5.3 Recopilación telemetría" color="#ff9933" meeting="false" start="2026-04-21" duration="4" complete="0" expand="true"/>
+            <task id="27" uid="9a6e9ee37fee4eefb0a6611764addcc3" name="5.4 Análisis preliminar" color="#ff9933" meeting="false" start="2026-04-26" duration="5" complete="0" expand="true"/>
+        </task>
+        <task id="28" uid="99136e3501f24b3dac00e01ea980d595" name="Capítulo VI: Resultados" color="#ff0000" meeting="false" start="2026-05-01" duration="8" complete="0" expand="true">
+            <task id="29" uid="47ea4703ebd84176b09c051977cfd3cf" name="6.1 Resultados MITRE" color="#ff0000" meeting="false" start="2026-05-01" duration="2" complete="0" expand="true"/>
+            <task id="30" uid="61182814d9414564aaf264a42c13b346" name="6.2 Cobertura detección" color="#ff0000" meeting="false" start="2026-05-03" duration="2" complete="0" expand="true"/>
+            <task id="31" uid="8985c5910c4940cf8fbdfd42f2c5fb61" name="6.3 Casos sin detección" color="#ff0000" meeting="false" start="2026-05-05" duration="1" complete="0" expand="true"/>
+            <task id="32" uid="e23e0e5ea38f40f9be8b6db2ccb9bb9e" name="6.4 Evidencias" color="#ff0000" meeting="false" start="2026-05-06" duration="3" complete="0" expand="true"/>
+        </task>
+        <task id="33" uid="60ac15900eab4fababd68610d779a4d0" name="Capítulo VII: Benchmark rendimiento" color="#ff33cc" meeting="false" start="2026-05-09" duration="17" complete="0" expand="false">
+            <task id="34" uid="fb5d3383217b47738940fc5598883e5f" name="7.1 Metodología benchmark" color="#ff33ff" meeting="false" start="2026-05-09" duration="4" complete="0" expand="true"/>
+            <task id="35" uid="6183eeb36d4348d6b62438e2754fb02e" name="7.2 Impacto CPU" color="#ff33cc" meeting="false" start="2026-05-12" duration="3" complete="0" expand="true"/>
+            <task id="36" uid="5cc65f829c554c419fa2da72375d2e01" name="7.3 Impacto memoria" color="#ff33cc" meeting="false" start="2026-05-15" duration="3" complete="0" expand="true"/>
+            <task id="37" uid="9e182b8ea1c14dc5a0d6c932e7faf351" name="7.4 Impacto disco" color="#ff33cc" meeting="false" start="2026-05-18" duration="3" complete="0" expand="true"/>
+            <task id="38" uid="6af148a293aa40c3b07a26091543e911" name="7.5 Relación detección/coste" color="#ff33cc" meeting="false" start="2026-05-21" duration="2" complete="0" expand="true"/>
+            <task id="39" uid="290a47edeea04b54b88ae241318335ee" name="7.6 Comparación EDR" color="#ffccff" meeting="false" start="2026-05-24" duration="2" complete="0" expand="true"/>
+        </task>
+        <task id="40" uid="810206e1079e4d539cb68e49a1dbed53" name="Capítulo VIII: Trabajo futuro" color="#6666ff" meeting="false" start="2026-05-26" duration="6" complete="0" expand="false">
+            <task id="41" uid="08bc643fc8fe4e2ab35850f4c8fa20db" name="8.1 Ampliación MITRE" color="#6666ff" meeting="false" start="2026-05-26" duration="1" complete="0" expand="true"/>
+            <task id="42" uid="d47d53cf8cb249e0b63cb3ccc88ba87b" name="8.2 Nuevos artifacts" color="#6666ff" meeting="false" start="2026-05-27" duration="1" complete="0" expand="true"/>
+            <task id="43" uid="cbaf0b81088d42fb9c72e9297a914583" name="8.3 Automatización detección" color="#6666ff" meeting="false" start="2026-05-28" duration="1" complete="0" expand="true"/>
+            <task id="44" uid="f0bf68dcfb994db184cb8efbae6ea424" name="8.4 Integración SIEM" color="#6666ff" meeting="false" start="2026-05-29" duration="3" complete="0" expand="true"/>
+        </task>
+        <task id="45" uid="cba531c64acc476ea825032d79ca7e5d" name="Capítulo IX: Conclusiones" color="#99ffff" meeting="false" start="2026-06-01" duration="5" complete="0" expand="false">
+            <task id="46" uid="7207589ec81e47e7b11c877e2beddd09" name="9.1 Conclusiones principales" color="#99ffff" meeting="false" start="2026-06-01" duration="2" complete="0" expand="true"/>
+            <task id="47" uid="39be1f1f69c94487ac9e2c03cf224820" name="9.2 Limitaciones" color="#99ffff" meeting="false" start="2026-06-02" duration="2" complete="0" expand="true"/>
+            <task id="48" uid="56978a05543c49f0a73ae319061611c9" name="9.3 Valor del enfoque" color="#99ffff" meeting="false" start="2026-06-04" duration="2" complete="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
