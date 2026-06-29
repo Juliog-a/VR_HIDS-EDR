@@ -1,0 +1,196 @@
+ .gitignore                                         |    65 [32m+[m
+ 00_CONTEXT/ARTIFACT_INDEX.md                       |     4 [32m+[m
+ 00_CONTEXT/CONTEXT_ESTADO_BENCHMARK_26062026.md    |   112 [32m+[m
+ .../CONTEXT_ESTADO_VISIBILIDAD_FP_26062026.md      |   135 [32m+[m
+ 00_CONTEXT/CURRENT_TASK.md                         |   732 [32m+[m[31m-[m
+ 00_CONTEXT/DECISIONS.md                            |   580 [32m+[m
+ 00_CONTEXT/EVIDENCE_INDEX.md                       |    24 [32m+[m
+ 00_CONTEXT/PORCENTAJE_FIABILIDAD_CONTEXT.md        |    69 [32m+[m
+ 00_CONTEXT/PROJECT_STATE.md                        |   361 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/LAST_SESSION.md            |    86 [32m+[m[31m-[m
+ 00_CONTEXT/SESSION_LOGS/session_20260615_2137.md   |   133 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260616_1944.md   |    94 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260616_2027.md   |   121 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260617_2027.md   |    86 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260618_1253.md   |    87 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260618_1446.md   |   105 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260618_1504.md   |   110 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260618_1602.md   |   130 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260618_1726.md   |    88 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260618_1900.md   |   102 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260618_1950.md   |    78 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260618_1959.md   |    66 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260618_2105.md   |    73 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260619_1112.md   |    46 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260619_1157.md   |    79 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260619_1207.md   |    32 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260619_1223.md   |    79 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260619_2226.md   |    57 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260619_2332.md   |    48 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260626_1143.md   |    78 [32m+[m
+ 00_CONTEXT/SESSION_LOGS/session_20260626_1302.md   |    73 [32m+[m
+ 00_CONTEXT/TEST_MATRIX.md                          |   102 [32m+[m
+ 00_CONTEXT/VR_RESOURCE_BENCHMARK_CONTEXT.md        |    20 [32m+[m
+ ...tom.TFM.HIDS.P1.Critical.Priority.Event_v1.yaml |   291 [32m+[m
+ ...ritical.Priority.Event_v1_PRE_NOISY_BACKUP.yaml |   273 [32m+[m
+ .../Custom.TFM.HIDS.P1.Low.Basic.Event_v1.yaml     |   268 [32m+[m
+ .../Custom.TFM.HIDS.P2.High.Forensic.Event_v1.yaml |   432 [32m+[m
+ ...tom.TFM.HIDS.P3.Medium.Behavioral.Event_v1.yaml |   414 [32m+[m
+ ...ustom.TFM.HIDS.Router.JSONL.Discord.SOC_v1.yaml |   258 [32m+[m
+ ...ustom.TFM.HIDS.Router.JSONL.Discord.SOC_v2.yaml |   265 [32m+[m
+ ...ustom.TFM.HIDS.Router.JSONL.Discord.SOC_v3.yaml |   630 [32m+[m
+ ...tom.TFM.HIDS.P1.Critical.Priority.Event_v1.yaml |   291 [32m+[m
+ ...ustom.TFM.HIDS.Router.JSONL.Discord.SOC_v1.yaml |   258 [32m+[m
+ ...ustom.TFM.HIDS.Router.JSONL.Discord.SOC_v3.yaml |   632 [32m+[m
+ ...Router.JSONL.Discord.SOC_v3.yaml.bak_bad_parens |   631 [32m+[m
+ .../GUIA_P1_P2_CRITICAL_RECALIBRATION_v1.md        |   112 [32m+[m
+ .../last_version/GUIA_ROUTER_SOC_DISCORD_v2.md     |   135 [32m+[m
+ .../last_version/GUIA_ROUTER_SOC_DISCORD_v3.md     |   120 [32m+[m
+ .../SHA256SUMS_P1_P2_RECALIBRATION.txt             |     5 [32m+[m
+ .../candidate/last_version/SHA256SUMS_SOC_V2.txt   |     5 [32m+[m
+ .../candidate/last_version/SHA256SUMS_SOC_V3.txt   |     2 [32m+[m
+ .../last_version/TFM_Run_All_TEC_Tests_v6.ps1      |  1103 [32m+[m
+ ...tom.TFM.HIDS.P1.Critical.Priority.Event_v1.yaml |   291 [32m+[m
+ .../Custom.TFM.HIDS.P2.High.Forensic.Event_v1.yaml |   432 [32m+[m
+ ...tom.TFM.HIDS.P3.Medium.Behavioral.Event_v1.yaml |   414 [32m+[m
+ ...ustom.TFM.HIDS.Router.JSONL.Discord.SOC_v3.yaml |   630 [32m+[m
+ .../validated/SHA256SUMS_P1_P2_RECALIBRATION.txt   |     5 [32m+[m
+ 02_SCRIPTS/validated/Scriptransom_v2.ps1           |   105 [32m+[m
+ 02_SCRIPTS/validated/Start-TFMReceiver_v4.ps1      |    97 [32m+[m
+ 02_SCRIPTS/validated/Stop-TFMReceiver.ps1          |    40 [32m+[m
+ 02_SCRIPTS/validated/TFM_Run_All_TEC_Tests.ps1     |   398 [32m+[m
+ 02_SCRIPTS/validated/como_levantar_receiver.txt    |    10 [32m+[m
+ 02_SCRIPTS/validated/enumeracion_v2.ps1            |    37 [32m+[m
+ 02_SCRIPTS/validated/exfiltracion_v3.ps1           |   128 [32m+[m
+ 02_SCRIPTS/validated/receiver_ps_v1.ps1            |   123 [32m+[m
+ 02_SCRIPTS/validated/receiver_tfm_v4.py            |   292 [32m+[m
+ 02_SCRIPTS/validated/sabotaje.ps1                  |    37 [32m+[m
+ ...ource_Usage_v1_PRE_SKIP_PARAM_BROKEN_BACKUP.ps1 |   744 [32m+[m
+ 03_RUNNERS/TFM_Collect_Final_Evidence_v1.ps1       |   244 [32m+[m
+ 03_RUNNERS/TFM_Generate_VR_Benchmark_Excel_v1.ps1  |   810 [32m+[m
+ ...e_VR_Benchmark_Excel_v1_PRE_ROLE_FIX_BACKUP.ps1 |  1037 [32m+[m
+ 03_RUNNERS/TFM_Run_All_TEC_Tests_v5.ps1            |  1087 [32m+[m
+ 03_RUNNERS/TFM_Run_All_TEC_Tests_v6.ps1            |  1103 [32m+[m
+ ...n_FP_Tests_v1_OLD_BROKEN_POSTPROCESS_BACKUP.ps1 |   674 [32m+[m
+ .../TFM_Benchmark_VR_Resource_Usage_v1.ps1         |   933 [32m+[m
+ ...erate_Controlled_Benchmark_Excel_OpenXml_v3.ps1 |   144 [32m+[m
+ .../TFM_Run_All_TEC_Tests_v6_PATCHED_4104.ps1      |  1198 [32m+[m
+ 03_RUNNERS/validate/TFM_Run_FP_Tests_v1.ps1        |   792 [32m+[m
+ .../01_TECNICAS_FP_FIABILIDAD_CONCLUSIONES.md      |    36 [32m+[m
+ .../01_TECNICAS_FP_FIABILIDAD_DEFINITIVO.xlsx      |   Bin [31m0[m -> [32m22891[m bytes
+ .../01_TECNICAS_FP_FIABILIDAD_RESUMEN.txt          |    32 [32m+[m
+ .../02_BENCHMARK_RENDIMIENTO_CONCLUSIONES.md       |    22 [32m+[m
+ .../02_BENCHMARK_RENDIMIENTO_RESUMEN.txt           |    20 [32m+[m
+ .../02_BENCHMARK_RENDIMIENTO_VALIDACION_DATOS.xlsx |   Bin [31m0[m -> [32m67401[m bytes
+ .../03_ANALISIS_TECNICAS_TFM_V4_REFERENCIA.xlsx    |   Bin [31m0[m -> [32m179555[m bytes
+ .../04_ANALISIS_ARTIFACTS_PUBLICOS_REFERENCIA.xlsx |   Bin [31m0[m -> [32m37822[m bytes
+ .../MANIFEST_ENTREGA_MEMORIA.csv                   |    31 [32m+[m
+ .../NOTAS_CALIDAD_DATOS.md                         |    50 [32m+[m
+ .../README_ENTREGA_MEMORIA.md                      |    66 [32m+[m
+ .../SHA256SUMS_ENTREGA_MEMORIA.txt                 |    34 [32m+[m
+ ...s_Publicos_Velociraptor_TFM_10_10_ORIGINAL.xlsx |   Bin [31m0[m -> [32m37822[m bytes
+ .../Analisis_Tecnicas_TFM_V4_ORIGINAL.xlsx         |   Bin [31m0[m -> [32m179555[m bytes
+ ...sis_Tecnicas_TFM_Velociraptor_DEF_ORIGINAL.xlsx |   Bin [31m0[m -> [32m179555[m bytes
+ .../README_VALIDADO_BENCHMARKS.md                  |    16 [32m+[m
+ .../SHA256SUMS_BENCHMARKS_VALIDADO.txt             |    44 [32m+[m
+ .../process_role_classification.csv                |   698 [32m+[m
+ .../fuentes_benchmark/raw_samples_normalized.csv   |   261 [32m+[m
+ .../fuentes_benchmark/scenario_quality.csv         |     4 [32m+[m
+ .../fuentes_fp/FP_ANALYSIS_CONCLUSIONS_v1.md       |   107 [32m+[m
+ .../fuentes_fp/README_FIABILIDAD_FP.md             |    40 [32m+[m
+ .../fuentes_fp/SHA256SUMS_FP_RUNNER_ANALYSIS.txt   |    10 [32m+[m
+ .../fuentes_fp/TFM_FP_20260618_144027_summary.json |   139 [32m+[m
+ .../fuentes_fp/TFM_FP_20260618_144027_vr_hits.csv  |    30 [32m+[m
+ .../fuentes_fp/TFM_FP_20260618_151316_summary.csv  |    11 [32m+[m
+ .../fuentes_fp/TFM_FP_20260618_151316_summary.json |   192 [32m+[m
+ .../fuentes_fp/TFM_FP_20260618_151316_summary.txt  |    46 [32m+[m
+ .../fuentes_fp/TFM_FP_20260618_151316_vr_hits.csv  |    66 [32m+[m
+ .../fuentes_fp/TFM_FP_20260618_151316_vr_hits.txt  |   145 [32m+[m
+ .../AUDITORIA_EXCELES_DEFINITIVOS.csv              |    28 [32m+[m
+ .../AUDITORIA_EXCELES_DEFINITIVOS.md               |   228 [32m+[m
+ .../INVENTARIO_EXCELES_DEFINITIVOS.csv             |    99 [32m+[m
+ ...RK_RENDIMIENTO_VALIDACION_DATOS_REGENERADO.xlsx |   Bin [31m0[m -> [32m152067[m bytes
+ .../BENCHMARK_PRECHECK_26062026.md                 |    68 [32m+[m
+ .../GRAFICAS_PREVIEW_26062026.pdf                  |   Bin [31m0[m -> [32m235602[m bytes
+ ...RK_RENDIMIENTO_VELOCIRAPTOR_FINAL_26062026.xlsx |   Bin [31m0[m -> [32m253087[m bytes
+ ...ENDIMIENTO_VELOCIRAPTOR_FINAL_26062026_AUDIT.md |    65 [32m+[m
+ ...O_VELOCIRAPTOR_FINAL_26062026_DATA_QUALITY.json |   362 [32m+[m
+ .../benchmark_dataset.json                         | 37478 [32m+++++++++++++++++++[m
+ .../generation_scripts/build_benchmark_dataset.mjs |   706 [32m+[m
+ .../build_benchmark_workbook.ps1                   |   570 [32m+[m
+ .../normalized/calidad_datos.csv                   |    17 [32m+[m
+ .../normalized/discrepancias.csv                   |     4 [32m+[m
+ .../normalized/process_samples.csv                 |   771 [32m+[m
+ .../normalized/raw_samples.csv                     |   423 [32m+[m
+ .../normalized/resumen_escenario.csv               |     4 [32m+[m
+ .../normalized/runs_validos.csv                    |    10 [32m+[m
+ .../normalized/trazabilidad.csv                    |    82 [32m+[m
+ .../Analisis_Tecnicas_TFM_V.5.xlsx                 |   Bin [31m0[m -> [32m282039[m bytes
+ .../GRAFICAS_preview.pdf                           |   Bin [31m0[m -> [32m243043[m bytes
+ ...IBILIDAD_DETECCION_FP_WAZUH_FINAL_26062026.xlsx |   Bin [31m0[m -> [32m282039[m bytes
+ ...IDAD_DETECCION_FP_WAZUH_FINAL_26062026_AUDIT.md |    52 [32m+[m
+ ...CCION_FP_WAZUH_FINAL_26062026_DATA_QUALITY.json |   118 [32m+[m
+ .../generation_log_20260626_114004.txt             |   Bin [31m0[m -> [32m1008[m bytes
+ .../generation_scripts/build_dataset.mjs           |   700 [32m+[m
+ .../generation_scripts/build_workbook.ps1          |   357 [32m+[m
+ .../normalized/alertas_vr.csv                      |   380 [32m+[m
+ .../normalized/chart_alerts_by_profile.csv         |     5 [32m+[m
+ .../normalized/chart_events_by_tec.csv             |    10 [32m+[m
+ .../normalized/chart_fp.csv                        |     6 [32m+[m
+ .../normalized/chart_wazuh.csv                     |     7 [32m+[m
+ .../normalized/chart_wazuh_rules.csv               |     8 [32m+[m
+ .../normalized/comparacion_vr_wazuh.csv            |     4 [32m+[m
+ .../normalized/dataset_summary.json                |   254 [32m+[m
+ .../normalized/discrepancias.csv                   |    49 [32m+[m
+ .../normalized/file_window_audit.csv               |    47 [32m+[m
+ .../fp_client_event_window_rows_revisar.csv        |    83 [32m+[m
+ .../normalized/fp_hits.csv                         |     2 [32m+[m
+ .../normalized/fp_runner.csv                       |    11 [32m+[m
+ .../normalized/fuentes.csv                         |   103 [32m+[m
+ .../normalized/heatmap_capacity.csv                |     8 [32m+[m
+ .../normalized/heatmap_visibility.csv              |     9 [32m+[m
+ .../Excel_visibilidad_26062026/normalized/kpis.csv |    21 [32m+[m
+ .../normalized/tecnicas_real_vr.csv                |    10 [32m+[m
+ .../normalized/visibilidad_sistema.csv             |     9 [32m+[m
+ .../normalized/wazuh_detalle.csv                   |     8 [32m+[m
+ 07_DOCS/CHECKLIST_PREVIO_LOGGING_VR.md             |   117 [32m+[m
+ .../EJECUCION_FINAL_P1_P2_P3_EVENT_Y_RUNNER_V5.md  |   239 [32m+[m
+ 07_DOCS/GUIA_P1_P2_CRITICAL_RECALIBRATION_v1.md    |   112 [32m+[m
+ 07_DOCS/GUIA_ROUTER_SOC_DISCORD_v1.md              |   138 [32m+[m
+ 07_DOCS/GUIA_ROUTER_SOC_DISCORD_v2.md              |   135 [32m+[m
+ 07_DOCS/GUIA_ROUTER_SOC_DISCORD_v3.md              |   120 [32m+[m
+ 07_DOCS/MATRIZ_COBERTURA_FINAL_P1_P2_P3_EVENT.md   |    33 [32m+[m
+ 07_DOCS/RESUMEN_TECNICO_CAMBIOS_EVENT_FINAL.md     |    55 [32m+[m
+ 07_DOCS/VALIDACION_LOCAL_EVENT_FINAL.md            |    58 [32m+[m
+ ...RK_RENDIMIENTO_VELOCIRAPTOR_FINAL_26062026.xlsx |   Bin [31m0[m -> [32m253219[m bytes
+ ...IBILIDAD_DETECCION_FP_WAZUH_FINAL_26062026.xlsx |   Bin [31m0[m -> [32m280969[m bytes
+ ...RK_RENDIMIENTO_VELOCIRAPTOR_FINAL_26062026.xlsx |   Bin [31m0[m -> [32m253087[m bytes
+ ...ENDIMIENTO_VELOCIRAPTOR_FINAL_26062026_AUDIT.md |    65 [32m+[m
+ ...O_VELOCIRAPTOR_FINAL_26062026_DATA_QUALITY.json |   362 [32m+[m
+ .../Analisis_Tecnicas_TFM_V.5.xlsx                 |   Bin [31m0[m -> [32m282039[m bytes
+ ...IBILIDAD_DETECCION_FP_WAZUH_FINAL_26062026.xlsx |   Bin [31m0[m -> [32m282145[m bytes
+ ...IDAD_DETECCION_FP_WAZUH_FINAL_26062026_AUDIT.md |    52 [32m+[m
+ ...CCION_FP_WAZUH_FINAL_26062026_DATA_QUALITY.json |   118 [32m+[m
+ 08_MEMORIA/TFM.docx                                |   Bin [31m2107311[m -> [32m5323014[m bytes
+ 08_MEMORIA/candidate/Capitulo_Wazuh_TFM.docx       |   Bin [31m0[m -> [32m1115627[m bytes
+ PORCENTAJE FIABILIDAD.xlsx                         |   Bin [31m0[m -> [32m22891[m bytes
+ PORCENTAJE FIABILIDAD_CONCLUSIONES.md              |    36 [32m+[m
+ PORCENTAJE FIABILIDAD_RESUMEN.txt                  |    32 [32m+[m
+ SHA256SUMS_PORCENTAJE_FIABILIDAD.txt               |    15 [32m+[m
+ SHA256SUMS_VR_RESOURCE_BENCHMARK.txt               |    14 [32m+[m
+ VR_RESOURCE_BENCHMARK.xlsx                         |   Bin [31m0[m -> [32m135345[m bytes
+ VR_RESOURCE_BENCHMARK_CONCLUSIONES.md              |   Bin [31m0[m -> [32m628[m bytes
+ VR_RESOURCE_BENCHMARK_RESUMEN.txt                  |    16 [32m+[m
+ .../RESUMEN_FINAL_PARA_CHATGPT.md                  |   175 [32m+[m
+ .../Custom.TFM.HIDS.P1.Low.Basic.Event_v1.yaml     |   268 [32m+[m
+ .../Custom.TFM.HIDS.P2.High.Forensic.Event_v1.yaml |   432 [32m+[m
+ ...tom.TFM.HIDS.P3.Medium.Behavioral.Event_v1.yaml |   414 [32m+[m
+ .../docs/CHECKLIST_PREVIO_LOGGING_VR.md            |   117 [32m+[m
+ .../EJECUCION_FINAL_P1_P2_P3_EVENT_Y_RUNNER_V5.md  |   239 [32m+[m
+ .../docs/MATRIZ_COBERTURA_FINAL_P1_P2_P3_EVENT.md  |    33 [32m+[m
+ .../docs/RESUMEN_TECNICO_CAMBIOS_EVENT_FINAL.md    |    55 [32m+[m
+ ultima_iteracion_event_final/hashes/SHA256SUMS.txt |    11 [32m+[m
+ .../runners/TFM_Collect_Final_Evidence_v1.ps1      |   244 [32m+[m
+ .../runners/TFM_Run_All_TEC_Tests_v5.ps1           |  1087 [32m+[m
+ .../validacion/VALIDACION_LOCAL_EVENT_FINAL.md     |    58 [32m+[m
+ 195 files changed, 71937 insertions(+), 174 deletions(-)

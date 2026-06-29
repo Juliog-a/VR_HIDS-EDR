@@ -1,0 +1,33 @@
+    User: admin
+    Password: zrGdN2LKQN*6i7Tk6sY8BKNb1*QlEcuB
+
+
+
+En Ubuntu Wazuh
+sudo systemctl start wazuh-indexer
+sudo systemctl start wazuh-manager
+sudo systemctl start wazuh-dashboard
+
+Comprobar:
+
+sudo systemctl status wazuh-indexer --no-pager
+sudo systemctl status wazuh-manager --no-pager
+sudo systemctl status wazuh-dashboard --no-pager
+
+
+2. Levantar agente Wazuh en Windows
+
+En la VM Windows:
+
+Start-Service WazuhSvc
+Get-Service WazuhSvc
+
+Debe salir:
+
+Status : Running
+
+Comprobar conectividad:
+
+Test-NetConnection 192.168.1.145 -Port 1514
+Test-NetConnection 192.168.1.145 -Port 1515
+Test-NetConnection 192.168.1.145 -Port 443

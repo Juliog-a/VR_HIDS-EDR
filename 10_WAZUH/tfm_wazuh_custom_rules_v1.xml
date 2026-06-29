@@ -1,0 +1,225 @@
+<group name="tfm,wazuh,windows,">
+
+  <!-- ========================================================= -->
+  <!-- TFM Wazuh Custom Rules v1                                -->
+  <!-- Equivalencia funcional con artifacts Velociraptor P1-P4   -->
+  <!-- Endpoint: Windows LT29 / campañas TEC-001 a TEC-009       -->
+  <!-- ========================================================= -->
+
+  <!-- ===================== P1 CRITICAL ======================= -->
+
+  <rule id="110201" level="15">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4104$</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(Invoke-WebRequest|\biwr\b|\bwget\b|\bcurl\b|Invoke-RestMethod|WebClient|UploadFile)</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(-Method\s+POST|\bMethod\s+POST\b|\bPOST\b)</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(-InFile\b|\bInFile\b|UploadFile|--upload-file|--data-binary|--form|@\S+\.zip)</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(application/zip|\.zip\b)</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(\bupload\b|ReceiverUrl)</field>
+    <description>TFM P1 TEC-009 confirmed HTTP ZIP upload behavior via PowerShell 4104</description>
+    <mitre>
+      <id>T1048.003</id>
+      <id>T1560.001</id>
+      <id>T1074.001</id>
+    </mitre>
+  </rule>
+
+  <rule id="110202" level="15">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4104$</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(System\.Security\.Cryptography|Aes)</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(CryptoStream|CreateEncryptor)</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)\.aes\b</field>
+    <description>TFM P1 TEC-007 critical encryption behavior via PowerShell 4104</description>
+    <mitre>
+      <id>T1486</id>
+    </mitre>
+  </rule>
+
+  <rule id="110203" level="15">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4104$</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)\b(Get-ChildItem|gci|dir|ls)\b</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)\b(Remove-Item|del|erase|rmdir)\b</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(-Force|-Recurse)</field>
+    <field name="win.eventdata.scriptBlockText" negate="yes" type="pcre2">(?i)(CL_Utility\.ps1|ArchiveResources\.psd1|SDIAG_|Microsoft Corporation)</field>
+    <description>TFM P1 TEC-008 destructive deletion behavior via PowerShell 4104</description>
+    <mitre>
+      <id>T1485</id>
+    </mitre>
+  </rule>
+
+  <rule id="110204" level="13">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^1$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?is)\breg(?:\.exe)?\b.*\badd\b.*\\Software\\Microsoft\\Windows\\CurrentVersion\\(Run|RunOnce).*/d\s+.*(cmd(?:\.exe)?|powershell(?:\.exe)?|pwsh(?:\.exe)?|\.exe\b|\.ps1\b)</field>
+    <description>TFM P1 TEC-004 high-confidence Run Key persistence via Sysmon ID 1</description>
+    <mitre>
+      <id>T1547.001</id>
+    </mitre>
+  </rule>
+
+  <rule id="110205" level="13">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^1$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?is)\bsc(?:\.exe)?\b.*\bcreate\b.*\bbinPath\b.*(cmd(?:\.exe)?|powershell(?:\.exe)?|pwsh(?:\.exe)?|\.ps1\b)</field>
+    <description>TFM P1 TEC-005 suspicious service creation via Sysmon ID 1</description>
+    <mitre>
+      <id>T1569.002</id>
+    </mitre>
+  </rule>
+
+  <rule id="110206" level="13">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^7045$</field>
+    <match type="pcre2">(?is)(cmd(?:\.exe)?|powershell(?:\.exe)?|pwsh(?:\.exe)?|\.ps1\b|/c\b|-Command\b)</match>
+    <description>TFM P1 TEC-005 suspicious service installation via System 7045</description>
+    <mitre>
+      <id>T1569.002</id>
+    </mitre>
+  </rule>
+
+  <rule id="110207" level="14">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^3$</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(powershell|pwsh)\.exe$</field>
+    <field name="win.eventdata.destinationIp">^192\.168\.1\.129$</field>
+    <field name="win.eventdata.destinationPort">^8088$</field>
+    <description>TFM P1 TEC-009 receiver network connection by PowerShell via Sysmon ID 3</description>
+    <mitre>
+      <id>T1048.003</id>
+    </mitre>
+  </rule>
+
+  <rule id="110208" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^11$</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(powershell|pwsh)\.exe$</field>
+    <field name="win.eventdata.targetFilename" type="pcre2">(?i)\.zip\b</field>
+    <description>TFM P1 TEC-009 ZIP creation by PowerShell via Sysmon ID 11</description>
+    <mitre>
+      <id>T1560.001</id>
+    </mitre>
+  </rule>
+
+  <!-- ===================== P2 HIGH FORENSIC ================== -->
+
+  <rule id="110101" level="11">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4104$</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(ExecutionPolicy\s+Bypass|-EncodedCommand|FromBase64String|Invoke-Expression|\bIEX\b|DownloadString)</field>
+    <description>TFM P2 TEC-001 suspicious PowerShell execution via 4104</description>
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+  </rule>
+
+  <rule id="110106" level="8">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4104$</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(SecurityCenter2|AntivirusProduct|AntiSpywareProduct|Windows Defender|Defender|WinDefend|SecurityHealthService|Get-CimInstance|Get-WmiObject|\bwmic\b)</field>
+    <description>TFM P2 TEC-006 security software discovery via PowerShell 4104</description>
+    <mitre>
+      <id>T1518.001</id>
+    </mitre>
+  </rule>
+
+  <rule id="110107" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4104$</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(System\.Security\.Cryptography|Aes|CryptoStream|CreateEncryptor|Rfc2898DeriveBytes|\.aes\b)</field>
+    <description>TFM P2 TEC-007 encryption-related PowerShell 4104 evidence</description>
+    <mitre>
+      <id>T1486</id>
+    </mitre>
+  </rule>
+
+  <rule id="110108" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4104$</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?is)((Get-ChildItem|gci|dir|ls).*(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse|\$_.FullName|\$PSItem.FullName)|(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse).*(Get-ChildItem|gci|dir|ls|\$_.FullName|\$PSItem.FullName))</field>
+    <description>TFM P2 TEC-008 destructive deletion PowerShell 4104 evidence</description>
+    <mitre>
+      <id>T1485</id>
+    </mitre>
+  </rule>
+
+  <rule id="110109" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4104$</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(Invoke-WebRequest|\biwr\b|\bwget\b|\bcurl\b|Invoke-RestMethod|WebClient|UploadFile)</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(-InFile\b|\bInFile\b|UploadFile|--upload-file|--data-binary|--form|@\S+\.zip)</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)(application/zip|\.zip\b|\bupload\b|ReceiverUrl)</field>
+    <description>TFM P2 TEC-009 HTTP upload candidate via PowerShell 4104</description>
+    <mitre>
+      <id>T1048.003</id>
+      <id>T1560.001</id>
+    </mitre>
+  </rule>
+
+  <!-- ===================== P3 MEDIUM BEHAVIORAL =============== -->
+
+  <rule id="110302" level="7">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^1$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(\bcmd(?:\.exe)?\b.*\s/c\b.*(powershell|pwsh|whoami|echo|\s&amp;\s)|\s&amp;&amp;\s|\s\|\|\s)</field>
+    <description>TFM P3 TEC-002 suspicious CMD chain via Sysmon ID 1</description>
+    <mitre>
+      <id>T1059.003</id>
+    </mitre>
+  </rule>
+
+  <rule id="110303" level="8">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^1$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(\bschtasks(?:\.exe)?\b.*(/create|/run|/delete|/change))</field>
+    <description>TFM P3 TEC-003 scheduled task activity via Sysmon ID 1</description>
+    <mitre>
+      <id>T1053.005</id>
+    </mitre>
+  </rule>
+
+  <rule id="110304" level="8">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^1$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(\breg(?:\.exe)?\b.*\b(add|delete)\b.*\\Software\\Microsoft\\Windows\\CurrentVersion\\(Run|RunOnce)|\\Software\\Microsoft\\Windows\\CurrentVersion\\(Run|RunOnce).*\b(add|delete)\b)</field>
+    <description>TFM P3 TEC-004 Run Key persistence via Sysmon ID 1</description>
+    <mitre>
+      <id>T1547.001</id>
+    </mitre>
+  </rule>
+
+  <rule id="110305" level="8">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^1$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(\bsc(?:\.exe)?\b.*\b(create|start|delete|config)\b)</field>
+    <description>TFM P3 TEC-005 service control activity via Sysmon ID 1</description>
+    <mitre>
+      <id>T1569.002</id>
+    </mitre>
+  </rule>
+
+  <!-- ===================== P4 LOW BASIC ======================= -->
+
+  <rule id="110401" level="5">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^1$</field>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(powershell|pwsh)\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(-nop|-noprofile|executionpolicy\s+bypass|-encodedcommand|\biex\b|downloadstring|invoke-webrequest|iwr|invoke-expression|webclient)</field>
+    <field name="win.eventdata.commandLine" negate="yes" type="pcre2">(?i)(alerts\.jsonl|soc_alerts\.jsonl|FromBase64String|Add-Content|RouterArtifact|JSONL_WRITE_ATTEMPT|ConvertFrom-Json|ConvertTo-Json)</field>
+    <description>TFM P4 TEC-001 basic suspicious PowerShell command line via Sysmon ID 1</description>
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+  </rule>
+
+  <rule id="110402" level="4">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^7045$</field>
+    <description>TFM P4 TEC-005 basic Windows service installation via System 7045</description>
+    <mitre>
+      <id>T1569.002</id>
+    </mitre>
+  </rule>
+
+</group>
