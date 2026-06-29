@@ -1,5 +1,44 @@
 # CURRENT_TASK
 
+## Tarea activa actualizada 20260629_1707
+
+README GitHub y limpieza/ordenacion de raiz: `CERRADA LOCALMENTE`.
+
+Entregables:
+
+- `README.md`.
+- `00_CONTEXT/CLEANUP_20260629.md`.
+- `04_EVIDENCE/legacy_reports/README.md`.
+- `99_ARCHIVE/README.md`.
+
+Movimientos:
+
+- Informes legacy de fiabilidad/FP:
+  `04_EVIDENCE/legacy_reports/20260618_fiabilidad_fp`.
+- Benchmark legacy:
+  `04_EVIDENCE/legacy_reports/20260618_benchmark_legacy`.
+- Iteraciones historicas:
+  `99_ARCHIVE/legacy_iterations`.
+- Prompts antiguos:
+  `99_ARCHIVE/legacy_prompts_20260610`.
+- Candidatos locales de descarte:
+  `99_REVIEW_CLEANUP_20260629/delete_candidates`.
+
+Control:
+
+- `01_ARTIFACTS/validated` no modificado.
+- VM local `lab/` no movida por riesgo de romper VirtualBox.
+- `Carpeta_Compartida_TFM/` no movida por ser intercambio con VM.
+- JSONL bruto, OneNote y `.lnk` retirados del indice Git sin borrado fisico.
+
+Pendiente opcional:
+
+- Revisar `git status` y confirmar/commit de la reorganizacion.
+- Si GitHub rechaza por objetos historicos grandes, limpiar historial Git con
+  herramienta especifica; no se hizo en esta sesion.
+- `git gc --prune=now` ya se ejecuto: basura Git 0 bytes; pack historico
+  restante 3.08 GiB.
+
 ## Tarea activa actualizada 20260626_1143
 
 Generacion del Excel V.5/final de visibilidad, deteccion, falsos positivos y

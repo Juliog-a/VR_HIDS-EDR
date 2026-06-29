@@ -5,6 +5,7 @@
 .idea/
 .DS_Store
 Thumbs.db
+*.lnk
 
 # =========================
 # PYTHON / ENTORNOS
@@ -58,6 +59,7 @@ upload_*.zip
 *.tmp
 *.bak
 *.old
+99_REVIEW_CLEANUP_*/
 
 # =========================
 # EVIDENCIAS / OUTPUTS GENERADOS TFM

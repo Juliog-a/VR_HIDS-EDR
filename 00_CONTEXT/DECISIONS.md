@@ -721,3 +721,24 @@ de muestreo y el objetivo era medir carga mientras el runner estaba activo.
 
 El Excel benchmark no mide calidad de deteccion, alertas, evidencia ni falsos
 positivos. Solo mide coste operativo observado en laboratorio.
+
+## D045 - Higiene GitHub y limpieza conservadora
+
+Se decide limpiar la raiz del repositorio sin borrar evidencia util:
+
+- `README.md` pasa a ser el README publico principal.
+- Informes legacy se conservan en `04_EVIDENCE/legacy_reports`.
+- Iteraciones antiguas y prompts se conservan en `99_ARCHIVE`.
+- Elementos claramente accidentales o vacios se mueven a
+  `99_REVIEW_CLEANUP_20260629/delete_candidates`.
+- Ficheros locales ya ignorados (`.one`, `.lnk`, `.jsonl`) se retiran del
+  indice Git sin borrar del disco.
+- `lab/` y `Carpeta_Compartida_TFM/` no se mueven por riesgo operativo.
+- No se reescribe historial Git durante esta limpieza.
+
+Justificacion:
+
+- Preparar el repo para GitHub requiere una raiz comprensible y evitar binarios
+  locales, evidencia bruta y accesos directos.
+- La VM, el intercambio con VM y logs brutos pueden ser utiles localmente, pero
+  no deben condicionar la estructura publica.

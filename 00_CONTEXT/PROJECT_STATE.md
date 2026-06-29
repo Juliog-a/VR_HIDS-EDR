@@ -433,3 +433,26 @@ Codex no valida resultados.
 - Limitacion:
   - Benchmark de coste operativo del laboratorio, no de calidad de deteccion.
   - `RunnerStillRunningAtEnd=True` en `VR_TEC_RUNNER` se conserva como WARN no bloqueante.
+
+## Limpieza README GitHub y estructura raiz (2026-06-29 17:07 CEST)
+
+- `README.md` reconstruido como README publico del proyecto.
+- Raiz limpiada:
+  - informes legacy de fiabilidad/FP movidos a
+    `04_EVIDENCE/legacy_reports/20260618_fiabilidad_fp`;
+  - benchmark legacy movido a
+    `04_EVIDENCE/legacy_reports/20260618_benchmark_legacy`;
+  - paquetes historicos `ultima_iteracion*` movidos a
+    `99_ARCHIVE/legacy_iterations`;
+  - prompts antiguos movidos a `99_ARCHIVE/legacy_prompts_20260610`.
+- Candidatos de descarte no eliminados:
+  `99_REVIEW_CLEANUP_20260629/delete_candidates`.
+- Retirados del indice Git, sin borrar del disco:
+  JSONL bruto, OneNote y accesos directos cubiertos por `.gitignore`.
+- No se modifico `01_ARTIFACTS/validated`.
+- No se ejecuto validacion experimental.
+- Manifest de limpieza:
+  `00_CONTEXT/CLEANUP_20260629.md`.
+- Pendiente opcional antes de publicar:
+  revisar historico Git si GitHub rechaza objetos grandes; `git gc` limpio
+  basura temporal, pero no se reescribio historial. Pack Git restante: 3.08 GiB.
