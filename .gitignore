@@ -1,15 +1,32 @@
-# Evidencias pesadas / outputs generados
-06_CONTROLLED_RERUN/OUTPUT/
-06_CONTROLLED_RERUN/_audit_tmp/
-10_WAZUH/TFM_WAZUH_VISIBILIDAD_EVIDENCE/
-# ISOs / máquinas / imágenes grandes
+# =========================
+# SISTEMA / IDE
+# =========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# =========================
+# PYTHON / ENTORNOS
+# =========================
+.venv/
+.venv/.venv/
+venv/
+__pycache__/
+*.pyc
+
+# =========================
+# ISOS / MÁQUINAS / IMÁGENES GRANDES
+# =========================
 *.iso
 *.vdi
 *.vmdk
 *.ova
 *.qcow2
 
-# Comprimidos pesados
+# =========================
+# COMPRIMIDOS PESADOS
+# =========================
 *.zip
 *.7z
 *.rar
@@ -17,97 +34,42 @@
 *.tar.gz
 *.tgz
 
-# OneNote / binarios de notas
+# =========================
+# ONENOTE / BINARIOS DE NOTAS
+# =========================
 *.one
 *.onetoc2
 
-# Evidencias y outputs pesados de ejecución
+# =========================
+# LOGS / DUMPS / EVIDENCIAS CRUDAS
+# =========================
+*.jsonl
+*.log
+*.evtx
+*.pcap
+*.pcapng
+alerts.jsonl
+receiver_log.jsonl
+upload_*.zip
+
+# =========================
+# TEMPORALES
+# =========================
+*.tmp
+*.bak
+*.old
+
+# =========================
+# EVIDENCIAS / OUTPUTS GENERADOS TFM
+# =========================
 06_CONTROLLED_RERUN/OUTPUT/
 06_CONTROLLED_RERUN/_audit_tmp/
-
-# Evidencias Wazuh pesadas
 10_WAZUH/TFM_WAZUH_VISIBILIDAD_EVIDENCE/
-10_WAZUH/ubuntu-24.04.3-live-server-amd64.iso
+10_WAZUH/*.iso
 
-# Logs / dumps
-*.jsonl
-*.log
-*.evtx
-*.pcap
-*.pcapng
-
-# Temporales
-*.tmp
-*.bak
-*.old
-# Binarios / comprimidos / imágenes / capturas grandes
-*.zip
-*.7z
-*.rar
-*.tar
-*.tar.gz
-*.tgz
-*.vdi
-*.vmdk
-*.ova
-*.iso
-*.pcap
-*.pcapng
-*.evtx
-
-# Logs y dumps voluminosos
-*.jsonl
-*.log
-
-# Temporales
-*.tmp
-*.bak
-*.old
-.venv/.venv/
-venv/
-__pycache__/
-*.pyc
-
-*.evtx
-*.pcap
-*.pcapng
-*.zip
-*.7z
-*.rar
-*.log
-alerts.jsonl
-receiver_log.jsonl
-upload_*.zip
-
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-venv/
-__pycache__/
-*.pyc
-
-*.evtx
-*.pcap
-*.pcapng
-*.zip
-*.7z
-*.rar
-*.log
-alerts.jsonl
-receiver_log.jsonl
-upload_*.zip
-
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-# Local/lab/generated evidence
-*.zip
-*.evtx
-*.log
-*.tmp
+# =========================
+# LAB LOCAL
+# =========================
 Carpeta_Compartida_TFM/
 lab/
 05_LOGS/
