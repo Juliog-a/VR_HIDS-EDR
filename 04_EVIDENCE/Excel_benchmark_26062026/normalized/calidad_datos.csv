@@ -1,0 +1,17 @@
+Check,Status,Evidence,Severity,Decision
+Fuente canonica XLSX disponible,OK,C:\Users\julio\Desktop\TFM\04_EVIDENCE\ENTREGA_MEMORIA_EXCELES_REGENERADOS\02_BENCHMARK_RENDIMIENTO_VALIDACION_DATOS_REGENERADO.xlsx,INFO,Debe existir; no se usa Analisis_Benchmark.xlsx como resultado definitivo.
+SchemaVersion 1.1 presente,OK,1.1,CRITICA,Todos los runs validos deben estar en schema 1.1.
+Exactamente 3 escenarios,OK,"{""BASELINE_NO_VR"":3,""VR_IDLE"":3,""VR_TEC_RUNNER"":3}",CRITICA,"Escenarios esperados: BASELINE_NO_VR, VR_IDLE, VR_TEC_RUNNER."
+3 repeticiones por escenario,OK,"{""BASELINE_NO_VR"":3,""VR_IDLE"":3,""VR_TEC_RUNNER"":3}",CRITICA,"Cada escenario debe tener REP_01, REP_02 y REP_03."
+9/9 runs validos,OK,9/9,CRITICA,No se genera Excel final si faltan runs validos.
+Muestras CPU suficientes,OK,samples.csv combinados=422,CRITICA,"CPU/RAM se interpretan como metricas de laboratorio, no universales."
+Muestras RAM suficientes,OK,samples.csv combinados=422,CRITICA,Se exige muestra observada por run.
+BASELINE_NO_VR presente,OK,3 runs,CRITICA,Referencia sin cliente VR activo.
+VR_IDLE presente,OK,3 runs,CRITICA,Cliente VR activo en reposo.
+VR_TEC_RUNNER presente,OK,3 runs,CRITICA,Carga controlada de runner TEC.
+SERVER_GUI excluido del calculo principal,OK,SERVER_GUI rows en process_samples=422,CRITICA,"SERVER_GUI puede estar observado, pero no suma en metricas de cliente."
+notepad.exe runner = 0,OK,notepad rows=0,CRITICA,Evita contaminacion del runner por notepad.exe.
+RunnerStillRunningAtEnd evaluado,WARN,true=3; false=6,NO_BLOQUEANTE,Si aparece en VR_TEC_RUNNER se trata como WARN no bloqueante.
+ClientRows > 0 cuando aplica,OK,TFM_BENCH_BASELINE_NO_VR_20260619_130840:0; TFM_BENCH_BASELINE_NO_VR_20260619_132157:0; TFM_BENCH_BASELINE_NO_VR_20260619_133538:0; TFM_BENCH_VR_IDLE_20260619_131216:49; TFM_BENCH_VR_IDLE_20260619_132534:49; TFM_BENCH_VR_IDLE_20260619_133913:47; TFM_BENCH_VR_TEC_RUNNER_20260619_131620:45; TFM_BENCH_VR_TEC_RUNNER_20260619_132936:51; TFM_BENCH_VR_TEC_RUNNER_20260619_134315:43,CRITICA,BASELINE debe no observar cliente; VR_IDLE/VR_TEC_RUNNER deben observarlo.
+Duplicados e inconsistencias,OK,duplicados=0; missing=0,CRITICA,Duplicados o ausencias bloquean el Excel final.
+Graficas generables con datos reales,OK,"[{""Scenario"":""BASELINE_NO_VR"",""AvgCPU"":0,""AvgRAM"":0},{""Scenario"":""VR_IDLE"",""AvgCPU"":0,""AvgRAM"":57.48},{""Scenario"":""VR_TEC_RUNNER"",""AvgCPU"":0.95,""AvgRAM"":57.42}]",CRITICA,No se generan graficas vacias.

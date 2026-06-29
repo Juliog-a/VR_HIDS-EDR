@@ -1,0 +1,254 @@
+{
+  "kpis": [
+    {
+      "KPI": "TEC reales planificadas",
+      "valor": 9,
+      "detalle": "TEC-001 a TEC-009"
+    },
+    {
+      "KPI": "TEC reales ejecutadas",
+      "valor": 9,
+      "detalle": "OK"
+    },
+    {
+      "KPI": "TEC OK",
+      "valor": 9,
+      "detalle": ""
+    },
+    {
+      "KPI": "TEC WARN",
+      "valor": 0,
+      "detalle": ""
+    },
+    {
+      "KPI": "TEC FAIL",
+      "valor": 0,
+      "detalle": ""
+    },
+    {
+      "KPI": "FP planificados",
+      "valor": 10,
+      "detalle": "FP-001 a FP-010"
+    },
+    {
+      "KPI": "FP OK",
+      "valor": 10,
+      "detalle": ""
+    },
+    {
+      "KPI": "FP WARN",
+      "valor": 0,
+      "detalle": ""
+    },
+    {
+      "KPI": "FP FAIL",
+      "valor": 0,
+      "detalle": ""
+    },
+    {
+      "KPI": "FP SKIPPED",
+      "valor": 0,
+      "detalle": ""
+    },
+    {
+      "KPI": "Total alertas VR REAL incluidas",
+      "valor": 379,
+      "detalle": "Filas CLIENT_EVENT en carpeta real y ventana del runner."
+    },
+    {
+      "KPI": "Alertas VR P1",
+      "valor": 19,
+      "detalle": ""
+    },
+    {
+      "KPI": "Alertas VR P2",
+      "valor": 118,
+      "detalle": ""
+    },
+    {
+      "KPI": "Alertas VR P3",
+      "valor": 109,
+      "detalle": ""
+    },
+    {
+      "KPI": "Alertas VR P4",
+      "valor": 133,
+      "detalle": ""
+    },
+    {
+      "KPI": "Hits FP",
+      "valor": 0,
+      "detalle": "summary.json / vr_hits.csv"
+    },
+    {
+      "KPI": "Wazuh base alerts",
+      "valor": 58,
+      "detalle": ""
+    },
+    {
+      "KPI": "Wazuh custom alerts",
+      "valor": 110,
+      "detalle": ""
+    },
+    {
+      "KPI": "Reglas Wazuh 110xxx activadas",
+      "valor": 5,
+      "detalle": "110201 no activada."
+    },
+    {
+      "KPI": "Gaps",
+      "valor": 1,
+      "detalle": "110201=0 / TEC-009"
+    }
+  ],
+  "qualityChecks": [
+    {
+      "check": "TEC-001 a TEC-009 presentes",
+      "status": "OK",
+      "detail": "TEC-001, TEC-002, TEC-003, TEC-004, TEC-005, TEC-006, TEC-007, TEC-008, TEC-009"
+    },
+    {
+      "check": "FP-001 a FP-010 presentes o justificados",
+      "status": "OK",
+      "detail": "FP-001, FP-002, FP-003, FP-004, FP-005, FP-006, FP-007, FP-008, FP-009, FP-010"
+    },
+    {
+      "check": "VR real separado de FP",
+      "status": "WARN",
+      "detail": "Se detectan CSV mixtos; se aplica filtro por ventana/carpeta y se excluyen filas no definitivas."
+    },
+    {
+      "check": "TEC-009 no inflado",
+      "status": "WARN",
+      "detail": "Upload documentado en summary; receiver_log/ZIP recibido no localizados."
+    },
+    {
+      "check": "Wazuh 110201=gap",
+      "status": "OK",
+      "detail": "110201=0"
+    },
+    {
+      "check": "FP hits",
+      "status": "OK",
+      "detail": "TotalHits=0"
+    },
+    {
+      "check": "Fuentes con SHA-256",
+      "status": "OK",
+      "detail": "102 fuentes hasheadas"
+    },
+    {
+      "check": "Artifact-tool unavailable",
+      "status": "WARN",
+      "detail": "Se usa generacion local con Node/Excel COM por ausencia de @oai/artifact-tool en el entorno."
+    }
+  ],
+  "dataQuality": {
+    "generated_at": "2026-06-26T09:07:17.104Z",
+    "inputs": {
+      "real_summary": "05_LOGS\\Validas\\Prueba_24_06_2026\\TFM_TEC_Run_CANDIDATE_v5_20260624_145022_summary.json",
+      "fp_summary": "05_LOGS\\Validas\\Prueba_24_06_2026_FP\\TFM_FP_20260626_101948_summary.json",
+      "fp_hits": "05_LOGS\\Validas\\Prueba_24_06_2026_FP\\TFM_FP_20260626_101948_vr_hits.csv",
+      "wazuh_base_summary": "10_WAZUH\\TFM_WAZUH_VISIBILIDAD_EVIDENCE\\ENTREGA_WAZUH_VISIBILIDAD_20260622_114027\\base\\wazuh_base_summary.txt",
+      "wazuh_custom_summary": "10_WAZUH\\TFM_WAZUH_VISIBILIDAD_EVIDENCE\\ENTREGA_WAZUH_VISIBILIDAD_20260622_114027\\custom\\wazuh_custom_summary.txt",
+      "base_xlsx": "04_EVIDENCE\\Analisis_Tecnicas_TFM_V.4.xlsx"
+    },
+    "windows": {
+      "real_start_utc": "2026-06-24T12:50:22.335Z",
+      "real_end_utc": "2026-06-24T12:55:53.996Z",
+      "fp_start_utc": "2026-06-26T08:19:48.709Z",
+      "fp_end_utc": "2026-06-26T08:20:18.059Z"
+    },
+    "metrics": {
+      "tecnicas": 9,
+      "fp_tests": 10,
+      "alertas_vr_real_incluidas": 379,
+      "alertas_vr_por_perfil": {
+        "P1": 19,
+        "P2": 118,
+        "P3": 109,
+        "P4": 133,
+        "NO_CLASIFICADO": 0
+      },
+      "fp_hits": 0,
+      "fp_client_event_rows_revisar": 82,
+      "wazuh_base": {
+        "archives": 902,
+        "alerts": 58,
+        "ps4104": 34,
+        "sysmon1": 457,
+        "sysmon11": 413,
+        "system7045": 0
+      },
+      "wazuh_custom": {
+        "archives": 18285,
+        "alerts": 110,
+        "ps4104": 99,
+        "sysmon1": 127,
+        "sysmon11": 24,
+        "system7045": 1
+      },
+      "wazuh_rule_counts": {
+        "110201": 0,
+        "110202": 5,
+        "110203": 4,
+        "110301": 2,
+        "110401": 0,
+        "110402": 1,
+        "110501": 44
+      },
+      "discrepancias": 48,
+      "fuentes": 102
+    },
+    "quality_checks": [
+      {
+        "check": "TEC-001 a TEC-009 presentes",
+        "status": "OK",
+        "detail": "TEC-001, TEC-002, TEC-003, TEC-004, TEC-005, TEC-006, TEC-007, TEC-008, TEC-009"
+      },
+      {
+        "check": "FP-001 a FP-010 presentes o justificados",
+        "status": "OK",
+        "detail": "FP-001, FP-002, FP-003, FP-004, FP-005, FP-006, FP-007, FP-008, FP-009, FP-010"
+      },
+      {
+        "check": "VR real separado de FP",
+        "status": "WARN",
+        "detail": "Se detectan CSV mixtos; se aplica filtro por ventana/carpeta y se excluyen filas no definitivas."
+      },
+      {
+        "check": "TEC-009 no inflado",
+        "status": "WARN",
+        "detail": "Upload documentado en summary; receiver_log/ZIP recibido no localizados."
+      },
+      {
+        "check": "Wazuh 110201=gap",
+        "status": "OK",
+        "detail": "110201=0"
+      },
+      {
+        "check": "FP hits",
+        "status": "OK",
+        "detail": "TotalHits=0"
+      },
+      {
+        "check": "Fuentes con SHA-256",
+        "status": "OK",
+        "detail": "102 fuentes hasheadas"
+      },
+      {
+        "check": "Artifact-tool unavailable",
+        "status": "WARN",
+        "detail": "Se usa generacion local con Node/Excel COM por ausencia de @oai/artifact-tool en el entorno."
+      }
+    ],
+    "tec009": {
+      "upload_summary_evidence": true,
+      "receiver_log_found": false,
+      "http_status": "200",
+      "upload_succeeded": "True",
+      "local_sha256": "31e202c49811f354b51162baecb4ed174e4b0f0805c50c9f91c9f7ec5f642a59",
+      "receiver_response": "{\"status\":\"ok\",\"bytes_received\":6245,\"saved_file\":\"received\\\\upload_20260624_125450_382655.zip\",\"sha256\":\"31e202c49811f354b51162baecb4ed174e4b0f0805c50c9f91c9f7ec5f642a59\"}"
+    }
+  }
+}

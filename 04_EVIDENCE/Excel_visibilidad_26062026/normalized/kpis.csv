@@ -1,0 +1,21 @@
+KPI,valor,detalle
+TEC reales planificadas,9,TEC-001 a TEC-009
+TEC reales ejecutadas,9,OK
+TEC OK,9,
+TEC WARN,0,
+TEC FAIL,0,
+FP planificados,10,FP-001 a FP-010
+FP OK,10,
+FP WARN,0,
+FP FAIL,0,
+FP SKIPPED,0,
+Total alertas VR REAL incluidas,379,Filas CLIENT_EVENT en carpeta real y ventana del runner.
+Alertas VR P1,19,
+Alertas VR P2,118,
+Alertas VR P3,109,
+Alertas VR P4,133,
+Hits FP,0,summary.json / vr_hits.csv
+Wazuh base alerts,58,
+Wazuh custom alerts,110,
+Reglas Wazuh 110xxx activadas,5,110201 no activada.
+Gaps,1,110201=0 / TEC-009

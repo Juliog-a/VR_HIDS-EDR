@@ -1,3 +1,68 @@
+# Evidencias pesadas / outputs generados
+06_CONTROLLED_RERUN/OUTPUT/
+06_CONTROLLED_RERUN/_audit_tmp/
+10_WAZUH/TFM_WAZUH_VISIBILIDAD_EVIDENCE/
+# ISOs / máquinas / imágenes grandes
+*.iso
+*.vdi
+*.vmdk
+*.ova
+*.qcow2
+
+# Comprimidos pesados
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+
+# OneNote / binarios de notas
+*.one
+*.onetoc2
+
+# Evidencias y outputs pesados de ejecución
+06_CONTROLLED_RERUN/OUTPUT/
+06_CONTROLLED_RERUN/_audit_tmp/
+
+# Evidencias Wazuh pesadas
+10_WAZUH/TFM_WAZUH_VISIBILIDAD_EVIDENCE/
+10_WAZUH/ubuntu-24.04.3-live-server-amd64.iso
+
+# Logs / dumps
+*.jsonl
+*.log
+*.evtx
+*.pcap
+*.pcapng
+
+# Temporales
+*.tmp
+*.bak
+*.old
+# Binarios / comprimidos / imágenes / capturas grandes
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.vdi
+*.vmdk
+*.ova
+*.iso
+*.pcap
+*.pcapng
+*.evtx
+
+# Logs y dumps voluminosos
+*.jsonl
+*.log
+
+# Temporales
+*.tmp
+*.bak
+*.old
 .venv/.venv/
 venv/
 __pycache__/

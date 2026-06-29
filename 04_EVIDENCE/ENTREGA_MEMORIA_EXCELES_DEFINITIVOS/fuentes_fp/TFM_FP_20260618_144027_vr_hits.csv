@@ -1,0 +1,30 @@
+﻿"RunId","EventTime","MatchedByTime","MatchedByRunId","FP_ID","Profile","TEC","DetectionName","Severity","Confidence","Artifact","Source","PotentialFP","EvidenceExcerpt"
+"TFM_FP_20260618_144027","","","True","FP-001","P4","TEC-001","PowerShell suspicious execution - basic profile v2","Medium","Medium","","","FP leve/visibilidad amplia","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" -NoProfile -Command ""$ErrorActionPreference = 'Stop'
+$rid = 'TFM_FP_20260618_144027'
+$fp = 'FP-001'
+Write-Output ""$rid $fp start""
+Get-Process | Select-Object -First 5 | Out-Null
+Get-Service | Select-Object -First 5 | Out-Null
+& 'Get-ChildIt"
+"TFM_FP_20260618_144027","","","True","FP-005","P4","TEC-001","PowerShell suspicious execution - basic profile v2","Medium","Medium","","","FP leve/visibilidad amplia","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" -NoProfile -Command ""$ErrorActionPreference = 'Stop'
+$rid = 'TFM_FP_20260618_144027'
+$fp = 'FP-005'
+Get-Service | Select-Object -First 10 | Out-Null
+sc.exe query | Out-Null
+Write-Output ""$rid $fp service query ok"""""
+"TFM_FP_20260618_144027","","","True","FP-006","P4","TEC-001","PowerShell suspicious execution - basic profile v2","Medium","Medium","","","FP leve/visibilidad amplia","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" -NoProfile -Command ""$ErrorActionPreference = 'Stop'
+$rid = 'TFM_FP_20260618_144027'
+$fp = 'FP-006'
+$mp = Get-Command Get-MpComputerStatus -ErrorAction SilentlyContinue
+if ($null -ne $mp) { Get-MpComputerStatus | Out-Null }
+Get-Process -Nam"
+"TFM_FP_20260618_144027","","","True","FP-008","P4","TEC-001","PowerShell suspicious execution - basic profile v2","Medium","Medium","","","FP leve/visibilidad amplia","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" -NoProfile -Command ""$ErrorActionPreference = 'Stop'
+$rid = 'TFM_FP_20260618_144027'
+$fp = 'FP-008'
+& 'Remove-Item' -LiteralPath 'C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\FP_WORKSPACE\TFM_FP_20260618_144027\FP-008' -Recurse -F"
+"TFM_FP_20260618_144027","","","True","UNKNOWN","P2_EVENT","TEC-002","TEC-002 forensic Sysmon ID 1","MEDIUM","MEDIUM","","","FP forense relevante","""C:\Windows\system32\cmd.exe"" /c ""dir ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\FP_WORKSPACE\TFM_FP_20260618_144027"""""
+"TFM_FP_20260618_144027","","","True","FP-002","P2_EVENT","TEC-002","TEC-002 forensic Sysmon ID 1","MEDIUM","MEDIUM","","","FP forense relevante","""C:\Windows\system32\cmd.exe"" /c ""echo TFM_FP_20260618_144027 FP-002"""
+"TFM_FP_20260618_144027","","","True","FP-003","P2_EVENT","TEC-002","TEC-002 forensic Sysmon ID 1","HIGH","MEDIUM","","","FP forense relevante","""C:\Windows\system32\schtasks.exe"" /Create /TN \TFM_FP_TFM_FP_20260618_144027_FP-003 /TR ""cmd.exe /c echo TFM_FP_20260618_144027 FP-003 scheduled task ok > ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\FP_WORKSPACE\TFM_FP_20260618_144027\FP-003_scheduled_task_ok.txt"""" /SC ONCE /ST 14:45 /F"
+"TFM_FP_20260618_144027","","","True","FP-003","P2_EVENT","TEC-003","TEC-003 forensic Sysmon ID 1","HIGH","MEDIUM","","","FP forense relevante","""C:\Windows\system32\schtasks.exe"" /Run /TN \TFM_FP_TFM_FP_20260618_144027_FP-003"
+"TFM_FP_20260618_144027","","","True","FP-003","P2_EVENT","TEC-002","TEC-002 forensic Sysmon ID 1","MEDIUM","MEDIUM","","","FP forense relevante","""cmd.exe"" /c echo TFM_FP_20260618_144027 FP-003 scheduled task ok > C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\FP_WORKSPACE\TFM_FP_20260618_144027\FP-003_scheduled_task_ok.txt"
+"TFM_FP_20260618_144027","","","True","FP-003","P2_EVENT","TEC-003","TEC-003 forensic Sysmon ID 1","HIGH","MEDIUM","","","FP forense relevante","""C:\Windows\system32\schtasks.exe"" /Delete /TN \TFM_FP_TFM_FP_20260618_144027_FP-003 /F"

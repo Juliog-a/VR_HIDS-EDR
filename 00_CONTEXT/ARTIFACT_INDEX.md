@@ -24,3 +24,7 @@
 | Debug PowerShell 4104 CU009Shape | v4 | Validado experimentalmente por investigador | CLIENT para backtest; usa coexistencia estructural HTTP tool + URI + POST + InFile + application/zip y no bloquea por limpieza local |
 | P1 Critical Correlation | - | No activo | Reservado para correlacion critica final; no implementar todavia |
 | Router JSONL Discord | v3_fix3 | Funcional | Discord off |
+| Router JSONL Discord SOC | v1 | Candidate / pendiente validacion Velociraptor | SERVER_EVENT para enrutar P1/P2/P3 EVENT a JSONL y Discord opcional con formato SOC |
+| Router JSONL Discord SOC | v2 | Candidate / pendiente validacion Velociraptor | SERVER_EVENT para enrutar P1/P2/P3/P4 a JSONL y Discord opcional; corrige nombres P2/P4 y normalizacion SOC |
+| Router JSONL Discord SOC | v3 | Candidate / pendiente validacion Velociraptor | SERVER_EVENT con una source independiente por source monitorizada; apunta a P2 Event v1, P1 Critical, P3 Event y P4 v2 |
+| P1 Critical Priority Event | v1 | Recalibrado / pendiente validacion Velociraptor | P1 critico estricto; conserva artifact/source names para SOC_v3; emite solo TEC-004/005/007/008/009 fuertes |

@@ -1,0 +1,268 @@
+# Version: Event v1 candidate
+# Purpose:
+# - Low-cost live CLIENT_EVENT monitoring for TEC-001 to TEC-009.
+# - Uses watch_evtx() because CLIENT_EVENT only observes events while active.
+# - Avoids lab paths, script names and technique labels as IOC filters.
+
+name: Custom.TFM.HIDS.P1.Low.Basic.Event_v1
+description: |
+  P1 Low Basic Event v1 for live monitoring.
+
+  Activate this artifact before running the final runner. It emits simple,
+  stable signals for the nine internal techniques. TEC-009 is detected with
+  HIGH confidence from PowerShell 4104 when an HTTP upload tool and file upload
+  shape are present; Sysmon network/file events are context only.
+
+type: CLIENT_EVENT
+
+parameters:
+  - name: HostnameOverride
+    default: ""
+  - name: ClientIdOverride
+    default: ""
+  - name: PowerShellLog
+    default: 'C:/Windows/System32/Winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx'
+  - name: SysmonLog
+    default: 'C:/Windows/System32/Winevt/Logs/Microsoft-Windows-Sysmon%4Operational.evtx'
+  - name: SystemLog
+    default: 'C:/Windows/System32/Winevt/Logs/System.evtx'
+  - name: ReceiverIP
+    default: '192.168.1.129'
+  - name: ReceiverPort
+    default: 8088
+    type: int
+  - name: NoiseRegex
+    default: '(?i)(alerts\.jsonl|RouterArtifact|JSONL_WRITE_ATTEMPT|Custom\.TFM\.Debug|Get-WinEvent|UploadHttpRegex|CU009StrongCandidate|DetectionEngineeringNoiseRegex)'
+    type: regex
+  - name: WindowsScriptNoiseRegex
+    default: '(?i)(CL_Utility\.ps1|ArchiveResources\.psd1|SDIAG_|Microsoft Corporation)'
+    type: regex
+  - name: PS4104_TEC001
+    default: '(?i)(ExecutionPolicy\s+Bypass|-EncodedCommand|FromBase64String|\bIEX\b|Invoke-Expression|DownloadString)'
+    type: regex
+  - name: PS4104_TEC006
+    default: '(?i)(SecurityCenter2|AntivirusProduct|AntiSpywareProduct|Defender|WinDefend|SecurityHealthService|Get-CimInstance|Get-WmiObject|\bwmic\b)'
+    type: regex
+  - name: PS4104_TEC007
+    default: '(?i)(System\.Security\.Cryptography|Aes|CryptoStream|CreateEncryptor|Rfc2898DeriveBytes|\.aes\b)'
+    type: regex
+  - name: PS4104_TEC008
+    default: '(?is)((Get-ChildItem|gci|dir|ls).*(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse|\$_\.FullName|\$PSItem\.FullName)|(Remove-Item|del\s+|erase\s+|rmdir\s+).*(-Force|-Recurse).*(Get-ChildItem|gci|dir|ls|\$_\.FullName|\$PSItem\.FullName))'
+    type: regex
+  - name: TEC009_HTTPTool
+    default: '(?i)(Invoke-WebRequest|\biwr\b|\bwget\b|\bcurl\b|Invoke-RestMethod|WebClient|UploadFile)'
+    type: regex
+  - name: TEC009_FileUpload
+    default: '(?i)(-InFile\b|\bInFile\b|UploadFile|--upload-file|--data-binary|--form|@\S+\.zip)'
+    type: regex
+  - name: TEC009_ZipUpload
+    default: '(?i)(application/zip|\.zip\b|\bupload\b|ReceiverUrl)'
+    type: regex
+  - name: TEC009_PostSignal
+    default: '(?i)(-Method\s+POST|\bMethod\s+POST\b|\bPOST\b)'
+    type: regex
+  - name: Sysmon_TEC002
+    default: '(?i)(\bcmd(?:\.exe)?\b.*\s/c\b|\s&&\s|\s\|\|\s|cmd(?:\.exe)?.*(powershell|pwsh))'
+    type: regex
+  - name: Sysmon_TEC003
+    default: '(?i)\bschtasks(?:\.exe)?\b.*(/create|/run|/delete|/change)'
+    type: regex
+  - name: Sysmon_TEC004
+    default: '(?i)\breg(?:\.exe)?\b.*\b(add|delete)\b.*\\Software\\Microsoft\\Windows\\CurrentVersion\\(Run|RunOnce)'
+    type: regex
+  - name: Sysmon_TEC005
+    default: '(?i)\bsc(?:\.exe)?\b.*\b(create|start|delete|config)\b'
+    type: regex
+  - name: Sysmon_TEC006
+    default: '(?i)(SecurityCenter2|AntivirusProduct|WinDefend|SecurityHealthService|wmic|Get-CimInstance|Get-WmiObject)'
+    type: regex
+  - name: Sysmon_TEC009_Process
+    default: '(?is)(powershell|pwsh).*(-File|-Command).*(ReceiverUrl|EnableUpload|Invoke-WebRequest|\biwr\b|-InFile|application/zip|\.zip\b)'
+    type: regex
+  - name: PowerShellImage
+    default: '(?i)\\(powershell|pwsh)\.exe$'
+    type: regex
+
+precondition: SELECT OS FROM info() WHERE OS = "windows"
+
+sources:
+  - name: P1_EVENT_PowerShell4104_Basic
+    description: |
+      Low-cost live 4104 source for TEC-001, TEC-006, TEC-007, TEC-008 and TEC-009.
+      TEC-009 does not require Sysmon ID 3 and does not require POST as a blocker.
+    query: |
+      SELECT
+        DetectionTime,
+        Hostname,
+        ClientIdOverride AS ClientId,
+        if(condition=ScriptText =~ TEC009_HTTPTool AND ScriptText =~ TEC009_FileUpload AND ScriptText =~ TEC009_ZipUpload, then="CU-009",
+          else=if(condition=ScriptText =~ PS4104_TEC007, then="CU-007",
+          else=if(condition=ScriptText =~ PS4104_TEC008, then="CU-008",
+          else=if(condition=ScriptText =~ PS4104_TEC006, then="CU-006",
+          else="CU-001")))) AS CU_ID,
+        if(condition=ScriptText =~ TEC009_HTTPTool AND ScriptText =~ TEC009_FileUpload AND ScriptText =~ TEC009_ZipUpload, then="TEC-009",
+          else=if(condition=ScriptText =~ PS4104_TEC007, then="TEC-007",
+          else=if(condition=ScriptText =~ PS4104_TEC008, then="TEC-008",
+          else=if(condition=ScriptText =~ PS4104_TEC006, then="TEC-006",
+          else="TEC-001")))) AS ID_Tecnica_Interna,
+        if(condition=ScriptText =~ TEC009_HTTPTool AND ScriptText =~ TEC009_FileUpload AND ScriptText =~ TEC009_ZipUpload, then="T1074.001 / T1560.001 / T1048.003",
+          else=if(condition=ScriptText =~ PS4104_TEC007, then="T1486",
+          else=if(condition=ScriptText =~ PS4104_TEC008, then="T1485",
+          else=if(condition=ScriptText =~ PS4104_TEC006, then="T1518.001",
+          else="T1059.001")))) AS MITRE_ID,
+        if(condition=ScriptText =~ PS4104_TEC006, then="Discovery",
+          else=if(condition=ScriptText =~ PS4104_TEC007 OR ScriptText =~ PS4104_TEC008, then="Impact",
+          else=if(condition=ScriptText =~ TEC009_HTTPTool, then="Collection / Exfiltration", else="Execution"))) AS MITRE_Tactic,
+        "PowerShell 4104" AS SignalType,
+        if(condition=ScriptText =~ TEC009_HTTPTool, then="TEC-009 controlled HTTP ZIP upload candidate",
+          else=if(condition=ScriptText =~ PS4104_TEC007, then="TEC-007 encryption behavior",
+          else=if(condition=ScriptText =~ PS4104_TEC008, then="TEC-008 destructive deletion behavior",
+          else=if(condition=ScriptText =~ PS4104_TEC006, then="TEC-006 security software discovery",
+          else="TEC-001 PowerShell suspicious execution")))) AS AlertTitle,
+        "Low-cost live PowerShell 4104 signal for the TFM campaign." AS AlertDescription,
+        ScriptText AS Evidence,
+        "Microsoft-Windows-PowerShell/Operational" AS Source,
+        EventID,
+        if(condition=ScriptText =~ TEC009_HTTPTool AND ScriptText =~ TEC009_FileUpload AND ScriptText =~ TEC009_ZipUpload, then="HIGH",
+          else=if(condition=ScriptText =~ PS4104_TEC007 OR ScriptText =~ PS4104_TEC008 OR ScriptText =~ PS4104_TEC001, then="HIGH", else="MEDIUM")) AS Confidence,
+        if(condition=ScriptText =~ TEC009_HTTPTool OR ScriptText =~ PS4104_TEC007 OR ScriptText =~ PS4104_TEC008, then="HIGH",
+          else=if(condition=ScriptText =~ PS4104_TEC006, then="MEDIUM", else="MEDIUM")) AS Severity,
+        "Review the matching script block and correlate with runner summary and Velociraptor events." AS RecommendedAction
+      FROM foreach(row={
+        SELECT
+          System.TimeCreated.SystemTime AS DetectionTime,
+          if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+          atoi(string=System.EventID.Value) AS EventID,
+          if(condition=EventData.ScriptBlockText =~ '(?s).', then=EventData.ScriptBlockText, else=if(condition=Message =~ '(?s).', then=Message, else=serialize(item=EventData, format="json"))) AS ScriptText
+        FROM watch_evtx(filename=PowerShellLog)
+        WHERE atoi(string=System.EventID.Value) = 4104
+      })
+      WHERE (
+          ScriptText =~ PS4104_TEC001
+          OR ScriptText =~ PS4104_TEC006
+          OR ScriptText =~ PS4104_TEC007
+          OR (ScriptText =~ PS4104_TEC008 AND NOT ScriptText =~ WindowsScriptNoiseRegex)
+          OR (ScriptText =~ TEC009_HTTPTool AND ScriptText =~ TEC009_FileUpload AND ScriptText =~ TEC009_ZipUpload)
+        )
+        AND NOT ScriptText =~ NoiseRegex
+
+  - name: P1_EVENT_Sysmon_ID1_Process_Basic
+    description: |
+      Low-cost live Sysmon ID 1 process source for TEC-002 to TEC-005 and
+      process-context fallback for TEC-006/TEC-009.
+    query: |
+      SELECT
+        DetectionTime,
+        Hostname,
+        ClientIdOverride AS ClientId,
+        if(condition=CommandText =~ Sysmon_TEC002, then="CU-002",
+          else=if(condition=CommandText =~ Sysmon_TEC003, then="CU-003",
+          else=if(condition=CommandText =~ Sysmon_TEC004, then="CU-004",
+          else=if(condition=CommandText =~ Sysmon_TEC005, then="CU-005",
+          else=if(condition=CommandText =~ Sysmon_TEC006, then="CU-006", else="CU-009"))))) AS CU_ID,
+        if(condition=CommandText =~ Sysmon_TEC002, then="TEC-002",
+          else=if(condition=CommandText =~ Sysmon_TEC003, then="TEC-003",
+          else=if(condition=CommandText =~ Sysmon_TEC004, then="TEC-004",
+          else=if(condition=CommandText =~ Sysmon_TEC005, then="TEC-005",
+          else=if(condition=CommandText =~ Sysmon_TEC006, then="TEC-006", else="TEC-009"))))) AS ID_Tecnica_Interna,
+        if(condition=CommandText =~ Sysmon_TEC002, then="T1059.003",
+          else=if(condition=CommandText =~ Sysmon_TEC003, then="T1053.005",
+          else=if(condition=CommandText =~ Sysmon_TEC004, then="T1547.001",
+          else=if(condition=CommandText =~ Sysmon_TEC005, then="T1569.002",
+          else=if(condition=CommandText =~ Sysmon_TEC006, then="T1518.001", else="T1074.001 / T1560.001 / T1048.003 context"))))) AS MITRE_ID,
+        if(condition=CommandText =~ Sysmon_TEC003 OR CommandText =~ Sysmon_TEC004, then="Persistence",
+          else=if(condition=CommandText =~ Sysmon_TEC006, then="Discovery",
+          else=if(condition=CommandText =~ Sysmon_TEC009_Process, then="Collection / Exfiltration context", else="Execution"))) AS MITRE_Tactic,
+        "Sysmon ID 1" AS SignalType,
+        "P1 live process behavior candidate" AS AlertTitle,
+        "Process creation command line matched a simple campaign technique pattern." AS AlertDescription,
+        CommandText AS Evidence,
+        "Microsoft-Windows-Sysmon/Operational" AS Source,
+        EventID,
+        "MEDIUM" AS Confidence,
+        if(condition=CommandText =~ Sysmon_TEC003 OR CommandText =~ Sysmon_TEC004 OR CommandText =~ Sysmon_TEC005 OR CommandText =~ Sysmon_TEC009_Process, then="HIGH", else="MEDIUM") AS Severity,
+        "Review command line, parent process and corresponding 4104/System events." AS RecommendedAction
+      FROM foreach(row={
+        SELECT
+          System.TimeCreated.SystemTime AS DetectionTime,
+          if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+          atoi(string=System.EventID.Value) AS EventID,
+          if(condition=EventData.CommandLine =~ '(?s).', then=EventData.CommandLine, else=if(condition=Message =~ '(?s).', then=Message, else=serialize(item=EventData, format="json"))) AS CommandText
+        FROM watch_evtx(filename=SysmonLog)
+        WHERE atoi(string=System.EventID.Value) = 1
+      })
+      WHERE (
+          CommandText =~ Sysmon_TEC002
+          OR CommandText =~ Sysmon_TEC003
+          OR CommandText =~ Sysmon_TEC004
+          OR CommandText =~ Sysmon_TEC005
+          OR CommandText =~ Sysmon_TEC006
+          OR CommandText =~ Sysmon_TEC009_Process
+        )
+        AND NOT CommandText =~ NoiseRegex
+
+  - name: P1_EVENT_System7045_ServiceCreation
+    description: |
+      Low-cost live System 7045 source for TEC-005 service creation.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+        ClientIdOverride AS ClientId,
+        "CU-005" AS CU_ID,
+        "TEC-005" AS ID_Tecnica_Interna,
+        "T1569.002" AS MITRE_ID,
+        "Execution" AS MITRE_Tactic,
+        "System 7045" AS SignalType,
+        "TEC-005 service creation" AS AlertTitle,
+        "System log reports a service installation." AS AlertDescription,
+        serialize(item=EventData, format="json") AS Evidence,
+        "System" AS Source,
+        atoi(string=System.EventID.Value) AS EventID,
+        "HIGH" AS Confidence,
+        "HIGH" AS Severity,
+        "Review service name, ImagePath and account." AS RecommendedAction
+      FROM watch_evtx(filename=SystemLog)
+      WHERE atoi(string=System.EventID.Value) = 7045
+
+  - name: P1_EVENT_TEC009_Sysmon_Context
+    description: |
+      Optional TEC-009 live context from Sysmon ID 3 and ID 11.
+      Network or ZIP context must not be treated as mandatory if 4104 strong exists.
+    query: |
+      SELECT
+        System.TimeCreated.SystemTime AS DetectionTime,
+        if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+        ClientIdOverride AS ClientId,
+        "CU-009" AS CU_ID,
+        "TEC-009" AS ID_Tecnica_Interna,
+        "T1048.003 / T1560.001 context" AS MITRE_ID,
+        "Exfiltration / Collection context" AS MITRE_Tactic,
+        if(condition=EventID = 3, then="Sysmon ID 3", else="Sysmon ID 11") AS SignalType,
+        "TEC-009 optional Sysmon context" AS AlertTitle,
+        "Receiver network connection or ZIP file creation observed. This supports but does not replace 4104 detection." AS AlertDescription,
+        serialize(item=EventData, format="json") AS Evidence,
+        "Microsoft-Windows-Sysmon/Operational" AS Source,
+        EventID,
+        "MEDIUM" AS Confidence,
+        "HIGH" AS Severity,
+        "Correlate with PowerShell 4104 upload evidence and runner summary." AS RecommendedAction
+      FROM foreach(row={
+        SELECT
+          System.TimeCreated.SystemTime AS DetectionTime,
+          if(condition=HostnameOverride =~ '(?s).+', then=HostnameOverride, else=System.Computer) AS Hostname,
+          atoi(string=System.EventID.Value) AS EventID,
+          EventData
+        FROM watch_evtx(filename=SysmonLog)
+        WHERE atoi(string=System.EventID.Value) = 3 OR atoi(string=System.EventID.Value) = 11
+      })
+      WHERE (
+          EventID = 3
+          AND EventData.Image =~ PowerShellImage
+          AND EventData.DestinationIp = ReceiverIP
+          AND atoi(string=EventData.DestinationPort) = ReceiverPort
+        )
+        OR (
+          EventID = 11
+          AND EventData.TargetFilename =~ '(?i)\.zip\b'
+        )

@@ -1,0 +1,20 @@
+VR_RESOURCE_BENCHMARK - VALIDACION DE DATOS
+
+Estado global: NO_VALIDO_PARA_CONCLUSIONES_DEFINITIVAS_DE_RENDIMIENTO
+Fecha generacion: 2026-06-18T19:52:24.4124504+02:00
+Excel principal: C:\Users\julio\Desktop\TFM\05_LOGS\BENCHMARKS\validado\VR_RESOURCE_BENCHMARK_VALIDACION_DATOS.xlsx
+Copia compatible: C:\Users\julio\Desktop\TFM\05_LOGS\BENCHMARKS\validado\VR_RESOURCE_BENCHMARK.xlsx
+Hojas XLSX: 8
+Graficas XLSX: 4
+
+Resumen:
+- Se localizaron los tres escenarios esperados.
+- Los tres summary.json usan SchemaVersion 1.0.
+- VR_IDLE y VR_TEC_RUNNER tienen ServiceStatus=Stopped.
+- No se observo CLIENT_SERVICE en process_samples.csv.
+- Se observaron falsos matches notepad por command line con la palabra Velociraptor.
+- El binario de laboratorio/server queda separado y excluido de metricas del agente.
+
+Decision:
+- No usar estos datos para afirmar consumo CPU/RAM definitivo del agente HIDS.
+- Repetir benchmark con script corregido y verificar CLIENT_SERVICE.

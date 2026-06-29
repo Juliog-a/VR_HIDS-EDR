@@ -2,68 +2,46 @@
 
 ## Resumen
 
-Cierre formal de la iteracion de artifacts historicos documentado en:
+Cierre formal documentado en:
 
-- `00_CONTEXT/SESSION_LOGS/session_20260612_1418.md`
+- `00_CONTEXT/SESSION_LOGS/session_20260626_1302.md`
 
-Trabajo principal:
+## Estado
 
-- Rehacer P1/P2/P3 como artifacts `CLIENT` de backtesting con `parse_evtx()`.
-- Priorizar TEC-009 por PowerShell 4104 fuerte.
-- Cubrir 9/9 tecnicas TEC-001 a TEC-009.
-- Crear debug RAW para confirmar lectura EVTX.
-- Crear paquete `ultima_iteracion_artifacts`.
+- Excel final de benchmark de rendimiento de Velociraptor generado.
+- Precheck: APTO.
+- 3 escenarios presentes: `BASELINE_NO_VR`, `VR_IDLE`, `VR_TEC_RUNNER`.
+- 3 repeticiones por escenario.
+- 9/9 runs validos.
+- `SERVER_GUI` excluido del calculo principal.
+- `notepad.exe` runner: 0.
+- `RunnerStillRunningAtEnd=True` conservado como WARN no bloqueante.
 
-## Cambios realizados
+## Entregables nuevos
 
-- Creados:
-  - `01_ARTIFACTS/candidate/Custom.TFM.HIDS.P1.Low.Basic_v3.yaml`
-  - `01_ARTIFACTS/candidate/Custom.TFM.HIDS.P2.High.Forensic_v2.yaml`
-  - `01_ARTIFACTS/candidate/Custom.TFM.HIDS.P3.Medium.Behavioral_v12.yaml`
-  - `01_ARTIFACTS/debug/Custom.TFM.Debug.Raw.PowerShell4104.LastHours.yaml`
-  - `01_ARTIFACTS/debug/Custom.TFM.Debug.Raw.Sysmon.ID1_3_11.LastHours.yaml`
+- `08_MEMORIA/Excel_benchmark/TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_FINAL_26062026.xlsx`
+- `08_MEMORIA/Excel_benchmark/TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_FINAL_26062026_AUDIT.md`
+- `08_MEMORIA/Excel_benchmark/TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_FINAL_26062026_DATA_QUALITY.json`
+- Copias y normalizados en `04_EVIDENCE/Excel_benchmark_26062026`.
+- Contexto:
+  `00_CONTEXT/CONTEXT_ESTADO_BENCHMARK_26062026.md`
 
-- Creados dentro de `ultima_iteracion_artifacts`:
-  - `artifacts_finales`
-  - `artifacts_debug`
-  - `backups_artifacts_previos`
-  - `analisis`
-  - `hashes`
-  - `README_ARTIFACTS_FINALES.txt`
+## Verificacion
 
-- Creado ZIP final:
-  - `ultima_iteracion_artifacts.zip`
-  - SHA256: `8247413CA455681AF4007EF33FFA89040A4955885028276B50E7F2DCE773365A`
+- Apertura/guardado Excel COM: OK.
+- Hojas obligatorias: 11/11.
+- Graficas nativas en `GRAFICAS`: 6.
+- Errores de formula: 0.
+- Fuentes con SHA-256: True.
+- SHA-256 XLSX:
+  `AEB8835BAD0B2A8D015D399DDA11A2CD475B3F320750ABD333750026456A36EC`
 
-## Bugs/problemas encontrados
+## Advertencias
 
-- `00_CONTEXT/TEST_MATRIX.md` no existe.
-- P2/P3 previos eran live (`CLIENT_EVENT` + `watch_evtx()`), no aptos para backtesting de campana ya ejecutada.
-- P3_v11 no cubria TEC-007/008/009 como deteccion fuerte.
-- No se pudo compilar VQL localmente por ausencia de binario Velociraptor.
-- No se pudo parsear YAML con parser local por ausencia de dependencias.
+- `RunnerStillRunningAtEnd=True` aparece en los 3 runs `VR_TEC_RUNNER`; no bloquea el benchmark.
+- Las metricas CPU/RAM son relativas al laboratorio Windows 10 virtualizado.
+- El Excel benchmark no mide deteccion, alerta, evidencia ni falsos positivos.
 
-## Validacion realizada
+## Proximo paso
 
-- Validacion estructural local OK:
-  - `type: CLIENT`;
-  - `parse_evtx()`;
-  - sin consultas `watch_evtx()`;
-  - sin `Generic.Events.TrackNetworkConnections`;
-  - sin tabuladores;
-  - claves `name`, `parameters`, `sources`, `query`.
-
-## Validacion pendiente
-
-- Importar artifacts en Velociraptor.
-- Ejecutar debug RAW 4104 y Sysmon.
-- Ejecutar P1/P2/P3 con `LookbackHours=2`, `ReceiverIP=192.168.1.129`, `ReceiverPort=8088`.
-- Confirmar TEC-009 por P3 4104 aunque no aparezca red.
-- Confirmar TEC-007/008 por 4104 fuerte aunque falten Sysmon ID 11 o 23/26.
-
-## Estado final
-
-- Artifacts candidate creados.
-- Artifacts previos respaldados.
-- Runner, scripts de ataque, receiver, router y Discord no modificados.
-- Validacion experimental pendiente por el autor.
+Revision manual del autor y uso de `RESUMEN_EJECUTIVO`, `RESUMEN_ESCENARIO`, `GRAFICAS`, `CALIDAD_DATOS` y `LIMITACIONES` para Capitulo VII.

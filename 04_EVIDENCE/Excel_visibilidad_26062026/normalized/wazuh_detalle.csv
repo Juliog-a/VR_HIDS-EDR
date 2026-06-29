@@ -1,0 +1,8 @@
+rule_id,severidad,descripcion,tecnica,MITRE,eventos_alertas,limitaciones
+110201,15,TFM P1 TEC-009 posible exfiltracion HTTP ZIP mediante PowerShell,TEC-009,T1048.003 / T1560.001,0,0 alertas; gap TEC-009.
+110202,14,TFM P1 TEC-008 borrado destructivo mediante PowerShell,TEC-008,T1485,5,
+110203,15,TFM P1 TEC-007 comportamiento de cifrado mediante PowerShell,TEC-007,T1486,4,
+110301,10,TFM P2 PowerShell sospechoso detectado en ScriptBlock 4104,TEC-001,T1059.001,2,
+110401,8,TFM P3 posible persistencia Run Key mediante Sysmon,TEC-004,T1547.001,0,0 alertas en resumen 110xxx.
+110402,8,TFM P3 instalacion de servicio Windows,TEC-005,T1569.002,1,
+110501,5,TFM P4 ejecucion de PowerShell observada por Sysmon,TEC-001/007,T1059.001,44,Regla de baja prioridad; puede generar ruido.

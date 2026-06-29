@@ -1,0 +1,16 @@
+﻿VR_RESOURCE_BENCHMARK
+
+Estado: DATOS_PARCIALES_O_LEGACY
+Fecha: 2026-06-18T18:59:14.4853310+02:00
+Excel: C:\Users\julio\Desktop\TFM\VR_RESOURCE_BENCHMARK.xlsx
+Hojas detectadas: 9
+Graficas detectadas en paquete: 0
+
+Summary JSON importados: 3
+Samples importadas: 957
+Process samples importadas: 697
+
+Nota: las ejecuciones legacy/parciales no se usan para conclusiones del agente cliente.
+
+Advertencias:
+- Ruta VM no disponible desde host; no se consulta: C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\Logs_Pruebas_TFM\BENCHMARKS

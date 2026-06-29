@@ -1,0 +1,2 @@
+RunId,EventTime,MatchedByTime,MatchedByRunId,FP_ID,Profile,TEC,DetectionName,Severity,Confidence,Artifact,Source,PotentialFP,EvidenceExcerpt
+TFM_FP_20260626_101948,,,,RESUMEN,,,SIN_HITS,,,,,NO,TotalHits=0 en summary.json y vr_hits.csv sin filas de datos.

@@ -1,0 +1,9 @@
+fuente,TEC-001,TEC-002,TEC-003,TEC-004,TEC-005,TEC-006,TEC-007,TEC-008,TEC-009,observaciones
+Sysmon ID 1,38,214,30,32,10,14,0,2,6,
+Sysmon ID 3,0,0,0,0,0,0,0,0,8,
+Sysmon ID 11,0,0,0,0,0,0,0,0,0,
+Sysmon ID 12/13/14,0,0,0,5,0,0,0,0,0,
+Sysmon ID 26,0,0,0,0,0,0,0,0,0,Evidencia forense; no alerta individual.
+PowerShell 4104,4,0,0,0,0,4,5,2,1,
+System 7045,0,0,0,0,4,0,0,0,0,
+receiver HTTP,0,0,0,0,0,0,0,0,1,

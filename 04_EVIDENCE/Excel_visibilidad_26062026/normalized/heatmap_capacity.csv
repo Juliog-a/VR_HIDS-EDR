@@ -1,0 +1,8 @@
+capacidad,VR_custom,Wazuh_base,Wazuh_custom
+PowerShell 4104,2,1,2
+Sysmon ID 1,2,1,2
+Sysmon ID 11,0,1,1
+System 7045,2,0,2
+TEC-009,1,0,0
+Salida externa,0,1,1
+Ruido/FP,2,1,1

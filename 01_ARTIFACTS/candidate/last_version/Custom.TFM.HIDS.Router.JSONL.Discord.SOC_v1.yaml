@@ -1,0 +1,258 @@
+﻿# Version: SOC_v1 candidate
+# Purpose:
+# - SERVER_EVENT router for final TFM P1/P2/P3 EVENT alerts.
+# - Routes already generated CLIENT_EVENT alerts to JSONL and optional Discord.
+# - This artifact does not detect; it only enriches, persists and notifies.
+# - Discord webhook is intentionally empty and must be provided at deployment.
+
+name: Custom.TFM.HIDS.Router.JSONL.Discord.SOC_v1
+description: |
+  SOC-style SERVER_EVENT router for the TFM Velociraptor HIDS/DFIR final EVENT iteration.
+
+  Function:
+  - Listen to P3 EVENT v1 alert sources by default.
+  - Optionally listen to P1 EVENT and P2 EVENT for fallback/forensic context.
+  - Normalize every row into a SOC alert schema.
+  - Persist normalized alerts to JSONL.
+  - Optionally send Discord webhook notifications with SOC-oriented fields.
+
+  Important:
+  - CLIENT_EVENT artifacts detect.
+  - This SERVER_EVENT artifact routes, enriches, persists and notifies only.
+  - JSONL and Discord are outputs, not detection evidence by themselves.
+
+required_permissions:
+  - EXECVE
+
+type: SERVER_EVENT
+
+parameters:
+  - name: EnableP3
+    type: bool
+    default: true
+    description: "Route P3 Medium Behavioral EVENT v1 alert sources."
+
+  - name: EnableP1
+    type: bool
+    default: true
+    description: "Route P1 Low Basic EVENT v1 fallback sources. Useful for TEC-009 4104 fallback."
+
+  - name: EnableP2
+    type: bool
+    default: false
+    description: "Route P2 High Forensic EVENT v1 sources. Can be noisy; disabled by default."
+
+  - name: EnableJSONL
+    type: bool
+    default: true
+
+  - name: JsonlPath
+    default: '\\VBOXSVR\Carpeta_Compartida_TFM\inbox\soc_alerts.jsonl'
+
+  - name: EnableDiscord
+    type: bool
+    default: false
+
+  - name: DiscordWebhook
+    default: ''
+    description: "Paste the Discord webhook URL only when deploying/running this artifact."
+
+  - name: DiscordUsername
+    default: 'TFM Velociraptor SOC'
+
+  - name: DiscordFooter
+    default: 'TFM Velociraptor HIDS/DFIR - SERVER_EVENT router'
+
+  - name: SeverityRegex
+    type: regex
+    default: '(?i)(Critical|High|Medium)'
+
+  - name: ConfidenceRegex
+    type: regex
+    default: '(?i)(HIGH|High|MEDIUM|Medium)'
+
+  - name: IncludeContextOnly
+    type: bool
+    default: true
+    description: "Keep MEDIUM context rows such as Sysmon ID 3/11. Disable for cleaner Discord."
+
+  - name: ExcludeRouterSelfEvents
+    type: bool
+    default: true
+
+  - name: RouterSelfEventRegex
+    type: regex
+    default: '(?i)(alerts\.jsonl|soc_alerts\.jsonl|FromBase64String|Add-Content|RouterArtifact|JSONL_WRITE_ATTEMPT|DISCORD_POST_ATTEMPT|Carpeta_Compartida_TFM|Invoke-RestMethod.+webhook)'
+
+sources:
+  - name: Route_SOC_Alerts_JSONL_Discord
+    description: |
+      Normalize final P1/P2/P3 EVENT alerts into SOC schema, write JSONL and
+      optionally send Discord webhook notifications.
+    query: |
+      SELECT * FROM foreach(
+        row={
+          SELECT
+            RouterTime,
+            "SOC_ALERT" AS RouteType,
+            RouterProfile,
+            SourceArtifact,
+            DetectionTime,
+            ClientId,
+            Hostname,
+            CU_ID,
+            ID_Tecnica_Interna,
+            MITRE_ID,
+            MITRE_Tactic,
+            SignalType,
+            AlertTitle,
+            AlertDescription,
+            Evidence,
+            Source,
+            EventID,
+            Confidence,
+            Severity,
+            if(condition=Severity =~ '(?i)Critical', then=100,
+              else=if(condition=Severity =~ '(?i)High', then=80,
+              else=if(condition=Severity =~ '(?i)Medium', then=50, else=25))) AS SeverityScore,
+            if(condition=Confidence =~ '(?i)HIGH', then=90,
+              else=if(condition=Confidence =~ '(?i)MEDIUM', then=60, else=30)) AS ConfidenceScore,
+            if(condition=SignalType =~ '(?i)4104', then="PowerShell script block behavior",
+              else=if(condition=SignalType =~ '(?i)Sysmon ID 1', then="Process creation behavior",
+              else=if(condition=SignalType =~ '(?i)Sysmon ID 3', then="Network connection behavior",
+              else=if(condition=SignalType =~ '(?i)Sysmon ID 11', then="File creation behavior",
+              else=if(condition=SignalType =~ '(?i)7045', then="Service creation behavior", else="Host telemetry behavior"))))) AS IOA_Type,
+            if(condition=Evidence =~ '(?s).+', then=Evidence, else=AlertDescription) AS IOA_Evidence,
+            if(condition=Evidence =~ '(?i)(https?://|\\\\|[A-Z]:\\|\.zip|\.aes|\.exe|\.ps1|192\.168\.|8088)', then=Evidence, else="No atomic IOC; behavioral IOA") AS IOC_Evidence,
+            if(condition=RecommendedAction =~ '(?s).+', then=RecommendedAction, else="Review source telemetry, validate with campaign summary and preserve evidence.") AS RecommendedAction,
+            EvidenceRole,
+            DetectionLogic,
+            base64encode(string=serialize(format="json", item=dict(
+              Schema="TFM_SOC_ALERT_v1",
+              RouterTime=RouterTime,
+              RouteType="SOC_ALERT",
+              RouterProfile=RouterProfile,
+              SourceArtifact=SourceArtifact,
+              DetectionTime=DetectionTime,
+              ClientId=ClientId,
+              Hostname=Hostname,
+              CU_ID=CU_ID,
+              ID_Tecnica_Interna=ID_Tecnica_Interna,
+              MITRE_ID=MITRE_ID,
+              MITRE_Tactic=MITRE_Tactic,
+              SignalType=SignalType,
+              AlertTitle=AlertTitle,
+              AlertDescription=AlertDescription,
+              Severity=Severity,
+              SeverityScore=if(condition=Severity =~ '(?i)Critical', then=100,
+                else=if(condition=Severity =~ '(?i)High', then=80,
+                else=if(condition=Severity =~ '(?i)Medium', then=50, else=25))),
+              Confidence=Confidence,
+              ConfidenceScore=if(condition=Confidence =~ '(?i)HIGH', then=90,
+                else=if(condition=Confidence =~ '(?i)MEDIUM', then=60, else=30)),
+              EventID=EventID,
+              Source=Source,
+              IOA_Type=if(condition=SignalType =~ '(?i)4104', then="PowerShell script block behavior",
+                else=if(condition=SignalType =~ '(?i)Sysmon ID 1', then="Process creation behavior",
+                else=if(condition=SignalType =~ '(?i)Sysmon ID 3', then="Network connection behavior",
+                else=if(condition=SignalType =~ '(?i)Sysmon ID 11', then="File creation behavior",
+                else=if(condition=SignalType =~ '(?i)7045', then="Service creation behavior", else="Host telemetry behavior"))))),
+              IOA=if(condition=Evidence =~ '(?s).+', then=Evidence, else=AlertDescription),
+              IOC=if(condition=Evidence =~ '(?i)(https?://|\\\\|[A-Z]:\\|\.zip|\.aes|\.exe|\.ps1|192\.168\.|8088)', then=Evidence, else="No atomic IOC; behavioral IOA"),
+              Evidence=Evidence,
+              EvidenceRole=EvidenceRole,
+              DetectionLogic=DetectionLogic,
+              RecommendedAction=if(condition=RecommendedAction =~ '(?s).+', then=RecommendedAction, else="Review source telemetry, validate with campaign summary and preserve evidence."),
+              RouterArtifact="Custom.TFM.HIDS.Router.JSONL.Discord.SOC_v1"
+            ))) AS AlertB64
+          FROM chain(
+            p3_001={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC001_PowerShell_4104" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC001_PowerShell_4104") WHERE EnableP3 },
+            p3_002={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC002_CMD_Sysmon" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC002_CMD_Sysmon") WHERE EnableP3 },
+            p3_003={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC003_ScheduledTask_Sysmon" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC003_ScheduledTask_Sysmon") WHERE EnableP3 },
+            p3_004={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC004_RunKey_Sysmon" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC004_RunKey_Sysmon") WHERE EnableP3 },
+            p3_005={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC005_Service_System7045" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC005_Service_System7045") WHERE EnableP3 },
+            p3_006a={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC006_SecuritySoftwareDiscovery_4104" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC006_SecuritySoftwareDiscovery_4104") WHERE EnableP3 },
+            p3_006b={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC006_SecuritySoftwareDiscovery_Sysmon" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC006_SecuritySoftwareDiscovery_Sysmon") WHERE EnableP3 },
+            p3_007={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC007_DataEncryptedForImpact_4104" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC007_DataEncryptedForImpact_4104") WHERE EnableP3 },
+            p3_008={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC008_DataDestruction_4104" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC008_DataDestruction_4104") WHERE EnableP3 },
+            p3_009a={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC009_HTTP_ZIP_Upload_4104" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC009_HTTP_ZIP_Upload_4104") WHERE EnableP3 },
+            p3_009b={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC009_HTTP_Upload_Sysmon_Process_Context" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC009_HTTP_Upload_Sysmon_Process_Context") WHERE EnableP3 },
+            p3_009c={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC009_HTTP_Network_Sysmon_Context" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC009_HTTP_Network_Sysmon_Context") WHERE EnableP3 },
+            p3_009d={ SELECT timestamp(epoch=now()) AS RouterTime, "P3_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC009_ZIP_FileCreate_Sysmon_Context" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1/TEC009_ZIP_FileCreate_Sysmon_Context") WHERE EnableP3 },
+
+            p1_4104={ SELECT timestamp(epoch=now()) AS RouterTime, "P1_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P1.Low.Basic.Event_v1/P1_EVENT_PowerShell4104_Basic" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P1.Low.Basic.Event_v1/P1_EVENT_PowerShell4104_Basic") WHERE EnableP1 },
+            p1_sysmon={ SELECT timestamp(epoch=now()) AS RouterTime, "P1_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P1.Low.Basic.Event_v1/P1_EVENT_Sysmon_ID1_Process_Basic" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P1.Low.Basic.Event_v1/P1_EVENT_Sysmon_ID1_Process_Basic") WHERE EnableP1 },
+            p1_system={ SELECT timestamp(epoch=now()) AS RouterTime, "P1_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P1.Low.Basic.Event_v1/P1_EVENT_System7045_ServiceCreation" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P1.Low.Basic.Event_v1/P1_EVENT_System7045_ServiceCreation") WHERE EnableP1 },
+            p1_009={ SELECT timestamp(epoch=now()) AS RouterTime, "P1_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P1.Low.Basic.Event_v1/P1_EVENT_TEC009_Sysmon_Context" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, AlertTitle, AlertDescription, Evidence, Source, EventID, Confidence, Severity, RecommendedAction, "" AS EvidenceRole, "" AS DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P1.Low.Basic.Event_v1/P1_EVENT_TEC009_Sysmon_Context") WHERE EnableP1 },
+
+            p2_4104={ SELECT timestamp(epoch=now()) AS RouterTime, "P2_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P2.High.Forensic.Event_v1/Forensic_EVENT_PowerShell4104_Strong_By_Technique" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, "P2 forensic PowerShell 4104 candidate" AS AlertTitle, DetectionLogic AS AlertDescription, Evidence, DetectionSource AS Source, EventID, Confidence, Severity, "Review forensic fields, ScriptBlockId, EventDataJSON and SystemJSON before escalation." AS RecommendedAction, EvidenceRole, DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P2.High.Forensic.Event_v1/Forensic_EVENT_PowerShell4104_Strong_By_Technique") WHERE EnableP2 },
+            p2_sysmon={ SELECT timestamp(epoch=now()) AS RouterTime, "P2_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P2.High.Forensic.Event_v1/Forensic_EVENT_Sysmon_ID1_Process_By_Technique" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, "P2 forensic Sysmon process candidate" AS AlertTitle, DetectionLogic AS AlertDescription, Evidence, DetectionSource AS Source, EventID, Confidence, Severity, "Review process tree, parent command line and related 4104 evidence." AS RecommendedAction, EvidenceRole, DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P2.High.Forensic.Event_v1/Forensic_EVENT_Sysmon_ID1_Process_By_Technique") WHERE EnableP2 },
+            p2_system={ SELECT timestamp(epoch=now()) AS RouterTime, "P2_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P2.High.Forensic.Event_v1/Forensic_EVENT_System_7045_ServiceCreation" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, "P2 forensic service creation candidate" AS AlertTitle, DetectionLogic AS AlertDescription, Evidence, DetectionSource AS Source, EventID, Confidence, Severity, "Review service name, ImagePath, account and lifecycle." AS RecommendedAction, EvidenceRole, DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P2.High.Forensic.Event_v1/Forensic_EVENT_System_7045_ServiceCreation") WHERE EnableP2 },
+            p2_context={ SELECT timestamp(epoch=now()) AS RouterTime, "P2_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P2.High.Forensic.Event_v1/Forensic_EVENT_Sysmon_Registry_File_Network_Context" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, "P2 forensic Sysmon context candidate" AS AlertTitle, DetectionLogic AS AlertDescription, Evidence, DetectionSource AS Source, EventID, Confidence, Severity, "Use as enrichment/context and correlate with primary detection rows." AS RecommendedAction, EvidenceRole, DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P2.High.Forensic.Event_v1/Forensic_EVENT_Sysmon_Registry_File_Network_Context") WHERE EnableP2 },
+            p2_security={ SELECT timestamp(epoch=now()) AS RouterTime, "P2_EVENT" AS RouterProfile, "Custom.TFM.HIDS.P2.High.Forensic.Event_v1/Forensic_EVENT_Security_ScheduledTask_Optional" AS SourceArtifact, DetectionTime, ClientId, Hostname, CU_ID, ID_Tecnica_Interna, MITRE_ID, MITRE_Tactic, SignalType, "P2 forensic Security scheduled task candidate" AS AlertTitle, DetectionLogic AS AlertDescription, Evidence, DetectionSource AS Source, EventID, Confidence, Severity, "Use if Security audit events are enabled; correlate with Sysmon schtasks rows." AS RecommendedAction, EvidenceRole, DetectionLogic FROM watch_monitoring(artifact="Custom.TFM.HIDS.P2.High.Forensic.Event_v1/Forensic_EVENT_Security_ScheduledTask_Optional") WHERE EnableP2 }
+          )
+          WHERE Severity =~ SeverityRegex
+            AND Confidence =~ ConfidenceRegex
+            AND (IncludeContextOnly OR NOT AlertTitle =~ '(?i)context')
+            AND NOT (ExcludeRouterSelfEvents AND Evidence =~ RouterSelfEventRegex)
+        },
+        query={
+          SELECT * FROM chain(
+            jsonl={
+              SELECT
+                "JSONL_WRITE_ATTEMPT" AS Sink,
+                JsonlPath AS Destination,
+                ReturnCode,
+                Stdout,
+                Stderr,
+                CU_ID,
+                ID_Tecnica_Interna,
+                MITRE_ID,
+                Severity,
+                Confidence,
+                RouterProfile,
+                SourceArtifact
+              FROM execve(argv=[
+                "powershell.exe",
+                "-NoProfile",
+                "-NonInteractive",
+                "-ExecutionPolicy", "Bypass",
+                "-Command",
+                "& { param([string]$p,[string]$b64) $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $compact=($json | ConvertFrom-Json | ConvertTo-Json -Compress -Depth 20); $d=Split-Path -Parent $p; if (!(Test-Path -LiteralPath $d)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }; Add-Content -LiteralPath $p -Value $compact -Encoding UTF8 }",
+                JsonlPath,
+                AlertB64
+              ])
+              WHERE EnableJSONL
+            },
+            discord={
+              SELECT
+                "DISCORD_POST_ATTEMPT" AS Sink,
+                ReturnCode,
+                Stdout,
+                Stderr,
+                CU_ID,
+                ID_Tecnica_Interna,
+                MITRE_ID,
+                Severity,
+                Confidence,
+                RouterProfile,
+                SourceArtifact
+              FROM execve(argv=[
+                "powershell.exe",
+                "-NoProfile",
+                "-NonInteractive",
+                "-ExecutionPolicy", "Bypass",
+                "-Command",
+                "& { param([string]$w,[string]$b64,[string]$u,[string]$footer) if ([string]::IsNullOrWhiteSpace($w)) { exit 0 }; $json=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($b64)); $a=$json | ConvertFrom-Json; $sev=[string]$a.Severity; $color=16753920; if($sev -match 'Critical'){ $color=10038562 } elseif($sev -match 'High'){ $color=15158332 } elseif($sev -match 'Medium'){ $color=16753920 } else { $color=5793266 }; $ioa=[string]$a.IOA; if($ioa.Length -gt 900){ $ioa=$ioa.Substring(0,900)+'...' }; $ioc=[string]$a.IOC; if($ioc.Length -gt 900){ $ioc=$ioc.Substring(0,900)+'...' }; $title='['+$sev+'] '+[string]$a.CU_ID+' '+[string]$a.ID_Tecnica_Interna+' - '+[string]$a.AlertTitle; if($title.Length -gt 250){ $title=$title.Substring(0,250) }; $fields=@(@{name='Tiempo deteccion'; value=[string]$a.DetectionTime; inline=$true},@{name='Host / Client'; value=([string]$a.Hostname+' / '+[string]$a.ClientId); inline=$true},@{name='CU / Tecnica'; value=([string]$a.CU_ID+' / '+[string]$a.ID_Tecnica_Interna); inline=$true},@{name='MITRE'; value=([string]$a.MITRE_ID+' - '+[string]$a.MITRE_Tactic); inline=$true},@{name='Severidad / Confianza'; value=([string]$a.Severity+' / '+[string]$a.Confidence); inline=$true},@{name='Fuente'; value=([string]$a.SignalType+' / EventID '+[string]$a.EventID); inline=$true},@{name='Artifact'; value=[string]$a.SourceArtifact; inline=$false},@{name='IOA'; value=$ioa; inline=$false},@{name='IOC / Evidencia'; value=$ioc; inline=$false},@{name='Accion recomendada'; value=[string]$a.RecommendedAction; inline=$false}); $embed=[ordered]@{title=$title; description=[string]$a.AlertDescription; color=$color; fields=$fields; footer=@{text=$footer}; timestamp=(Get-Date).ToUniversalTime().ToString('o')}; $payload=[ordered]@{username=$u; embeds=@($embed)}; $body=$payload | ConvertTo-Json -Depth 12 -Compress; Invoke-RestMethod -Uri $w -Method Post -ContentType 'application/json' -Body $body | Out-Null }",
+                DiscordWebhook,
+                AlertB64,
+                DiscordUsername,
+                DiscordFooter
+              ])
+              WHERE EnableDiscord
+                AND DiscordWebhook =~ '(?i)^https://'
+            }
+          )
+        }
+      )
+

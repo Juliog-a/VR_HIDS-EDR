@@ -348,3 +348,27 @@ Interpretación:
 - Validacion pendiente:
   - ejecutar pruebas unitarias TEC-007 y TEC-009 en VM.
   - ejecutar campana completa v4 en VM con receiver activo.
+
+## Campaña TEC_20260619_FINAL01
+
+Estado: `NO APTA` como campaña canónica final.
+
+Evidencia existente comunicada por el autor:
+
+- TEC-001..TEC-009 ejecutadas.
+- Receiver TEC-009 alcanzable.
+- HTTP 200.
+- `UploadSucceeded=True`.
+- ZIP origen:
+  `C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\staging_controlled\tec009_controlled_archive.zip`.
+- SHA-256 origen:
+  `e50dff5188761c1b94ab0b94a7eb4a3ddec1715acc9c6bc854e0e942ab5e6f84`.
+- PowerShell 4104 comunicado: 49 eventos.
+
+Limitación bloqueante:
+
+- `ArgumentException: Los tipos de argumentos no coinciden` durante conversión
+  de listas en Windows PowerShell 5.1.
+- No existe summary global final.
+- La transferencia se conserva como evidencia diagnóstica, no como resultado
+  final de campaña.

@@ -1,0 +1,139 @@
+﻿{
+    "RunId":  "TFM_FP_20260618_144027",
+    "GeneratedAt":  "2026-06-18T15:02:52.6060233+02:00",
+    "Scope":  "Reconstruccion de evidencias FP a partir de ficheros locales y agregado manual comunicado",
+    "RunnerExecution":  {
+                            "OK":  9,
+                            "WARN":  0,
+                            "FAIL":  0,
+                            "SKIPPED":  1,
+                            "FailedPhase":  "Postproceso previo a fix v1.1",
+                            "FailedPhaseDetails":  "lectura soc_alerts.jsonl / filtrado / summary / vr_hits"
+                        },
+    "RunIdMatchedLocalHits":  {
+                                  "Total":  10,
+                                  "ByProfile":  [
+                                                    {
+                                                        "Name":  "P2_EVENT",
+                                                        "Count":  6
+                                                    },
+                                                    {
+                                                        "Name":  "P4",
+                                                        "Count":  4
+                                                    }
+                                                ],
+                                  "ByFP_ID":  [
+                                                  {
+                                                      "Name":  "FP-003",
+                                                      "Count":  4
+                                                  },
+                                                  {
+                                                      "Name":  "UNKNOWN",
+                                                      "Count":  1
+                                                  },
+                                                  {
+                                                      "Name":  "FP-002",
+                                                      "Count":  1
+                                                  },
+                                                  {
+                                                      "Name":  "FP-001",
+                                                      "Count":  1
+                                                  },
+                                                  {
+                                                      "Name":  "FP-005",
+                                                      "Count":  1
+                                                  },
+                                                  {
+                                                      "Name":  "FP-006",
+                                                      "Count":  1
+                                                  },
+                                                  {
+                                                      "Name":  "FP-008",
+                                                      "Count":  1
+                                                  }
+                                              ],
+                                  "ByDetectionName":  [
+                                                          {
+                                                              "Name":  "TEC-002 forensic Sysmon ID 1",
+                                                              "Count":  4
+                                                          },
+                                                          {
+                                                              "Name":  "PowerShell suspicious execution - basic profile v2",
+                                                              "Count":  4
+                                                          },
+                                                          {
+                                                              "Name":  "TEC-003 forensic Sysmon ID 1",
+                                                              "Count":  2
+                                                          }
+                                                      ]
+                              },
+    "CampaignAggregateCommunicated":  {
+                                          "TotalAlerts":  29,
+                                          "ByProfile":  [
+                                                            {
+                                                                "Name":  "P2_EVENT",
+                                                                "Count":  16
+                                                            },
+                                                            {
+                                                                "Name":  "P3",
+                                                                "Count":  9
+                                                            },
+                                                            {
+                                                                "Name":  "P4",
+                                                                "Count":  4
+                                                            },
+                                                            {
+                                                                "Name":  "P1_CRITICAL",
+                                                                "Count":  0
+                                                            }
+                                                        ],
+                                          "TopDetectionName":  [
+                                                                   {
+                                                                       "Name":  "TEC-006 forensic PowerShell 4104",
+                                                                       "Count":  8
+                                                                   },
+                                                                   {
+                                                                       "Name":  "TEC-006 Security Software Discovery",
+                                                                       "Count":  8
+                                                                   },
+                                                                   {
+                                                                       "Name":  "TEC-002 forensic Sysmon ID 1",
+                                                                       "Count":  6
+                                                                   },
+                                                                   {
+                                                                       "Name":  "PowerShell suspicious execution - basic profile v2",
+                                                                       "Count":  4
+                                                                   },
+                                                                   {
+                                                                       "Name":  "TEC-003 forensic Sysmon ID 1",
+                                                                       "Count":  2
+                                                                   },
+                                                                   {
+                                                                       "Name":  "TEC-002 Windows Command Shell execution",
+                                                                       "Count":  1
+                                                                   }
+                                                               ],
+                                          "RunIdSearch":  [
+                                                              {
+                                                                  "Name":  "P2_EVENT",
+                                                                  "Count":  6
+                                                              },
+                                                              {
+                                                                  "Name":  "P4",
+                                                                  "Count":  4
+                                                              }
+                                                          ]
+                                      },
+    "Interpretation":  {
+                           "P1Critical":  "0; no hay FP critico soportado por el agregado comunicado",
+                           "MainFocus":  "TEC-006 y TEC-002 en P2_EVENT",
+                           "Action":  "No modificar artifacts todavia; documentar y repetir tras runner v1.1"
+                       },
+    "OutputFiles":  {
+                        "SummaryTxt":  "C:\\Users\\julio\\Desktop\\TFM\\05_LOGS\\FPS\\TFM_FP_20260618_144027_summary.txt",
+                        "SummaryJson":  "C:\\Users\\julio\\Desktop\\TFM\\05_LOGS\\FPS\\TFM_FP_20260618_144027_summary.json",
+                        "SummaryCsv":  "C:\\Users\\julio\\Desktop\\TFM\\05_LOGS\\FPS\\TFM_FP_20260618_144027_summary.csv",
+                        "VrHitsTxt":  "C:\\Users\\julio\\Desktop\\TFM\\05_LOGS\\FPS\\TFM_FP_20260618_144027_vr_hits.txt",
+                        "VrHitsCsv":  "C:\\Users\\julio\\Desktop\\TFM\\05_LOGS\\FPS\\TFM_FP_20260618_144027_vr_hits.csv"
+                    }
+}
