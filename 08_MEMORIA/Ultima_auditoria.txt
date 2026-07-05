@@ -1,0 +1,12 @@
+última auditoría integral, algo del estilo:
+
+comprobar que todas las figuras están citadas en el texto;
+comprobar que todas las tablas están referenciadas;
+verificar que todas las técnicas MITRE aparecen exactamente igual en texto, tablas y anexos;
+comprobar que todos los anexos se citan;
+detectar referencias bibliográficas sin citar y citas sin bibliografía;
+buscar repeticiones entre capítulos;
+revisar coherencia de tiempos verbales y terminología;
+verificar numeración de figuras, tablas y anexos;
+detectar afirmaciones sin evidencia;
+elaborar una checklist final de defensa del TFM.
