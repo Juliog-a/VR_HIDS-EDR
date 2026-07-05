@@ -4,35 +4,39 @@
 
 Cierre formal documentado en:
 
-- `00_CONTEXT/SESSION_LOGS/session_20260705_1144.md`
+- `00_CONTEXT/SESSION_LOGS/session_20260705_1216.md`
 
 ## Estado
 
-- Generada iteracion documental para preparar la siguiente version de la memoria.
-- Carpeta creada: `08_MEMORIA/ITERACION_PROXIMA_MEMORIA_10_10`.
-- Se han creado TXT por capitulos/bloques con huecos, mejoras, evidencias de soporte, pasos concretos y trabajo pendiente.
+- Generada version beta de la memoria:
+  `08_MEMORIA/TFM_MEMORIA_BETA_v1.docx`.
+- Generado changelog/auditoria:
+  `08_MEMORIA/BETA_CHANGELOG.txt`.
 
 ## Cambios realizados
 
-- Creados 13 TXT dentro de `08_MEMORIA/ITERACION_PROXIMA_MEMORIA_10_10`.
-- Creado `00_CONTEXT/SESSION_LOGS/session_20260705_1144.md`.
-- Actualizado este `LAST_SESSION.md`.
+- Se creo una copia beta de `08_MEMORIA/TFM.docx` sin modificar el original.
+- Se completaron capitulos VI, VII, IX y X con datos finales existentes.
+- Se actualizo la comparativa Wazuh - Velociraptor.
+- Se corrigio JSONL/Discord como salida externa, no deteccion.
+- Se anadieron referencias y anexos recomendados.
 
 ## Verificacion
 
 - Lectura obligatoria de `00_CONTEXT` realizada.
-- `01_ARTIFACTS/validated` no modificado.
-- No se han modificado artifacts, runners, evidencias, Exceles ni `TFM.docx`.
+- Word abrio `TFM_MEMORIA_BETA_v1.docx` correctamente.
+- Word informo aproximadamente 142 paginas, 3884 parrafos y 104 tablas.
+- No se han modificado scripts, artifacts, runners, evidencias ni Exceles.
 - No se han ejecutado pruebas experimentales.
-- No se han validado artifacts en Velociraptor.
-- Estado Git observado tras la generacion: nueva carpeta `08_MEMORIA/ITERACION_PROXIMA_MEMORIA_10_10/`.
 
 ## Advertencias
 
-- OneNote se ha revisado con extraccion parcial por limitacion tecnica del formato `.one`; las notas se han tratado como apoyo documental.
-- La memoria mantiene huecos importantes en VI, VII, IX y X.
-- La comparativa Wazuh debe actualizarse porque ya existen resultados finales de Velociraptor.
+- No se pudo realizar render PNG con LibreOffice porque no esta disponible.
+- La beta requiere revision visual final en Word/PDF.
+- TEC-009 conserva matiz documental por receptor/ZIP final no localizados.
+- Wazuh 110201=0 se conserva como gap.
 
 ## Proximo paso
 
-Empezar la redaccion por `06_CAPITULO_RESULTADOS.txt`, seguir con benchmark, Wazuh y conclusiones.
+Abrir `TFM_MEMORIA_BETA_v1.docx` en Word, revisar formato pagina a pagina,
+normalizar bibliografia y confirmar anexos/capturas finales.

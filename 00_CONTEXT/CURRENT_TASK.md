@@ -1,5 +1,36 @@
 # CURRENT_TASK
 
+## Tarea activa actualizada 20260705_1216
+
+Version beta documental generada: `CERRADA LOCALMENTE`.
+
+Entregables:
+
+- `08_MEMORIA/TFM_MEMORIA_BETA_v1.docx`.
+- `08_MEMORIA/BETA_CHANGELOG.txt`.
+
+Cambios principales:
+
+- Capitulos VI, VII, IX y X completados con datos finales existentes.
+- Comparativa Wazuh - Velociraptor actualizada.
+- JSONL/Discord corregidos como salida externa, no deteccion.
+- Referencias y anexos recomendados incorporados.
+
+Control:
+
+- `TFM.docx` original no modificado.
+- `01_ARTIFACTS/validated` no modificado.
+- No se han modificado scripts, artifacts, runners, evidencias ni Exceles.
+- No se han ejecutado pruebas experimentales.
+
+Pendiente:
+
+1. Abrir la beta en Word y revisar visualmente pagina a pagina.
+2. Normalizar bibliografia al formato requerido por la universidad.
+3. Confirmar anexos y capturas finales.
+4. Al volver al laboratorio, revisar si existe receiver_log.jsonl/ZIP final de
+   TEC-009 o mantener el matiz documental.
+
 ## Tarea activa actualizada 20260629_1707
 
 README GitHub y limpieza/ordenacion de raiz: `CERRADA LOCALMENTE`.

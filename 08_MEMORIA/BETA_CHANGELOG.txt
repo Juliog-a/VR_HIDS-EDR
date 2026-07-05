@@ -1,0 +1,193 @@
+BETA_CHANGELOG - TFM_MEMORIA_BETA_v1
+Fecha: 2026-07-05
+Documento generado: 08_MEMORIA/TFM_MEMORIA_BETA_v1.docx
+
+1. Alcance de la iteracion
+
+- Se ha generado una version beta de la memoria a partir de 08_MEMORIA/TFM.docx.
+- No se ha modificado el documento original TFM.docx.
+- No se han modificado scripts, artifacts, runners, evidencias, Exceles ni resultados experimentales.
+- La beta integra la carpeta ITERACION_PROXIMA_MEMORIA_10_10, Ultima_auditoria.txt, 00_CONTEXT, evidencias finales de 04_EVIDENCE y resultados Wazuh de 10_WAZUH.
+- No se ha realizado validacion experimental nueva. La validacion experimental sigue atribuida al autor del TFM.
+
+2. Capitulos modificados
+
+Capitulo V:
+- Sustituido el enfoque "Telemetria captada en discord" por "Salida externa de alertado (JSONL/Discord)".
+- Aclarado que CLIENT_EVENT es la deteccion primaria.
+- Aclarado que SERVER_EVENT enruta, normaliza, persiste o notifica.
+- Aclarado que JSONL y Discord no son deteccion.
+- Anadida una tabla de separacion entre CLIENT_EVENT, SERVER_EVENT, JSONL y Discord.
+
+Capitulo VI:
+- Sustituidos todos los placeholders por resultados finales.
+- Incorporada cobertura 9/9 para TEC-001 a TEC-009.
+- Incorporadas 379 filas CLIENT_EVENT.
+- Incorporada distribucion por perfiles: P1=19, P2=118, P3=109, P4=133.
+- Incorporada distribucion de filas por tecnica.
+- Incorporada campana de falsos positivos: 10/10 OK y 0 hits definitivos.
+- Anadida seccion de calidad de datos.
+- Redactada limitacion de TEC-009 con matiz: upload HTTP controlado documentado por summary, sin afirmar exfiltracion contextual completa si no se localiza receiver_log.jsonl/ZIP recibido en el paquete final.
+
+Capitulo VII:
+- Sustituidos todos los placeholders del benchmark.
+- Incorporados 9/9 runs validos.
+- Incorporados tres escenarios: BASELINE_NO_VR, VR_IDLE y VR_TEC_RUNNER.
+- Incorporadas tres repeticiones por escenario.
+- Incorporadas metricas CPU/RAM:
+  BASELINE_NO_VR CPU media 0 %, RAM 0 MB;
+  VR_IDLE CPU media 0 %, RAM media 57,48 MB;
+  VR_TEC_RUNNER CPU media 0,95 %, RAM media 57,42 MB;
+  pico CPU 54 %, pico RAM 57,97 MB.
+- Aclarado que SERVER_GUI queda excluido.
+- Aclarado que RunnerStillRunningAtEnd=True es WARN no bloqueante.
+- Aclarado que el benchmark mide coste operativo, no deteccion ni falsos positivos.
+
+Capitulo VIII:
+- Sustituida la comparativa provisional Wazuh - Velociraptor.
+- Eliminado el texto "Velociraptor pendiente".
+- Incorporada comparativa final:
+  Wazuh base: 902 archives, 58 alerts.
+  Wazuh custom: 18.285 archives, 110 alerts, 56 alertas TFM 110xxx.
+  Velociraptor custom: 379 filas CLIENT_EVENT, 9/9 TEC.
+- Incorporado gap Wazuh 110201=0 para TEC-009.
+- Incorporada tabla final de reglas Wazuh 110xxx.
+- Anadido apartado de registro y almacenamiento de evidencias Wazuh.
+- Anadida sintesis final del capitulo.
+
+Capitulo IX:
+- Sustituidos placeholders por trabajo futuro redactado.
+- Separadas ampliacion MITRE, nuevos artifacts, automatizacion, SIEM/SOC y pendientes de laboratorio.
+- Incluidas tareas que requieren volver al laboratorio: receptor TEC-009, capturas GUI, Wazuh 110201 y validacion router/Discord si se desea presentarlo como salida externa final.
+
+Capitulo X:
+- Sustituidos placeholders por conclusiones completas.
+- Anadida respuesta a objetivos.
+- Anadida matriz objetivo - resultado - evidencia - limitacion.
+- Redactadas limitaciones profesionales sin ocultar gaps.
+- Formulacion ajustada a "capacidad demostrada en laboratorio", no capacidad universal.
+
+Referencias y anexos:
+- Anadidas referencias oficiales principales: MITRE ATT&CK, Velociraptor, Wazuh y Microsoft Sysmon.
+- Anadidas fuentes locales principales.
+- Anadido indice recomendado de anexos y fuentes trazables.
+
+3. Cambios metodologicos
+
+- Se refuerza la separacion entre visibilidad, deteccion, alerta RT, evidencia forense y salida externa.
+- Se fija CLIENT_EVENT como unidad primaria de deteccion Velociraptor.
+- Se fija SERVER_EVENT como capa de enrutamiento/persistencia/notificacion.
+- Se evita usar JSONL o Discord como prueba de deteccion.
+- Se evita presentar Sysmon ID 26 como alerta individual; se mantiene como evidencia forense.
+- Se evita usar rutas de laboratorio, nombres de scripts o etiquetas TEC como IOC.
+- Se mantiene Codex/ChatGPT como apoyo documental, no como validador experimental.
+- Se explicita que Wazuh archives/alerts y Velociraptor CLIENT_EVENT no son magnitudes equivalentes.
+
+4. Cambios tecnicos
+
+- Actualizada la lectura de resultados Velociraptor a partir de:
+  04_EVIDENCE/Excel_visibilidad_26062026/normalized/dataset_summary.json
+  04_EVIDENCE/Excel_visibilidad_26062026/normalized/tecnicas_real_vr.csv
+  04_EVIDENCE/Excel_visibilidad_26062026/normalized/alertas_vr.csv
+  04_EVIDENCE/Excel_visibilidad_26062026/normalized/fp_runner.csv
+  04_EVIDENCE/Excel_visibilidad_26062026/normalized/fp_hits.csv
+- Actualizada la lectura benchmark a partir de:
+  04_EVIDENCE/Excel_benchmark_26062026/TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_FINAL_26062026_DATA_QUALITY.json
+  04_EVIDENCE/Excel_benchmark_26062026/normalized/resumen_escenario.csv
+- Actualizada la lectura Wazuh a partir de:
+  10_WAZUH/TFM_WAZUH_VISIBILIDAD_EVIDENCE/ENTREGA_WAZUH_VISIBILIDAD_20260622_114027
+  04_EVIDENCE/Excel_visibilidad_26062026/normalized/comparacion_vr_wazuh.csv
+  04_EVIDENCE/Excel_visibilidad_26062026/normalized/wazuh_detalle.csv
+
+5. Decisiones tomadas
+
+- Se decide no afirmar cobertura general de MITRE ATT&CK Enterprise.
+- Se decide presentar la cobertura como 9/9 sobre el subconjunto experimental TEC-001 a TEC-009.
+- Se decide no afirmar exfiltracion contextual completa para TEC-009 sin matiz documental.
+- Se decide conservar Wazuh 110201=0 como gap, no corregirlo ni ocultarlo.
+- Se decide no comparar volumen bruto de Wazuh con CLIENT_EVENT de Velociraptor como si fueran equivalentes.
+- Se decide no tocar artifacts ni reglas porque la tarea era documental.
+- Se decide no incorporar nuevas validaciones experimentales no ejecutadas por el autor.
+
+6. Cambios decididos NO hacer
+
+- No se ha reescrito completa la memoria desde cero para evitar perder estructura, capturas y tablas ya integradas.
+- No se han modificado capitulos I-IV salvo coherencia indirecta; estaban suficientemente avanzados.
+- No se han regenerado Exceles ni graficas.
+- No se han alterado rutas, scripts ni evidencias originales.
+- No se han creado resultados experimentales nuevos.
+- No se ha validado router/Discord como salida final si no existe evidencia experimental cerrada.
+- No se ha eliminado Wazuh aunque mantenga gaps, porque aporta contraste metodologico util.
+
+7. Dudas abiertas
+
+- Confirmar estilo bibliografico exigido por la universidad: APA, IEEE u otro.
+- Revisar visualmente en Word si todas las tablas insertadas caben con el ancho deseado.
+- Actualizar manualmente indice/listas en Word si el tutor exige paginacion definitiva tras nuevas ediciones.
+- Confirmar si se localizara receiver_log.jsonl y ZIP recibido de TEC-009 al volver al laboratorio.
+- Confirmar si se quiere revalidar Wazuh 110201 o dejarlo como gap final.
+- Confirmar si Discord se conserva solo como salida externa o se elimina de la narrativa principal.
+
+8. Verificacion realizada
+
+- Microsoft Word abrio TFM_MEMORIA_BETA_v1.docx correctamente.
+- Word reporto aproximadamente 142 paginas, 3884 parrafos y 104 tablas.
+- Se actualizaron indices/campos con Word.
+- Se corrigieron captions afectadas por restos de campo SEQ tras la actualizacion.
+- Busqueda final sin coincidencias en:
+  tabla:
+  tecnicas no detectadas
+  escenario medicion
+  herramientas medicion
+  eficiencia deteccion
+  capacidad real de Velociraptor como HIDS
+  Pendiente de campana VR
+  Telemetria captada en discord
+- No se pudo realizar render PNG con LibreOffice porque no esta disponible en el entorno.
+
+9. Auditoria final tipo tribunal
+
+Rigor tecnico: 8,6/10
+- Fuerte por separacion metodologica, trazabilidad y prudencia en TEC-009.
+- Penaliza que algunas capturas/anexos pueden requerir revision visual final.
+
+Metodologia: 8,8/10
+- Fuerte por campanas separadas, criterios de validez y tratamiento de calidad de datos.
+- Penaliza que el conjunto TEC es acotado y la muestra FP es pequena.
+
+Redaccion: 8,3/10
+- Mejora sustancial respecto al borrador por cierre de capitulos VI, VII, IX y X.
+- Queda pendiente una lectura humana completa para homogeneizar acentos, estilo y transiciones.
+
+Reproducibilidad: 8,5/10
+- Fuerte por rutas de evidencias, CSV/JSON normalizados y hashes.
+- Penaliza que el lector no tendra todas las VMs ni receptor TEC-009 final.
+
+Calidad cientifica: 8,4/10
+- Fuerte por no sobreafirmar, declarar limitaciones y distinguir unidades de medida.
+- Penaliza la ausencia de validacion en entorno productivo o con mas tecnicas.
+
+Claridad: 8,6/10
+- Fuerte por tablas nuevas y sintesis de resultados.
+- Penaliza que la memoria sigue siendo extensa y requiere revision de captions/listas.
+
+Figuras y tablas: 8,0/10
+- Se han integrado tablas criticas.
+- Pendiente revision visual definitiva de ancho, numeracion y referencias cruzadas.
+
+Conclusiones: 8,8/10
+- Responden a objetivos y limitan alcance.
+- Pendiente ajustar si el autor localiza nueva evidencia TEC-009 o revalida Wazuh 110201.
+
+Nota global estimada: 8,6/10
+
+10. Que falta para un 10/10 real
+
+- Revision visual completa en Word/PDF pagina a pagina.
+- Actualizar indice, lista de figuras y lista de tablas tras cualquier edicion final.
+- Revisar todas las figuras: que esten citadas, numeradas y no duplicadas.
+- Normalizar bibliografia al formato exigido por la universidad.
+- Localizar o repetir evidencia receptor TEC-009 si se quiere eliminar el matiz.
+- Revisar capturas finales de Velociraptor/Wazuh para que no sustituyan a la evidencia reproducible.
+- Validar que anexos citados existen y estan completos.
+- Hacer una lectura final de estilo academico para corregir acentos, repeticiones y frases largas.

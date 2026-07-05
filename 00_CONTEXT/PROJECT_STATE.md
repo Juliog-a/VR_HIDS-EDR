@@ -456,3 +456,19 @@ Codex no valida resultados.
 - Pendiente opcional antes de publicar:
   revisar historico Git si GitHub rechaza objetos grandes; `git gc` limpio
   basura temporal, pero no se reescribio historial. Pack Git restante: 3.08 GiB.
+
+## Beta documental de memoria (2026-07-05 12:16 CEST)
+
+- Generada version beta de la memoria:
+  `08_MEMORIA/TFM_MEMORIA_BETA_v1.docx`.
+- Generado changelog/auditoria:
+  `08_MEMORIA/BETA_CHANGELOG.txt`.
+- Se completan capitulos VI, VII, IX y X con datos finales existentes.
+- Se actualiza comparativa Wazuh - Velociraptor y se elimina "Velociraptor
+  pendiente".
+- Se mantiene separacion metodologica:
+  `CLIENT_EVENT` detecta; `SERVER_EVENT` enruta/persiste/notifica; JSONL y
+  Discord no son deteccion.
+- No se modifican artifacts, scripts, runners, evidencias ni Exceles.
+- No se ejecutan nuevas pruebas experimentales.
+- Pendiente revision visual final en Word/PDF y normalizacion bibliografica.
