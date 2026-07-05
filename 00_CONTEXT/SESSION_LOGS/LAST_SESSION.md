@@ -4,41 +4,33 @@
 
 Cierre formal documentado en:
 
-- `00_CONTEXT/SESSION_LOGS/session_20260629_1707.md`
+- `00_CONTEXT/SESSION_LOGS/session_20260705_1121.md`
 
 ## Estado
 
-- README GitHub creado.
-- Raiz del proyecto limpiada y ordenada.
-- Informes legacy movidos a `04_EVIDENCE/legacy_reports`.
-- Iteraciones historicas y prompts antiguos movidos a `99_ARCHIVE`.
-- Candidatos de descarte conservados en
-  `99_REVIEW_CLEANUP_20260629/delete_candidates`.
+- Solicitados comandos para subir el repositorio a GitHub.
+- Rama actual observada: `main`.
+- Remoto observado: `origin` -> `https://github.com/Juliog-a/VR_HIDS-EDR.git`.
+- Estado Git observado antes del cierre: sin cambios pendientes y sin commits
+  por subir.
 
-## Entregables nuevos
+## Cambios realizados
 
-- `README.md`
-- `00_CONTEXT/CLEANUP_20260629.md`
-- `04_EVIDENCE/legacy_reports/README.md`
-- `99_ARCHIVE/README.md`
+- Creado `00_CONTEXT/SESSION_LOGS/session_20260705_1121.md`.
+- Actualizado este `LAST_SESSION.md`.
 
 ## Verificacion
 
 - Lectura obligatoria de `00_CONTEXT` realizada.
 - `01_ARTIFACTS/validated` no modificado.
-- `lab/` no movido.
-- `Carpeta_Compartida_TFM/` no movida.
-- `.one`, `.lnk` y JSONL bruto retirados del indice Git sin borrado fisico.
-- `git ls-files` ya no lista `.one`, `.lnk`, `.jsonl`, `tatus` ni
-  `README_TFM.md`.
-- `git gc --prune=now` ejecutado: basura Git 0 bytes.
+- No se han modificado artifacts, runners, evidencias ni Exceles.
+- No se han ejecutado pruebas experimentales.
 
 ## Advertencias
 
-- Hay material local pesado ignorado por Git: VM, snapshots, ISO y logs brutos.
-- El pack historico Git queda en 3.08 GiB; no se reescribio historial en esta
-  sesion.
+- Tras este cierre quedan cambios locales de documentacion de sesion pendientes
+  de commit si se quiere subirlos a GitHub.
 
 ## Proximo paso
 
-Revisar `git status`, confirmar la reorganizacion y hacer commit si procede.
+Ejecutar `git status`, revisar los cambios y hacer commit/push si procede.
