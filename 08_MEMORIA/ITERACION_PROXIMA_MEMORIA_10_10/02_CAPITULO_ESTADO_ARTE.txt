@@ -1,0 +1,80 @@
+02 - CAPITULO ESTADO DEL ARTE / FUNDAMENTOS TEORICOS
+
+Estado actual:
+- Bastante cerrado.
+- El capitulo III explica HIDS, DFIR, EDR, arquitectura Velociraptor, artifacts, VQL y telemetria.
+- Hay una buena base conceptual para defender que Velociraptor no es automaticamente HIDS.
+
+Que falta:
+1. Reforzar la comparacion HIDS / DFIR / EDR con una tabla final de criterios.
+2. Anadir una explicacion mas fuerte de "artifacts publicos" frente a "artifacts custom".
+3. Citar documentacion oficial actual de Velociraptor sobre artifacts, VQL, event queues y server monitoring.
+4. Citar MITRE ATT&CK Enterprise y las tecnicas seleccionadas.
+5. Citar Sysmon y PowerShell 4104 como fuentes de telemetria.
+6. Incluir Wazuh como SIEM/HIDS de contraste antes del capitulo especifico.
+
+Por que es importante:
+- El tribunal valorara que el marco teorico no sea una lista de herramientas, sino una base para la metodologia.
+- La diferencia entre visibilidad y deteccion debe tener soporte conceptual desde este capitulo.
+- Justifica por que se han desarrollado artifacts custom.
+
+Donde deberia ir:
+- 3.1 Enfoques de deteccion y analisis en endpoint.
+- 3.2 Arquitectura interna Velociraptor.
+- 3.3 Artifacts y modelo de ejecucion.
+- 3.4 VQL.
+- 3.5 Telemetria disponible en endpoint.
+- 3.6 Limitaciones de visibilidad.
+
+Evidencia del proyecto que lo soporta:
+- 01_ARTIFACTS\validated\*.yaml.
+- 01_ARTIFACTS\candidate\*.yaml para evolucion historica.
+- 04_EVIDENCE\ENTREGA_MEMORIA_EXCELES_DEFINITIVOS\04_ANALISIS_ARTIFACTS_PUBLICOS_REFERENCIA.xlsx.
+- 08_MEMORIA\Excel_visibilidad_FP\Analisis_Tecnicas_TFM_V.5.xlsx.
+- 00_CONTEXT\ARTIFACT_INDEX.md.
+- 00_CONTEXT\DECISIONS.md.
+
+Fuentes externas recomendadas:
+- MITRE ATT&CK Enterprise matrix: https://attack.mitre.org/matrices/enterprise/
+- T1059.001 PowerShell: https://attack.mitre.org/techniques/T1059/001/
+- T1059.003 Windows Command Shell: https://attack.mitre.org/techniques/T1059/003/
+- T1053.005 Scheduled Task: https://attack.mitre.org/techniques/T1053/005/
+- T1547.001 Registry Run Keys: https://attack.mitre.org/techniques/T1547/001/
+- T1569.002 Service Execution: https://attack.mitre.org/techniques/T1569/002/
+- T1518.001 Security Software Discovery: https://attack.mitre.org/techniques/T1518/001/
+- T1486 Data Encrypted for Impact: https://attack.mitre.org/techniques/T1486/
+- T1485 Data Destruction: https://attack.mitre.org/techniques/T1485/
+- T1074.001 Local Data Staging: https://attack.mitre.org/techniques/T1074/001/
+- T1560.001 Archive via Utility: https://attack.mitre.org/techniques/T1560/001/
+- T1048.003 Exfiltration Over Unencrypted Non-C2 Protocol: https://attack.mitre.org/techniques/T1048/003/
+- Velociraptor artifacts: https://docs.velociraptor.app/docs/artifacts/
+- Velociraptor VQL: https://docs.velociraptor.app/docs/vql/
+- Velociraptor server monitoring / watch_monitoring: https://docs.velociraptor.app/docs/server_automation/server_monitoring/
+- Velociraptor event queues: https://docs.velociraptor.app/docs/artifacts/event_queues/
+- Microsoft Sysmon: https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon
+- Wazuh custom rules: https://documentation.wazuh.com/current/user-manual/ruleset/rules/custom.html
+
+Pasos concretos esta semana:
+1. Insertar una tabla "Capacidad esperada en HIDS/DFIR/EDR y equivalencia en Velociraptor".
+2. Anadir un parrafo sobre que los artifacts publicos aportan visibilidad y recogida, pero no necesariamente deteccion MITRE.
+3. Anadir un parrafo sobre que CLIENT_EVENT es el mecanismo que aproxima Velociraptor a HIDS.
+4. Anadir un parrafo sobre que SERVER_EVENT no detecta telemetria host, sino que procesa eventos ya emitidos.
+5. Incorporar citas oficiales en las secciones correspondientes.
+
+Texto sugerido:
+"En Velociraptor, un artifact empaqueta una o varias consultas VQL y parametros en una unidad reutilizable. Esta capacidad resulta adecuada para DFIR y threat hunting, pero no implica por si sola una deteccion HIDS. Para aproximarse a un HIDS es necesario que el artifact se ejecute como monitorizacion continua, aplique condiciones de deteccion sobre eventos del endpoint y devuelva filas normalizadas que puedan interpretarse como senales de seguridad."
+
+Texto sugerido:
+"La capa SERVER_EVENT se considera una capa de automatizacion y enrutamiento. Puede consumir eventos de cliente mediante watch_monitoring(), enriquecerlos y enviarlos a salidas externas, pero la deteccion primaria se atribuye al artifact CLIENT_EVENT que observo y clasifico el evento en el endpoint."
+
+Tablas/figuras recomendadas:
+- Tabla: "HIDS vs DFIR vs EDR vs Velociraptor".
+- Figura: "Artifacts publicos -> brechas -> artifacts custom".
+- Tabla: "Tipos de artifact y valor metodologico".
+
+Trabajo de laboratorio pendiente:
+- Ninguno para el texto teorico.
+- Solo actualizar capturas si se quieren pantallas de docs/GUI.
+
+Dudas abiertas:
+- Si se cita el articulo reciente sobre Velociraptor detection-forensics, revisar si encaja con el enfoque academico y citarlo solo como apoyo, no como fuente primaria del proyecto.

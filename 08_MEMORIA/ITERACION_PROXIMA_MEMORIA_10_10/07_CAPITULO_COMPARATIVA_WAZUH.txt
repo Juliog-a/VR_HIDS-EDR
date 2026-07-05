@@ -1,0 +1,115 @@
+07 - CAPITULO COMPARATIVA WAZUH
+
+Estado actual:
+- Bastante desarrollado.
+- El capitulo VIII de TFM.docx ya contiene despliegue, agente, telemetria, reglas, campanas y dashboard.
+- Hay un documento candidato:
+  08_MEMORIA\candidate\Capitulo_Wazuh_TFM.docx
+- Hay evidencia Wazuh completa:
+  10_WAZUH\TFM_WAZUH_VISIBILIDAD_EVIDENCE.
+
+Problema principal:
+- La comparativa integrada conserva "Velociraptor custom: pendiente" en algunas tablas.
+- Desde el 26/06 ya existen datos finales de Velociraptor y comparacion VR/Wazuh.
+
+Que falta:
+1. Actualizar la tabla comparativa con Velociraptor final.
+2. Incorporar la seccion "Registro y almacenamiento de evidencias" del candidato Wazuh.
+3. Incorporar una sintesis final del capitulo Wazuh.
+4. Dejar claro que la comparacion no usa el mismo denominador numerico:
+   - Wazuh archives/alerts.
+   - Velociraptor filas CLIENT_EVENT.
+5. Explicar que Wazuh custom mejora cobertura frente a Wazuh base, pero mantiene gap 110201/TEC-009.
+6. Indicar que la comparativa es justa solo si se compara capacidad funcional, no volumen bruto.
+
+Por que es importante:
+- Wazuh es una parte fuerte del proyecto y aporta perspectiva externa.
+- Si se deja "Velociraptor pendiente", la memoria parece no actualizada.
+- La comparativa puede penalizar si compara 18.285 archives con 379 CLIENT_EVENT como si fueran lo mismo.
+
+Donde deberia ir:
+- 8.7 Metodologia de campanas separadas.
+- 8.8 Campana B: Wazuh base.
+- 8.9 Campana C: Wazuh custom.
+- 8.11 Comparacion Wazuh - Velociraptor.
+- 8.12 Limitaciones observadas.
+- Nueva 8.13 Registro de evidencias Wazuh.
+- Nueva 8.14 Sintesis del capitulo.
+
+Evidencia del proyecto que lo soporta:
+- 10_WAZUH\TFM_WAZUH_VISIBILIDAD_EVIDENCE\ENTREGA_WAZUH_VISIBILIDAD_20260622_114027\RESUMEN_FINAL_WAZUH_BASE_VS_CUSTOM.txt.
+- 10_WAZUH\TFM_WAZUH_VISIBILIDAD_EVIDENCE\ENTREGA_WAZUH_VISIBILIDAD_20260622_114027\base\wazuh_base_summary.txt.
+- 10_WAZUH\TFM_WAZUH_VISIBILIDAD_EVIDENCE\ENTREGA_WAZUH_VISIBILIDAD_20260622_114027\custom\wazuh_custom_summary.txt.
+- 10_WAZUH\TFM_WAZUH_VISIBILIDAD_EVIDENCE\ENTREGA_WAZUH_VISIBILIDAD_20260622_114027\config\tfm_wazuh_custom_rules_v2.xml.
+- 04_EVIDENCE\Excel_visibilidad_26062026\normalized\comparacion_vr_wazuh.csv.
+- 04_EVIDENCE\Excel_visibilidad_26062026\normalized\wazuh_detalle.csv.
+- 04_EVIDENCE\Excel_visibilidad_26062026\normalized\chart_wazuh_rules.csv.
+- 08_MEMORIA\candidate\Capitulo_Wazuh_TFM.docx, secciones X.11-X.15.
+
+Datos que deben entrar:
+- Wazuh base:
+  - 902 archives.
+  - 58 alerts.
+  - 34 PowerShell 4104.
+  - 457 Sysmon ID 1.
+  - 413 Sysmon ID 11.
+  - 0 System 7045.
+  - 0 reglas TFM 110xxx.
+- Wazuh custom:
+  - 18.285 archives.
+  - 110 alerts.
+  - 99 PowerShell 4104.
+  - 127 Sysmon ID 1.
+  - 24 Sysmon ID 11.
+  - 1 System 7045.
+  - 56 alertas TFM 110xxx.
+- Reglas:
+  - 110201: 0.
+  - 110202: 5.
+  - 110203: 4.
+  - 110301: 2.
+  - 110401: 0.
+  - 110402: 1.
+  - 110501: 44.
+- Velociraptor custom:
+  - 379 filas CLIENT_EVENT.
+  - P1=19, P2=118, P3=109, P4=133.
+  - 9/9 TEC con deteccion CLIENT_EVENT.
+  - TEC-009 con upload HTTP controlado documentado por summary y limitacion de receptor.
+
+Pasos concretos esta semana:
+1. Reemplazar la tabla "Comparacion provisional" por una tabla final:
+   - Wazuh base.
+   - Wazuh custom.
+   - Velociraptor custom.
+2. Anadir nota metodologica:
+   "No se comparan directamente archives, alerts y CLIENT_EVENT como magnitudes equivalentes."
+3. Anadir seccion de evidencias Wazuh desde el candidato:
+   - base_OK_20260622_111029.
+   - custom_OK_20260622_112639.
+   - ENTREGA_WAZUH_VISIBILIDAD_20260622_114027.
+   - SHA256SUMS.txt.
+4. Redactar sintesis:
+   - Wazuh base detecta/alerta genericamente.
+   - Wazuh custom aproxima perfiles TFM.
+   - Wazuh custom falla TEC-009 110201.
+   - Velociraptor custom aporta mayor control metodologico por artifacts transparentes.
+
+Texto sugerido:
+"La comparacion no se plantea como una competencia directa de volumen. Wazuh mide eventos crudos en archives.json y alertas en alerts.json, mientras que Velociraptor se consolida mediante filas CLIENT_EVENT emitidas por artifacts custom. Por tanto, el analisis se centra en cobertura funcional, trazabilidad, severidad, ruido operativo y capacidad de explicar la logica de deteccion."
+
+Texto sugerido:
+"Wazuh custom incremento la capacidad de deteccion respecto a Wazuh base al activar 56 alertas TFM 110xxx. Sin embargo, la regla 110201 asociada a TEC-009 no se activo. Este resultado se conserva como gap de deteccion y no se oculta, porque representa una diferencia metodologica relevante frente al enfoque custom de Velociraptor."
+
+Trabajo que puedes hacer esta semana:
+- Redactar comparativa final.
+- Crear tablas y graficas desde CSV.
+- Integrar secciones del candidato Wazuh.
+- Revisar bibliografia oficial Wazuh.
+
+Trabajo de laboratorio pendiente:
+- Solo si se quiere revalidar 110201 o capturar pantallas adicionales del dashboard.
+- No hace falta para usar los resultados actuales.
+
+Dudas abiertas:
+- Confirmar si la memoria debe mencionar `tfm_wazuh_custom_rules_v1.xml` como version descartada y `tfm_wazuh_custom_rules_v2.xml` como version estable. Recomendacion: si, en una nota breve.

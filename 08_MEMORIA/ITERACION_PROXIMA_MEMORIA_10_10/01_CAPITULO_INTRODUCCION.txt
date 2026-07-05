@@ -1,0 +1,66 @@
+01 - CAPITULO INTRODUCCION
+
+Estado actual:
+- Bastante cerrado.
+- Tiene motivacion, objetivos y estado del arte introductorio.
+- El planteamiento general encaja con el proyecto real.
+
+Que falta:
+1. Ajustar los objetivos para que reflejen el resultado final del proyecto.
+2. Presentar con claridad las contribuciones concretas del TFM.
+3. Acotar desde el inicio que Velociraptor se evalua como aproximacion HIDS/DFIR, no como EDR comercial completo.
+4. Introducir la comparativa Wazuh como contraste secundario, no como objetivo principal.
+5. Anadir una nota temprana sobre la separacion conceptual:
+   visibilidad != deteccion != alerta RT != evidencia forense != salida externa.
+
+Por que es importante:
+- El tribunal debe entender desde la primera parte que el TFM no es solo "usar Velociraptor", sino evaluar si puede actuar como HIDS mediante artifacts custom.
+- Evita sobreprometer capacidades de EDR o SOC.
+- Prepara la interpretacion correcta de JSONL, Discord, Wazuh y benchmark.
+
+Donde deberia ir:
+- 1.1 Motivacion y descripcion del problema.
+- 1.2 Objetivos del proyecto.
+- Cierre de 1.3 Estado del arte o puente hacia fundamentos teoricos.
+
+Evidencia del proyecto que lo soporta:
+- 00_CONTEXT\PROJECT_STATE.md.
+- 00_CONTEXT\DECISIONS.md, especialmente D001-D006, D024-D029, D044.
+- 00_CONTEXT\CONTEXT_ESTADO_VISIBILIDAD_FP_26062026.md.
+- 00_CONTEXT\CONTEXT_ESTADO_BENCHMARK_26062026.md.
+- 01_ARTIFACTS\validated.
+- 08_MEMORIA\Excel_visibilidad_FP\TFM_VISIBILIDAD_DETECCION_FP_WAZUH_FINAL_26062026.xlsx.
+- 08_MEMORIA\Excel_benchmark\TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_FINAL_26062026.xlsx.
+
+Pasos concretos esta semana:
+1. Reescribir el objetivo general con esta forma:
+   "Evaluar la capacidad de Velociraptor para proporcionar deteccion host-based sobre tecnicas MITRE ATT&CK Enterprise en Windows mediante artifacts publicos y personalizados, diferenciando visibilidad, deteccion, alertado, evidencia y salida externa."
+2. Crear una lista de objetivos especificos:
+   - seleccionar tecnicas MITRE observables en host;
+   - desplegar laboratorio Windows controlado;
+   - evaluar artifacts publicos;
+   - disenar artifacts CLIENT_EVENT custom P1/P2/P3/P4;
+   - validar cobertura sobre 9 tecnicas;
+   - medir falsos positivos con 10 acciones benignas;
+   - medir coste operativo del cliente Velociraptor;
+   - comparar con Wazuh base/custom como referencia externa.
+3. Anadir contribuciones:
+   - matriz TEC-001 a TEC-009;
+   - arquitectura P1/P2/P3/P4;
+   - runner ofensivo, runner FP y benchmark;
+   - Exceles finales trazables;
+   - comparativa Wazuh.
+
+Texto sugerido:
+"El trabajo no evalua Velociraptor como un EDR cerrado ni como una solucion SOC completa. La evaluacion se centra en su capacidad para convertirse en una aproximacion HIDS mediante monitorizacion continua con artifacts CLIENT_EVENT, logica VQL personalizada y una capa SERVER_EVENT de enrutamiento. Por ello, la memoria separa estrictamente la visibilidad de eventos, la deteccion por artifact, la alerta en tiempo casi real, la evidencia forense y la salida externa en JSONL o Discord."
+
+Trabajo de laboratorio pendiente:
+- Ninguno obligatorio para esta introduccion.
+- Solo seria necesario si se quieren incluir capturas nuevas de portada o arquitectura del laboratorio.
+
+Tablas/figuras recomendadas:
+- Figura inicial: flujo conceptual "Windows/Sysmon/PowerShell -> CLIENT_EVENT -> SERVER_EVENT -> JSONL/Discord -> Analisis".
+- Tabla breve de contribuciones del TFM.
+
+Dudas abiertas:
+- Decidir si el titulo final mantiene "HIDS de la matriz MITRE ATT&CK Enterprise" o se ajusta a "HIDS/DFIR" para reflejar mejor la naturaleza de Velociraptor.

@@ -1,0 +1,82 @@
+04 - CAPITULO ENTORNO DE LABORATORIO
+
+Estado actual:
+- Bastante cerrado.
+- Contiene VM Windows, servidor/agente Velociraptor, Sysmon, PowerShell 4104, Wazuh y componentes.
+- Hay muchas tablas y capturas.
+
+Que falta:
+1. Consolidar una tabla unica de entorno final.
+2. Separar claramente:
+   - host fisico;
+   - VM Windows evaluada;
+   - Velociraptor cliente/servidor;
+   - VM Wazuh;
+   - receptor HTTP TEC-009;
+   - fuentes de telemetria.
+3. Indicar que las rutas de laboratorio se documentan como entorno, pero no se usan como IOC de deteccion.
+4. Anadir un diagrama de arquitectura final.
+5. Revisar si las capturas actuales son suficientes o si faltan capturas de GUI finales.
+
+Por que es importante:
+- El entorno debe ser reproducible y defendible.
+- Las rutas, nombres de scripts y etiquetas TEC no deben parecer indicadores de deteccion.
+- Una figura de arquitectura reduce mucha explicacion textual.
+
+Donde deberia ir:
+- 4.1 Diseno del entorno.
+- 4.2 Instalacion, instrumentacion y configuracion base.
+- 4.3 Organizacion del entorno de trabajo.
+- Anexo B Configuracion del laboratorio.
+
+Evidencia del proyecto que lo soporta:
+- 00_CONTEXT\VM_ACTIVE_PATHS.md.
+- 00_CONTEXT\estructura_HOST_TFM_tree.txt.
+- 00_CONTEXT\estructura_COMPARTIDA_tree.txt.
+- 04_EVIDENCE\estructura_VM_TFM_tree.txt.
+- 03_RUNNERS\TFM_Check_Sysmon_Visibility.ps1.
+- 10_WAZUH\TFM_WAZUH_VISIBILIDAD_EVIDENCE\ENTREGA_WAZUH_VISIBILIDAD_20260622_114027.
+- 08_MEMORIA\TFM.docx, tablas 24-37 aprox.
+
+Datos tecnicos a reflejar:
+- Endpoint Windows: Windows 10 Pro 22H2.
+- Velociraptor: 0.75.6.
+- Sysmon: 15.15 / schema 4.90.
+- PowerShell Script Block Logging: Event ID 4104.
+- Wazuh agent Windows: 4.14.5.
+- Wazuh server: Ubuntu Server 24.04.3 LTS, all-in-one.
+- Wazuh server IP usada en laboratorio: 192.168.1.145.
+- Fuentes Wazuh: PowerShell Operational, Sysmon, Security, System.
+
+Pasos concretos esta semana:
+1. Crear tabla "Componentes finales del laboratorio".
+2. Crear figura "Arquitectura del laboratorio":
+   - Windows endpoint.
+   - Velociraptor client.
+   - Velociraptor server/GUI.
+   - Wazuh manager/indexer/dashboard.
+   - Receiver HTTP.
+   - Evidencias/Exceles.
+3. Revisar captions actuales:
+   - "Figura 14: Directorio maquina fisica" y "Figura 15: Directorio maquina fisica" parecen duplicadas.
+4. Anadir una nota:
+   "Las rutas se documentan para reproducibilidad, no como indicadores de deteccion."
+
+Texto sugerido:
+"El laboratorio se diseno como entorno controlado y reversible. Las rutas, nombres de scripts y etiquetas internas permiten reproducir las pruebas y trazar evidencias, pero se excluyen expresamente de la logica de deteccion. Los artifacts custom se basan en comportamiento observable del host: eventos Sysmon, PowerShell 4104, System 7045, procesos, ficheros, registro y red."
+
+Trabajo de laboratorio pendiente:
+- Capturas finales si faltan:
+  - Velociraptor Client Monitoring activo.
+  - Velociraptor Client Events con P1/P2/P3/P4.
+  - Wazuh dashboard con agente LT29.
+  - Wazuh rule.id 110201 sin resultados.
+  - Estado del servicio Velociraptor cliente.
+
+Tablas/figuras recomendadas:
+- Tabla "Fuentes de telemetria por tecnica".
+- Figura "Flujo de evidencias".
+- Figura "Arquitectura comparativa VR/Wazuh".
+
+Dudas abiertas:
+- Confirmar si en la memoria final se debe mostrar la IP del receptor y de Wazuh o anonimizar parcialmente. En un TFM de laboratorio se puede mostrar, pero no usar como IOC.
