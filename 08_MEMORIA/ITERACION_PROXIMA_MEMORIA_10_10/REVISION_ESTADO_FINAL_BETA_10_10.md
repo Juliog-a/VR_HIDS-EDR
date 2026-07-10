@@ -2,6 +2,22 @@
 
 Fecha: 2026-07-09
 
+## Nota de vigencia 2026-07-10
+
+Este informe queda como histórico de la revisión pre-PDF.
+
+La versión vigente única tras la fusión es:
+
+`TFM_MEMORIA_BETA_v1.docx`
+
+La copia `TFM_MEMORIA_BETA_v1_REVISION_PREPDF.docx` fue archivada en:
+
+`_ARCHIVO_OBSOLETO_NO_USAR/FUSION_20260710_1056`
+
+Los bloqueantes de este informe relativos al índice general duplicado, temporal
+Word y frase JSONL/Discord fueron tratados durante la fusión. Sigue pendiente
+la revisión visual humana y la exportación de PDF provisional.
+
 Documento revisado:
 
 - Original intacto: `TFM_MEMORIA_BETA_v1.docx`
@@ -74,7 +90,7 @@ No se detectan contradicciones P1 sobre:
 - Se detectan 104 tablas, 71 imágenes, 76 dibujos y 31 captions de código.
 - Tablas a revisar visualmente por ancho estimado: OpenXML table index 29, 50, 52 y 71.
 - Tabla grande a revisar por posible partición: OpenXML table index 2, 39 filas.
-- Queda archivo temporal Word `~$M_MEMORIA_BETA_v1_REVISION_PREPDF.docx` porque Word quedó abierto/bloqueado durante la revisión automática. Cerrar Word antes de exportar.
+- En la revisión del 2026-07-09 quedó un temporal Word `~$M_MEMORIA_BETA_v1_REVISION_PREPDF.docx`. Tras la fusión del 2026-07-10, ese temporal fue archivado en `_ARCHIVO_OBSOLETO_NO_USAR/FUSION_20260710_1056`.
 
 ## Problemas de redacción
 
