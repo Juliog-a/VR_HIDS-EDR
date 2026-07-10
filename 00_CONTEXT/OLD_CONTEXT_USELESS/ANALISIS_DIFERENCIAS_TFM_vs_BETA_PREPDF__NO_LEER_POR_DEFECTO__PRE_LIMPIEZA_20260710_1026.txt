@@ -1,0 +1,647 @@
+ANALISIS PROFUNDO DE DIFERENCIAS ENTRE TFM.docx Y TFM_MEMORIA_BETA_v1_REVISION_PREPDF.docx
+====================================================================================================
+Ruta objetivo solicitada por el autor: C:\Users\julio\Desktop\TFM\08_MEMORIA
+Nombre recomendado del fichero: ANALISIS_DIFERENCIAS_TFM_vs_BETA_PREPDF.txt
+Fecha del informe: 2026-07-09
+
+0. VEREDICTO EJECUTIVO
+----------------------------------------------------------------------------------------------------
+1) La beta REVISION_PREPDF debe considerarse la base editorial más avanzada, porque integra resultados finales, referencias, anexos y correcciones metodológicas que el TFM.docx original no contiene.
+2) El TFM.docx conserva una estructura más limpia en los índices preliminares, pero está menos actualizado técnicamente.
+3) La mejor estrategia NO es copiar todo sin mirar: usar la beta como documento maestro o referencia principal, pero corregir sus bloqueantes editoriales antes de PDF.
+4) Cambios que conviene conservar de beta: resumen/abstract nuevos, TEC-009 como exfiltración HTTP controlada, resultados 9/9, 379 CLIENT_EVENT, FP 10/10 hits=0, benchmark 9/9, comparación Wazuh, referencias y anexos A-L.
+5) Cambios que NO conviene aceptar sin revisar: índice general duplicado, índice de tablas roto, frase de JSONL/Discord como resultado final, anexos como Capítulos XI-XXII si la plantilla permite anexo limpio, y tablas/captions visualmente dudosas.
+
+1. METADATOS COMPARADOS
+----------------------------------------------------------------------------------------------------
+TFM.docx: TFM.docx
+  Tamaño: 5,835,831 bytes
+  SHA-256: BA20109B82458FACB976BF48D1F55C1B3EB1207141E250C76FEF210426D75634
+  Párrafos: 1468
+  Tablas: 104
+  Imágenes en word/media: 71
+
+BETA REVISION_PREPDF: TFM_MEMORIA_BETA_v1_REVISION_PREPDF.docx
+  Tamaño: 5,408,898 bytes
+  SHA-256: BB1F1464EC49D9C79DB5AC4E9C88468560E454D20877AEBC982B188C90B13E70
+  Párrafos: 1592
+  Tablas: 104
+  Imágenes en word/media: 71
+
+Lectura rápida: la beta tiene más párrafos y más estructura textual, pero no aumenta el número de tablas ni imágenes. Es una ampliación/redacción/cierre, no una sustitución masiva de evidencias gráficas.
+
+2. DIFERENCIAS ESTRUCTURALES GLOBALES
+----------------------------------------------------------------------------------------------------
+Heading 1 en TFM.docx: 10
+Heading 1 en beta: 22
+Motivo: la beta convierte los anexos A-L en Heading 1, por eso aparecen como Capítulos XI-XXII en el índice.
+
+Encabezados añadidos en beta o renombrados respecto a TFM.docx:
+  + TEC-009 - Staging, archivado ZIP y exfiltración HTTP controlada
+  + Telemetría captada en Discord
+  + Desarrollo de nuevos artifacts
+  + Automatización de detecciones
+  + Integración SIEM/SOC y despliegue en entornos reales
+  + Criterio de uso de fuentes
+  + Finalidad de los anexos
+  + Anexo C. Fuentes de telemetría y criterio de evidencia
+  + Anexo D. Artifacts Velociraptor validados
+  + Anexo E. Runners, scripts y ground truth
+  + Anexo F. Evidencias y datasets finales
+  + Anexo G. Resultados completos de visibilidad, detección y falsos positivos
+  + Anexo H. Benchmark de rendimiento
+  + Anexo I. Validación comparativa con Wazuh
+  + Anexo J. TEC-009 - Exfiltración HTTP controlada en laboratorio
+  + Anexo K. Glosario técnico
+  + Anexo L. Checklist de defensa metodológica
+
+Encabezados del TFM.docx que no aparecen exactamente igual en beta:
+  - TEC-009 - Staging y archivado de datos
+  - Telemetría captada en discord
+  - Desarrollos nuevos artifacts
+  - Automatización detecciones
+  - Integración SIEM / SOC y despliegue en entornos reales
+
+Interpretación:
+- Los cambios de Heading 2/3 en Cap. IX son mejoras claras: “Desarrollos nuevos artifacts” pasa a “Desarrollo de nuevos artifacts”; “Automatización detecciones” pasa a “Automatización de detecciones”; “Integración SIEM / SOC” pasa a “Integración SIEM/SOC”.
+- El cambio más importante es TEC-009: el título pasa de “Staging y archivado de datos” a “Staging, archivado ZIP y exfiltración HTTP controlada”. Debe conservarse.
+- La beta añade 10.5 “Criterio de uso de fuentes” y 10.6 “Finalidad de los anexos”. Son útiles para justificar bibliografía/anexos, pero revisar que no alarguen innecesariamente conclusiones.
+
+3. DIFERENCIAS EN ÍNDICES Y LISTAS
+----------------------------------------------------------------------------------------------------
+Entradas TOC visibles en TFM.docx: 139
+Entradas TOC visibles en beta: 306
+Entradas estilo table of figures en TFM.docx: 145
+Entradas estilo table of figures en beta: 129
+
+Hallazgo crítico: la beta contiene duplicación de índice general. Se observa porque después del índice de figuras vuelve a repetirse un bloque completo de Capítulo I, Capítulo II, etc. Esto NO debe trasladarse al PDF final.
+Hallazgo crítico: el índice de tablas de la beta muestra una numeración visible rota en torno a Wazuh: Tabla 55 -> Tabla 63 -> Tabla 57. Esto indica campos/listas desactualizados o captions alteradas.
+
+Acción exacta:
+  1. En la beta o documento final, eliminar el segundo índice general duplicado.
+  2. Seleccionar todo en Word: Ctrl+A.
+  3. Actualizar campos: F9 -> Actualizar toda la tabla.
+  4. Revisar índice general, índice de tablas, índice de figuras e índice de código.
+  5. Confirmar que las tablas quedan secuenciales, sin saltos tipo 55 -> 63 -> 57.
+
+4. DIFERENCIAS DE CONTENIDO POR BLOQUE
+----------------------------------------------------------------------------------------------------
+4.1 Dedicatoria y agradecimientos
+TFM.docx: versión más breve, centrada en familia, amigos, profesores y tutor.
+Beta: amplía dedicatoria y agradecimientos con primos, pareja Irene y hermana Sara. Es un cambio personal, no técnico.
+Recomendación: conservar la versión que prefieras emocionalmente. Desde el punto de vista académico, ambas son válidas. Si buscas sobriedad, TFM.docx. Si buscas versión más completa/personal, beta.
+
+4.2 Resumen
+TFM.docx: resumen general, todavía formula el trabajo como análisis de capacidad y viabilidad, pero sin resultados consolidados.
+Beta: resumen finalista. Añade explícitamente arquitectura P1/P2/P3/P4, router SERVER_EVENT, Wazuh, cobertura 9/9, 379 CLIENT_EVENT, FP 10/10 hits=0, benchmark 9/9 y TEC-009 como exfiltración HTTP controlada.
+Recomendación: aceptar beta. Es mucho más fuerte para memoria final porque adelanta alcance, resultados y límites.
+
+4.3 Abstract
+TFM.docx: traducción equivalente al resumen antiguo, sin resultados consolidados.
+Beta: abstract alineado con el resumen nuevo, incorpora scope TEC-001 a TEC-009 y no extrapolación a producción.
+Recomendación: aceptar beta y revisar que la terminología “HIDS/DFIR-oriented platform” te convence.
+
+4.4 Acrónimos
+No se aprecian cambios sustantivos relevantes. Ojo: YAML aparece duplicado en ambos documentos según extracción textual. No es bloqueante, pero convendría eliminar una repetición si lo ves en Word.
+
+5. DIFERENCIAS POR CAPÍTULOS
+----------------------------------------------------------------------------------------------------
+Introducción
+  TFM chars: 757 | Beta chars: 732 | Similitud: 0.98 | CAMBIO MEDIO
+
+MITRE ATT&CK como marco de referencia
+  TFM chars: 823 | Beta chars: 685 | Similitud: 0.41 | CAMBIO ALTO
+  Diferencia: beta introduce citas parentéticas y matiza que MITRE es taxonomía, no prueba automática de detección.
+  Acción: conservar beta.
+
+Velociraptor: naturaleza, capacidades y uso habitual
+  TFM chars: 2499 | Beta chars: 2404 | Similitud: 0.37 | CAMBIO ALTO
+  Diferencia: beta añade referencias oficiales y refuerza que CLIENT_EVENT requiere lógica explícita; elimina “Principio/Final del formulario”.
+  Acción: conservar beta.
+
+Planificación
+  TFM chars: 593 | Beta chars: 593 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+Diagrama de Gantt-Capítulo siete
+  TFM chars: 379 | Beta chars: 320 | Similitud: 0.15 | CAMBIO ALTO
+
+Fundamentos teóricos
+  TFM chars: 596 | Beta chars: 596 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+Entorno de trabajo, metodología y selección de técnicas
+  TFM chars: 1122 | Beta chars: 1122 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+Decisión metodológica sobre TEC-009
+  TFM chars: 546 | Beta chars: 828 | Similitud: 0.33 | CAMBIO ALTO
+  Diferencia clave: si en TFM aparece como staging/conexión TCP contextual, en beta debe quedar actualizado a exfiltración HTTP controlada documentada.
+  Acción: conservar formulación beta, con limitación documental secundaria si falta receiver_log/ZIP recibido.
+
+Desarrollo experimental y ejecución de pruebas
+  TFM chars: 734 | Beta chars: 734 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-001 - Ejecución mediante PowerShell
+  TFM chars: 1111 | Beta chars: 1111 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-002 - Ejecución mediante Windows Command Shell
+  TFM chars: 950 | Beta chars: 950 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-003 - Creación de tarea programada
+  TFM chars: 1191 | Beta chars: 1191 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-004 - Persistencia mediante claves Run del registro
+  TFM chars: 1113 | Beta chars: 1113 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-005 - Ejecución mediante servicio Windows
+  TFM chars: 1120 | Beta chars: 1120 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-006 - Descubrimiento de software de seguridad
+  TFM chars: 1386 | Beta chars: 1386 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-007 - Cifrado de datos
+  TFM chars: 1169 | Beta chars: 1169 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-008 – Destrucción de datos
+  TFM chars: 1874 | Beta chars: 1921 | Similitud: 0.99 | CAMBIO MEDIO
+
+TEC-001
+  TFM chars: 0 | Beta chars: 0 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-002
+  TFM chars: 0 | Beta chars: 0 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-003
+  TFM chars: 0 | Beta chars: 0 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-004
+  TFM chars: 0 | Beta chars: 0 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-005
+  TFM chars: 0 | Beta chars: 0 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-006
+  TFM chars: 0 | Beta chars: 0 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-007
+  TFM chars: 0 | Beta chars: 0 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-008
+  TFM chars: 0 | Beta chars: 0 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+
+TEC-009
+  TFM chars: 0 | Beta chars: 0 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+  Diferencia: beta cambia el enfoque a staging + ZIP + exfiltración HTTP controlada.
+  Acción: aceptar beta.
+
+Resultados de detección
+  TFM chars: 508 | Beta chars: 508 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+  Diferencia: beta está más cerrada con resultados finales; revisar frase JSONL/Discord para que no parezca detección primaria.
+  Acción: conservar contenido beta, corregir frase P1.
+
+Evaluación de Velociraptor y Benchmark de Rendimiento
+  TFM chars: 445 | Beta chars: 398 | Similitud: 0.06 | CAMBIO ALTO
+  Diferencia: beta mantiene benchmark como coste operativo, no calidad de detección.
+  Acción: conservar beta; revisar visualmente gráficas/tablas.
+
+Impacto en CPU
+  TFM chars: 250 | Beta chars: 349 | Similitud: 0.35 | CAMBIO ALTO
+
+Relación detección / coste
+  TFM chars: 510 | Beta chars: 540 | Similitud: 0.55 | CAMBIO ALTO
+
+Validación comparativa con Wazuh como HIDS
+  TFM chars: 822 | Beta chars: 838 | Similitud: 0.51 | CAMBIO ALTO
+  Diferencia: beta actualiza Wazuh y comparación; índice de tablas aquí queda roto y hay que actualizar campos.
+  Acción: conservar contenido, arreglar índice/captions.
+
+Comparación Wazuh – Velociraptor
+  TFM chars: 1022 | Beta chars: 1148 | Similitud: 0.88 | CAMBIO MEDIO
+
+Registro y almacenamiento de evidencias
+  TFM chars: 358 | Beta chars: 456 | Similitud: 0.21 | CAMBIO ALTO
+
+Trabajo Futuro
+  TFM chars: 448 | Beta chars: 448 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+  Diferencia: beta mejora títulos y limpieza de redacción.
+  Acción: conservar beta.
+
+Conclusiones
+  TFM chars: 408 | Beta chars: 408 | Similitud: 1.00 | SIN CAMBIOS RELEVANTES
+  Diferencia: beta añade secciones 10.5 y 10.6 y más cierre metodológico.
+  Acción: conservar si no alarga demasiado; revisar que conclusiones no parezcan anexos.
+
+Valor del enfoque
+  TFM chars: 7471 | Beta chars: 1827 | Similitud: 0.37 | CAMBIO ALTO
+
+Anexo B. Configuración del laboratorio
+  TFM chars: 18427 | Beta chars: 1811 | Similitud: 0.18 | CAMBIO ALTO
+
+6. CAMBIOS AUTOMÁTICOS / TEXTUALES DESTACADOS
+----------------------------------------------------------------------------------------------------
+Fragmentos reemplazados relevantes detectados por comparación de párrafos. Se muestran resumidos para revisión manual.
+
+6.1 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Dedico este Trabajo de Fin de Máster a mi familia. A mi padre, Agustín García-Amorena, por haberme apoyado siempre, por ser una inspiración en mi vida y un ejemplo constante y a mi madre, Sara Reina, por su protección, cariño y presencia incondicional.
+  Beta:
+    Dedico este Trabajo de Fin de Máster a mi familia. A mi padre, Agustín García-Amorena, por haberme apoyado siempre, por ser una inspiración en mi vida y un ejemplo constante y a mi madre, Sara Reina, por su protección, cariño y presencia incondicional. También quiero dedicar este trabajo a mis primos, Guillermo Reina y Jesús Gómez de la Mata, mis mejores amigos y compañeros de vida; y a mi pareja, Irene Reyes, quien no solo me animó a tomar este camino, sino que me ha acompañado en cada paso.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.2 REEMPLAZO RELEVANTE
+  TFM.docx:
+    En primer lugar, a mi familia: a mi padre, Agustín, pieza fundamental en mi vida y ejemplo a seguir y a mi madre, Sara, por estar siempre a mi lado. A mis amigos y compañeros, Jorge, Miguel, Alimar y Reisaac, gracias por acompañarme durante este año, por vuestro apoyo y por haber hecho más llevadero el curso. A todos los profesores que me han ayudado a orientar mi carrera laboral por este camino tan bonito y diferente que es la ciberseguridad. A todos, les estoy profundamente agradecido.
+  Beta:
+    En primer lugar, a mi familia: a mi padre, Agustín, pieza fundamental en mi vida y ejemplo a seguir; a mi madre, Sara, por estar siempre a mi lado; y a mi hermana, Sara, por ayudarme a forjar mi carácter. A mi pareja, Irene, quiero agradecerle especialmente que me diera el valor para seguir el camino que realmente deseaba, ayudándome a superar prejuicios, dudas y complejos. Su apoyo incondicional, su confianza en mí y su constante motivación han sido esenciales para alcanzar mis objetivos. A mis amigos y compañeros, Jorge, Miguel, Alimar y Reisaac, gracias por acompañarme durante este año, por vuestro apoyo y por haber hecho más llevadero el curso. A mis primos, Guillermo y Jesús, gracias por estar siempre disponibles cuando he necesitado una corrección, un consejo o un punto de vista sincero. Les estoy profundamente agradecido.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.3 REEMPLAZO RELEVANTE
+  TFM.docx:
+    El presente Trabajo Fin de Máster llamado “Análisis de la capacidad de Velociraptor para la detección de ataques HIDS de la matriz MITRE ATT&CK Enterprise” como indica su nombre, tiene como objetivo analizar la capacidad de la herramienta Velociraptor para detectar técnicas de ataque recogidas en la matriz MITRE ATT&CK Enterprise. El estudio evalúa en qué medida Velociraptor puede emplearse como sistema HIDS, considerando tanto sus capacidades de monitorización del sistema como su flexibilidad para implementar mecanismos de detección mediante artifacts nativos y personalizados. Para ello, se ha diseñado un entorno de laboratorio controlado mediante VM con arquitectura cliente-servidor y un SO Windows instrumentado con el agente de Velociraptor, sobre el que se ejecutan de forma controlada distintas técnicas de ataque. Adicionalmente, el trabajo analiza la viabilidad de los artifacts y soluciones de la comunidad o ya existentes y el impacto en el rendimiento del sistema derivado de la m
+  Beta:
+    El presente Trabajo Fin de Máster, titulado “Análisis de la capacidad de Velociraptor para la detección de ataques HIDS de la matriz MITRE ATT&CK Enterprise”, evalúa la capacidad de Velociraptor para actuar como aproximación HIDS/DFIR en Windows mediante artifacts públicos y personalizados. La evaluación se centra en técnicas MITRE ATT&CK Enterprise ejecutadas de forma controlada en laboratorio, diferenciando ejecución de la técnica, visibilidad host-based, detección mediante CLIENT_EVENT, alerta, evidencia forense y salida externa. La memoria consolida una arquitectura de artifacts P1/P2/P3/P4, un router SERVER_EVENT de enrutamiento y una comparación metodológica con Wazuh como HIDS/SIEM. Los resultados se limitan al subconjunto experimental TEC-001 a TEC-009: cobertura 9/9 mediante CLIENT_EVENT, 379 filas consolidadas, campaña de falsos positivos con 10/10 acciones benignas y 0 hits definitivos, benchmark final APTO con 9/9 runs válidos y TEC-009 formulada como exfiltración HTTP controlada en laboratorio. No se extrapola cobertura a toda la matriz MITRE ni a entornos de producción.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.4 REEMPLAZO RELEVANTE
+  TFM.docx:
+    This Master's Thesis, entitled “Analysis of Velociraptor's Capability to Detect HIDS Attacks from the MITRE ATT&CK Enterprise Matrix”, aims to analyze the ability of the Velociraptor tool to detect attack techniques included in the MITRE ATT&CK Enterprise framework. The study evaluates the extent to which Velociraptor can operate as a HIDS, considering both its system monitoring capabilities and its flexibility to implement detection mechanisms through native and custom artifacts. To achieve this objective, a controlled laboratory environment has been designed using a virtualized client-server architecture and a Windows operating system instrumented with the Velociraptor agent, on which several attack techniques are executed in a controlled manner. Additionally, the work analyzes the viability of community-developed or existing artefacts and solutions, as well as the impact derived from continuous monitoring, considering metrics such as CPU and memory consumption during event collectio
+  Beta:
+    This Master's Thesis, entitled “Analysis of Velociraptor's Capability to Detect HIDS Attacks from the MITRE ATT&CK Enterprise Matrix”, evaluates Velociraptor as a Windows HIDS/DFIR-oriented platform using public and custom artifacts. The evaluation is based on controlled MITRE ATT&CK Enterprise techniques executed in a laboratory environment and explicitly separates technique execution, host-based visibility, CLIENT_EVENT detection, alerting, forensic evidence and external output. The thesis consolidates a P1/P2/P3/P4 artifact architecture, a SERVER_EVENT routing layer and a methodological comparison with Wazuh as a HIDS/SIEM reference. The validated scope is the experimental subset TEC-001 to TEC-009: 9/9 CLIENT_EVENT coverage, 379 consolidated rows, a false-positive campaign with 10/10 benign actions and 0 definitive hits, a final benchmark with 9/9 valid runs, and TEC-009 described as controlled HTTP exfiltration in the laboratory. These results are not extrapolated to the full MITRE ATT&CK matrix or to production deployments.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.5 REEMPLAZO RELEVANTE
+  TFM.docx:
+    ste capítulo presenta el contexto general en el que se desarrolla el trabajo y establece las bases necesarias para comprender el problema. En primer lugar, se expone la motivación del estudio y la descripción del problema, analizando la relevancia de las capacidades de detección en ciberseguridad y el papel de los sistemas HIDS en entornos actuales. A continuación, se definen los objetivos del proyecto, especificando el alcance del análisis y las metas que se persiguen con la evaluación de Velociraptor. Finalmente, se presenta el estado del arte, en el que se revisan las principales tecnologías, enfoques y herramientas existentes en el ámbito de la detección de intrusiones basadas en host y su relación con marcos de referencia como MITRE ATT&CK.
+  Beta:
+    Este capítulo presenta el contexto general en el que se desarrolla el trabajo y establece las bases necesarias para comprender el problema. En primer lugar, se expone la motivación del estudio y la descripción del problema, analizando la relevancia de las capacidades de detección en ciberseguridad y el papel de los sistemas HIDS en entornos actuales. A continuación, se definen los objetivos del proyecto, especificando el alcance del análisis y las metas que se persiguen con la evaluación de Velociraptor. Finalmente, se presenta el estado del arte, en el que se revisan las principales tecnologías, enfoques y herramientas existentes en el ámbito de la detección de intrusiones basadas en host y su relación con MITRE ATT&CK.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.6 REEMPLAZO RELEVANTE
+  TFM.docx:
+    MITRE ATT&CK (Adversarial Tactics, Techniques and Common Knowledge) es un framework que recopila y organiza tácticas y técnicas utilizadas por atacantes en entornos reales. La matriz ATT&CK Enterprise se centra en entornos corporativos y describe comportamientos asociados a distintas fases de un ataque, como ejecución, evasión de defensas, persistencia o escalado de privilegios. Este framework se utiliza ampliamente como marco de referencia para describir y clasificar técnicas de ataque, permitiendo relacionar eventos observados en los sistemas con comportamientos conocidos de adversarios. Además, el punto por el que nos es interesante es que se emplea con frecuencia para evaluar la cobertura de detección de herramientas de seguridad, analizando qué técnicas pueden ser identificadas por una solución determinada.
+  Beta:
+    MITRE ATT&CK (Adversarial Tactics, Techniques and Common Knowledge) es un framework que recopila y organiza tácticas y técnicas utilizadas por adversarios. La matriz ATT&CK Enterprise se centra en entornos corporativos y describe comportamientos asociados a distintas fases de un ataque, como ejecución, persistencia, discovery, exfiltración o impacto (MITRE, s. f.-h). En esta memoria se utiliza ATT&CK como taxonomía de referencia para seleccionar y describir técnicas, no como prueba automática de detección. La asociación de un evento a una técnica requiere correlacionar comportamiento ejecutado, telemetría host-based, lógica del artifact y evidencia conservada (MITRE, s. f.-h).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.7 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Velociraptor es una plataforma de código abierto orientada a Digital Forensics and Incident Response (DFIR) que permite la recopilación remota y el análisis de información procedente de múltiples endpoints mediante una arquitectura cliente-servidor. Su diseño permite ejecutar consultas sobre los sistemas monitorizados con el objetivo de obtener evidencias, analizar actividad sospechosa o investigar incidentes de seguridad. El funcionamiento de la herramienta se basa en el uso de artifacts, que definen consultas y procedimientos para recopilar información del sistema. Estas consultas se implementan mediante Velociraptor Query Language (VQL), un lenguaje diseñado para interactuar con distintas fuentes de datos del endpoint, como procesos, archivos, registros del sistema o eventos del sistema operativo. Los artifacts pueden utilizarse tanto para realizar consultas puntuales sobre el estado del sistema, como para analizar información histórica almacenada en logs, o incluso para implementar
+  Beta:
+    Velociraptor es una plataforma de código abierto orientada a Digital Forensics and Incident Response (DFIR) que permite la recopilación remota y el análisis de información procedente de múltiples endpoints mediante una arquitectura cliente-servidor. Su diseño permite ejecutar consultas sobre sistemas monitorizados para obtener evidencias, analizar actividad sospechosa o investigar incidentes de seguridad (Velociraptor, s. f.-a; Velociraptor, s. f.-d). El funcionamiento de la herramienta se basa en artifacts, que empaquetan consultas VQL y configuración en ficheros YAML. VQL permite interactuar con fuentes del endpoint como procesos, archivos, registro, eventos del sistema operativo, Sysmon o PowerShell. Los artifacts pueden emplearse para consultas puntuales, análisis histórico o monitorización continua cuando se diseñan como event artifacts (Velociraptor, s. f.-a; Velociraptor, s. f.-d). Aunque Velociraptor se ha utilizado tradicionalmente en tareas de análisis forense y respuesta ante incidentes, su arquitectura también permite implementar monitorización continua mediante colas de eventos y server monitoring. Esa capacidad abre la posibilidad de aproximarlo a una herramienta de detección basada en host, siempre que exista una lógica de detección explícita encima de la telemetría (Velociraptor, s. f.-b; Velociraptor, s. f.-c).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.8 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Siendo el más interesante para nosotros los Client_Event artifacts (también llamados event artifacts), al ser los que aportan una monitorización real sobre el propio host. A pesar de estas capacidades, el uso de Velociraptor como mecanismo HIDS orientado a la detección sistemática de técnicas MITRE ATT&CK no ha sido ampliamente evaluado. Este aspecto constituye el punto de mayor interés del presente trabajo, que busca analizar en qué medida la herramienta puede emplearse con este propósito mediante el uso de artifacts nativos y personalizados en un entorno de laboratorio controlado.Principio del formulario Final del formulario
+  Beta:
+    En esta memoria, los artifacts de tipo CLIENT_EVENT son los más relevantes para aproximar monitorización HIDS, porque ejecutan la lógica de observación en el endpoint y permiten clasificar eventos host-based de forma continua. Esta clasificación no convierte automáticamente cualquier evento visible en alerta; exige reglas, contexto y evidencia trazable. A pesar de estas capacidades, el uso de Velociraptor como mecanismo HIDS orientado a la detección sistemática de técnicas MITRE ATT&CK no debe asumirse por defecto. Este trabajo analiza en qué medida puede emplearse con ese propósito mediante artifacts nativos y personalizados en un entorno de laboratorio controlado (MITRE, s. f.-h; Velociraptor, s. f.-a).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.9 REEMPLAZO RELEVANTE
+  TFM.docx:
+    En el capítulo 7, el punto 7.6 es dependiente de si se nos otorga la licencia de FortiEDR para comparar, para representar este hecho se ha puesto de un color distinto de la misma gama. Finalmente, no se nos ha entregado la licencia de uso de FortiEDR y se ha optado por usar Wazuh y por dividir en un nuevo capítulo 8 la comparación con este mismo.
+  Beta:
+    El capítulo VII se cerró finalmente como benchmark de rendimiento de Velociraptor. La comparación prevista con una solución EDR comercial se descartó por falta de licencia y se sustituyó por un capítulo específico de validación comparativa con Wazuh como plataforma HIDS/SIEM de contraste.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.10 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Velociraptor ocupa una posición intermedia entre una plataforma DFIR distribuida y una herramienta HIDS flexible. Puede recoger evidencias bajo demanda como una herramienta forense, ejecutar hunts sobre múltiples endpoints y mantener monitorización continua mediante artifacts de tipo CLIENT_EVENT. Sin embargo, no debe asumirse que observar eventos equivalga a detectar amenazas ni que detectar una señal equivalga a generar una alerta operativa.
+  Beta:
+    Velociraptor ocupa una posición intermedia entre una plataforma DFIR distribuida y una herramienta HIDS flexible. Puede recoger evidencias bajo demanda como una herramienta forense, ejecutar hunts sobre múltiples endpoints y mantener monitorización continua mediante artifacts de tipo CLIENT_EVENT. Sin embargo, observar eventos no equivale por sí solo a detectar amenazas ni a generar una alerta operativa (Velociraptor, s. f.-a; Velociraptor, s. f.-b).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.11 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Velociraptor utiliza una arquitectura cliente-servidor. El analista interactúa con la interfaz gráfica o API del servidor, selecciona artifacts, define parámetros y lanza colecciones, hunts o monitorización continua. El servidor coordina la ejecución, pero la lógica de consulta se ejecuta principalmente en el endpoint, donde el cliente accede a las fuentes locales de telemetría. Se ha resumido el flujo funcional desde la intervención del analista hasta la devolución de resultados desde los endpoints.. Para esto se ha realizado un esquema usando la aplicación web de draw.io.
+  Beta:
+    Velociraptor utiliza una arquitectura cliente-servidor. El analista interactúa con la interfaz gráfica o API del servidor, selecciona artifacts, define parámetros y lanza colecciones, hunts o monitorización continua. El servidor coordina la ejecución, pero la lógica de consulta se ejecuta principalmente en el endpoint, donde el cliente accede a las fuentes locales de telemetría (Velociraptor, s. f.-a; Velociraptor, s. f.-d). Se ha resumido el flujo funcional desde la intervención del analista hasta la devolución de resultados desde los endpoints. Para ello se ha realizado un esquema usando la aplicación web draw.io.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.12 REEMPLAZO RELEVANTE
+  TFM.docx:
+    La carga principal se ejecuta en el cliente: el endpoint ejecuta las consultas VQL y el servidor recoge los resultados. La propia documentación indica que los clientes hacen el “heavy lifting” y el servidor recopila los resultados de las consultas.
+  Beta:
+    La carga principal se ejecuta en el cliente: el endpoint ejecuta las consultas VQL y el servidor recoge los resultados. Esta separación es coherente con el modelo de artifacts de Velociraptor, en el que la consulta se distribuye al cliente para devolver resultados concretos al servidor (Velociraptor, s. f.-a; Velociraptor, s. f.-d).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.13 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Un artifact es la unidad lógica principal de Velociraptor. Permite empaquetar una o varias consultas VQL junto con su configuración en un fichero YAML estructurado. Gracias a este modelo, el analista no necesita ejecutar manualmente consultas VQL aisladas, sino que puede seleccionar artifacts reutilizables, parametrizables y gestionados desde el servidor. La documentación oficial indica además que cada source genera una tabla de resultados y que si hay varias sources deben tener nombres distintos.
+  Beta:
+    Un artifact es la unidad lógica principal de Velociraptor. Permite empaquetar una o varias consultas VQL junto con su configuración en un fichero YAML estructurado. Gracias a este modelo, el analista no necesita ejecutar manualmente consultas VQL aisladas, sino que puede seleccionar artifacts reutilizables, parametrizables y gestionados desde el servidor (Velociraptor, s. f.-a). La documentación oficial indica además que cada source genera una tabla de resultados y que, si hay varias sources, deben tener nombres distintos para evitar ambigüedad en la salida (Velociraptor, s. f.-a).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.14 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Este lenguaje constituye el núcleo funcional de Velociraptor, ya que permite definir la lógica de adquisición de evidencias, detección de comportamientos sospechosos o recopilación de telemetría del endpoint. Las consultas VQL se integran normalmente dentro de artifacts, desde donde se distribuyen a los clientes para su ejecución local.
+  Beta:
+    Este lenguaje constituye el núcleo funcional de Velociraptor, ya que permite definir la lógica de adquisición de evidencias, detección de comportamientos sospechosos o recopilación de telemetría del endpoint. Las consultas VQL se integran normalmente dentro de artifacts, desde donde se distribuyen a los clientes para su ejecución local (Velociraptor, s. f.-d).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.15 REEMPLAZO RELEVANTE
+  TFM.docx:
+    La selección de técnicas no busca cubrir toda la matriz MITRE ATT&CK Enterprise, sino construir un conjunto acotado, seguro y representativo para evaluar detección host-based en Windows. La selección final incorpora nueve técnicas internas TEC-001 a TEC-009.
+  Beta:
+    La selección de técnicas no busca cubrir toda la matriz MITRE ATT&CK Enterprise, sino construir un conjunto acotado, seguro y representativo para evaluar detección host-based en Windows. La selección final incorpora nueve técnicas internas TEC-001 a TEC-009, mapeadas contra ATT&CK Enterprise y documentadas en la matriz de evidencias del TFM (MITRE, s. f.-h; García-Amorena Reina, 2026e).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.16 REEMPLAZO RELEVANTE
+  TFM.docx:
+    La selección final amplía el enfoque inicial centrado en ransomware incorporando sabotaje y staging/red contextual. Esta ampliación mejora la representatividad frente a escenarios de insiders y ataques orientados a impacto o preparación de exfiltración, sin afirmar transferencia real de datos cuando no existe.
+  Beta:
+    La selección final amplía el enfoque inicial centrado en ransomware incorporando sabotaje, staging, archivado ZIP y exfiltración HTTP controlada. Esta ampliación mejora la representatividad frente a escenarios de insiders y ataques orientados a impacto o transferencia de datos dummy, sin afirmar compromiso de datos sensibles ni de terceros (García-Amorena Reina, 2026e).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.17 REEMPLAZO RELEVANTE
+  TFM.docx:
+    TEC-009 se interpreta principalmente como staging y archivado local, asociado a T1074.001 y T1560.001. El script abre una conexión TCP externa controlada hacia example.com:80 para generar telemetría host-based de red, pero no transfiere el archivo ZIP ni datos reales fuera del equipo.
+  Beta:
+    TEC-009 se interpreta como staging, archivado ZIP y exfiltración HTTP controlada en laboratorio, asociada a T1074.001, T1560.001 y T1048.003. La ejecución prepara datos dummy, crea un ZIP y realiza un envío HTTP controlado hacia un receptor del investigador. La evidencia mínima defendible procede del summary: ReceiverReachable=True, HTTPStatus=200, UploadSucceeded=True, SHA-256 local y bytes transferidos en ReceiverResponse (MITRE, s. f.-a; MITRE, s. f.-g; MITRE, s. f.-i; García-Amorena Reina, 2026e).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.18 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Posteriormente, dichos CSV son procesados mediante un script Python desarrollado para el TFM. Este script lee los CSV generados, extrae métricas globales como CPU total, RAM disponible, lecturas de disco y escrituras de disco, e y extrae también métricas específicas del proceso de Velociraptor, como CPU, memoria privada e I/O del proceso.
+  Beta:
+    Posteriormente, los CSV son procesados mediante scripts desarrollados para el TFM. Estos scripts extraen métricas globales como CPU, memoria e I/O, y métricas específicas del proceso cliente Velociraptor, evitando mezclar el coste del agente con el servidor/GUI del laboratorio.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.19 REEMPLAZO RELEVANTE
+  TFM.docx:
+    De este modo, la prueba no se limitó a comprobar la existencia de telemetría, sino que verificó el flujo completo desde la observación del evento en el endpoint hasta su conversión en una alerta externa. Los resultados concretos de este proceso, incluyendo las capturas de Discord y la evaluación por técnica, se presentan y analizan en el Capítulo VI.
+  Beta:
+    De este modo, la prueba no se limitó a comprobar la existencia de telemetría, sino que verificó el flujo desde la observación del evento en el endpoint hasta su salida externa. Las capturas de Discord o JSONL se interpretan como notificación o persistencia posterior, no como fuente primaria de detección.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.20 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Distinguir TEC-009 de exfiltración real: Compress-Archive, .zip, Copy-Item y conexión de red se documentan como staging / exfiltración simulada host-based, no como exfiltración real.
+  Beta:
+    Distinguir TEC-009: staging, ZIP y envío HTTP controlado documentado permiten formular exfiltración HTTP controlada en laboratorio. No se afirma exfiltración de datos sensibles reales, ni compromiso de terceros, ni se usan rutas, scripts o etiquetas TEC como IOCs.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.21 REEMPLAZO RELEVANTE
+  TFM.docx:
+    La telemetría esperada para esta técnica se basa principalmente en PowerShell Script Block Logging, especialmente Event ID 4104, y en eventos de Sysmon asociados a borrado de ficheros. En la configuración metodológica del TFM se decidió emplear Sysmon Event ID 26 como evidencia forense de eliminación, evitando utilizar cada evento de borrado individual como alerta directa para no generar ruido operativo excesivo ni carga exagerada al sistema. TEC-009 - Staging y archivado de datos La novena prueba se correspondió principalmente con T1074.001 - Local Data Staging y T1560.001 - Archive Collected Data. Esta técnica representa la preparación local de datos antes de una posible exfiltración, incluyendo recopilación, compresión y generación de un archivo consolidado. En el laboratorio, TEC-009 se diseñó como una prueba controlada de staging y archivado. El script utilizado prepara datos dummy del directorio DUMB_LAB, genera un archivo comprimido y, en función de la configuración de ejecución
+  Beta:
+    La telemetría esperada para esta técnica se basa principalmente en PowerShell Script Block Logging, especialmente Event ID 4104, y en eventos de Sysmon asociados a borrado de ficheros. En la configuración metodológica del TFM se decidió emplear Sysmon Event ID 26 como evidencia forense de eliminación, evitando utilizar cada evento de borrado individual como alerta directa para no generar ruido operativo excesivo ni carga exagerada al sistema (Microsoft, 2026; Russinovich & Garnier, 2026). TEC-009 - Staging, archivado ZIP y exfiltración HTTP controlada La novena prueba combina T1074.001 - Local Data Staging, T1560.001 - Archive Collected Data y T1048.003 - Exfiltration Over Unencrypted Non-C2 Protocol. Representa una exfiltración HTTP controlada en laboratorio: preparación de datos dummy, compresión en ZIP y transferencia HTTP hacia un receptor controlado (MITRE, s. f.-a; MITRE, s. f.-g; MITRE, s. f.-i). En el laboratorio, TEC-009 se diseñó como staging, archivado ZIP y exfiltración HTTP controlada hacia un receptor del investigador. La ejecución prepara datos dummy, genera un archivo comprimido, calcula un SHA-256 local y realiza un envío HTTP controlado equivalente a Invoke-WebRequest, Invoke-RestMethod o upload HTTP. Las rutas y nombres de scripts se documentan por reproducibilidad, pero no forman parte de la lógica de detección (García-Amorena Reina, 2026e).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.22 REEMPLAZO RELEVANTE
+  TFM.docx:
+    En este TFM, TEC-009 se utiliza principalmente para evaluar si Velociraptor puede observar comportamientos de staging, compresión, preparación de datos y actividad de red contextual. Esta técnica permite analizar los límites de detección host-based cuando la diferencia entre actividad administrativa legítima, staging local y exfiltración real depende del contexto.
+  Beta:
+    En este TFM, TEC-009 se utiliza para evaluar si Velociraptor puede observar staging, compresión, preparación de datos y exfiltración HTTP controlada. La técnica permite analizar los límites de la detección host-based cuando una actividad puede parecer administrativa si no se correlaciona con ZIP, envío HTTP, hash, bytes transferidos y contexto de ejecución (García-Amorena Reina, 2026e).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.23 REEMPLAZO RELEVANTE
+  TFM.docx:
+    El parámetro TFM_BASEPATH fija la ruta base del entorno activo de pruebas. A partir de ella, el runner localiza el directorio DUMB_LAB, las carpetas específicas de TEC-007, TEC-008 y TEC-009, los scripts auxiliares y las rutas de salida. Para TEC-009 se utiliza el parámetro ReceiverUrl, que indica el receptor HTTP controlado empleado para validar, cuando proceda, la comunicación de red asociada a staging o exfiltración contextual.
+  Beta:
+    El parámetro TFM_BASEPATH fija la ruta base del entorno activo de pruebas. A partir de ella, el runner localiza el dataset de laboratorio, las carpetas específicas de las técnicas, los scripts auxiliares y las rutas de salida. Para TEC-009 se utiliza ReceiverUrl, que indica el receptor HTTP controlado empleado para documentar la exfiltración HTTP controlada en laboratorio.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.24 REEMPLAZO RELEVANTE
+  TFM.docx:
+    En el caso de TEC-007, el runner ejecuta la enumeración del dataset y el script de cifrado controlado, validando posteriormente la aparición de archivos .aes. En TEC-008, ejecuta un borrado controlado sobre ficheros dummy y compara el número de archivos antes y después de la operación. En TEC-009, ejecuta exfiltracion_v3.ps1, registra el receptor configurado, el estado del upload, el hash SHA-256 del ZIP generado y el resumen de transferencia.
+  Beta:
+    En el caso de TEC-007, el runner ejecuta la enumeración del dataset y el script de cifrado controlado, validando posteriormente la aparición de archivos .aes. En TEC-008, ejecuta un borrado controlado sobre ficheros dummy y compara el número de archivos antes y después de la operación. En TEC-009, ejecuta la prueba de staging, ZIP y upload HTTP, registra el receptor configurado, el estado del upload, el hash SHA-256 del ZIP generado y el resumen de transferencia.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.25 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Telemetría captada en discord
+  Beta:
+    Telemetría captada en Discord
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.26 REEMPLAZO RELEVANTE
+  TFM.docx:
+    En tercer lugar, TEC-009 presenta una limitación conceptual. La creación de un archivo ZIP y una conexión de red no prueban por sí solas una exfiltración. Solo se puede hablar de exfiltración contextual controlada si existe evidencia del upload HTTP hacia el receptor de laboratorio.
+  Beta:
+    En tercer lugar, TEC-009 exige una lectura compuesta. La creación de un ZIP por sí sola solo demuestra staging y archivado; en la campaña final, sin embargo, el summary documenta ReceiverReachable=True, HTTPStatus=200, UploadSucceeded=True, SHA-256 local y bytes transferidos en ReceiverResponse. Por ello se formula como exfiltración HTTP controlada en laboratorio, con limitación documental secundaria si no se conserva receiver_log.jsonl o el ZIP recibido en el paquete revisado.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.27 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Este capítulo expone los resultados finales obtenidos con Velociraptor en la campana real del 24/06 y en la campana de falsos positivos del 26/06. La unidad primaria de detección se define como una fila CLIENT_EVENT emitida por un artifact custom dentro de la ventana canónica de ejecución. Las salidas JSONL o Discord se usan como resultado final, ya que para que aparezcan debe haber detectado en cascada sistema-Velociraptor-Server Event-Discord, por lo que todas las partes deben funcionar correctamente.
+  Beta:
+    Este capítulo expone los resultados finales obtenidos con Velociraptor en la campaña real del 24/06 y en la campaña de falsos positivos del 26/06. La unidad primaria de detección se define como una fila CLIENT_EVENT emitida por un artifact custom dentro de la ventana canónica de ejecución. Las salidas JSONL o Discord se usan como resultado final, ya que para que aparezcan debe haber detectado en cascada sistema-Velociraptor-Server Event-Discord, por lo que todas las partes deben funcionar correctamente.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.28 REEMPLAZO RELEVANTE
+  TFM.docx:
+    La campaña final incluyó 379 filas CLIENT_EVENT reales dentro de la ventana de tiempo de ejecución del script e ingesta de estos datos. La distribución por perfiles fue P1=19, P2=118, P3=109 y P4=133. Como se ha comentado con anterioridad, las prioridades o perfiles (p) no representan herramientas distintas, sino niveles de profundidad y criticidad: P4 aporta visibilidad básica, P3 comportamiento, P2 evidencia de alta relevancia y P1 señales críticas. Osea, esto se cataloga como P4 Low, P3 Medium, P2 High y P1 Critical.
+  Beta:
+    La campaña final incluyó 379 filas CLIENT_EVENT reales dentro de la ventana de tiempo de ejecución del script e ingesta de estos datos. La distribución por perfiles de artifacts fue P1=19, P2=118, P3=109 y P4=133. En este contexto, P1/P2/P3/P4 no son documentos de prioridad ni herramientas distintas, sino perfiles operativos de severidad y visibilidad: P4 aporta visibilidad básica, P3 comportamiento, P2 evidencia de alta relevancia y P1 señales críticas (García-Amorena Reina, 2026e).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.29 REEMPLAZO RELEVANTE
+  TFM.docx:
+    El caso más relevante fue TEC-009, correspondiente al staging, archivado y upload HTTP controlado. Esta técnica fue la más problemática durante el desarrollo, ya que inicialmente Velociraptor no ofrecía una evidencia suficientemente completa para justificar una detección sólida. El problema no estaba únicamente en el artifact, sino en la visibilidad disponible en el endpoint: era necesario ampliar la telemetría del sistema, revisar la configuración de Sysmon y ajustar los artifacts para observar correctamente la creación del ZIP, la actividad de staging y la comunicación HTTP.
+  Beta:
+    El caso más relevante fue TEC-009, correspondiente al staging, archivado ZIP y exfiltración HTTP controlada. Esta técnica fue la más problemática durante el desarrollo, ya que inicialmente Velociraptor no ofrecía una evidencia suficientemente completa para justificar una detección sólida. Fue necesario ampliar la telemetría del sistema, revisar Sysmon y ajustar los artifacts para observar la creación del ZIP, la actividad de staging y la comunicación HTTP.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.30 REEMPLAZO RELEVANTE
+  TFM.docx:
+    En la campaña final, TEC-009 fue detectada parcialmente de forma satisfactoria. Se observó ReceiverReachable=True, HTTPStatus=200, UploadSucceeded=True, hash SHA-256 local y bytes transferidos en ReceiverResponse. Estos elementos permiten afirmar que existió un upload HTTP controlado documentado por summary, asociado al archivo comprimido generado durante la prueba.
+  Beta:
+    En la campaña final, TEC-009 queda formulada como exfiltración HTTP controlada en laboratorio. Se observó ReceiverReachable=True, HTTPStatus=200, UploadSucceeded=True, hash SHA-256 local y bytes transferidos en ReceiverResponse. Estos elementos documentan staging, archivado ZIP y envío HTTP controlado hacia host receptor. Si en el paquete revisado no se conserva receiver_log.jsonl o el ZIP recibido, esa ausencia se mantiene como limitación documental secundaria, no como invalidación de la técnica.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.31 REEMPLAZO RELEVANTE
+  TFM.docx:
+    La campana de falsos positivos del 26/06 ejecuto diez acciones benignas y obtuvo 10 OK, 0 WARN, 0 FAIL y 0 SKIPPED. El resumen final indica VelociraptorHits.Total=0 y el fichero vr_hits.csv no contiene hits definitivos. Figura 31: Campana definitiva de falsos positivos
+  Beta:
+    La campaña de falsos positivos del 26/06 ejecutó diez acciones benignas y obtuvo 10 OK, 0 WARN, 0 FAIL y 0 SKIPPED. El resumen final indica VelociraptorHits.Total=0 y el fichero vr_hits.csv no contiene hits definitivos. Figura 31: Campaña definitiva de falsos positivos
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.32 REEMPLAZO RELEVANTE
+  TFM.docx:
+    En este capítulo tenemos por separado dos evaluaciones, una de rendimiento de VR, de como ha funcionado entre falsos positivos, casos reales y distintos artifacts y un benchmark de rendimiento. El benchmark se planteó como medición separada del coste operativo del cliente Velociraptor. No mide cobertura, falsos positivos ni calidad de detección. Su objetivo es estimar el consumo observado en el laboratorio bajo tres escenarios reproducibles.
+  Beta:
+    Este capítulo separa dos planos de evaluación: los resultados de detección y falsos positivos ya consolidados, y el benchmark de rendimiento del cliente Velociraptor. El benchmark se plantea como medición independiente del coste operativo; no mide cobertura, falsos positivos ni calidad de detección. Su objetivo es estimar el consumo observado en el laboratorio bajo tres escenarios reproducibles.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.33 REEMPLAZO RELEVANTE
+  TFM.docx:
+    La fuente del benchmark final es BENCH_20260619_FINAL01, consolidada en el Excel final del 26/06. El precheck fue APTO: 9/9 runs válidos, tres escenarios y tres repeticiones por escenario. SERVER_GUI se excluyó del cálculo principal para no mezclar el coste del agente cliente con el servidor/GUI de laboratorio.
+  Beta:
+    La fuente del benchmark final es BENCH_20260619_FINAL01, consolidada en el Excel final del 26/06/2026. El precheck fue APTO: 9/9 runs válidos, tres escenarios y tres repeticiones por escenario. SERVER_GUI se excluyó del cálculo principal para no mezclar el coste del agente cliente con el servidor/GUI de laboratorio (García-Amorena Reina, 2026d).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.34 REEMPLAZO RELEVANTE
+  TFM.docx:
+    La CPU media del cliente Velociraptor fue 0 % en reposo y 0,95 % durante el escenario VR_TEC_RUNNER, con un pico observado del 54 %. Esta lectura debe interpretarse como coste observado en laboratorio, no como garantía universal para otros endpoints.
+  Beta:
+    El cliente Velociraptor introduce una carga medible en el endpoint, especialmente visible en picos puntuales de CPU. En el laboratorio evaluado, la CPU media fue 0 % en reposo y 0,95 % durante VR_TEC_RUNNER, con un pico observado del 54 %. Esta lectura no debe extrapolarse como garantía universal para otros endpoints (García-Amorena Reina, 2026d).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.35 REEMPLAZO RELEVANTE
+  TFM.docx:
+    La memoria media del cliente se mantuvo estable: 57,48 MB en VR_IDLE y 57,42 MB en VR_TEC_RUNNER, con pico de 57,97 MB. En el entorno medido, el consumo medio de memoria no aumento de forma relevante durante la ejecución de la carga TEC.
+  Beta:
+    La memoria residente del cliente se mantuvo estable: 57,48 MB en VR_IDLE y 57,42 MB en VR_TEC_RUNNER, con pico de 57,97 MB. En el entorno medido, el consumo medio de memoria fue bajo y no aumentó de forma relevante durante la ejecución de la carga TEC (García-Amorena Reina, 2026d).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.36 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Con los datos disponibles, Velociraptor logro 9/9 detecciones CLIENT_EVENT en el subconjunto evaluado y mantuvo un consumo medio bajo en los escenarios de benchmark. Esta relación es favorable en el laboratorio, pero no equivale a una prueba de escalabilidad ni a una validación en producción.
+  Beta:
+    Los resultados de benchmark se interpretan solo como coste operativo. Aunque el TFM obtuvo 9/9 detecciones CLIENT_EVENT en el subconjunto evaluado, esa cobertura pertenece al capítulo de resultados y no se deriva del benchmark ni se evalúa con métricas de CPU/RAM (García-Amorena Reina, 2026d; García-Amorena Reina, 2026e).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.37 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Este capítulo documenta el despliegue de Wazuh como solución alternativa a Velociraptor dentro del entorno experimental del TFM. Su finalidad no es sustituir la evaluación principal de Velociraptor, sino aportar una línea de contraste externa que permita comparar visibilidad host-based, generación de alertas, trazabilidad de evidencias, severidad, ruido operativo y facilidad de configuración. La comparación se plantea de forma separada para evitar sesgos metodológicos. Por ello se distinguen tres escenarios: Wazuh base, Wazuh con reglas personalizadas TFM y Velociraptor custom. La coexistencia simultánea Velociraptor + Wazuh se reserva únicamente para analizar ruido operativo, ya que Wazuh puede registrar actividad interna del router de Velociraptor, como PowerShell, escritura en JSONL o envíos HTTP a webhooks.
+  Beta:
+    Este capítulo documenta el despliegue de Wazuh como plataforma HIDS/SIEM de contraste dentro del entorno experimental del TFM. Su finalidad no es sustituir la evaluación principal de Velociraptor, sino aportar una línea externa para comparar visibilidad host-based, generación de alertas, trazabilidad de evidencias, severidad, ruido operativo y facilidad de configuración (Wazuh, s. f.-b; Wazuh, s. f.-c). La comparación se plantea de forma separada para evitar sesgos metodológicos y no trata Wazuh y Velociraptor como unidades equivalentes directas. Wazuh trabaja con logs, reglas, archives y alerts; Velociraptor trabaja con artifacts, VQL, CLIENT_EVENT y evidencia host-based. La coexistencia simultánea Velociraptor + Wazuh se reserva únicamente para analizar ruido operativo (Velociraptor, s. f.-a; Wazuh, s. f.-a; Wazuh, s. f.-b).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.38 REEMPLAZO RELEVANTE
+  TFM.docx:
+    El objetivo del despliegue fue disponer de una plataforma independiente con la que comparar la capacidad de observación y detección obtenida mediante Velociraptor. Wazuh se utilizó como herramienta de contraste por la negativa para usar FortiEDR, por ser de uso gratuito y por su capacidad para recoger eventos de Windows, procesar telemetría de Sysmon, aplicar reglas de correlación y mostrar alertas en un dashboard centralizado.
+  Beta:
+    El objetivo del despliegue fue disponer de una plataforma independiente con la que contrastar modelos de visibilidad y alerta. Wazuh se utilizó como herramienta HIDS/SIEM de referencia operativa, no como sustituto de Velociraptor, por su capacidad para recoger eventos de Windows, procesar telemetría de Sysmon, aplicar reglas de correlación y mostrar alertas en un dashboard centralizado.
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.39 REEMPLAZO RELEVANTE
+  TFM.docx:
+    El agente se instaló mediante el paquete MSI oficial de Wazuh correspondiente a la versión 4.14.5. En la instalación se indicó la IP del manager y posteriormente se inició el servicio WazuhSvc
+  Beta:
+    El agente se instaló mediante el paquete MSI oficial de Wazuh correspondiente a la versión 4.14.5. En la instalación se indicó la IP del manager y posteriormente se inició el servicio WazuhSvc (Wazuh, s. f.-b).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+6.40 REEMPLAZO RELEVANTE
+  TFM.docx:
+    Para que Wazuh pudiera observar las mismas fuentes relevantes que Velociraptor, el agente Windows se configuró para remitir eventos de PowerShell Operational, Sysmon, Security y System. Estas fuentes resultan necesarias para observar ejecución de scripts, creación de procesos, creación de ficheros, instalación de servicios y eventos generales del sistema.
+  Beta:
+    Para que Wazuh pudiera observar las mismas fuentes relevantes que Velociraptor, el agente Windows se configuró para remitir eventos de PowerShell Operational, Sysmon, Security y System. Estas fuentes resultan necesarias para observar ejecución de scripts, creación de procesos, creación de ficheros, instalación de servicios y eventos generales del sistema (Microsoft, 2026; Russinovich & Garnier, 2026; Wazuh, s. f.-d).
+  Criterio: revisar/aceptar si refuerza metodología, resultados o citas. Rechazar solo si introduce error de formato o sobreafirmación.
+
+7. CONTENIDO NUEVO EN BETA QUE NO ESTABA EN TFM.docx
+----------------------------------------------------------------------------------------------------
+Fragmentos nuevos más relevantes detectados. No se incluyen todos los cambios menores para no hacer ilegible el informe.
+
+7.1 INSERCIÓN RELEVANTE EN BETA
+    Finalidad de los anexos
+
+8. CONTENIDO DEL TFM.docx QUE DESAPARECE O QUEDA SUPERADO
+----------------------------------------------------------------------------------------------------
+9. TÉRMINOS Y CIFRAS CLAVE
+----------------------------------------------------------------------------------------------------
+CLIENT_EVENT: TFM.docx=46 | beta=52
+SERVER_EVENT: TFM.docx=17 | beta=19
+JSONL: TFM.docx=19 | beta=20
+Discord: TFM.docx=30 | beta=34
+TEC-009: TFM.docx=64 | beta=70
+exfiltración HTTP controlada: TFM.docx=6 | beta=21
+staging: TFM.docx=18 | beta=19
+receiver_log: TFM.docx=3 | beta=5
+Wazuh: TFM.docx=146 | beta=167
+benchmark: TFM.docx=31 | beta=34
+379: TFM.docx=4 | beta=7
+10/10: TFM.docx=2 | beta=4
+9/9: TFM.docx=9 | beta=14
+P1/P2/P3/P4: TFM.docx=10 | beta=13
+FortiEDR: TFM.docx=5 | beta=2
+Final del formulario: TFM.docx=1 | beta=0
+discord: TFM.docx=2 | beta=0
+
+Interpretación: el aumento de CLIENT_EVENT, SERVER_EVENT, JSONL, Wazuh, benchmark y cifras finales confirma que la beta es una versión más cerrada y metodológicamente más defensable.
+
+10. TABLAS, CAPTIONS E ÍNDICES DE TABLAS
+----------------------------------------------------------------------------------------------------
+Captions en TFM.docx: 145
+Captions en beta: 145
+
+Captions problemáticas visibles en beta detectadas por texto:
+  Tabla 47: Casos benignos incluidos en el runner de falsos positivos72
+  Tabla 51: Reglas personalizadas Wazuh utilizadas para aproximar los perfiles P1-P4 de Velociraptor83
+  Tabla 55: Distribución de reglas TFM activadas durante la campaña custom89
+  Tabla 63: Comparación final entre Wazuh base, Wazuh custom y Velociraptor custom94
+  Tabla 57: Mapeo de severidad usado entre perfiles Velociraptor y niveles Wazuh94
+
+Acción: no basta con que el texto del cuerpo esté bien. Hay que actualizar campos en Word y revisar el índice de tablas después de F9.
+
+11. RIESGOS QUE BLOQUEAN PDF FINAL
+----------------------------------------------------------------------------------------------------
+P1. Índice general duplicado.
+  Acción: eliminar el segundo índice general que aparece después del índice de figuras.
+P1. Índice de tablas desactualizado/roto.
+  Acción: actualizar todos los campos y revisar secuencia de tablas.
+P1. Frase de capítulo VI sobre JSONL/Discord como resultado final.
+  Acción: sustituir por redacción que indique salida externa trazable derivada de CLIENT_EVENT, no fuente primaria.
+P1. Revisión visual de tablas/anexos.
+  Acción: exportar PDF provisional y revisar página a página.
+
+Redacción recomendada para Cap. VI:
+  Las salidas JSONL y Discord se conservan como salidas externas trazables derivadas del flujo de monitorización. Su presencia permite comprobar persistencia o notificación posterior, pero la unidad primaria de detección en Velociraptor sigue siendo la fila CLIENT_EVENT emitida por el artifact correspondiente.
+
+12. QUÉ COPIAR / QUÉ NO COPIAR SI TRABAJAS SOBRE TFM.docx
+----------------------------------------------------------------------------------------------------
+COPIAR O ACEPTAR DESDE BETA:
+  [OK] Resumen y Abstract nuevos.
+  [OK] Referencias/citas añadidas en Cap. I-III.
+  [OK] Matiz de MITRE como taxonomía, no prueba automática.
+  [OK] Refuerzo CLIENT_EVENT/SERVER_EVENT/JSONL/Discord.
+  [OK] TEC-009 como staging + ZIP + exfiltración HTTP controlada.
+  [OK] Resultados finales 9/9, 379 CLIENT_EVENT, FP 10/10 hits=0.
+  [OK] Benchmark final: 9/9, coste operativo, no calidad de detección.
+  [OK] Wazuh como comparación HIDS/SIEM no equivalente.
+  [OK] Títulos corregidos del Cap. IX.
+  [OK] Anexos A-L, revisando formato.
+
+NO COPIAR SIN REVISAR:
+  [NO] Índice general duplicado.
+  [NO] Índice de tablas roto.
+  [NO] Frase JSONL/Discord como resultado final.
+  [NO] Anexos como Capítulos XI-XXII si puedes usar estilo de anexo más limpio.
+  [NO] Cualquier tabla ancha sin ver en PDF.
+
+13. ORDEN DE TRABAJO RECOMENDADO
+----------------------------------------------------------------------------------------------------
+Opción A - Recomendada: trabajar directamente sobre la beta
+  1. Abrir TFM_MEMORIA_BETA_v1_REVISION_PREPDF.docx.
+  2. Guardar como TFM_MEMORIA_FINAL_TRABAJO.docx.
+  3. Corregir frase JSONL/Discord.
+  4. Eliminar índice general duplicado.
+  5. Ctrl+A -> F9 -> actualizar todos los campos.
+  6. Revisar índice de tablas.
+  7. Revisar anexos y tablas visualmente.
+  8. Exportar PDF provisional.
+  9. Revisar PDF completo.
+
+Opción B - Si decides trabajar sobre TFM.docx
+  1. Crear TFM_FINAL_DESDE_ORIGINAL.docx.
+  2. Copiar de beta el resumen/abstract.
+  3. Copiar mejoras de Cap. I-III con citas.
+  4. Actualizar Cap. IV/V para TEC-009.
+  5. Copiar Cap. VI-VIII completos o casi completos desde beta.
+  6. Copiar Cap. X ampliado.
+  7. Añadir anexos A-L.
+  8. Actualizar índices y revisar formato.
+  Riesgo: más trabajo y más posibilidad de inconsistencias.
+
+14. CHECKLIST FINAL DE VALIDACIÓN
+----------------------------------------------------------------------------------------------------
+[ ] Un solo índice general.
+[ ] Índice de tablas sin saltos ni captions mal formadas.
+[ ] Índice de figuras actualizado.
+[ ] Índice de código actualizado.
+[ ] TEC-009 formulada siempre como exfiltración HTTP controlada en laboratorio.
+[ ] receiver_log/ZIP recibido tratado como limitación documental secundaria si aparece.
+[ ] CLIENT_EVENT definido como unidad primaria de detección.
+[ ] SERVER_EVENT definido como enrutamiento/normalización/salida, no detector primario.
+[ ] JSONL/Discord definidos como salida externa trazable.
+[ ] Benchmark definido como coste operativo, no calidad de detección.
+[ ] Wazuh definido como comparación HIDS/SIEM, no equivalente directo.
+[ ] No se afirma cobertura de toda MITRE.
+[ ] No se afirma validez directa en producción.
+[ ] Anexos A-L revisados visualmente.
+[ ] PDF provisional revisado antes de PDF final.
+
+15. CONCLUSIÓN OPERATIVA
+----------------------------------------------------------------------------------------------------
+La beta REVISION_PREPDF es la versión que más se acerca a memoria final. El TFM.docx original es útil como respaldo y para comprobar estructura previa, pero está superado por la beta en resultados, metodología, referencias y anexos.
+La decisión más eficiente es partir de la beta, corregir los P1 editoriales y hacer revisión visual. Reconstruir todo sobre TFM.docx solo tiene sentido si quieres conservar manualmente una versión más limpia de preliminares o evitar el índice duplicado, pero aumenta el riesgo de perder mejoras técnicas.

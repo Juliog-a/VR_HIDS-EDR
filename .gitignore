@@ -76,3 +76,9 @@ Carpeta_Compartida_TFM/
 lab/
 05_LOGS/
 ultima_iteracion/
+~$*.docx
+~$*.xlsx
+*.tmp
+~$*.docx
+~$*.xlsx
+*.tmp
