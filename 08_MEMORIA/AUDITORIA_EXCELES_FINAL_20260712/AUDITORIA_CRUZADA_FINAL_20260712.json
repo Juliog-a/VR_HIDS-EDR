@@ -1,0 +1,436 @@
+{
+  "generated_at": "2026-07-13T00:43:11.080340+02:00",
+  "status": "APTO",
+  "files": {
+    "visibility": {
+      "path": "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGABLE\\TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx",
+      "size": 316711,
+      "sha256": "A4BD6E0752E74B7948022A958FD7A3BFB37ACD7F95B8B84F0FC087B7E008B2E0"
+    },
+    "benchmark": {
+      "path": "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGABLE\\TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_DEFINITIVO_20260712.xlsx",
+      "size": 255393,
+      "sha256": "C2255C2563AACFA7F8CA56496EAE934843C411D89011539B9D167F8A13BE93D0"
+    }
+  },
+  "checks_total": 39,
+  "checks_ok": 39,
+  "checks_failed": 0,
+  "checks": [
+    {
+      "check": "visibilidad_31_hojas",
+      "ok": true,
+      "observed": 31
+    },
+    {
+      "check": "benchmark_11_hojas",
+      "ok": true,
+      "observed": 11
+    },
+    {
+      "check": "wazuh_integrado",
+      "ok": true,
+      "observed": [
+        "00_Guia",
+        "01_Dashboard",
+        "02_Seleccion_Tecnicas",
+        "03_Evaluacion_VR",
+        "04_Control_Publicos",
+        "05_Matriz_Resultados",
+        "06_Resumen",
+        "07_Catalogo_Artifacts",
+        "08_Benignas_FP",
+        "09_Benchmark_Plan",
+        "10_Gaps_Custom_P1P4",
+        "99_Listas",
+        "11_Alertabilidad",
+        "12_Plan_Alertas",
+        "13_Hayabusa_Resumen",
+        "14_Arquitectura_Custom",
+        "15_Publicos_Definitivo",
+        "16_Scripts_Validados",
+        "17_Incoherencias_Cerradas",
+        "README",
+        "RESUMEN_EJECUTIVO",
+        "TECNICAS_REAL_VR",
+        "VISIBILIDAD_SISTEMA",
+        "ALERTAS_VR",
+        "FP_RUNNER",
+        "FP_HITS",
+        "COMPARACION_VR_WAZUH",
+        "WAZUH_DETALLE",
+        "DISCREPANCIAS",
+        "FUENTES",
+        "GRAFICAS"
+      ]
+    },
+    {
+      "check": "publicos_integrados",
+      "ok": true,
+      "observed": [
+        "00_Guia",
+        "01_Dashboard",
+        "02_Seleccion_Tecnicas",
+        "03_Evaluacion_VR",
+        "04_Control_Publicos",
+        "05_Matriz_Resultados",
+        "06_Resumen",
+        "07_Catalogo_Artifacts",
+        "08_Benignas_FP",
+        "09_Benchmark_Plan",
+        "10_Gaps_Custom_P1P4",
+        "99_Listas",
+        "11_Alertabilidad",
+        "12_Plan_Alertas",
+        "13_Hayabusa_Resumen",
+        "14_Arquitectura_Custom",
+        "15_Publicos_Definitivo",
+        "16_Scripts_Validados",
+        "17_Incoherencias_Cerradas",
+        "README",
+        "RESUMEN_EJECUTIVO",
+        "TECNICAS_REAL_VR",
+        "VISIBILIDAD_SISTEMA",
+        "ALERTAS_VR",
+        "FP_RUNNER",
+        "FP_HITS",
+        "COMPARACION_VR_WAZUH",
+        "WAZUH_DETALLE",
+        "DISCREPANCIAS",
+        "FUENTES",
+        "GRAFICAS"
+      ]
+    },
+    {
+      "check": "dashboard_total_tec_516",
+      "ok": true,
+      "observed": 516
+    },
+    {
+      "check": "dashboard_total_fp_127",
+      "ok": true,
+      "observed": 127
+    },
+    {
+      "check": "dashboard_hayabusa_3_9",
+      "ok": true,
+      "observed": "3/9"
+    },
+    {
+      "check": "dashboard_custom_9_9",
+      "ok": true,
+      "observed": "9/9"
+    },
+    {
+      "check": "dashboard_wazuh_4_9",
+      "ok": true,
+      "observed": "4/9"
+    },
+    {
+      "check": "dashboard_tec009_http_200",
+      "ok": true,
+      "observed": "HTTP 200 confirmado"
+    },
+    {
+      "check": "publicos_seis_artifacts",
+      "ok": true,
+      "observed": [
+        "Generic.Events.TrackNetworkConnections",
+        "Windows.ETW.Monitoring",
+        "Windows.Events.ProcessCreation",
+        "Windows.Events.ServiceCreation",
+        "Windows.Hayabusa.Monitoring",
+        "Windows.Sysinternals.SysmonLogForward"
+      ]
+    },
+    {
+      "check": "publicos_total_tec_516",
+      "ok": true,
+      "observed": 516
+    },
+    {
+      "check": "publicos_total_fp_127",
+      "ok": true,
+      "observed": 127
+    },
+    {
+      "check": "etw_no_concluyente",
+      "ok": true,
+      "observed": "NO CONCLUYENTE"
+    },
+    {
+      "check": "service_creation_visibilidad_no_deteccion",
+      "ok": true,
+      "observed": [
+        "No: 7045 aporta visibilidad, no atribuye malicia",
+        "No"
+      ]
+    },
+    {
+      "check": "tracknetwork_128_12",
+      "ok": true,
+      "observed": [
+        128,
+        12
+      ]
+    },
+    {
+      "check": "tracknetwork_sin_atribucion",
+      "ok": true,
+      "observed": "128 eventos canónicos/131 filas raw. 3 filas objetivo en ventana; Timestamp=1601, PID=0, ProcInfo vacío. No atribuir a PowerShell. Runner: HTTP 200/UploadSucceeded=True/6245 B."
+    },
+    {
+      "check": "tec009_exito_separado",
+      "ok": true,
+      "observed": "128 eventos canónicos/131 filas raw. 3 filas objetivo en ventana; Timestamp=1601, PID=0, ProcInfo vacío. No atribuir a PowerShell. Runner: HTTP 200/UploadSucceeded=True/6245 B."
+    },
+    {
+      "check": "chm_no_ejecutada",
+      "ok": true,
+      "observed": "NO EJECUTADA / SIN CAMPAÑA CHM"
+    },
+    {
+      "check": "hayabusa_185_matches",
+      "ok": true,
+      "observed": 185
+    },
+    {
+      "check": "hayabusa_3_9_texto",
+      "ok": true,
+      "observed": "3/9"
+    },
+    {
+      "check": "hayabusa_fp_73",
+      "ok": true,
+      "observed": 73
+    },
+    {
+      "check": "hayabusa_chm_no_existe",
+      "ok": true,
+      "observed": "NO EXISTE"
+    },
+    {
+      "check": "custom_p1_p4_conservado",
+      "ok": true,
+      "observed": {
+        "total": 379,
+        "P1": 19,
+        "P2": 118,
+        "P3": 109,
+        "P4": 133
+      }
+    },
+    {
+      "check": "wazuh_resultados_conservados",
+      "ok": true,
+      "observed": {
+        "base": 58,
+        "custom": 110,
+        "rules": 5,
+        "gaps": 1
+      }
+    },
+    {
+      "check": "visibilidad_11_graficos",
+      "ok": true,
+      "observed": {
+        "total": 11,
+        "dashboard": 6
+      }
+    },
+    {
+      "check": "wazuh_chart_una_serie",
+      "ok": true,
+      "observed": 1
+    },
+    {
+      "check": "wazuh_chart_rangos",
+      "ok": true,
+      "observed": {
+        "categories": "GRAFICAS!$A$35:$A$41",
+        "values": "GRAFICAS!$B$35:$B$41"
+      }
+    },
+    {
+      "check": "hojas_previas_criticas_conservadas",
+      "ok": true,
+      "observed": {
+        "02_Seleccion_Tecnicas": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "07_Catalogo_Artifacts": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "09_Benchmark_Plan": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "10_Gaps_Custom_P1P4": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "99_Listas": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "11_Alertabilidad": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "12_Plan_Alertas": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "14_Arquitectura_Custom": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "16_Scripts_Validados": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "TECNICAS_REAL_VR": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "VISIBILIDAD_SISTEMA": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "ALERTAS_VR": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "FP_RUNNER": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "FP_HITS": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "WAZUH_DETALLE": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        }
+      }
+    },
+    {
+      "check": "benchmark_9_9_texto",
+      "ok": true,
+      "observed": "9/9"
+    },
+    {
+      "check": "benchmark_3_3_texto",
+      "ok": true,
+      "observed": "3/3"
+    },
+    {
+      "check": "benchmark_nueve_runs",
+      "ok": true,
+      "observed": 9
+    },
+    {
+      "check": "benchmark_tres_escenarios_tres_runs",
+      "ok": true,
+      "observed": {
+        "BASELINE_NO_VR": 3,
+        "VR_IDLE": 3,
+        "VR_TEC_RUNNER": 3
+      }
+    },
+    {
+      "check": "benchmark_tres_repeticiones",
+      "ok": true,
+      "observed": {
+        "1": 3,
+        "2": 3,
+        "3": 3
+      }
+    },
+    {
+      "check": "server_gui_excluido",
+      "ok": true,
+      "observed": {
+        "BASELINE_NO_VR": 3,
+        "VR_IDLE": 3,
+        "VR_TEC_RUNNER": 3
+      }
+    },
+    {
+      "check": "notepad_cero",
+      "ok": true,
+      "observed": "notepad.exe runner = 0"
+    },
+    {
+      "check": "benchmark_seis_graficos",
+      "ok": true,
+      "observed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        3
+      ]
+    },
+    {
+      "check": "benchmark_grafico6_tres_series",
+      "ok": true,
+      "observed": 3
+    },
+    {
+      "check": "benchmark_metricas_fuente_conservadas",
+      "ok": true,
+      "observed": {
+        "RUNS_VALIDOS": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "RESUMEN_ESCENARIO": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "RAW_SAMPLES": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "PROCESS_SAMPLES": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "TRAZABILIDAD": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        },
+        "LIMITACIONES": {
+          "unchanged": true,
+          "changed_cells": [],
+          "changed_count": 0
+        }
+      }
+    }
+  ]
+}

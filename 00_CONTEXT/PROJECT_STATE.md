@@ -1,8 +1,18 @@
 # PROJECT_STATE
 
-Actualizado: 2026-07-10 10:26 CEST.
+Actualizado: 2026-07-13 00:47 CEST.
 
 ## Estado global
+
+Estado de los entregables Excel:
+
+- `APTO` - `08_MEMORIA/ENTREGABLE/TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx`.
+- `APTO` - `08_MEMORIA/ENTREGABLE/TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_DEFINITIVO_20260712.xlsx`.
+- Microsoft Excel COM: recálculo completo, guardado y reapertura sin reparación.
+- OpenXML: 0 errores XML, 0 referencias rotas, 0 gráficos sin series y 0 errores de fórmula.
+- Auditoría cruzada: 39/39 comprobaciones.
+- La raíz de `08_MEMORIA/ENTREGABLE` contiene exactamente dos Excel.
+- Informes: `08_MEMORIA/AUDITORIA_EXCELES_FINAL_20260712`.
 
 TFM sobre evaluación de Velociraptor como HIDS/DFIR en Windows para observar,
 detectar y analizar un subconjunto controlado de técnicas MITRE ATT&CK mediante
@@ -92,6 +102,19 @@ TEC-009:
 - Si en el paquete revisado no aparece `receiver_log.jsonl` o ZIP recibido, se
   trata como limitación documental secundaria, no como invalidación de TEC-009.
 
+## Artifacts públicos - campaña 12/07/2026
+
+- Seis carpetas de campaña procesadas.
+- Total TEC canónico: 516; 521 filas raw en ventana antes de deduplicación.
+- Total de filas en ventanas benignas/FP: 127.
+- ProcessCreation, ServiceCreation, SysmonLogForward y TrackNetwork se interpretan como visibilidad/forense según su capa; no se convierten en detección por volumen.
+- Hayabusa Monitoring CH: 185 matches canónicos, 7 high, 0 critical y detección específica 3/9.
+- Hayabusa FP: 4 high, 3 eventos subyacentes y un caso benigno FP-003.
+- Hayabusa CHM: no ejecutada; no existe campaña Medium separada.
+- ETW: no concluyente por falta de runner/log/summary TEC y manifiesto de configuración.
+- TrackNetwork: 128 eventos canónicos; tres filas a 192.168.1.129:8088 con PID=0/ProcInfo vacío; sin atribución fiable.
+- TEC-009 independiente: HTTP 200, UploadSucceeded=True, ZIP 6.245 B y SHA-256 coincidente.
+
 ## Estado de Velociraptor
 
 Artifacts fuente de verdad:
@@ -117,7 +140,7 @@ Fuente principal:
 
 Evidencia documental:
 
-- `08_MEMORIA/Excel_visibilidad_FP/TFM_VISIBILIDAD_DETECCION_FP_WAZUH_FINAL_26062026.xlsx`.
+- `08_MEMORIA/Excel_visibilidad_FP/TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx`.
 - `04_EVIDENCE/Excel_visibilidad_26062026`.
 
 Uso metodológico:
@@ -130,7 +153,7 @@ Uso metodológico:
 
 Fuente final:
 
-- `08_MEMORIA/Excel_benchmark/TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_FINAL_26062026.xlsx`.
+- `08_MEMORIA/Excel_benchmark/TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_DEFINITIVO_20260712.xlsx`.
 
 Trazabilidad:
 
@@ -148,7 +171,7 @@ Interpretación:
 
 Fuente final:
 
-- `08_MEMORIA/Excel_visibilidad_FP/TFM_VISIBILIDAD_DETECCION_FP_WAZUH_FINAL_26062026.xlsx`.
+- `08_MEMORIA/Excel_visibilidad_FP/TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx`.
 - Trazabilidad en `04_EVIDENCE/Excel_visibilidad_26062026`.
 
 Criterio:

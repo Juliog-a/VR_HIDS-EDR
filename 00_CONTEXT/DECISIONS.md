@@ -1,6 +1,6 @@
 # DECISIONS
 
-Actualizado: 2026-07-10 10:26 CEST.
+Actualizado: 2026-07-13 00:47 CEST.
 
 Este fichero contiene solo decisiones metodológicas vigentes. La cronología
 histórica previa se ha archivado en `00_CONTEXT/OLD_CONTEXT_USELESS`.
@@ -107,3 +107,24 @@ validar estructura local.
 
 Codex no valida experimentalmente resultados de Velociraptor, Wazuh ni la VM.
 La validación experimental corresponde al autor.
+
+## D-FINAL-013 - Artifacts públicos y capas
+
+Los artifacts públicos se interpretan por capacidad demostrada, no por nombre ni por volumen de filas.
+
+- ProcessCreation, ServiceCreation, SysmonLogForward y TrackNetwork aportan visibilidad o evidencia forense según el caso.
+- ServiceCreation 7045 acredita creación observada; no atribuye actividad maliciosa por sí solo.
+- Hayabusa Monitoring CH puede acreditar detección por coincidencia Sigma; la cobertura específica final es 3/9.
+- No existe campaña Hayabusa CHM separada y no se incorporan resultados Medium como si la hubiera.
+
+## D-FINAL-014 - ETW
+
+La campaña `Windows.ETW.Monitoring` queda `NO CONCLUYENTE`.
+
+El resultado cero no se clasifica como negativo válido porque no se preservaron runner, log/summary TEC ni manifiesto de parámetros. Tampoco se concluye que ETW no funcione.
+
+## D-FINAL-015 - TrackNetwork y salida HTTP
+
+`Generic.Events.TrackNetworkConnections` acredita conexión visible a `192.168.1.129:8088`, pero las filas objetivo presentan `Timestamp=1601`, `PID=0` y `ProcInfo` vacío; no se atribuyen a PowerShell.
+
+El `HTTPStatus=200`, `UploadSucceeded=True`, ZIP de 6.245 B y hash coincidente de TEC-009 se acreditan mediante el runner y la respuesta del receptor, de forma independiente al artifact TrackNetwork.
