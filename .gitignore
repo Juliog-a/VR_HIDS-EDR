@@ -82,3 +82,5 @@ ultima_iteracion/
 ~$*.docx
 ~$*.xlsx
 *.tmp
+
+tmp/
