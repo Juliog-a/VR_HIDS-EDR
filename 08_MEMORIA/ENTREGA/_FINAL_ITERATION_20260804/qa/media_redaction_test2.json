@@ -1,0 +1,971 @@
+{
+    "DocxPath":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGA\\_FINAL_ITERATION_20260804\\qa\\TFM_MEDIA_REDACTION_TEST2.docx",
+    "ImagesRedacted":  30,
+    "RedactionRectangles":  107,
+    "Redactions":  [
+                       {
+                           "Image":  "image24.png",
+                           "X":  388,
+                           "Y":  347,
+                           "Width":  102,
+                           "Height":  13,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "LT29\\seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  96,
+                           "Y":  559,
+                           "Width":  131,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  96,
+                           "Y":  573,
+                           "Width":  131,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  96,
+                           "Y":  587,
+                           "Width":  131,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  96,
+                           "Y":  601,
+                           "Width":  131,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  96,
+                           "Y":  615,
+                           "Width":  131,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  96,
+                           "Y":  629,
+                           "Width":  131,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  96,
+                           "Y":  643,
+                           "Width":  131,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  96,
+                           "Y":  657,
+                           "Width":  131,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  96,
+                           "Y":  671,
+                           "Width":  131,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  96,
+                           "Y":  685,
+                           "Width":  131,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image30.png",
+                           "X":  7,
+                           "Y":  204,
+                           "Width":  588,
+                           "Height":  17,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "utput directory: C: SCRIPTS\\candidate\\received"
+                       },
+                       {
+                           "Image":  "image30.png",
+                           "X":  -1,
+                           "Y":  220,
+                           "Width":  684,
+                           "Height":  17,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Log file: C: SCRIPTS\\candidate\\received\\receiver_10g.json1"
+                       },
+                       {
+                           "Image":  "image30.png",
+                           "X":  280,
+                           "Y":  254,
+                           "Width":  106,
+                           "Height":  11,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.143"
+                       },
+                       {
+                           "Image":  "image30.png",
+                           "X":  0,
+                           "Y":  268,
+                           "Width":  387,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "[2826-86-24T87 192 . 168. 1. 143"
+                       },
+                       {
+                           "Image":  "image36.png",
+                           "X":  17,
+                           "Y":  340,
+                           "Width":  402,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "http://192_168_1_129:8088/upload -Method POST -Body TFM_TEST\""
+                       },
+                       {
+                           "Image":  "image36.png",
+                           "X":  17,
+                           "Y":  404,
+                           "Width":  402,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "http://192_168_1_129:8088/upload -Method POST -Body TFM_TEST\""
+                       },
+                       {
+                           "Image":  "image37.png",
+                           "X":  19,
+                           "Y":  376,
+                           "Width":  402,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "http://192_168_1_129:8088/upload -Method POST -Body \u0027TFM_TESv"
+                       },
+                       {
+                           "Image":  "image37.png",
+                           "X":  19,
+                           "Y":  458,
+                           "Width":  402,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "http://192_168_1_129:8088/upload -Method POST -Body \u0027TFM_TESv"
+                       },
+                       {
+                           "Image":  "image38.png",
+                           "X":  19,
+                           "Y":  335,
+                           "Width":  402,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "http://192_168_1_129:8088/upload -Method POST -Body \u0027TFM_TESv"
+                       },
+                       {
+                           "Image":  "image38.png",
+                           "X":  19,
+                           "Y":  399,
+                           "Width":  402,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "http://192_168_1_129:8088/upload -Method POST -Body \u0027TFM_TESv"
+                       },
+                       {
+                           "Image":  "image46.png",
+                           "X":  18,
+                           "Y":  631,
+                           "Width":  285,
+                           "Height":  14,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "$WorkDir = Jojn-Path $BasePath \"DUMB_LAB\""
+                       },
+                       {
+                           "Image":  "image50.png",
+                           "X":  17,
+                           "Y":  378,
+                           "Width":  402,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "http://192_168_1_129:8088/upload -Method POST -Body TFM_TEST\""
+                       },
+                       {
+                           "Image":  "image50.png",
+                           "X":  17,
+                           "Y":  460,
+                           "Width":  402,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "http://192_168_1_129:8088/upload -Method POST -Body TFM_TEST\""
+                       },
+                       {
+                           "Image":  "image51.png",
+                           "X":  18,
+                           "Y":  397,
+                           "Width":  489,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "\"http://192.168_1_129:8088/upload\" -TimeoutSec 60 -EnableUpload -KeepArtifacts"
+                       },
+                       {
+                           "Image":  "image51.png",
+                           "X":  18,
+                           "Y":  497,
+                           "Width":  489,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "\"http://192.168_1_129:8088/upload\" -TimeoutSec 60 -EnableUpload -KeepArtifacts"
+                       },
+                       {
+                           "Image":  "image52.png",
+                           "X":  17,
+                           "Y":  321,
+                           "Width":  402,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "http://192_168_1_129:8088/upload -Method POST -Body TFM_TEST\""
+                       },
+                       {
+                           "Image":  "image52.png",
+                           "X":  17,
+                           "Y":  403,
+                           "Width":  402,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "http://192_168_1_129:8088/upload -Method POST -Body TFM_TEST\""
+                       },
+                       {
+                           "Image":  "image53.png",
+                           "X":  57,
+                           "Y":  110,
+                           "Width":  1416,
+                           "Height":  31,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "-ReceiverUrl http://192.168.1.129:8088/upload -EnableExfilUpload $true -ExfilTimeoutSec 60"
+                       },
+                       {
+                           "Image":  "image53.png",
+                           "X":  23,
+                           "Y":  208,
+                           "Width":  510,
+                           "Height":  23,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "TFM TEC RUN CANDIDATE v5 SUMMARY"
+                       },
+                       {
+                           "Image":  "image53.png",
+                           "X":  23,
+                           "Y":  334,
+                           "Width":  526,
+                           "Height":  32,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "Host: L T 29 | User: LT29\\seguridad"
+                       },
+                       {
+                           "Image":  "image56.png",
+                           "X":  57,
+                           "Y":  206,
+                           "Width":  1399,
+                           "Height":  31,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "-ReceiverUrl http://192.168.1.129 : 8088/ upload -TimeoutSec 60 -EnableUpload -KeepArtifacts"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  23,
+                           "Y":  2,
+                           "Width":  374,
+                           "Height":  11,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "C: Test- NetConnection 192.168.1.145"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  23,
+                           "Y":  16,
+                           "Width":  227,
+                           "Height":  11,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "Test-NetConnection 192.168.1.145"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  23,
+                           "Y":  30,
+                           "Width":  227,
+                           "Height":  11,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "Test-NetConnection 192.168.1.145"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  136,
+                           "Y":  73,
+                           "Width":  93,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.145"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  136,
+                           "Y":  87,
+                           "Width":  93,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.145"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  136,
+                           "Y":  129,
+                           "Width":  94,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.143"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  136,
+                           "Y":  171,
+                           "Width":  93,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.145"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  136,
+                           "Y":  185,
+                           "Width":  93,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.145"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  136,
+                           "Y":  227,
+                           "Width":  94,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.143"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  136,
+                           "Y":  269,
+                           "Width":  93,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.145"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  136,
+                           "Y":  283,
+                           "Width":  93,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.145"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  136,
+                           "Y":  325,
+                           "Width":  94,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.143"
+                       },
+                       {
+                           "Image":  "image62.png",
+                           "X":  276,
+                           "Y":  395,
+                           "Width":  100,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "\"192.168.1.145"
+                       },
+                       {
+                           "Image":  "image68.png",
+                           "X":  516,
+                           "Y":  12,
+                           "Width":  770,
+                           "Height":  17,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "Ã€#ps://192.168.1.145/a pp/wz- ho = (filters:! 10 (alias:! n,disa bled ndex: \u0027waz.."
+                       },
+                       {
+                           "Image":  "image69.png",
+                           "X":  356,
+                           "Y":  277,
+                           "Width":  451,
+                           "Height":  13,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "agent.ip: 1192.168.1 .143 ILT29 1 agent.id: I Tanager.name: I admin"
+                       },
+                       {
+                           "Image":  "image69.png",
+                           "X":  258,
+                           "Y":  380,
+                           "Width":  549,
+                           "Height":  13,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "input.type: Ilog agent.ip: 1192.168.1 .143 ILT29 1 agent.id: gel I Tanager.name: I admin"
+                       },
+                       {
+                           "Image":  "image70.png",
+                           "X":  211,
+                           "Y":  273,
+                           "Width":  761,
+                           "Height":  13,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "input.type: Ilog agent.ip: 1192.168.1 .143 agent.name: ILT29 agent.id: ael Inanager.name: I admin I data.win.eventdata .messageNumber: I"
+                       },
+                       {
+                           "Image":  "image70.png",
+                           "X":  328,
+                           "Y":  499,
+                           "Width":  78,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.143"
+                       },
+                       {
+                           "Image":  "image72.png",
+                           "X":  212,
+                           "Y":  267,
+                           "Width":  710,
+                           "Height":  12,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "input.type:llog agent.ip: 1192.168.1 .143 agent.name:ILT29 ael I manager.name: admin cfEta.Ã±n.eventdatE.image: I"
+                       },
+                       {
+                           "Image":  "image72.png",
+                           "X":  328,
+                           "Y":  492,
+                           "Width":  78,
+                           "Height":  10,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "192.168.1.143"
+                       },
+                       {
+                           "Image":  "image73.png",
+                           "X":  214,
+                           "Y":  284,
+                           "Width":  759,
+                           "Height":  12,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "input.type: Ilog agent.ip: 1192.168.1 .143 agent.name: LT29 agenta id: gel Imanager.name: admin cfEta.win.eventdatE .messageNumber: I"
+                       },
+                       {
+                           "Image":  "image73.png",
+                           "X":  213,
+                           "Y":  386,
+                           "Width":  761,
+                           "Height":  13,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "input.type:llog agent.ip: 1192.168.1 .143 agent.name:LT29 agent.id:eel manager.name: I admin IdEta.Ã£n.eventdatE.messageNumber:lI"
+                       },
+                       {
+                           "Image":  "image73.png",
+                           "X":  214,
+                           "Y":  490,
+                           "Width":  694,
+                           "Height":  12,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "input.type: Ilog agent.ip: 1192.168.1 .143 agent .name: ILT29 agent.id: gel Tanager.name: admin cfEta.Ã±n.eventdatE .path:"
+                       },
+                       {
+                           "Image":  "image73.png",
+                           "X":  214,
+                           "Y":  529,
+                           "Width":  777,
+                           "Height":  12,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "data I IdEta.Ã±n.eventdata.scrÂ±ptBIockText: I # candidate va - Controlled staging/archive plus HTTP upIo"
+                       },
+                       {
+                           "Image":  "image73.png",
+                           "X":  769,
+                           "Y":  567,
+                           "Width":  208,
+                           "Height":  12,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "Vhttp://192.168.56.1 :8aee/up10zdv,"
+                       },
+                       {
+                           "Image":  "image73.png",
+                           "X":  214,
+                           "Y":  594,
+                           "Width":  759,
+                           "Height":  12,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "input.type:llog agent.ip: 1192.168.1 .143 agent.name:LT29 agent.id: gel Imanager.name: admin cfEta.Ã±n.eventdatE.messageNumber: I"
+                       },
+                       {
+                           "Image":  "image73.png",
+                           "X":  214,
+                           "Y":  697,
+                           "Width":  759,
+                           "Height":  12,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "input.type: Ilog agent.ip: \u0027192.168.1 .143 agent .name: ILT29 agent.id: gel Tanager.name: admin cfEta.Ã±n.eventdatE .messageNumber: I"
+                       },
+                       {
+                           "Image":  "image75.png",
+                           "X":  213,
+                           "Y":  323,
+                           "Width":  701,
+                           "Height":  13,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "input.type: Ilog agent.ip: 1192.168.1 .143 agent.name: LT29 agenta id: ael Inanager.name: admin cfEta.win.eventdatE .path: I"
+                       },
+                       {
+                           "Image":  "image75.png",
+                           "X":  222,
+                           "Y":  343,
+                           "Width":  716,
+                           "Height":  12,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "segur \\ TEC-ae7_Ransomwarei iScriptransom.psI data. win.eventdata.messageNumber : I"
+                       },
+                       {
+                           "Image":  "image75.png",
+                           "X":  213,
+                           "Y":  426,
+                           "Width":  701,
+                           "Height":  13,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "input.type:llog agent.ip: 1192.168.1 .143 agent.name:ILT29 agent.id: ael manager.name: admin cfEta.Ã±n.eventdatE .path: I"
+                       },
+                       {
+                           "Image":  "image22.png",
+                           "X":  0,
+                           "Y":  0,
+                           "Width":  440,
+                           "Height":  19,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta personal en prompt"
+                       },
+                       {
+                           "Image":  "image23.png",
+                           "X":  0,
+                           "Y":  0,
+                           "Width":  535,
+                           "Height":  19,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta personal en prompt"
+                       },
+                       {
+                           "Image":  "image23.png",
+                           "X":  0,
+                           "Y":  42,
+                           "Width":  120,
+                           "Height":  18,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "Usuario del laboratorio"
+                       },
+                       {
+                           "Image":  "image24.png",
+                           "X":  0,
+                           "Y":  0,
+                           "Width":  828,
+                           "Height":  45,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Rutas personales en prompts"
+                       },
+                       {
+                           "Image":  "image24.png",
+                           "X":  385,
+                           "Y":  343,
+                           "Width":  135,
+                           "Height":  18,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "Usuario autor de la tarea"
+                       },
+                       {
+                           "Image":  "image24.png",
+                           "X":  385,
+                           "Y":  444,
+                           "Width":  135,
+                           "Height":  18,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "Usuario de ejecución"
+                       },
+                       {
+                           "Image":  "image25.png",
+                           "X":  0,
+                           "Y":  0,
+                           "Width":  205,
+                           "Height":  19,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta personal en prompt"
+                       },
+                       {
+                           "Image":  "image29.png",
+                           "X":  0,
+                           "Y":  0,
+                           "Width":  711,
+                           "Height":  222,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Listado de rutas personales y etiqueta de laboratorio"
+                       },
+                       {
+                           "Image":  "image30.png",
+                           "X":  0,
+                           "Y":  0,
+                           "Width":  715,
+                           "Height":  29,
+                           "Replacement":  "\u003cRUTA_ARTIFACTS\u003e",
+                           "Reason":  "Ruta personal y directorio candidate en prompt"
+                       },
+                       {
+                           "Image":  "image31.png",
+                           "X":  0,
+                           "Y":  0,
+                           "Width":  723,
+                           "Height":  29,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta personal en prompt"
+                       },
+                       {
+                           "Image":  "image31.png",
+                           "X":  35,
+                           "Y":  48,
+                           "Width":  445,
+                           "Height":  19,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "IP privada del receptor"
+                       },
+                       {
+                           "Image":  "image31.png",
+                           "X":  0,
+                           "Y":  113,
+                           "Width":  723,
+                           "Height":  57,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Rutas de ZIP controlado"
+                       },
+                       {
+                           "Image":  "image31.png",
+                           "X":  0,
+                           "Y":  226,
+                           "Width":  723,
+                           "Height":  64,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta de resumen y prompt"
+                       },
+                       {
+                           "Image":  "image32.png",
+                           "X":  0,
+                           "Y":  25,
+                           "Width":  800,
+                           "Height":  106,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Rutas de salida y denominación candidate"
+                       },
+                       {
+                           "Image":  "image34.png",
+                           "X":  0,
+                           "Y":  0,
+                           "Width":  490,
+                           "Height":  19,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta personal en prompt"
+                       },
+                       {
+                           "Image":  "image63.png",
+                           "X":  0,
+                           "Y":  10,
+                           "Width":  450,
+                           "Height":  21,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta personal en prompt"
+                       },
+                       {
+                           "Image":  "image65.png",
+                           "X":  72,
+                           "Y":  35,
+                           "Width":  745,
+                           "Height":  20,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta /home/admin de carpeta base"
+                       },
+                       {
+                           "Image":  "image65.png",
+                           "X":  25,
+                           "Y":  96,
+                           "Width":  800,
+                           "Height":  20,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta /home/admin de archives"
+                       },
+                       {
+                           "Image":  "image65.png",
+                           "X":  22,
+                           "Y":  151,
+                           "Width":  805,
+                           "Height":  20,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta /home/admin de alertas"
+                       },
+                       {
+                           "Image":  "image67.png",
+                           "X":  70,
+                           "Y":  18,
+                           "Width":  750,
+                           "Height":  20,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta /home/admin de carpeta custom"
+                       },
+                       {
+                           "Image":  "image67.png",
+                           "X":  22,
+                           "Y":  73,
+                           "Width":  805,
+                           "Height":  20,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta /home/admin de archives custom"
+                       },
+                       {
+                           "Image":  "image67.png",
+                           "X":  22,
+                           "Y":  126,
+                           "Width":  805,
+                           "Height":  20,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta /home/admin de alertas custom"
+                       },
+                       {
+                           "Image":  "image72.png",
+                           "X":  185,
+                           "Y":  300,
+                           "Width":  190,
+                           "Height":  20,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "Usuario del laboratorio en detalle de evento"
+                       },
+                       {
+                           "Image":  "image72.png",
+                           "X":  322,
+                           "Y":  712,
+                           "Width":  165,
+                           "Height":  21,
+                           "Replacement":  "\u003cHOST_LAB\u003e",
+                           "Reason":  "Usuario del laboratorio en campo user"
+                       },
+                       {
+                           "Image":  "image73.png",
+                           "X":  205,
+                           "Y":  319,
+                           "Width":  790,
+                           "Height":  46,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta personal en Script Block Logging"
+                       },
+                       {
+                           "Image":  "image73.png",
+                           "X":  205,
+                           "Y":  491,
+                           "Width":  790,
+                           "Height":  39,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta personal del script TEC-009"
+                       },
+                       {
+                           "Image":  "image73.png",
+                           "X":  205,
+                           "Y":  722,
+                           "Width":  790,
+                           "Height":  42,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta personal del objetivo TEC-008"
+                       },
+                       {
+                           "Image":  "image75.png",
+                           "X":  902,
+                           "Y":  317,
+                           "Width":  90,
+                           "Height":  23,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Inicio de ruta personal en dashboard"
+                       },
+                       {
+                           "Image":  "image75.png",
+                           "X":  205,
+                           "Y":  338,
+                           "Width":  790,
+                           "Height":  23,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Continuación de ruta personal en dashboard"
+                       },
+                       {
+                           "Image":  "image75.png",
+                           "X":  902,
+                           "Y":  421,
+                           "Width":  90,
+                           "Height":  23,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Inicio de ruta personal en dashboard"
+                       },
+                       {
+                           "Image":  "image75.png",
+                           "X":  205,
+                           "Y":  442,
+                           "Width":  790,
+                           "Height":  72,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "Ruta y Script Block con ruta personal"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  97,
+                           "Y":  559,
+                           "Width":  129,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  97,
+                           "Y":  573,
+                           "Width":  129,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  97,
+                           "Y":  587,
+                           "Width":  129,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  97,
+                           "Y":  601,
+                           "Width":  129,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  97,
+                           "Y":  615,
+                           "Width":  129,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  97,
+                           "Y":  629,
+                           "Width":  129,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  97,
+                           "Y":  643,
+                           "Width":  129,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  97,
+                           "Y":  657,
+                           "Width":  129,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  97,
+                           "Y":  671,
+                           "Width":  129,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image28.png",
+                           "X":  97,
+                           "Y":  685,
+                           "Width":  129,
+                           "Height":  13,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\Llsers \\ seguridad"
+                       },
+                       {
+                           "Image":  "image42.png",
+                           "X":  19,
+                           "Y":  381,
+                           "Width":  285,
+                           "Height":  14,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C:\\Users\\Public\\tec005_ok_txt\" start= demand"
+                       },
+                       {
+                           "Image":  "image42.png",
+                           "X":  19,
+                           "Y":  463,
+                           "Width":  285,
+                           "Height":  14,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C:\\Users\\Public\\tec005_ok_txt\" start= demand"
+                       },
+                       {
+                           "Image":  "image72.png",
+                           "X":  327,
+                           "Y":  690,
+                           "Width":  580,
+                           "Height":  12,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "C: \\ Users\\ \\SEGURI-I \\8BA13DF8-4C89-4es4-9C17-F748DIB26Aaei \\lmagingprovider .dll"
+                       },
+                       {
+                           "Image":  "image75.png",
+                           "X":  222,
+                           "Y":  343,
+                           "Width":  716,
+                           "Height":  12,
+                           "Replacement":  "\u003cRUTA_EVIDENCIAS\u003e",
+                           "Reason":  "segur \\ TEC-ae7_Ransomwarei iScriptransom.psI data. win.eventdata.messageNumber : I"
+                       }
+                   ],
+    "SHA256":  "944B5690A5268A96D17BE431DD4642ADADE62B652A11E295460758C0AC6D8CD3"
+}

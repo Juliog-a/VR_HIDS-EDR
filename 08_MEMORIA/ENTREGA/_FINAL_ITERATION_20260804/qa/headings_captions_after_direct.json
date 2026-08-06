@@ -1,0 +1,1197 @@
+﻿[
+    {
+        "Index":  501,
+        "Style":  "Ttulo1",
+        "Text":  "Introducción"
+    },
+    {
+        "Index":  504,
+        "Style":  "Ttulo2",
+        "Text":  "Motivación y descripción del problema"
+    },
+    {
+        "Index":  508,
+        "Style":  "Ttulo2",
+        "Text":  "Objetivos del proyecto"
+    },
+    {
+        "Index":  521,
+        "Style":  "Ttulo2",
+        "Text":  "Estado del arte"
+    },
+    {
+        "Index":  547,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 1: Tipos de artifacts según su modo de ejecución"
+    },
+    {
+        "Index":  563,
+        "Style":  "Ttulo1",
+        "Text":  "Planificación"
+    },
+    {
+        "Index":  565,
+        "Style":  "Ttulo2",
+        "Text":  "Estimación de tiempos y plazos"
+    },
+    {
+        "Index":  569,
+        "Style":  "Descripcin",
+        "Text":  "Figura 1: Monitorización con Toggl Track"
+    },
+    {
+        "Index":  572,
+        "Style":  "Ttulo2",
+        "Text":  "Presupuesto"
+    },
+    {
+        "Index":  580,
+        "Style":  "Ttulo2",
+        "Text":  "Tabla de planificación general"
+    },
+    {
+        "Index":  653,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 2: Planificación general"
+    },
+    {
+        "Index":  654,
+        "Style":  "Ttulo2",
+        "Text":  "Tabla de planificación por capítulos"
+    },
+    {
+        "Index":  687,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 3: Planificación Cap.1"
+    },
+    {
+        "Index":  731,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 4: Planificación Cap.2"
+    },
+    {
+        "Index":  776,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 5: Planificación del capítulo III"
+    },
+    {
+        "Index":  820,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 6: Planificación Cap.4"
+    },
+    {
+        "Index":  858,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 7: Planificación Cap.5"
+    },
+    {
+        "Index":  896,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 8: Planificación Cap.6"
+    },
+    {
+        "Index":  947,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 9: Planificación Cap.7"
+    },
+    {
+        "Index":  1016,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 10: Planificación Cap.8"
+    },
+    {
+        "Index":  1055,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 11: Planificación del capítulo IX"
+    },
+    {
+        "Index":  1099,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 12: Planificación Cap.10"
+    },
+    {
+        "Index":  1100,
+        "Style":  "Ttulo2",
+        "Text":  "Diagrama de Gantt"
+    },
+    {
+        "Index":  1105,
+        "Style":  "Descripcin",
+        "Text":  "Figura 2: Diagrama de Gantt general"
+    },
+    {
+        "Index":  1108,
+        "Style":  "Descripcin",
+        "Text":  "Figura 3: Planificación Gantt de los capítulos I y II"
+    },
+    {
+        "Index":  1111,
+        "Style":  "Descripcin",
+        "Text":  "Figura 4: Diagrama Gantt Cap.3"
+    },
+    {
+        "Index":  1114,
+        "Style":  "Descripcin",
+        "Text":  "Figura 5: Diagrama Gantt Cap. 4"
+    },
+    {
+        "Index":  1117,
+        "Style":  "Descripcin",
+        "Text":  "Figura 6: Diagrama Gantt Cap.5"
+    },
+    {
+        "Index":  1120,
+        "Style":  "Descripcin",
+        "Text":  "Figura 7: Diagrama Gantt Cap.6"
+    },
+    {
+        "Index":  1125,
+        "Style":  "Descripcin",
+        "Text":  "Figura 8: Diagrama Gantt Cap.7"
+    },
+    {
+        "Index":  1128,
+        "Style":  "Descripcin",
+        "Text":  "Figura 9: Diagrama Gantt Cap.8 y 9"
+    },
+    {
+        "Index":  1131,
+        "Style":  "Ttulo1",
+        "Text":  "Fundamentos teóricos"
+    },
+    {
+        "Index":  1133,
+        "Style":  "Ttulo2",
+        "Text":  "Enfoques de detección y análisis en endpoint"
+    },
+    {
+        "Index":  1144,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 13: Funciones, limitaciones y riesgos del enfoque HIDS"
+    },
+    {
+        "Index":  1154,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 14: Funciones, limitaciones y riesgos del enfoque DFIR"
+    },
+    {
+        "Index":  1164,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 15: Funciones, limitaciones y riesgos del enfoque EDR"
+    },
+    {
+        "Index":  1192,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 16: Posición de Velociraptor frente a HIDS, DFIR y EDR"
+    },
+    {
+        "Index":  1195,
+        "Style":  "Ttulo2",
+        "Text":  "Arquitectura interna Velociraptor "
+    },
+    {
+        "Index":  1199,
+        "Style":  "Descripcin",
+        "Text":  "Figura 10: Arquitectura interna básica VR"
+    },
+    {
+        "Index":  1230,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 17: Capas funcionales de la arquitectura de Velociraptor"
+    },
+    {
+        "Index":  1259,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 18: Formatos de datos en el flujo cliente-servidor de Velociraptor"
+    },
+    {
+        "Index":  1261,
+        "Style":  "Descripcin",
+        "Text":  "Figura 11: Flujo de datos de Velociraptor"
+    },
+    {
+        "Index":  1264,
+        "Style":  "Ttulo2",
+        "Text":  "Artifacts y modelo de ejecución"
+    },
+    {
+        "Index":  1286,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 19: Campos principales de definición de artifacts"
+    },
+    {
+        "Index":  1308,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 20: Tipos de artifacts según el contexto de ejecución"
+    },
+    {
+        "Index":  1332,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 21: Diferencias entre collections, hunts, monitoring y SERVER_EVENT"
+    },
+    {
+        "Index":  1335,
+        "Style":  "Ttulo2",
+        "Text":  "Velociraptor Query Language (VQL)"
+    },
+    {
+        "Index":  1344,
+        "Style":  "Descripcin",
+        "Text":  "Código 1: Ejemplo de consulta VQL"
+    },
+    {
+        "Index":  1349,
+        "Style":  "Descripcin",
+        "Text":  "Código 2: Ejemplo obtener info VQL"
+    },
+    {
+        "Index":  1355,
+        "Style":  "Descripcin",
+        "Text":  "Código 3: Ejemplo de consulta de claves del registro mediante VQL"
+    },
+    {
+        "Index":  1368,
+        "Style":  "Descripcin",
+        "Text":  "Código 4: Ejemplo funcionamiento lazy evaluation"
+    },
+    {
+        "Index":  1375,
+        "Style":  "Ttulo2",
+        "Text":  "Telemetría disponible en el endpoint"
+    },
+    {
+        "Index":  1396,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 22: Fuentes principales de telemetría y utilidad en detección"
+    },
+    {
+        "Index":  1398,
+        "Style":  "Ttulo2",
+        "Text":  "Limitaciones de visibilidad en HIDS/DFIR"
+    },
+    {
+        "Index":  1415,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 23: Diferencia entre visibilidad, detección, alerta y salida externa"
+    },
+    {
+        "Index":  1433,
+        "Style":  "Ttulo1",
+        "Text":  "Entorno de trabajo, metodología y selección de técnicas"
+    },
+    {
+        "Index":  1437,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 24: Criterios metodológicos del capítulo IV"
+    },
+    {
+        "Index":  1440,
+        "Style":  "Ttulo2",
+        "Text":  "Diseño del entorno"
+    },
+    {
+        "Index":  1466,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 25: Parámetros iniciales de la máquina virtual"
+    },
+    {
+        "Index":  1491,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 26: Componentes técnicos principales"
+    },
+    {
+        "Index":  1505,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 27: Identificación del endpoint usado en el laboratorio"
+    },
+    {
+        "Index":  1507,
+        "Style":  "Ttulo2",
+        "Text":  "Instalación, instrumentación y configuración base"
+    },
+    {
+        "Index":  1529,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 28: Parámetros funcionales del servidor Velociraptor"
+    },
+    {
+        "Index":  1533,
+        "Style":  "Descripcin",
+        "Text":  "Figura 12: Instalación del agente Velociraptor"
+    },
+    {
+        "Index":  1535,
+        "Style":  "Descripcin",
+        "Text":  "Figura 13: Datos recibidos desde los agentes Velociraptor"
+    },
+    {
+        "Index":  1563,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 29: Fuentes de telemetría habilitadas y técnicas relacionadas"
+    },
+    {
+        "Index":  1566,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 30: Tratamiento metodológico de Sysmon Event ID 26"
+    },
+    {
+        "Index":  1568,
+        "Style":  "Ttulo2",
+        "Text":  "Metodología experimental"
+    },
+    {
+        "Index":  1585,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 31: Principios metodológicos aplicados en la fase experimental"
+    },
+    {
+        "Index":  1589,
+        "Style":  "Descripcin",
+        "Text":  "Figura 14: Estructura de directorios de la máquina física"
+    },
+    {
+        "Index":  1593,
+        "Style":  "Descripcin",
+        "Text":  "Figura 15: Directorio de la máquina virtual"
+    },
+    {
+        "Index":  1597,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 32: Criterios de control de versiones y trazabilidad del proyecto"
+    },
+    {
+        "Index":  1598,
+        "Style":  "Descripcin",
+        "Text":  "Código 5: Control del laboratorio"
+    },
+    {
+        "Index":  1621,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 33: Snapshots utilizados para control del laboratorio"
+    },
+    {
+        "Index":  1650,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 34: Flujo general de trabajo por técnica"
+    },
+    {
+        "Index":  1683,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 35: Hojas principales de la matriz de control experimental"
+    },
+    {
+        "Index":  1701,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 36: Tipos de evidencias documentadas por técnica"
+    },
+    {
+        "Index":  1718,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 37: Controles de seguridad aplicados a las pruebas"
+    },
+    {
+        "Index":  1739,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 38: Scripts de laboratorio y papel metodológico"
+    },
+    {
+        "Index":  1742,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 39: Criterios de validación de los scripts de laboratorio"
+    },
+    {
+        "Index":  1743,
+        "Style":  "Ttulo2",
+        "Text":  "Selección de técnicas MITRE ATT\u0026CK"
+    },
+    {
+        "Index":  1760,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 40: Criterios usados para seleccionar técnicas MITRE ATT\u0026CK"
+    },
+    {
+        "Index":  1803,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 41: Técnicas MITRE ATT\u0026CK seleccionadas para la fase experimental"
+    },
+    {
+        "Index":  1823,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 42: Tácticas ATT\u0026CK representadas por el subconjunto evaluado empleando denominador 14"
+    },
+    {
+        "Index":  1840,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 43: Criterio de interpretación de TEC-009"
+    },
+    {
+        "Index":  1842,
+        "Style":  "Ttulo2",
+        "Text":  "Estrategia de artifacts y monitorización"
+    },
+    {
+        "Index":  1894,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 44: Artifacts públicos considerados en la evaluación metodológica"
+    },
+    {
+        "Index":  1914,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 45: Brechas y limitaciones de los artifacts públicos en la evaluación"
+    },
+    {
+        "Index":  1918,
+        "Style":  "Ttulo2",
+        "Text":  "Benchmark y alertabilidad"
+    },
+    {
+        "Index":  1929,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 46: Escenarios ejecutados en el benchmark de rendimiento"
+    },
+    {
+        "Index":  1943,
+        "Style":  "Descripcin",
+        "Text":  "Figura 16: Arquitectura del flujo de alertas"
+    },
+    {
+        "Index":  1953,
+        "Style":  "Ttulo2",
+        "Text":  "Decisiones metodológicas cerradas"
+    },
+    {
+        "Index":  1962,
+        "Style":  "Ttulo1",
+        "Text":  "Desarrollo experimental y ejecución de pruebas"
+    },
+    {
+        "Index":  1965,
+        "Style":  "Ttulo2",
+        "Text":  "Escenarios de ataque"
+    },
+    {
+        "Index":  2007,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 47: Escenarios de ataque evaluados"
+    },
+    {
+        "Index":  2009,
+        "Style":  "Ttulo2",
+        "Text":  "Desarrollo experimental por técnica"
+    },
+    {
+        "Index":  2016,
+        "Style":  "Descripcin",
+        "Text":  "Código 6: Procedimiento de ejecución de TEC-001"
+    },
+    {
+        "Index":  2018,
+        "Style":  "Descripcin",
+        "Text":  "Figura 17: Evidencia de ejecución de TEC-001"
+    },
+    {
+        "Index":  2033,
+        "Style":  "Descripcin",
+        "Text":  "Código 7: Procedimiento de ejecución de TEC-002"
+    },
+    {
+        "Index":  2035,
+        "Style":  "Descripcin",
+        "Text":  "Figura 18: Evidencia de ejecución de TEC-002"
+    },
+    {
+        "Index":  2056,
+        "Style":  "Descripcin",
+        "Text":  "Código 8: Ejecución TEC-003"
+    },
+    {
+        "Index":  2058,
+        "Style":  "Descripcin",
+        "Text":  "Figura 19: Scheduled Task runner"
+    },
+    {
+        "Index":  2074,
+        "Style":  "Descripcin",
+        "Text":  "Código 9: Procedimiento de ejecución de TEC-004"
+    },
+    {
+        "Index":  2076,
+        "Style":  "Descripcin",
+        "Text":  "Figura 20: Registry Run Key ejecución"
+    },
+    {
+        "Index":  2094,
+        "Style":  "Descripcin",
+        "Text":  "Código 10: Ejecución TEC-005"
+    },
+    {
+        "Index":  2096,
+        "Style":  "Descripcin",
+        "Text":  "Figura 21: Evidencia de ejecución del servicio TEC-005"
+    },
+    {
+        "Index":  2111,
+        "Style":  "Descripcin",
+        "Text":  "Código 11: Ejecución TEC-006-1"
+    },
+    {
+        "Index":  2113,
+        "Style":  "Descripcin",
+        "Text":  "Figura 22: Security Software Discovery ejecución"
+    },
+    {
+        "Index":  2116,
+        "Style":  "Descripcin",
+        "Text":  "Código 12: Procedimiento de ejecución de TEC-006 mediante WMIC"
+    },
+    {
+        "Index":  2132,
+        "Style":  "Descripcin",
+        "Text":  "Código 13: Procedimiento de ejecución de TEC-007"
+    },
+    {
+        "Index":  2134,
+        "Style":  "Descripcin",
+        "Text":  "Figura 23: Evidencia de cifrado controlado en TEC-007"
+    },
+    {
+        "Index":  2151,
+        "Style":  "Descripcin",
+        "Text":  "Código 14: Procedimiento de ejecución de TEC-008"
+    },
+    {
+        "Index":  2153,
+        "Style":  "Descripcin",
+        "Text":  "Figura 24: Script de borrado de fichero"
+    },
+    {
+        "Index":  2178,
+        "Style":  "Descripcin",
+        "Text":  "Código 15: Ejecución del receptor HTTP controlado"
+    },
+    {
+        "Index":  2180,
+        "Style":  "Descripcin",
+        "Text":  "Figura 25: Script receiver"
+    },
+    {
+        "Index":  2189,
+        "Style":  "Descripcin",
+        "Text":  "Código 16: Ejecución TEC-009"
+    },
+    {
+        "Index":  2191,
+        "Style":  "Descripcin",
+        "Text":  "Figura 26: Evidencia de ejecución de TEC-009"
+    },
+    {
+        "Index":  2219,
+        "Style":  "Descripcin",
+        "Text":  "Código 17: Ejecución del runner global de técnicas TEC-001 a TEC-009"
+    },
+    {
+        "Index":  2250,
+        "Style":  "Descripcin",
+        "Text":  "Código 18: Ejecución del runner de falsos positivos"
+    },
+    {
+        "Index":  2296,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 48: Casos benignos incluidos en el runner de falsos positivos"
+    },
+    {
+        "Index":  2306,
+        "Style":  "Ttulo2",
+        "Text":  "Recopilación de telemetría"
+    },
+    {
+        "Index":  2346,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 49: Telemetría esperada por técnica experimental"
+    },
+    {
+        "Index":  2349,
+        "Style":  "Descripcin",
+        "Text":  "Figura 27: Evidencias obtenidas en Velociraptor"
+    },
+    {
+        "Index":  2435,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 50: Resultados definitivos del runner de falsos positivos"
+    },
+    {
+        "Index":  2467,
+        "Style":  "Ttulo2",
+        "Text":  "Configuración y uso de artifacts"
+    },
+    {
+        "Index":  2510,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 51: Artifacts de fábrica y públicos considerados durante la fase experimental"
+    },
+    {
+        "Index":  2546,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 52: Artifacts custom por perfil y función operativa"
+    },
+    {
+        "Index":  2566,
+        "Style":  "Ttulo1",
+        "Text":  "Resultados de detección"
+    },
+    {
+        "Index":  2568,
+        "Style":  "Ttulo2",
+        "Text":  "Resultados por técnica MITRE"
+    },
+    {
+        "Index":  2571,
+        "Style":  "Descripcin",
+        "Text":  "Figura 28: Resumen del runner global de técnicas"
+    },
+    {
+        "Index":  2622,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 53: Resultados finales de Velociraptor por técnica MITRE evaluada"
+    },
+    {
+        "Index":  2624,
+        "Style":  "Descripcin",
+        "Text":  ""
+    },
+    {
+        "Index":  2625,
+        "Style":  "Descripcin",
+        "Text":  "Figura 29: Distribución de las 379 filas CLIENT_EVENT emitidas/exportadas, incluidas emisiones repetidas por perfil custom"
+    },
+    {
+        "Index":  2626,
+        "Style":  "Ttulo2",
+        "Text":  "Cobertura de detección"
+    },
+    {
+        "Index":  2629,
+        "Style":  "Descripcin",
+        "Text":  "Figura 30: Arquitectura de artifacts custom y router"
+    },
+    {
+        "Index":  2660,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 54: Distribución de filas CLIENT_EVENT emitidas/exportadas por perfil custom"
+    },
+    {
+        "Index":  2691,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 55: Distribución de filas CLIENT_EVENT por técnica en la campaña real"
+    },
+    {
+        "Index":  2692,
+        "Style":  "Ttulo2",
+        "Text":  "Casos sin detección y detección parcial"
+    },
+    {
+        "Index":  2699,
+        "Style":  "Descripcin",
+        "Text":  "Figura 31: Captura textual de la evidencia de upload HTTP controlado en TEC-009"
+    },
+    {
+        "Index":  2700,
+        "Style":  "Ttulo2",
+        "Text":  "Evidencias observadas y falsos positivos"
+    },
+    {
+        "Index":  2703,
+        "Style":  "Descripcin",
+        "Text":  "Figura 32: Campaña definitiva de falsos positivos"
+    },
+    {
+        "Index":  2705,
+        "Style":  "Ttulo2",
+        "Text":  "Calidad de datos y limitaciones"
+    },
+    {
+        "Index":  2724,
+        "Style":  "Descripcin",
+        "Text":  "Figura 33: Controles de calidad aplicados a los resultados de detección y FP"
+    },
+    {
+        "Index":  2725,
+        "Style":  "Ttulo2",
+        "Text":  "Resultados definitivos de artifacts públicos"
+    },
+    {
+        "Index":  2763,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 56: Resultados definitivos de las campañas con artifacts públicos"
+    },
+    {
+        "Index":  2768,
+        "Style":  "Descripcin",
+        "Text":  "Figura 34: Resultado de las seis campañas con artifacts públicos"
+    },
+    {
+        "Index":  2770,
+        "Style":  "Ttulo1",
+        "Text":  "Evaluación de Velociraptor y benchmark de rendimiento"
+    },
+    {
+        "Index":  2772,
+        "Style":  "Ttulo2",
+        "Text":  "Metodología de benchmark"
+    },
+    {
+        "Index":  2774,
+        "Style":  "Descripcin",
+        "Text":  ""
+    },
+    {
+        "Index":  2775,
+        "Style":  "Descripcin",
+        "Text":  "Figura 35: Coste operativo observado del cliente Velociraptor por escenario"
+    },
+    {
+        "Index":  2776,
+        "Style":  "Ttulo2",
+        "Text":  "Impacto en CPU"
+    },
+    {
+        "Index":  2778,
+        "Style":  "Ttulo2",
+        "Text":  "Impacto en memoria"
+    },
+    {
+        "Index":  2780,
+        "Style":  "Ttulo2",
+        "Text":  "Impacto en disco"
+    },
+    {
+        "Index":  2782,
+        "Style":  "Ttulo2",
+        "Text":  "Relación detección / coste"
+    },
+    {
+        "Index":  2805,
+        "Style":  "Descripcin",
+        "Text":  "Figura 36: Controles de calidad del benchmark final"
+    },
+    {
+        "Index":  2807,
+        "Style":  "Ttulo1",
+        "Text":  "Validación comparativa con Wazuh como HIDS"
+    },
+    {
+        "Index":  2810,
+        "Style":  "Ttulo2",
+        "Text":  "Objetivo de la comparación"
+    },
+    {
+        "Index":  2829,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 57: Criterios empleados para evaluar Wazuh como solución de comparación"
+    },
+    {
+        "Index":  2830,
+        "Style":  "Ttulo2",
+        "Text":  "Arquitectura del entorno Wazuh"
+    },
+    {
+        "Index":  2852,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 58: Parámetros principales del entorno Wazuh desplegado"
+    },
+    {
+        "Index":  2856,
+        "Style":  "Descripcin",
+        "Text":  "Figura 37: Validación del agente LT29 como agente activo desde agent_control"
+    },
+    {
+        "Index":  2857,
+        "Style":  "Ttulo2",
+        "Text":  "Instalación del servidor Wazuh"
+    },
+    {
+        "Index":  2871,
+        "Style":  "Descripcin",
+        "Text":  "Código 19: Instalación base de dependencias y despliegue all-in-one de Wazuh"
+    },
+    {
+        "Index":  2874,
+        "Style":  "Descripcin",
+        "Text":  "Figura 38: Panel de acceso al dashboard de Wazuh"
+    },
+    {
+        "Index":  2875,
+        "Style":  "Ttulo2",
+        "Text":  "Instalación y validación del agente Windows"
+    },
+    {
+        "Index":  2880,
+        "Style":  "Descripcin",
+        "Text":  "Código 20: Validación de conectividad desde Windows hacia Wazuh"
+    },
+    {
+        "Index":  2888,
+        "Style":  "Descripcin",
+        "Text":  "Código 21: Instalación del agente Wazuh en Windows"
+    },
+    {
+        "Index":  2890,
+        "Style":  "Descripcin",
+        "Text":  "Figura 39: Validación de conectividad e instalación del agente Wazuh desde PowerShell"
+    },
+    {
+        "Index":  2892,
+        "Style":  "Descripcin",
+        "Text":  "Figura 40: Comprobación del servicio WazuhSvc en ejecución en el endpoint Windows"
+    },
+    {
+        "Index":  2894,
+        "Style":  "Ttulo2",
+        "Text":  "Fuentes de telemetría configuradas"
+    },
+    {
+        "Index":  2912,
+        "Style":  "Descripcin",
+        "Text":  "Código 22: Fuentes eventchannel configuradas en el agente Windows"
+    },
+    {
+        "Index":  2916,
+        "Style":  "Descripcin",
+        "Text":  "Código 23: Reinicio y comprobación del agente Wazuh en Windows"
+    },
+    {
+        "Index":  2935,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 59: Fuentes de telemetría utilizadas por Wazuh en la campaña"
+    },
+    {
+        "Index":  2936,
+        "Style":  "Ttulo2",
+        "Text":  "Reglas personalizadas TFM en Wazuh"
+    },
+    {
+        "Index":  2942,
+        "Style":  "Descripcin",
+        "Text":  "Código 24: Deshabilitación de la primera versión de reglas tras problemas de estabilidad"
+    },
+    {
+        "Index":  2975,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 60: Reglas personalizadas Wazuh utilizadas para aproximar los perfiles P1-P4 de Velociraptor"
+    },
+    {
+        "Index":  2980,
+        "Style":  "Descripcin",
+        "Text":  "Código 25: Validación sintáctica y reinicio tras cargar reglas custom TFM"
+    },
+    {
+        "Index":  2982,
+        "Style":  "Descripcin",
+        "Text":  "Figura 41: Reactivación de reglas personalizadas TFM y servicio wazuh-manager activo"
+    },
+    {
+        "Index":  2983,
+        "Style":  "Ttulo2",
+        "Text":  "Metodología de campañas separadas"
+    },
+    {
+        "Index":  3001,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 61: Campañas definidas para la validación comparativa"
+    },
+    {
+        "Index":  3002,
+        "Style":  "Ttulo2",
+        "Text":  "Campaña B: Wazuh base"
+    },
+    {
+        "Index":  3008,
+        "Style":  "Descripcin",
+        "Text":  "Código 26: Desactivación de reglas custom para la campaña Wazuh base"
+    },
+    {
+        "Index":  3014,
+        "Style":  "Descripcin",
+        "Text":  "Código 27: Marcado de inicio y líneas iniciales de logs en campaña base"
+    },
+    {
+        "Index":  3019,
+        "Style":  "Descripcin",
+        "Text":  "Código 28: Ejecución de runners TEC y falsos positivos desde Windows"
+    },
+    {
+        "Index":  3034,
+        "Style":  "Descripcin",
+        "Text":  "Código 29: Extracción de delta de archives.json y alerts.json en campaña base"
+    },
+    {
+        "Index":  3051,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 62: Resultados de visibilidad y alerta de la campaña Wazuh base"
+    },
+    {
+        "Index":  3055,
+        "Style":  "Descripcin",
+        "Text":  "Figura 42: Resumen de la campaña Wazuh base, con ausencia de reglas TFM 110xxx"
+    },
+    {
+        "Index":  3057,
+        "Style":  "Ttulo2",
+        "Text":  "Campaña C: Wazuh custom"
+    },
+    {
+        "Index":  3063,
+        "Style":  "Descripcin",
+        "Text":  "Código 30: Reactivación de reglas custom TFM para la campaña Wazuh custom"
+    },
+    {
+        "Index":  3070,
+        "Style":  "Descripcin",
+        "Text":  "Código 31: Inicio de campaña Wazuh custom"
+    },
+    {
+        "Index":  3086,
+        "Style":  "Descripcin",
+        "Text":  "Código 32: Extracción de delta en campaña Wazuh custom"
+    },
+    {
+        "Index":  3103,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 63: Resultados agregados de la campaña Wazuh custom"
+    },
+    {
+        "Index":  3128,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 64: Distribución de reglas TFM activadas durante la campaña custom"
+    },
+    {
+        "Index":  3130,
+        "Style":  "Descripcin",
+        "Text":  ""
+    },
+    {
+        "Index":  3131,
+        "Style":  "Descripcin",
+        "Text":  "Figura 43: Cobertura específica comparada sobre nueve técnicas experimentales"
+    },
+    {
+        "Index":  3133,
+        "Style":  "Descripcin",
+        "Text":  "Figura 44: Resumen de campaña Wazuh custom con reglas TFM activadas"
+    },
+    {
+        "Index":  3137,
+        "Style":  "Ttulo2",
+        "Text":  "Evidencias gráficas en el dashboard de Wazuh"
+    },
+    {
+        "Index":  3140,
+        "Style":  "Descripcin",
+        "Text":  "Figura 45: Resumen de severidades en el dashboard tras la campaña"
+    },
+    {
+        "Index":  3142,
+        "Style":  "Descripcin",
+        "Text":  "Figura 46: Dashboard de Wazuh filtrado por agent.name LT29"
+    },
+    {
+        "Index":  3145,
+        "Style":  "Descripcin",
+        "Text":  "Figura 47: Visibilidad de PowerShell 4104 en Wazuh"
+    },
+    {
+        "Index":  3147,
+        "Style":  "Descripcin",
+        "Text":  "Figura 48: Visibilidad de Sysmon Event ID 1, asociado a creación de procesos"
+    },
+    {
+        "Index":  3150,
+        "Style":  "Descripcin",
+        "Text":  "Figura 49: Visibilidad de Sysmon Event ID 11, asociado a creación de ficheros"
+    },
+    {
+        "Index":  3152,
+        "Style":  "Descripcin",
+        "Text":  "Figura 50: Ejemplo de detección custom mediante la regla 110202"
+    },
+    {
+        "Index":  3155,
+        "Style":  "Descripcin",
+        "Text":  "Figura 51: Ausencia de resultados para rule.id 110201 en la campaña custom"
+    },
+    {
+        "Index":  3159,
+        "Style":  "Descripcin",
+        "Text":  "Figura 52: Vista de alertas de severidad alta/crítica generadas en Wazuh"
+    },
+    {
+        "Index":  3161,
+        "Style":  "Ttulo2",
+        "Text":  "Comparación Wazuh – Velociraptor"
+    },
+    {
+        "Index":  3187,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 65: Comparación final entre Wazuh base, Wazuh custom y Velociraptor custom"
+    },
+    {
+        "Index":  3204,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 66: Mapeo de severidad usado entre perfiles Velociraptor y niveles Wazuh"
+    },
+    {
+        "Index":  3208,
+        "Style":  "Ttulo2",
+        "Text":  "Limitaciones observadas"
+    },
+    {
+        "Index":  3213,
+        "Style":  "Ttulo2",
+        "Text":  "Registro y almacenamiento de evidencias"
+    },
+    {
+        "Index":  3216,
+        "Style":  "Ttulo1",
+        "Text":  "Discusión y trabajo futuro"
+    },
+    {
+        "Index":  3218,
+        "Style":  "Ttulo2",
+        "Text":  "Discusión integrada de resultados"
+    },
+    {
+        "Index":  3223,
+        "Style":  "Ttulo2",
+        "Text":  "Ampliación de técnicas MITRE"
+    },
+    {
+        "Index":  3254,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 67: Técnicas MITRE ATT\u0026CK propuestas para trabajo futuro"
+    },
+    {
+        "Index":  3255,
+        "Style":  "Ttulo2",
+        "Text":  "Desarrollo de nuevos artifacts"
+    },
+    {
+        "Index":  3259,
+        "Style":  "Ttulo2",
+        "Text":  "Ciclo de vida y trazabilidad de los artifacts"
+    },
+    {
+        "Index":  3261,
+        "Style":  "Ttulo2",
+        "Text":  "Automatización de detecciones"
+    },
+    {
+        "Index":  3264,
+        "Style":  "Ttulo2",
+        "Text":  "Integración SIEM/SOC y despliegue en entornos reales"
+    },
+    {
+        "Index":  3268,
+        "Style":  "Ttulo1",
+        "Text":  "Conclusiones"
+    },
+    {
+        "Index":  3270,
+        "Style":  "Ttulo2",
+        "Text":  "Conclusiones principales"
+    },
+    {
+        "Index":  3277,
+        "Style":  "Ttulo2",
+        "Text":  "Respuesta a objetivos"
+    },
+    {
+        "Index":  3311,
+        "Style":  "Descripcin",
+        "Text":  "Tabla 68: Correspondencia entre preguntas de investigación, resultados y limitaciones"
+    },
+    {
+        "Index":  3313,
+        "Style":  "Ttulo2",
+        "Text":  "Limitaciones identificadas"
+    },
+    {
+        "Index":  3318,
+        "Style":  "Ttulo2",
+        "Text":  "Valor del enfoque"
+    },
+    {
+        "Index":  3324,
+        "Style":  "Ttulo1",
+        "Text":  "Referencias bibliográficas y anexos"
+    },
+    {
+        "Index":  3355,
+        "Style":  "Ttulo2",
+        "Text":  "Finalidad de los anexos"
+    },
+    {
+        "Index":  3357,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo A. Técnicas MITRE seleccionadas y trazabilidad"
+    },
+    {
+        "Index":  3369,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo B. Configuración del laboratorio"
+    },
+    {
+        "Index":  3377,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo C. Fuentes de telemetría y criterio de evidencia"
+    },
+    {
+        "Index":  3385,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo D. Artifacts Velociraptor validados"
+    },
+    {
+        "Index":  3394,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo E. Runners, scripts y ground truth"
+    },
+    {
+        "Index":  3401,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo F. Evidencias y datasets finales"
+    },
+    {
+        "Index":  3409,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo G. Resultados completos de visibilidad, detección y falsos positivos"
+    },
+    {
+        "Index":  3417,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo H. Benchmark de rendimiento"
+    },
+    {
+        "Index":  3426,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo I. Validación comparativa con Wazuh"
+    },
+    {
+        "Index":  3435,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo J. TEC-009 - Exfiltración HTTP controlada en laboratorio"
+    },
+    {
+        "Index":  3442,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo K. Glosario técnico"
+    },
+    {
+        "Index":  3457,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo L. Checklist de defensa metodológica"
+    },
+    {
+        "Index":  3468,
+        "Style":  "Ttulo2",
+        "Text":  "Anexo M. Declaración responsable sobre el uso de inteligencia artificial"
+    }
+]

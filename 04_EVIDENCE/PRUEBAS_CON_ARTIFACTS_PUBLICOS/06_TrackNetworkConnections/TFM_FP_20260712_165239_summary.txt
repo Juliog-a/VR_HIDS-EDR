@@ -1,0 +1,39 @@
+﻿# TFM FP Runner Summary
+
+RunId: TFM_FP_20260712_165239
+GlobalStatus: WARN
+StartTimeLocal: 2026-07-12T16:52:39.3963566+02:00
+EndTimeLocal: 2026-07-12T16:53:03.8399793+02:00
+StartTimeUtc: 2026-07-12T14:52:39.3963566Z
+EndTimeUtc: 2026-07-12T14:53:03.8399793Z
+Workspace: C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\FP_WORKSPACE\TFM_FP_20260712_165239
+JsonlPath: \\VBOXSVR\Carpeta_Compartida_TFM\inbox\soc_alerts.jsonl
+
+## Test status
+- OK: 9
+- SKIPPED: 1
+
+## Tests
+- FP-001 [OK] PowerShell administrativo legitimo | PowerShell administrative commands completed
+- FP-002 [OK] CMD legitimo | cmd /c dir "C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\FP_WORKSPACE\TFM_FP_20260712_165239" => 0 | cmd /c whoami => 0 | cmd /c hostname => 0 | cmd /c echo TFM_FP_20260712_165239 FP-002 => 0
+- FP-003 [OK] Scheduled Task benigno temporal | create=0; run=0; delete=0
+- FP-004 [OK] Registro benigno no persistente | HKCU:\Software\TFM_FP\TFM_FP_20260712_165239 created, read and removed
+- FP-005 [OK] Consulta de servicios | Service query commands completed
+- FP-006 [OK] Discovery legitimo de seguridad | Security status queries completed
+- FP-007 [OK] ZIP benigno local | Local ZIP created without web transfer
+- FP-008 [OK] Borrado benigno controlado | Only the controlled workspace subfolder was deleted
+- FP-009 [SKIPPED] HTTP benigno local | No local HTTP listener on 127.0.0.1:80; Test-NetConnection completed
+- FP-010 [OK] Operaciones normales masivas | 20 files created, copied and partially renamed
+
+## Velociraptor hits: 0
+
+### Hits by Profile
+
+### Hits by FP_ID
+
+### Hits by DetectionName
+
+## Interpretation
+- P4/P3 hits indicate possible low/medium false positives or expected broad visibility.
+- P2 hits indicate relevant forensic false positives to review.
+- P1_CRITICAL hits indicate severe false positives for benign activity.

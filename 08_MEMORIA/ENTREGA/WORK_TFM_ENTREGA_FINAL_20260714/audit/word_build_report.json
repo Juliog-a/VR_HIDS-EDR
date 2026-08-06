@@ -1,0 +1,200 @@
+{
+    "generated_at":  "2026-07-14T17:33:49.8273856+02:00",
+    "working_doc":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\WORK_TFM_ENTREGA_FINAL_20260714\\tmp\\TFM_ENTREGA_FINAL_WORKING.docx",
+    "output_doc":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGABLE\\ENTREGA_FINAL_EXCELES_TFM\\TFM_ENTREGA_FINAL.docx",
+    "word_version":  "16.0",
+    "word_build":  "16.0.20131",
+    "paragraph_replacements":  [
+                                   {
+                                       "prefix":  "La memoria consolida una arquitectura de artifacts P1/P2/P3/P4",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "The thesis consolidates a P1/P2/P3/P4 artifact architecture",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "La fuente del benchmark final es BENCH_20260619_FINAL01",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "La evidencia Wazuh utilizada por esta beta",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "TEC-009 se interpreta como staging, archivado ZIP y exfiltración HTTP controlada",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "En tercer lugar, TEC-009 exige una lectura compuesta.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "El caso más relevante fue TEC-009, correspondiente al staging",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "Durante las iteraciones iniciales, TEC-009 podía generar actividad en disco y red",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "En la campaña final, TEC-009 queda formulada como exfiltración HTTP controlada",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "Los artifacts públicos de Velociraptor aportan visibilidad y capacidad DFIR",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "La comparativa con Wazuh permitió contextualizar los resultados",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "En conjunto, los objetivos del TFM se consideran cumplidos",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "El benchmark de rendimiento también presenta limitaciones.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "García-Amorena Reina, J. (2026d).",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "García-Amorena Reina, J. (2026e).",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "Microsoft. (2026, 18 de enero). about_Logging_Windows.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "Russinovich, M., \u0026 Garnier, T. (2026, 17 de junio).",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "F.1. Excel final de visibilidad.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "F.2. Normalizados de visibilidad.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "F.3. Excel final de benchmark.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "F.4. Normalizados de benchmark.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "F.6. Limitación documental TEC-009.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "H.1. Fuente válida.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "H.7. Alcance.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "I.6. Resultados consolidados.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "J.3. Evidencia mínima.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "J.4. Limitación documental secundaria.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "J.5. Redacción metodológica.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "J.6. Interpretación HIDS.",
+                                       "replaced":  1
+                                   },
+                                   {
+                                       "prefix":  "A.10. TEC-009 - T1074.001",
+                                       "replaced":  1
+                                   }
+                               ],
+    "literal_replacements":  [
+                                 {
+                                     "old":  "09_Benchmark_Plan",
+                                     "new":  "09_Resultados_Custom",
+                                     "attempted":  1
+                                 },
+                                 {
+                                     "old":  "TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_FINAL_26062026.xlsx",
+                                     "new":  "TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_DEFINITIVO_20260712.xlsx",
+                                     "attempted":  1
+                                 },
+                                 {
+                                     "old":  "TFM_VISIBILIDAD_DETECCION_FP_WAZUH_FINAL_26062026.xlsx",
+                                     "new":  "TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx",
+                                     "attempted":  1
+                                 },
+                                 {
+                                     "old":  "04_EVIDENCE/Excel_benchmark_26062026",
+                                     "new":  "08_MEMORIA/ENTREGABLE/ENTREGA_FINAL_EXCELES_TFM",
+                                     "attempted":  1
+                                 },
+                                 {
+                                     "old":  "04_EVIDENCE/Excel_visibilidad_26062026",
+                                     "new":  "08_MEMORIA/ENTREGABLE/ENTREGA_FINAL_EXCELES_TFM",
+                                     "attempted":  1
+                                 },
+                                 {
+                                     "old":  "Conexiones de red asociadas a procesos",
+                                     "new":  "Conexiones de red; sin atribución fiable de proceso en la campaña definitiva",
+                                     "attempted":  1
+                                 },
+                                 {
+                                     "old":  "Observación de conexiones de red asociadas a procesos.",
+                                     "new":  "Observación de conexiones de red; sin atribución fiable de proceso en la campaña definitiva.",
+                                     "attempted":  1
+                                 },
+                                 {
+                                     "old":  "Staging/ZIP/upload HTTP controlado observable.",
+                                     "new":  "Staging y archivado observables; el HTTP 200 procede del runner independiente.",
+                                     "attempted":  1
+                                 },
+                                 {
+                                     "old":  "Velociraptor custom63",
+                                     "new":  "Velociraptor custom",
+                                     "attempted":  1
+                                 }
+                             ],
+    "table_replacements":  [
+                               "Tabla 49:",
+                               "Tabla 51:",
+                               "Tabla 53:",
+                               "Tabla 63:"
+                           ],
+    "added_sections":  [
+
+                       ],
+    "references_inserted":  0,
+    "normalized_caption_colons":  0,
+    "normalized_versioning_cells":  18,
+    "caption_sources":  null,
+    "fields_updated":  0,
+    "final_stats":  null,
+    "suspicious_text":  [
+
+                        ],
+    "source_sha256_before":  "A5CD007FF32C5C42462A1320F4650F2CE721079A9D6B2239A15C11AF08AE934F",
+    "output_sha256":  null,
+    "forced_process_cleanup":  [
+
+                               ],
+    "error":  "System.Runtime.InteropServices.COMException (0x800706BE): Error en la llamada a procedimiento remoto. (Excepción de HRESULT: 0x800706BE)\r\n   en System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)\r\n   en System.Management.Automation.ComInterop.ComRuntimeHelpers.CheckThrowException(Int32 hresult, ExcepInfo\u0026 excepInfo, ComMethodDesc method, Object[] args, UInt32 argErr)\r\n   en CallSite.Target(Closure , CallSite , ComObject , Int32 )\r\n   en lambda_method(Closure , Object[] , StrongBox`1[] , InterpretedFrame )"
+}

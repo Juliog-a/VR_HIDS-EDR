@@ -1,0 +1,482 @@
+{
+    "DocumentPath":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGA\\_FINAL_ITERATION_20260804\\TFM_ENTREGA_FINAL_WORK.docx",
+    "SourceParagraphsRemoved":  91,
+    "Corrections":  412,
+    "Pages":  184,
+    "Words":  31461,
+    "RemainingGenericSources":  5,
+    "RemainingPrivateHyperlinks":  0,
+    "Changes":  [
+                    {
+                        "Category":  "Fuentes",
+                        "Description":  "Eliminaci¢n de p rrafos gen‚ricos: Fuente: elaboraci¢n propia a partir de las evidencias y referencias citadas en el texto.",
+                        "Count":  45
+                    },
+                    {
+                        "Category":  "Fuentes",
+                        "Description":  "Eliminaci¢n de p rrafos gen‚ricos: Fuente: elaboraci¢n propia a partir de TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx.",
+                        "Count":  18
+                    },
+                    {
+                        "Category":  "Fuentes",
+                        "Description":  "Eliminaci¢n de p rrafos gen‚ricos: Fuente: elaboraci¢n o captura propia del laboratorio.",
+                        "Count":  18
+                    },
+                    {
+                        "Category":  "Fuentes",
+                        "Description":  "Eliminaci¢n de p rrafos gen‚ricos: Fuente: elaboraci¢n propia a partir de TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_DEFINITIVO_20260712.xlsx.",
+                        "Count":  10
+                    },
+                    {
+                        "Category":  "Terminolog¡a",
+                        "Description":  "Reformulaci¢n del resumen: 379 filas emitidas/exportadas",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Terminolog¡a",
+                        "Description":  "Reformulaci¢n de 379 como filas CLIENT_EVENT, no alertas £nicas",
+                        "Count":  4
+                    },
+                    {
+                        "Category":  "Terminolog¡a",
+                        "Description":  "Reformulaci¢n inglesa de 379 como filas emitidas/exportadas",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Terminolog¡a",
+                        "Description":  "Unidad correcta en el anexo G",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Falsos positivos",
+                        "Description":  "Advertencia de 82 filas junto al KPI en el resumen",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Falsos positivos",
+                        "Description":  "Advertencia de 82 filas en el abstract",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Falsos positivos",
+                        "Description":  "Advertencia de 82 filas en la metodolog¡a de FP",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Falsos positivos",
+                        "Description":  "Advertencia de 82 filas en anexos",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Falsos positivos",
+                        "Description":  "Advertencia en tabla de resultados FP",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Wazuh",
+                        "Description":  "Ruleset efectivo Wazuh v2",
+                        "Count":  4
+                    },
+                    {
+                        "Category":  "Alcance",
+                        "Description":  "Denominaci¢n acotada de cobertura t ctica",
+                        "Count":  4
+                    },
+                    {
+                        "Category":  "Capas",
+                        "Description":  "Discord reclasificado como salida externa",
+                        "Count":  7
+                    },
+                    {
+                        "Category":  "Ortograf¡a",
+                        "Description":  "Correcci¢n de ®¢sea¯",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Ortograf¡a",
+                        "Description":  "Concordancia verbal",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Terminolog¡a",
+                        "Description":  "Normalizaci¢n de Script Block Logging",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Terminolog¡a",
+                        "Description":  "Correcci¢n de HIDS",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Ortograf¡a",
+                        "Description":  "Correcci¢n de la declaraci¢n de IA",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Privacidad",
+                        "Description":  "Neutralizaci¢n de ruta personal del autor",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Privacidad",
+                        "Description":  "Neutralizaci¢n de rutas personales del host de laboratorio",
+                        "Count":  8
+                    },
+                    {
+                        "Category":  "Privacidad",
+                        "Description":  "Neutralizaci¢n de ruta Linux personal",
+                        "Count":  3
+                    },
+                    {
+                        "Category":  "Privacidad",
+                        "Description":  "Neutralizaci¢n de IP privada del servidor",
+                        "Count":  6
+                    },
+                    {
+                        "Category":  "Privacidad",
+                        "Description":  "Neutralizaci¢n de IP privada del endpoint",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Privacidad",
+                        "Description":  "Neutralizaci¢n de IP privada del receptor",
+                        "Count":  2
+                    },
+                    {
+                        "Category":  "Privacidad",
+                        "Description":  "Neutralizaci¢n de etiqueta interna no v lida como IOC",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Trazabilidad",
+                        "Description":  "Sustituci¢n de ruta interna obsoleta",
+                        "Count":  4
+                    },
+                    {
+                        "Category":  "Trazabilidad",
+                        "Description":  "Neutralizaci¢n de ruta editorial candidate",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Referencias",
+                        "Description":  "Actualizaci¢n de URL oficial de recolecci¢n de eventos de Wazuh",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Privacidad",
+                        "Description":  "Conversi¢n de hiperv¡nculo privado activo a texto neutralizado",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Privacidad",
+                        "Description":  "Conversi¢n de hiperv¡nculo privado activo a texto neutralizado",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "RQ",
+                        "Description":  "Reescritura acad‚mica de RQ1",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "RQ",
+                        "Description":  "Reescritura acad‚mica de RQ2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "RQ",
+                        "Description":  "Reescritura acad‚mica de RQ3",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "RQ",
+                        "Description":  "Reescritura acad‚mica de RQ4",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "RQ",
+                        "Description":  "Reescritura acad‚mica de RQ5",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "RQ",
+                        "Description":  "Reescritura acad‚mica de RQ6",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "RQ",
+                        "Description":  "Reescritura acad‚mica de RQ7 y explicaci¢n de la adaptaci¢n FortiEDR-Wazuh",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Redacci¢n",
+                        "Description":  "S¡ntesis acad‚mica del control de versiones",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Redacci¢n",
+                        "Description":  "Eliminaci¢n de proceso editorial interno",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Redacci¢n",
+                        "Description":  "Eliminaci¢n de texto editorial sobre candidatos y backups",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Redacci¢n",
+                        "Description":  "Eliminaci¢n de texto editorial sobre commit y push",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Redacci¢n",
+                        "Description":  "Eliminaci¢n de texto editorial sobre git add",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Redacci¢n",
+                        "Description":  "Reescritura acad‚mica del ciclo de vida de artifacts",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Redacci¢n",
+                        "Description":  "Neutralizaci¢n de estados editoriales internos en el anexo D",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Benchmark",
+                        "Description":  "Metodolog¡a correcta de exclusi¢n de SERVER_GUI y flags literales",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Benchmark",
+                        "Description":  "Metodolog¡a y flags en el anexo H",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Wazuh",
+                        "Description":  "Identificaci¢n del ruleset efectivo v2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Wazuh",
+                        "Description":  "Ruleset v2 en el anexo I",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Capas",
+                        "Description":  "Separaci¢n de Discord y explicaci¢n del campo IOC",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Tabla 32 con t¡tulo y estilo de leyenda",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "C¢digo 5 con dos puntos, espacio y estilo de leyenda",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Tabla comparativa reconstruida con un £nico campo SEQ",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Figura 15: t¡tulo correcto",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Tabla 45: t¡tulo sobre brechas y limitaciones",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Tabla 46: escenarios finales ejecutados",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Tabla 54: unidad de filas CLIENT_EVENT",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Tabla 68: correspondencia RQ-resultados",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "T¡tulo descriptivo: Funciones, limitaciones y riesgos del enfoque HIDS",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "T¡tulo descriptivo: Funciones, limitaciones y riesgos del enfoque DFIR",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "T¡tulo descriptivo: Funciones, limitaciones y riesgos del enfoque EDR",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "T¡tulo descriptivo: Posici¢n de Velociraptor frente a HIDS, DFIR y EDR",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "T¡tulo descriptivo: Criterios metodol¢gicos del cap¡tulo IV",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "T¡tulo descriptivo: Tratamiento metodol¢gico de Sysmon Event ID 26",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "T¡tulo descriptivo: Criterios de validaci¢n de los scripts de laboratorio",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "T¡tulo descriptivo: T‚cnicas MITRE ATT\u0026CK propuestas para trabajo futuro",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "T¡tulos",
+                        "Description":  "Eliminaci¢n de puntos finales en estilo -35",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "T¡tulos",
+                        "Description":  "Eliminaci¢n de puntos finales en estilo -3",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Benchmark",
+                        "Description":  "Tabla 46 corregida a tres escenarios reales y tres repeticiones por escenario",
+                        "Count":  8
+                    },
+                    {
+                        "Category":  "Tablas",
+                        "Description":  "Tabla 52: unidad de filas y rol heterog‚neo de P2",
+                        "Count":  4
+                    },
+                    {
+                        "Category":  "Tablas",
+                        "Description":  "Tabla 54: formulaci¢n exacta de 379 filas y rol P2",
+                        "Count":  3
+                    },
+                    {
+                        "Category":  "Maquetaci¢n",
+                        "Description":  "Ajuste a ventana, m rgenes internos y encabezados de tablas 23, 45, 47, 53, 56 y 65",
+                        "Count":  6
+                    },
+                    {
+                        "Category":  "RQ",
+                        "Description":  "Tabla 68 reescrita con correspondencia uno a uno RQ-resultado-evidencia-limitaci¢n",
+                        "Count":  32
+                    },
+                    {
+                        "Category":  "Maquetaci¢n",
+                        "Description":  "Encabezados repetibles y filas multip gina habilitados en tablas aplicables",
+                        "Count":  104
+                    },
+                    {
+                        "Category":  "Acr¢nimos",
+                        "Description":  "Eliminaci¢n del duplicado YAML, orden alfab‚tico y normalizaci¢n de definiciones",
+                        "Count":  42
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Referencias incluidas en el ¡ndice",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexos incluidos en el ¡ndice",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo A aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo B aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo C aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo D aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo E aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo F aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo G aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo H aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo I aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo J aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo K aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo L aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Jerarqu¡a",
+                        "Description":  "Anexo M aplicado como T¡tulo 2",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Maquetaci¢n",
+                        "Description":  "Control de viudas, hu‚rfanas y t¡tulos con contenido siguiente",
+                        "Count":  4
+                    },
+                    {
+                        "Category":  "Campos",
+                        "Description":  "Actualizaci¢n completa de campos, ¡ndice general y listas de tablas, figuras y c¢digos",
+                        "Count":  4
+                    }
+                ],
+    "SHA256":  null
+}

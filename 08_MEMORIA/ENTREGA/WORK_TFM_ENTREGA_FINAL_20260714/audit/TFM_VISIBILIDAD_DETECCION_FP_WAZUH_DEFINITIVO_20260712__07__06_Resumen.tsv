@@ -1,0 +1,17 @@
+Resumen definitivo · eficacia de detección y trazabilidad		
+Visibilidad, detección, alerta CLIENT_EVENT, evidencia forense, falsos positivos y comparación Wazuh se mantienen como capas separadas.		
+Indicador	Valor	Interpretación / evidencia
+Artifacts custom validados	5	Cuatro detectores CLIENT_EVENT P1-P4 y un Router SERVER_EVENT de transporte.
+Detectores custom CLIENT_EVENT	4	P1, P2, P3 y P4; nombres exactos y SHA-256 en 07_Catalogo_Artifacts.
+Sources detectoras declaradas	27	P1=4; P2=5; P3=13; P4=5.
+Sources con alertas en campaña final	25	P2 Security ScheduledTask Optional y P3 ZIP FileCreate no generaron filas en ventana.
+Técnicas custom detectadas	9/9	379 alertas CLIENT_EVENT consolidadas; volumen de alertas no equivale a cobertura.
+Distribución de alertas	P1=19; P2=118; P3=109; P4=133	Suma=379; recuentos obtenidos de ALERTAS_VR.
+Campaña FP custom	10/10 OK; 0 hits	No se mezcla con las cuatro coincidencias High de Hayabusa Monitoring.
+Campañas públicas	5 positivas / 1 no concluyente	Hayabusa CH detecta 3/9; ETW permanece NO CONCLUYENTE.
+Wazuh base	3/9	TEC-002/004/006 mediante ruleset nativo.
+Wazuh custom	4/9	TEC-001/005/007/008 mediante reglas TFM 110xxx.
+TEC-009	HTTP 200 por runner	TrackNetwork aporta visibilidad de conexión; el resultado HTTP no se atribuye al CLIENT_EVENT.
+Cobertura táctica	5/14; 6/14; 7/14	/14 son tácticas ATT&CK Enterprise consideradas; no las 9 técnicas TEC.
+Arquitectura metodológica	CLIENT_EVENT ≠ SERVER_EVENT	El detector alerta; Router/Discord/webhook transportan o notifican.
+Conclusión	Custom necesario	Añade semántica, severidad, trazabilidad y control de ruido a la telemetría disponible.

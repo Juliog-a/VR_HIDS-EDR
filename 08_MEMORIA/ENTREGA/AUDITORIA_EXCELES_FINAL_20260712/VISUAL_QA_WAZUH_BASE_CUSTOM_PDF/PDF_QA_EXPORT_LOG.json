@@ -1,0 +1,50 @@
+[
+    {
+        "Sheet":  "01_Dashboard",
+        "Area":  "$A$1:$Q$70",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_WAZUH_BASE_CUSTOM_PDF\\01_dashboard.pdf",
+        "Bytes":  368304
+    },
+    {
+        "Sheet":  "GRAFICAS",
+        "Area":  "$G$17:$W$40",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_WAZUH_BASE_CUSTOM_PDF\\02_graficas_wazuh_chart.pdf",
+        "Bytes":  180630
+    },
+    {
+        "Sheet":  "GRAFICAS",
+        "Area":  "$M$48:$Q$60",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_WAZUH_BASE_CUSTOM_PDF\\03_graficas_heatmap.pdf",
+        "Bytes":  250415
+    },
+    {
+        "Sheet":  "COMPARACION_VR_WAZUH",
+        "Area":  "$A$1:$M$23",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_WAZUH_BASE_CUSTOM_PDF\\04_comparacion_vr_wazuh.pdf",
+        "Bytes":  289255
+    },
+    {
+        "Sheet":  "05_Matriz_Resultados",
+        "Area":  "$A$1:$Z$13",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_WAZUH_BASE_CUSTOM_PDF\\05_matriz_completa.pdf",
+        "Bytes":  101299
+    },
+    {
+        "Sheet":  "05_Matriz_Resultados",
+        "Area":  "$T$1:$Z$13",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_WAZUH_BASE_CUSTOM_PDF\\06_matriz_wazuh_foco.pdf",
+        "Bytes":  47919
+    },
+    {
+        "Sheet":  "RESUMEN_EJECUTIVO",
+        "Area":  "$A$1:$C$37",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_WAZUH_BASE_CUSTOM_PDF\\07_resumen_ejecutivo.pdf",
+        "Bytes":  236798
+    },
+    {
+        "Sheet":  "WAZUH_DETALLE",
+        "Area":  "$A$1:$H$19",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_WAZUH_BASE_CUSTOM_PDF\\08_wazuh_detalle.pdf",
+        "Bytes":  279440
+    }
+]

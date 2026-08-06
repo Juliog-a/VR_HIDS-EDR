@@ -1,0 +1,62 @@
+[
+    {
+        "Sheet":  "01_Dashboard",
+        "Area":  "$A$1:$Q$70",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_AJUSTE_FINAL_PDF\\01_dashboard.pdf",
+        "Bytes":  309530
+    },
+    {
+        "Sheet":  "GRAFICAS",
+        "Area":  "$A$17:$P$33",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_AJUSTE_FINAL_PDF\\02_graficas_runner_fp.pdf",
+        "Bytes":  242540
+    },
+    {
+        "Sheet":  "GRAFICAS",
+        "Area":  "$M$48:$P$59",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_AJUSTE_FINAL_PDF\\03_graficas_heatmap.pdf",
+        "Bytes":  209677
+    },
+    {
+        "Sheet":  "GRAFICAS",
+        "Area":  "$F$72:$J$79",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_AJUSTE_FINAL_PDF\\04_graficas_estados.pdf",
+        "Bytes":  201641
+    },
+    {
+        "Sheet":  "04_Control_Publicos",
+        "Area":  "$A$4:$U$67",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_AJUSTE_FINAL_PDF\\05_control_publicos_a_u.pdf",
+        "Bytes":  329012
+    },
+    {
+        "Sheet":  "04_Control_Publicos",
+        "Area":  "$S$4:$AE$67",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_AJUSTE_FINAL_PDF\\06_control_publicos_s_ae.pdf",
+        "Bytes":  270559
+    },
+    {
+        "Sheet":  "05_Matriz_Resultados",
+        "Area":  "$A$1:$T$13",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_AJUSTE_FINAL_PDF\\07_matriz_resultados.pdf",
+        "Bytes":  87862
+    },
+    {
+        "Sheet":  "08_Benignas_FP",
+        "Area":  "$A$1:$J$18",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_AJUSTE_FINAL_PDF\\08_benignas_fp.pdf",
+        "Bytes":  77977
+    },
+    {
+        "Sheet":  "15_Publicos_Definitivo",
+        "Area":  "$A$1:$T$15",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_AJUSTE_FINAL_PDF\\09_publicos_definitivo.pdf",
+        "Bytes":  132270
+    },
+    {
+        "Sheet":  "RESUMEN_EJECUTIVO",
+        "Area":  "$A$1:$C$33",
+        "Pdf":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\AUDITORIA_EXCELES_FINAL_20260712\\VISUAL_QA_AJUSTE_FINAL_PDF\\10_resumen_ejecutivo.pdf",
+        "Bytes":  234442
+    }
+]

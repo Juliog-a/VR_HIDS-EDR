@@ -1,0 +1,160 @@
+﻿{
+    "RunId":  "TFM_FP_20260712_163220",
+    "GlobalStatus":  "WARN",
+    "StartTimeLocal":  "2026-07-12T16:32:20.3368045+02:00",
+    "EndTimeLocal":  "2026-07-12T16:32:56.8317645+02:00",
+    "StartTimeUtc":  "2026-07-12T14:32:20.3368045Z",
+    "EndTimeUtc":  "2026-07-12T14:32:56.8317645Z",
+    "Workspace":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\FP_WORKSPACE\\TFM_FP_20260712_163220",
+    "OutputDir":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\Logs_Pruebas_TFM\\FPs",
+    "JsonlPath":  "\\\\VBOXSVR\\Carpeta_Compartida_TFM\\inbox\\soc_alerts.jsonl",
+    "ClearJsonlBeforeRun":  false,
+    "KeepWorkspace":  true,
+    "Tests":  [
+                  {
+                      "RunId":  "TFM_FP_20260712_163220",
+                      "FP_ID":  "FP-001",
+                      "Description":  "PowerShell administrativo legitimo",
+                      "Status":  "OK",
+                      "StartTimeLocal":  "2026-07-12T16:32:20.3776049+02:00",
+                      "EndTimeLocal":  "2026-07-12T16:32:21.1704263+02:00",
+                      "DurationSec":  0.79,
+                      "Artifacts":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\FP_WORKSPACE\\TFM_FP_20260712_163220\\FP-001_benign.txt",
+                      "Details":  "PowerShell administrative commands completed"
+                  },
+                  {
+                      "RunId":  "TFM_FP_20260712_163220",
+                      "FP_ID":  "FP-002",
+                      "Description":  "CMD legitimo",
+                      "Status":  "OK",
+                      "StartTimeLocal":  "2026-07-12T16:32:21.1906021+02:00",
+                      "EndTimeLocal":  "2026-07-12T16:32:21.6758394+02:00",
+                      "DurationSec":  0.49,
+                      "Artifacts":  "",
+                      "Details":  "cmd /c dir \"C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\FP_WORKSPACE\\TFM_FP_20260712_163220\" =\u003e 0 | cmd /c whoami =\u003e 0 | cmd /c hostname =\u003e 0 | cmd /c echo TFM_FP_20260712_163220 FP-002 =\u003e 0"
+                  },
+                  {
+                      "RunId":  "TFM_FP_20260712_163220",
+                      "FP_ID":  "FP-003",
+                      "Description":  "Scheduled Task benigno temporal",
+                      "Status":  "OK",
+                      "StartTimeLocal":  "2026-07-12T16:32:21.6888137+02:00",
+                      "EndTimeLocal":  "2026-07-12T16:32:25.0145219+02:00",
+                      "DurationSec":  3.33,
+                      "Artifacts":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\FP_WORKSPACE\\TFM_FP_20260712_163220\\FP-003_scheduled_task_ok.txt",
+                      "Details":  "create=0; run=0; delete=0"
+                  },
+                  {
+                      "RunId":  "TFM_FP_20260712_163220",
+                      "FP_ID":  "FP-004",
+                      "Description":  "Registro benigno no persistente",
+                      "Status":  "OK",
+                      "StartTimeLocal":  "2026-07-12T16:32:25.0307163+02:00",
+                      "EndTimeLocal":  "2026-07-12T16:32:25.0353763+02:00",
+                      "DurationSec":  0,
+                      "Artifacts":  "",
+                      "Details":  "HKCU:\\Software\\TFM_FP\\TFM_FP_20260712_163220 created, read and removed"
+                  },
+                  {
+                      "RunId":  "TFM_FP_20260712_163220",
+                      "FP_ID":  "FP-005",
+                      "Description":  "Consulta de servicios",
+                      "Status":  "OK",
+                      "StartTimeLocal":  "2026-07-12T16:32:25.0560826+02:00",
+                      "EndTimeLocal":  "2026-07-12T16:32:26.2381586+02:00",
+                      "DurationSec":  1.18,
+                      "Artifacts":  "",
+                      "Details":  "Service query commands completed"
+                  },
+                  {
+                      "RunId":  "TFM_FP_20260712_163220",
+                      "FP_ID":  "FP-006",
+                      "Description":  "Discovery legitimo de seguridad",
+                      "Status":  "OK",
+                      "StartTimeLocal":  "2026-07-12T16:32:26.2530313+02:00",
+                      "EndTimeLocal":  "2026-07-12T16:32:28.7204869+02:00",
+                      "DurationSec":  2.47,
+                      "Artifacts":  "",
+                      "Details":  "Security status queries completed"
+                  },
+                  {
+                      "RunId":  "TFM_FP_20260712_163220",
+                      "FP_ID":  "FP-007",
+                      "Description":  "ZIP benigno local",
+                      "Status":  "OK",
+                      "StartTimeLocal":  "2026-07-12T16:32:28.7413572+02:00",
+                      "EndTimeLocal":  "2026-07-12T16:32:32.2828578+02:00",
+                      "DurationSec":  3.54,
+                      "Artifacts":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\FP_WORKSPACE\\TFM_FP_20260712_163220\\FP-007; C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\FP_WORKSPACE\\TFM_FP_20260712_163220\\FP-007_benign_archive.zip",
+                      "Details":  "Local ZIP created without web transfer"
+                  },
+                  {
+                      "RunId":  "TFM_FP_20260712_163220",
+                      "FP_ID":  "FP-008",
+                      "Description":  "Borrado benigno controlado",
+                      "Status":  "OK",
+                      "StartTimeLocal":  "2026-07-12T16:32:32.2941825+02:00",
+                      "EndTimeLocal":  "2026-07-12T16:32:33.6819749+02:00",
+                      "DurationSec":  1.39,
+                      "Artifacts":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\FP_WORKSPACE\\TFM_FP_20260712_163220\\FP-008",
+                      "Details":  "Only the controlled workspace subfolder was deleted"
+                  },
+                  {
+                      "RunId":  "TFM_FP_20260712_163220",
+                      "FP_ID":  "FP-009",
+                      "Description":  "HTTP benigno local",
+                      "Status":  "SKIPPED",
+                      "StartTimeLocal":  "2026-07-12T16:32:33.7159469+02:00",
+                      "EndTimeLocal":  "2026-07-12T16:32:39.9917585+02:00",
+                      "DurationSec":  6.28,
+                      "Artifacts":  "",
+                      "Details":  "No local HTTP listener on 127.0.0.1:80; Test-NetConnection completed"
+                  },
+                  {
+                      "RunId":  "TFM_FP_20260712_163220",
+                      "FP_ID":  "FP-010",
+                      "Description":  "Operaciones normales masivas",
+                      "Status":  "OK",
+                      "StartTimeLocal":  "2026-07-12T16:32:40.0402595+02:00",
+                      "EndTimeLocal":  "2026-07-12T16:32:40.3826094+02:00",
+                      "DurationSec":  0.34,
+                      "Artifacts":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\FP_WORKSPACE\\TFM_FP_20260712_163220\\FP-010; C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\FP_WORKSPACE\\TFM_FP_20260712_163220\\FP-010\\copy",
+                      "Details":  "20 files created, copied and partially renamed"
+                  }
+              ],
+    "TestCounts":  {
+                       "OK":  9,
+                       "WARN":  0,
+                       "FAIL":  0,
+                       "SKIPPED":  1
+                   },
+    "Warnings":  [
+                     "FP-009 SKIPPED: No local HTTP listener on 127.0.0.1:80; Test-NetConnection completed"
+                 ],
+    "JsonlWarnings":  [
+
+                      ],
+    "VelociraptorHits":  {
+                             "Total":  0,
+                             "ByProfile":  {
+
+                                           },
+                             "ByFP_ID":  {
+
+                                         },
+                             "ByTEC":  {
+
+                                       },
+                             "ByDetectionName":  {
+
+                                                 }
+                         },
+    "OutputFiles":  {
+                        "Log":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\Logs_Pruebas_TFM\\FPs\\TFM_FP_20260712_163220.log",
+                        "SummaryTxt":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\Logs_Pruebas_TFM\\FPs\\TFM_FP_20260712_163220_summary.txt",
+                        "SummaryJson":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\Logs_Pruebas_TFM\\FPs\\TFM_FP_20260712_163220_summary.json",
+                        "SummaryCsv":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\Logs_Pruebas_TFM\\FPs\\TFM_FP_20260712_163220_summary.csv",
+                        "VrHitsCsv":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\Logs_Pruebas_TFM\\FPs\\TFM_FP_20260712_163220_vr_hits.csv",
+                        "VrHitsTxt":  "C:\\Users\\seguridad\\Desktop\\TFM\\01_ACTIVE_TESTS\\Pruebas\\Logs_Pruebas_TFM\\FPs\\TFM_FP_20260712_163220_vr_hits.txt"
+                    }
+}

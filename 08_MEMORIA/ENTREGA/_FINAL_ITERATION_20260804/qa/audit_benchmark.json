@@ -1,0 +1,1204 @@
+﻿{
+    "Kind":  "benchmark",
+    "Path":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGA\\_FINAL_ITERATION_20260804\\TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_DEFINITIVO_20260712_WORK.xlsx",
+    "FileLength":  255393,
+    "SHA256":  "C2255C2563AACFA7F8CA56496EAE934843C411D89011539B9D167F8A13BE93D0",
+    "ExcelVersion":  "16.0",
+    "ReadOnly":  true,
+    "Worksheets":  11,
+    "TotalCharts":  6,
+    "TotalTables":  0,
+    "CalculationVersion":  191029,
+    "SheetAudit":  [
+                       {
+                           "Name":  "README",
+                           "Visible":  -1,
+                           "UsedRows":  12,
+                           "UsedCols":  2,
+                           "Charts":  0,
+                           "Tables":  0,
+                           "PrintArea":  "",
+                           "AutoFilter":  true
+                       },
+                       {
+                           "Name":  "RESUMEN_EJECUTIVO",
+                           "Visible":  -1,
+                           "UsedRows":  18,
+                           "UsedCols":  3,
+                           "Charts":  0,
+                           "Tables":  0,
+                           "PrintArea":  "",
+                           "AutoFilter":  true
+                       },
+                       {
+                           "Name":  "RUNS_VALIDOS",
+                           "Visible":  -1,
+                           "UsedRows":  10,
+                           "UsedCols":  22,
+                           "Charts":  0,
+                           "Tables":  0,
+                           "PrintArea":  "",
+                           "AutoFilter":  true
+                       },
+                       {
+                           "Name":  "RESUMEN_ESCENARIO",
+                           "Visible":  -1,
+                           "UsedRows":  4,
+                           "UsedCols":  12,
+                           "Charts":  0,
+                           "Tables":  0,
+                           "PrintArea":  "",
+                           "AutoFilter":  true
+                       },
+                       {
+                           "Name":  "RAW_SAMPLES",
+                           "Visible":  -1,
+                           "UsedRows":  423,
+                           "UsedCols":  38,
+                           "Charts":  0,
+                           "Tables":  0,
+                           "PrintArea":  "",
+                           "AutoFilter":  true
+                       },
+                       {
+                           "Name":  "PROCESS_SAMPLES",
+                           "Visible":  -1,
+                           "UsedRows":  771,
+                           "UsedCols":  23,
+                           "Charts":  0,
+                           "Tables":  0,
+                           "PrintArea":  "",
+                           "AutoFilter":  true
+                       },
+                       {
+                           "Name":  "CALIDAD_DATOS",
+                           "Visible":  -1,
+                           "UsedRows":  22,
+                           "UsedCols":  5,
+                           "Charts":  0,
+                           "Tables":  0,
+                           "PrintArea":  "",
+                           "AutoFilter":  true
+                       },
+                       {
+                           "Name":  "GRAFICAS",
+                           "Visible":  -1,
+                           "UsedRows":  54,
+                           "UsedCols":  11,
+                           "Charts":  6,
+                           "Tables":  0,
+                           "PrintArea":  "$A$1:$N$112",
+                           "AutoFilter":  false
+                       },
+                       {
+                           "Name":  "TRAZABILIDAD",
+                           "Visible":  -1,
+                           "UsedRows":  82,
+                           "UsedCols":  8,
+                           "Charts":  0,
+                           "Tables":  0,
+                           "PrintArea":  "",
+                           "AutoFilter":  true
+                       },
+                       {
+                           "Name":  "LIMITACIONES",
+                           "Visible":  -1,
+                           "UsedRows":  8,
+                           "UsedCols":  2,
+                           "Charts":  0,
+                           "Tables":  0,
+                           "PrintArea":  "",
+                           "AutoFilter":  true
+                       },
+                       {
+                           "Name":  "DISCREPANCIAS",
+                           "Visible":  -1,
+                           "UsedRows":  6,
+                           "UsedCols":  5,
+                           "Charts":  0,
+                           "Tables":  0,
+                           "PrintArea":  "",
+                           "AutoFilter":  true
+                       }
+                   ],
+    "Targets":  [
+                    {
+                        "Sheet":  "README",
+                        "Address":  "B3",
+                        "Formula":  "2026-07-12 (Europe/Madrid)",
+                        "FormulaLocal":  "2026-07-12 (Europe/Madrid)",
+                        "Value2":  "2026-07-12 (Europe/Madrid)",
+                        "Text":  "2026-07-12 (Europe/Madrid)"
+                    },
+                    {
+                        "Sheet":  "README",
+                        "Address":  "B9",
+                        "Formula":  "Excluido del calculo principal mediante IncludeServerGuiInTotal=False y ServerGuiExcludedFromClientMetrics=True.",
+                        "FormulaLocal":  "Excluido del calculo principal mediante IncludeServerGuiInTotal=False y ServerGuiExcludedFromClientMetrics=True.",
+                        "Value2":  "Excluido del calculo principal mediante IncludeServerGuiInTotal=False y ServerGuiExcludedFromClientMetrics=True.",
+                        "Text":  "Excluido del calculo principal mediante IncludeServerGuiInTotal=False y ServerGuiExcludedFromClientMetrics=True."
+                    },
+                    {
+                        "Sheet":  "RUNS_VALIDOS",
+                        "Address":  "A1",
+                        "Formula":  "RunId",
+                        "FormulaLocal":  "RunId",
+                        "Value2":  "RunId",
+                        "Text":  "RunId"
+                    },
+                    {
+                        "Sheet":  "RESUMEN_EJECUTIVO",
+                        "Address":  "A1",
+                        "Formula":  "KPI",
+                        "FormulaLocal":  "KPI",
+                        "Value2":  "KPI",
+                        "Text":  "KPI"
+                    },
+                    {
+                        "Sheet":  "RESUMEN_ESCENARIO",
+                        "Address":  "A1",
+                        "Formula":  "Scenario",
+                        "FormulaLocal":  "Scenario",
+                        "Value2":  "Scenario",
+                        "Text":  "Scenario"
+                    },
+                    {
+                        "Sheet":  "CALIDAD_DATOS",
+                        "Address":  "A14",
+                        "Formula":  "RunnerStillRunningAtEnd evaluado",
+                        "FormulaLocal":  "RunnerStillRunningAtEnd evaluado",
+                        "Value2":  "RunnerStillRunningAtEnd evaluado",
+                        "Text":  "RunnerStillRunningAtEnd evaluado"
+                    },
+                    {
+                        "Sheet":  "DISCREPANCIAS",
+                        "Address":  "A2",
+                        "Formula":  "WARN_NO_BLOQUEANTE",
+                        "FormulaLocal":  "WARN_NO_BLOQUEANTE",
+                        "Value2":  "WARN_NO_BLOQUEANTE",
+                        "Text":  "WARN_NO_BLOQUEANTE"
+                    }
+                ],
+    "Search":  {
+                   "#REF!":  [
+                                 {
+                                     "Sheet":  "README",
+                                     "Address":  "",
+                                     "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                     "Formula":  ""
+                                 },
+                                 {
+                                     "Sheet":  "RESUMEN_EJECUTIVO",
+                                     "Address":  "",
+                                     "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                     "Formula":  ""
+                                 },
+                                 {
+                                     "Sheet":  "RUNS_VALIDOS",
+                                     "Address":  "",
+                                     "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                     "Formula":  ""
+                                 },
+                                 {
+                                     "Sheet":  "RESUMEN_ESCENARIO",
+                                     "Address":  "",
+                                     "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                     "Formula":  ""
+                                 },
+                                 {
+                                     "Sheet":  "RAW_SAMPLES",
+                                     "Address":  "",
+                                     "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                     "Formula":  ""
+                                 },
+                                 {
+                                     "Sheet":  "PROCESS_SAMPLES",
+                                     "Address":  "",
+                                     "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                     "Formula":  ""
+                                 },
+                                 {
+                                     "Sheet":  "CALIDAD_DATOS",
+                                     "Address":  "",
+                                     "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                     "Formula":  ""
+                                 },
+                                 {
+                                     "Sheet":  "GRAFICAS",
+                                     "Address":  "",
+                                     "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                     "Formula":  ""
+                                 },
+                                 {
+                                     "Sheet":  "TRAZABILIDAD",
+                                     "Address":  "",
+                                     "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                     "Formula":  ""
+                                 },
+                                 {
+                                     "Sheet":  "LIMITACIONES",
+                                     "Address":  "",
+                                     "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                     "Formula":  ""
+                                 },
+                                 {
+                                     "Sheet":  "DISCREPANCIAS",
+                                     "Address":  "",
+                                     "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                     "Formula":  ""
+                                 }
+                             ],
+                   "#N/A":  [
+                                {
+                                    "Sheet":  "README",
+                                    "Address":  "",
+                                    "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                    "Formula":  ""
+                                },
+                                {
+                                    "Sheet":  "RESUMEN_EJECUTIVO",
+                                    "Address":  "",
+                                    "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                    "Formula":  ""
+                                },
+                                {
+                                    "Sheet":  "RUNS_VALIDOS",
+                                    "Address":  "",
+                                    "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                    "Formula":  ""
+                                },
+                                {
+                                    "Sheet":  "RESUMEN_ESCENARIO",
+                                    "Address":  "",
+                                    "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                    "Formula":  ""
+                                },
+                                {
+                                    "Sheet":  "RAW_SAMPLES",
+                                    "Address":  "",
+                                    "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                    "Formula":  ""
+                                },
+                                {
+                                    "Sheet":  "PROCESS_SAMPLES",
+                                    "Address":  "",
+                                    "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                    "Formula":  ""
+                                },
+                                {
+                                    "Sheet":  "CALIDAD_DATOS",
+                                    "Address":  "",
+                                    "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                    "Formula":  ""
+                                },
+                                {
+                                    "Sheet":  "GRAFICAS",
+                                    "Address":  "",
+                                    "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                    "Formula":  ""
+                                },
+                                {
+                                    "Sheet":  "TRAZABILIDAD",
+                                    "Address":  "",
+                                    "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                    "Formula":  ""
+                                },
+                                {
+                                    "Sheet":  "LIMITACIONES",
+                                    "Address":  "",
+                                    "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                    "Formula":  ""
+                                },
+                                {
+                                    "Sheet":  "DISCREPANCIAS",
+                                    "Address":  "",
+                                    "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                    "Formula":  ""
+                                }
+                            ],
+                   "#VALUE!":  [
+                                   {
+                                       "Sheet":  "README",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RESUMEN_EJECUTIVO",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RUNS_VALIDOS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RESUMEN_ESCENARIO",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RAW_SAMPLES",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "PROCESS_SAMPLES",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "CALIDAD_DATOS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "GRAFICAS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "TRAZABILIDAD",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "LIMITACIONES",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "DISCREPANCIAS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   }
+                               ],
+                   "#DIV/0!":  [
+                                   {
+                                       "Sheet":  "README",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RESUMEN_EJECUTIVO",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RUNS_VALIDOS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RESUMEN_ESCENARIO",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RAW_SAMPLES",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "PROCESS_SAMPLES",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "CALIDAD_DATOS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "GRAFICAS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "TRAZABILIDAD",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "LIMITACIONES",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "DISCREPANCIAS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   }
+                               ],
+                   "#NAME?":  [
+                                  {
+                                      "Sheet":  "README",
+                                      "Address":  "",
+                                      "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                      "Formula":  ""
+                                  },
+                                  {
+                                      "Sheet":  "RESUMEN_EJECUTIVO",
+                                      "Address":  "",
+                                      "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                      "Formula":  ""
+                                  },
+                                  {
+                                      "Sheet":  "RUNS_VALIDOS",
+                                      "Address":  "",
+                                      "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                      "Formula":  ""
+                                  },
+                                  {
+                                      "Sheet":  "RESUMEN_ESCENARIO",
+                                      "Address":  "",
+                                      "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                      "Formula":  ""
+                                  },
+                                  {
+                                      "Sheet":  "RAW_SAMPLES",
+                                      "Address":  "",
+                                      "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                      "Formula":  ""
+                                  },
+                                  {
+                                      "Sheet":  "PROCESS_SAMPLES",
+                                      "Address":  "",
+                                      "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                      "Formula":  ""
+                                  },
+                                  {
+                                      "Sheet":  "CALIDAD_DATOS",
+                                      "Address":  "",
+                                      "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                      "Formula":  ""
+                                  },
+                                  {
+                                      "Sheet":  "GRAFICAS",
+                                      "Address":  "",
+                                      "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                      "Formula":  ""
+                                  },
+                                  {
+                                      "Sheet":  "TRAZABILIDAD",
+                                      "Address":  "",
+                                      "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                      "Formula":  ""
+                                  },
+                                  {
+                                      "Sheet":  "LIMITACIONES",
+                                      "Address":  "",
+                                      "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                      "Formula":  ""
+                                  },
+                                  {
+                                      "Sheet":  "DISCREPANCIAS",
+                                      "Address":  "",
+                                      "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                      "Formula":  ""
+                                  }
+                              ],
+                   "/9":  [
+                              {
+                                  "Sheet":  "README",
+                                  "Address":  "",
+                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                  "Formula":  ""
+                              },
+                              {
+                                  "Sheet":  "RESUMEN_EJECUTIVO",
+                                  "Address":  "",
+                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                  "Formula":  ""
+                              },
+                              {
+                                  "Sheet":  "RUNS_VALIDOS",
+                                  "Address":  "",
+                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                  "Formula":  ""
+                              },
+                              {
+                                  "Sheet":  "RESUMEN_ESCENARIO",
+                                  "Address":  "",
+                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                  "Formula":  ""
+                              },
+                              {
+                                  "Sheet":  "RAW_SAMPLES",
+                                  "Address":  "",
+                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                  "Formula":  ""
+                              },
+                              {
+                                  "Sheet":  "PROCESS_SAMPLES",
+                                  "Address":  "",
+                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                  "Formula":  ""
+                              },
+                              {
+                                  "Sheet":  "CALIDAD_DATOS",
+                                  "Address":  "",
+                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                  "Formula":  ""
+                              },
+                              {
+                                  "Sheet":  "GRAFICAS",
+                                  "Address":  "",
+                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                  "Formula":  ""
+                              },
+                              {
+                                  "Sheet":  "TRAZABILIDAD",
+                                  "Address":  "",
+                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                  "Formula":  ""
+                              },
+                              {
+                                  "Sheet":  "LIMITACIONES",
+                                  "Address":  "",
+                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                  "Formula":  ""
+                              },
+                              {
+                                  "Sheet":  "DISCREPANCIAS",
+                                  "Address":  "",
+                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                  "Formula":  ""
+                              }
+                          ],
+                   "IncludeServerGuiInTotal":  [
+                                                   {
+                                                       "Sheet":  "README",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "RESUMEN_EJECUTIVO",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "RUNS_VALIDOS",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "RESUMEN_ESCENARIO",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "RAW_SAMPLES",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "PROCESS_SAMPLES",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "CALIDAD_DATOS",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "GRAFICAS",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "TRAZABILIDAD",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "LIMITACIONES",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "DISCREPANCIAS",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   }
+                                               ],
+                   "ServerGuiExcludedFromClientMetrics":  [
+                                                              {
+                                                                  "Sheet":  "README",
+                                                                  "Address":  "",
+                                                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                                  "Formula":  ""
+                                                              },
+                                                              {
+                                                                  "Sheet":  "RESUMEN_EJECUTIVO",
+                                                                  "Address":  "",
+                                                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                                  "Formula":  ""
+                                                              },
+                                                              {
+                                                                  "Sheet":  "RUNS_VALIDOS",
+                                                                  "Address":  "",
+                                                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                                  "Formula":  ""
+                                                              },
+                                                              {
+                                                                  "Sheet":  "RESUMEN_ESCENARIO",
+                                                                  "Address":  "",
+                                                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                                  "Formula":  ""
+                                                              },
+                                                              {
+                                                                  "Sheet":  "RAW_SAMPLES",
+                                                                  "Address":  "",
+                                                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                                  "Formula":  ""
+                                                              },
+                                                              {
+                                                                  "Sheet":  "PROCESS_SAMPLES",
+                                                                  "Address":  "",
+                                                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                                  "Formula":  ""
+                                                              },
+                                                              {
+                                                                  "Sheet":  "CALIDAD_DATOS",
+                                                                  "Address":  "",
+                                                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                                  "Formula":  ""
+                                                              },
+                                                              {
+                                                                  "Sheet":  "GRAFICAS",
+                                                                  "Address":  "",
+                                                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                                  "Formula":  ""
+                                                              },
+                                                              {
+                                                                  "Sheet":  "TRAZABILIDAD",
+                                                                  "Address":  "",
+                                                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                                  "Formula":  ""
+                                                              },
+                                                              {
+                                                                  "Sheet":  "LIMITACIONES",
+                                                                  "Address":  "",
+                                                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                                  "Formula":  ""
+                                                              },
+                                                              {
+                                                                  "Sheet":  "DISCREPANCIAS",
+                                                                  "Address":  "",
+                                                                  "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                                  "Formula":  ""
+                                                              }
+                                                          ],
+                   "RunnerStillRunningAtEnd":  [
+                                                   {
+                                                       "Sheet":  "README",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "RESUMEN_EJECUTIVO",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "RUNS_VALIDOS",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "RESUMEN_ESCENARIO",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "RAW_SAMPLES",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "PROCESS_SAMPLES",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "CALIDAD_DATOS",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "GRAFICAS",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "TRAZABILIDAD",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "LIMITACIONES",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   },
+                                                   {
+                                                       "Sheet":  "DISCREPANCIAS",
+                                                       "Address":  "",
+                                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                       "Formula":  ""
+                                                   }
+                                               ],
+                   "SERVER_GUI":  [
+                                      {
+                                          "Sheet":  "README",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "RESUMEN_EJECUTIVO",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "RUNS_VALIDOS",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "RESUMEN_ESCENARIO",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "RAW_SAMPLES",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "PROCESS_SAMPLES",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "CALIDAD_DATOS",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "GRAFICAS",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "TRAZABILIDAD",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "LIMITACIONES",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "DISCREPANCIAS",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      }
+                                  ],
+                   "webhook":  [
+                                   {
+                                       "Sheet":  "README",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RESUMEN_EJECUTIVO",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RUNS_VALIDOS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RESUMEN_ESCENARIO",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "RAW_SAMPLES",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "PROCESS_SAMPLES",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "CALIDAD_DATOS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "GRAFICAS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "TRAZABILIDAD",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "LIMITACIONES",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   },
+                                   {
+                                       "Sheet":  "DISCREPANCIAS",
+                                       "Address":  "",
+                                       "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                       "Formula":  ""
+                                   }
+                               ],
+                   "82 filas":  [
+                                    {
+                                        "Sheet":  "README",
+                                        "Address":  "",
+                                        "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                        "Formula":  ""
+                                    },
+                                    {
+                                        "Sheet":  "RESUMEN_EJECUTIVO",
+                                        "Address":  "",
+                                        "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                        "Formula":  ""
+                                    },
+                                    {
+                                        "Sheet":  "RUNS_VALIDOS",
+                                        "Address":  "",
+                                        "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                        "Formula":  ""
+                                    },
+                                    {
+                                        "Sheet":  "RESUMEN_ESCENARIO",
+                                        "Address":  "",
+                                        "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                        "Formula":  ""
+                                    },
+                                    {
+                                        "Sheet":  "RAW_SAMPLES",
+                                        "Address":  "",
+                                        "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                        "Formula":  ""
+                                    },
+                                    {
+                                        "Sheet":  "PROCESS_SAMPLES",
+                                        "Address":  "",
+                                        "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                        "Formula":  ""
+                                    },
+                                    {
+                                        "Sheet":  "CALIDAD_DATOS",
+                                        "Address":  "",
+                                        "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                        "Formula":  ""
+                                    },
+                                    {
+                                        "Sheet":  "GRAFICAS",
+                                        "Address":  "",
+                                        "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                        "Formula":  ""
+                                    },
+                                    {
+                                        "Sheet":  "TRAZABILIDAD",
+                                        "Address":  "",
+                                        "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                        "Formula":  ""
+                                    },
+                                    {
+                                        "Sheet":  "LIMITACIONES",
+                                        "Address":  "",
+                                        "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                        "Formula":  ""
+                                    },
+                                    {
+                                        "Sheet":  "DISCREPANCIAS",
+                                        "Address":  "",
+                                        "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                        "Formula":  ""
+                                    }
+                                ],
+                   "no reconciliadas":  [
+                                            {
+                                                "Sheet":  "README",
+                                                "Address":  "",
+                                                "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                "Formula":  ""
+                                            },
+                                            {
+                                                "Sheet":  "RESUMEN_EJECUTIVO",
+                                                "Address":  "",
+                                                "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                "Formula":  ""
+                                            },
+                                            {
+                                                "Sheet":  "RUNS_VALIDOS",
+                                                "Address":  "",
+                                                "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                "Formula":  ""
+                                            },
+                                            {
+                                                "Sheet":  "RESUMEN_ESCENARIO",
+                                                "Address":  "",
+                                                "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                "Formula":  ""
+                                            },
+                                            {
+                                                "Sheet":  "RAW_SAMPLES",
+                                                "Address":  "",
+                                                "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                "Formula":  ""
+                                            },
+                                            {
+                                                "Sheet":  "PROCESS_SAMPLES",
+                                                "Address":  "",
+                                                "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                "Formula":  ""
+                                            },
+                                            {
+                                                "Sheet":  "CALIDAD_DATOS",
+                                                "Address":  "",
+                                                "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                "Formula":  ""
+                                            },
+                                            {
+                                                "Sheet":  "GRAFICAS",
+                                                "Address":  "",
+                                                "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                "Formula":  ""
+                                            },
+                                            {
+                                                "Sheet":  "TRAZABILIDAD",
+                                                "Address":  "",
+                                                "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                "Formula":  ""
+                                            },
+                                            {
+                                                "Sheet":  "LIMITACIONES",
+                                                "Address":  "",
+                                                "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                "Formula":  ""
+                                            },
+                                            {
+                                                "Sheet":  "DISCREPANCIAS",
+                                                "Address":  "",
+                                                "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                                "Formula":  ""
+                                            }
+                                        ],
+                   "Perfil mÃ¡ximo":  [
+                                          {
+                                              "Sheet":  "README",
+                                              "Address":  "",
+                                              "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                              "Formula":  ""
+                                          },
+                                          {
+                                              "Sheet":  "RESUMEN_EJECUTIVO",
+                                              "Address":  "",
+                                              "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                              "Formula":  ""
+                                          },
+                                          {
+                                              "Sheet":  "RUNS_VALIDOS",
+                                              "Address":  "",
+                                              "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                              "Formula":  ""
+                                          },
+                                          {
+                                              "Sheet":  "RESUMEN_ESCENARIO",
+                                              "Address":  "",
+                                              "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                              "Formula":  ""
+                                          },
+                                          {
+                                              "Sheet":  "RAW_SAMPLES",
+                                              "Address":  "",
+                                              "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                              "Formula":  ""
+                                          },
+                                          {
+                                              "Sheet":  "PROCESS_SAMPLES",
+                                              "Address":  "",
+                                              "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                              "Formula":  ""
+                                          },
+                                          {
+                                              "Sheet":  "CALIDAD_DATOS",
+                                              "Address":  "",
+                                              "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                              "Formula":  ""
+                                          },
+                                          {
+                                              "Sheet":  "GRAFICAS",
+                                              "Address":  "",
+                                              "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                              "Formula":  ""
+                                          },
+                                          {
+                                              "Sheet":  "TRAZABILIDAD",
+                                              "Address":  "",
+                                              "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                              "Formula":  ""
+                                          },
+                                          {
+                                              "Sheet":  "LIMITACIONES",
+                                              "Address":  "",
+                                              "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                              "Formula":  ""
+                                          },
+                                          {
+                                              "Sheet":  "DISCREPANCIAS",
+                                              "Address":  "",
+                                              "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                              "Formula":  ""
+                                          }
+                                      ],
+                   "HISTÃ“RICO":  [
+                                      {
+                                          "Sheet":  "README",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "RESUMEN_EJECUTIVO",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "RUNS_VALIDOS",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "RESUMEN_ESCENARIO",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "RAW_SAMPLES",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "PROCESS_SAMPLES",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "CALIDAD_DATOS",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "GRAFICAS",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "TRAZABILIDAD",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "LIMITACIONES",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      },
+                                      {
+                                          "Sheet":  "DISCREPANCIAS",
+                                          "Address":  "",
+                                          "Text":  "AUDIT_ERROR: Los tipos no coinciden. (Excepción de HRESULT: 0x80020005 (DISP_E_TYPEMISMATCH))",
+                                          "Formula":  ""
+                                      }
+                                  ]
+               }
+}

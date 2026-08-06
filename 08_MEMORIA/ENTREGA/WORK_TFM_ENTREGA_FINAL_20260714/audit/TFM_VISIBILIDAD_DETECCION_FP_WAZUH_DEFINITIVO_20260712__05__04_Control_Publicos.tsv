@@ -1,0 +1,200 @@
+Control operativo · pruebas de artifacts públicos																														
+Checklist completo para ejecutar artifacts públicos antes de diseñar los artifacts custom P4–P1.																														
+																														
+ID_Prueba	Fase	Perfil	Prioridad	Artifact_Publico	Modo	Fuente	TEC	MITRE	Táctica	Objetivo_Prueba	Configuración	Pasos_Validacion	Resultado	Regla_Evento	Severity	MITRE_Detectado	Evidencia	FP_Risk	Custom_Necesario	Estado	Fecha	Captura_Log	Observaciones	Visibilidad	Detección_Regla	Alerta_RT	Artifact_Alertante	Salida_Externa	Veredicto_Alertabilidad	Resultado_Campaña
+PUB-001	F1 Built-in básico	P4 Low	Obligatorio	Windows.Events.ProcessCreation	CLIENT_EVENT	Process creation	TEC-001	T1059.001	Execution	Comprobar visibilidad pública de PowerShell sospechoso	Client Monitoring activo	Ejecutar técnica y revisar Client Events	Visible; 89 filas TEC / 18 FP en ventana	ProcessCreation event	N/A	T1059.001	powershell.exe -NoProfile -ExecutionPolicy Bypass observado	Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\01_ProcessCreation\Windows.Events.ProcessCreation_REAL.json	Telemetría; no detección por nombre de proceso.	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-002	F1 Built-in básico	P4 Low	Obligatorio	Windows.Events.ProcessCreation	CLIENT_EVENT	Process creation	TEC-002	T1059.003	Execution	Comprobar visibilidad pública de cmd.exe / chaining	Client Monitoring activo	Ejecutar técnica y revisar Client Events	Visible; 89 filas TEC / 18 FP en ventana	ProcessCreation event	N/A	T1059.003	cmd.exe observado	Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\01_ProcessCreation\Windows.Events.ProcessCreation_REAL.json	Telemetría; no detección por nombre de proceso.	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-003	F1 Built-in básico	P4 Low	Obligatorio	Windows.Events.ProcessCreation	CLIENT_EVENT	Process creation	TEC-003	T1053.005	Execution/Persistence	Comprobar visibilidad pública de schtasks.exe	Client Monitoring activo	Ejecutar técnica y revisar Client Events	Visible; 89 filas TEC / 18 FP en ventana	ProcessCreation event	N/A	T1053.005	schtasks.exe observado	Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\01_ProcessCreation\Windows.Events.ProcessCreation_REAL.json	Telemetría; no detección por nombre de proceso.	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-004	F1 Built-in básico	P4 Low	Obligatorio	Windows.Events.ProcessCreation	CLIENT_EVENT	Process creation	TEC-004	T1547.001	Persistence	Comprobar visibilidad pública de reg.exe sobre Run/RunOnce	Client Monitoring activo	Ejecutar técnica y revisar Client Events	Visible; 89 filas TEC / 18 FP en ventana	ProcessCreation event	N/A	T1547.001		Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\01_ProcessCreation\Windows.Events.ProcessCreation_REAL.json	Telemetría; no detección por nombre de proceso.	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-005	F1 Built-in básico	P4 Low	Obligatorio	Windows.Events.ProcessCreation	CLIENT_EVENT	Process creation	TEC-005	T1569.002	Execution	Comprobar visibilidad pública de sc.exe / servicio	Client Monitoring activo	Ejecutar técnica y revisar Client Events	Visible; 89 filas TEC / 18 FP en ventana	ProcessCreation event	N/A	T1569.002	sc.exe/proceso observable; servicio cubierto por ServiceCreation	Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\01_ProcessCreation\Windows.Events.ProcessCreation_REAL.json	Telemetría; no detección por nombre de proceso.	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-006	F1 Built-in básico	P4 Low	Obligatorio	Windows.Events.ProcessCreation	CLIENT_EVENT	Process creation	TEC-006	T1518.001	Discovery	Comprobar visibilidad pública de security software discovery	Client Monitoring activo	Ejecutar técnica y revisar Client Events	Visible; 89 filas TEC / 18 FP en ventana	ProcessCreation event	N/A	T1518.001		Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\01_ProcessCreation\Windows.Events.ProcessCreation_REAL.json	Telemetría; no detección por nombre de proceso.	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-007	F1 Built-in básico	P4 Low	Obligatorio	Windows.Events.ProcessCreation	CLIENT_EVENT	Process creation	TEC-007	T1486	Impact	Comprobar visibilidad pública de ejecución de script de cifrado	Client Monitoring activo	Ejecutar técnica y revisar Client Events	Visible; 89 filas TEC / 18 FP en ventana	ProcessCreation event	N/A	T1486	visibilidad de proceso, no cifrado	Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\01_ProcessCreation\Windows.Events.ProcessCreation_REAL.json	Telemetría; no detección por nombre de proceso.	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-008	F1 Built-in básico	P4 Low	Obligatorio	Windows.Events.ProcessCreation	CLIENT_EVENT	Process creation	TEC-008	T1485	Impact	Comprobar visibilidad pública de borrado destructivo	Client Monitoring activo	Ejecutar técnica y revisar Client Events	Visible; 89 filas TEC / 18 FP en ventana	ProcessCreation event	N/A	T1485	visibilidad de proceso, no resumen de borrado	Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\01_ProcessCreation\Windows.Events.ProcessCreation_REAL.json	Telemetría; no detección por nombre de proceso.	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-009	F1 Built-in básico	P4 Low	Obligatorio	Windows.Events.ProcessCreation	CLIENT_EVENT	Process creation	TEC-009	T1074.001/T1560.001	Collection	Comprobar visibilidad pública de staging/archivo	Client Monitoring activo	Ejecutar técnica y revisar Client Events	Visible; 89 filas TEC / 18 FP en ventana	ProcessCreation event	N/A	T1074.001/T1560.001	visibilidad de proceso, no staging semántico	Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\01_ProcessCreation\Windows.Events.ProcessCreation_REAL.json	Telemetría; no detección por nombre de proceso.	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-010	F1 Built-in básico	P4 Low	Obligatorio	Windows.Events.ServiceCreation	CLIENT_EVENT	System Event 7045	TEC-005	T1569.002	Execution	Comprobar creación de servicio	Client Monitoring activo	Crear servicio temporal, revisar EventID 7045	1 evento 7045 TEC; 0 FP	Event ID 7045	N/A	T1569.002	ServiceName/ImagePath; StartExit=1053 esperado	Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\02_ServiceCreation\Windows.Events.ServiceCreation_REAL.json	Creación observada; visibilidad, no detección de actividad maliciosa.	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-011	F1 Built-in básico	P4/P2	Obligatorio	Windows.Sysinternals.SysmonLogForward	CLIENT_EVENT	Sysmon Operational	TEC-001	T1059.001	Execution	Comprobar reenvío de Sysmon ID 1	Sysmon activo + LogForward	Ejecutar técnica y revisar eventos Sysmon reenviados	113 filas TEC / 24 FP; IDs 1,3,11,12,13					Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\03_SysmonLogForward\Windows.Sysinternals.SysmonLogForward_REAL.json	Reenvío/forense; sin lógica adicional de detección.	Sí	No	No	N/A	No	VISIBILIDAD / FORENSE	POSITIVO
+PUB-012	F1 Built-in básico	P4/P2	Obligatorio	Windows.Sysinternals.SysmonLogForward	CLIENT_EVENT	Sysmon Operational	TEC-004	T1547.001	Persistence	Comprobar reenvío de Sysmon 12/13/14	Sysmon activo + LogForward	Ejecutar técnica y revisar eventos Sysmon reenviados	113 filas TEC / 24 FP; IDs 1,3,11,12,13					Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\03_SysmonLogForward\Windows.Sysinternals.SysmonLogForward_REAL.json	Reenvío/forense; sin lógica adicional de detección.	Sí	No	No	N/A	No	VISIBILIDAD / FORENSE	POSITIVO
+PUB-013	F1 Built-in básico	P4/P2	Obligatorio	Windows.Sysinternals.SysmonLogForward	CLIENT_EVENT	Sysmon Operational	TEC-007	T1486	Impact	Comprobar reenvío de Sysmon ID 11	Sysmon activo + LogForward	Ejecutar técnica y revisar eventos Sysmon reenviados	113 filas TEC / 24 FP; IDs 1,3,11,12,13					Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\03_SysmonLogForward\Windows.Sysinternals.SysmonLogForward_REAL.json	Reenvío/forense; sin lógica adicional de detección.	Sí	No	No	N/A	No	VISIBILIDAD / FORENSE	POSITIVO
+PUB-014	F1 Built-in básico	P4/P2	Obligatorio	Windows.Sysinternals.SysmonLogForward	CLIENT_EVENT	Sysmon Operational	TEC-008	T1485	Impact	Comprobar reenvío de Sysmon ID 26	Sysmon activo + LogForward	Ejecutar técnica y revisar eventos Sysmon reenviados	113 filas TEC / 24 FP; IDs 1,3,11,12,13					Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\03_SysmonLogForward\Windows.Sysinternals.SysmonLogForward_REAL.json	Reenvío/forense; sin lógica adicional de detección.	Sí	No	No	N/A	No	VISIBILIDAD / FORENSE	POSITIVO
+PUB-015	F1 Built-in básico	P4/P2	Obligatorio	Windows.Sysinternals.SysmonLogForward	CLIENT_EVENT	Sysmon Operational	TEC-009	T1074.001/T1560.001	Collection	Comprobar reenvío de Sysmon ID 11/3/22	Sysmon activo + LogForward	Ejecutar técnica y revisar eventos Sysmon reenviados	113 filas TEC / 24 FP; IDs 1,3,11,12,13					Bajo	Sí	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\03_SysmonLogForward\Windows.Sysinternals.SysmonLogForward_REAL.json	Reenvío/forense; sin lógica adicional de detección.	Sí	No	No	N/A	No	VISIBILIDAD / FORENSE	POSITIVO
+PUB-016	F2 Hayabusa histórico	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-001	T1059.001	Execution	Evaluar regla pública para PowerShell	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	Histórico conservado; no forma parte de la campaña RT 12/07					Alto	No evaluable	FUERA DE CAMPAÑA				Sí histórico	Parcial	No	N/A	No	HUNT HISTÓRICO	FUERA DE CAMPAÑA
+PUB-017	F2 Hayabusa histórico	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-002	T1059.003	Execution	Evaluar regla pública para CMD	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	Histórico conservado; no forma parte de la campaña RT 12/07					Alto	No evaluable	FUERA DE CAMPAÑA				Sí histórico	Parcial	No	N/A	No	HUNT HISTÓRICO	FUERA DE CAMPAÑA
+PUB-018	F2 Hayabusa histórico	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-003	T1053.005	Execution/Persistence	Evaluar regla pública para Scheduled Task	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	Histórico conservado; no forma parte de la campaña RT 12/07					Alto	No evaluable	FUERA DE CAMPAÑA				Sí histórico	Parcial	No	N/A	No	HUNT HISTÓRICO	FUERA DE CAMPAÑA
+PUB-019	F2 Hayabusa histórico	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-004	T1547.001	Persistence	Evaluar regla pública para Run Keys	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	Histórico conservado; no forma parte de la campaña RT 12/07					Alto	No evaluable	FUERA DE CAMPAÑA				Sí histórico	Parcial	No	N/A	No	HUNT HISTÓRICO	FUERA DE CAMPAÑA
+PUB-020	F2 Hayabusa histórico	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-005	T1569.002	Execution	Evaluar regla pública para Service Execution	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	Histórico conservado; no forma parte de la campaña RT 12/07					Alto	No evaluable	FUERA DE CAMPAÑA				Sí histórico	Parcial	No	N/A	No	HUNT HISTÓRICO	FUERA DE CAMPAÑA
+PUB-021	F2 Hayabusa histórico	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-006	T1518.001	Discovery	Evaluar regla pública para Security Discovery	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	Histórico conservado; no forma parte de la campaña RT 12/07					Alto	No evaluable	FUERA DE CAMPAÑA				Sí histórico	Parcial	No	N/A	No	HUNT HISTÓRICO	FUERA DE CAMPAÑA
+PUB-022	F2 Hayabusa histórico	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-007	T1486	Impact	Evaluar regla pública para Ransomware-like crypto	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	Histórico conservado; no forma parte de la campaña RT 12/07					Alto	No evaluable	FUERA DE CAMPAÑA				Sí histórico	Parcial	No	N/A	No	HUNT HISTÓRICO	FUERA DE CAMPAÑA
+PUB-023	F2 Hayabusa histórico	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-008	T1485	Impact	Evaluar regla pública para Data Destruction	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	Histórico conservado; no forma parte de la campaña RT 12/07					Alto	No evaluable	FUERA DE CAMPAÑA				Sí histórico	Parcial	No	N/A	No	HUNT HISTÓRICO	FUERA DE CAMPAÑA
+PUB-024	F2 Hayabusa histórico	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-009	T1074.001/T1560.001	Collection	Evaluar regla pública para Staging/Archive	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	Histórico conservado; no forma parte de la campaña RT 12/07					Alto	No evaluable	FUERA DE CAMPAÑA				Sí histórico	Parcial	No	N/A	No	HUNT HISTÓRICO	FUERA DE CAMPAÑA
+PUB-025	F2 Hayabusa histórico ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-001	T1059.001	Execution	Evaluar regla pública para PowerShell	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no se añaden resultados Medium					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-026	F2 Hayabusa histórico ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-002	T1059.003	Execution	Evaluar regla pública para CMD	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no se añaden resultados Medium					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-027	F2 Hayabusa histórico ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-003	T1053.005	Execution/Persistence	Evaluar regla pública para Scheduled Task	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no se añaden resultados Medium					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-028	F2 Hayabusa histórico ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-004	T1547.001	Persistence	Evaluar regla pública para Run Keys	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no se añaden resultados Medium					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-029	F2 Hayabusa histórico ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-005	T1569.002	Execution	Evaluar regla pública para Service Execution	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no se añaden resultados Medium					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-030	F2 Hayabusa histórico ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-006	T1518.001	Discovery	Evaluar regla pública para Security Discovery	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no se añaden resultados Medium					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-031	F2 Hayabusa histórico ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-007	T1486	Impact	Evaluar regla pública para Ransomware-like crypto	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no se añaden resultados Medium					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-032	F2 Hayabusa histórico ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-008	T1485	Impact	Evaluar regla pública para Data Destruction	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no se añaden resultados Medium					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-033	F2 Hayabusa histórico ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Rules	Hunt histórico	EVTX/Sigma/Hayabusa	TEC-009	T1074.001/T1560.001	Collection	Evaluar regla pública para Staging/Archive	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no se añaden resultados Medium					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-034	F2 Hayabusa monitoring	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-001	T1059.001	Execution	Evaluar regla pública para PowerShell	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	2 high; detectado CH		high			Alto	Parcial	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\04_HayabusaMonitoring_CH\Windows.Hayabusa.Monitoring_REAL.json	TEC: 185 matches canónicos/187 filas raw; high=7, critical=0. FP: 4 high, 1 caso.	Sí	Sí CH	Sí CH	Windows.Hayabusa.Monitoring	No confirmada	DETECCIÓN SIGMA CH	POSITIVO
+PUB-035	F2 Hayabusa monitoring	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-002	T1059.003	Execution	Evaluar regla pública para CMD	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	0 high/critical específicos; niveles inferiores observados no forman campaña separada		N/A CH			Alto	Parcial	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\04_HayabusaMonitoring_CH\Windows.Hayabusa.Monitoring_REAL.json	TEC: 185 matches canónicos/187 filas raw; high=7, critical=0. FP: 4 high, 1 caso.	Sí	No CH	No CH	Windows.Hayabusa.Monitoring	No confirmada	DETECCIÓN SIGMA CH	POSITIVO
+PUB-036	F2 Hayabusa monitoring	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-003	T1053.005	Execution/Persistence	Evaluar regla pública para Scheduled Task	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	1 high; detectado CH		high			Alto	Parcial	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\04_HayabusaMonitoring_CH\Windows.Hayabusa.Monitoring_REAL.json	TEC: 185 matches canónicos/187 filas raw; high=7, critical=0. FP: 4 high, 1 caso.	Sí	Sí CH	Sí CH	Windows.Hayabusa.Monitoring	No confirmada	DETECCIÓN SIGMA CH	POSITIVO
+PUB-037	F2 Hayabusa monitoring	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-004	T1547.001	Persistence	Evaluar regla pública para Run Keys	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	0 high/critical específicos; niveles inferiores observados no forman campaña separada		N/A CH			Alto	Parcial	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\04_HayabusaMonitoring_CH\Windows.Hayabusa.Monitoring_REAL.json	TEC: 185 matches canónicos/187 filas raw; high=7, critical=0. FP: 4 high, 1 caso.	Sí	No CH	No CH	Windows.Hayabusa.Monitoring	No confirmada	DETECCIÓN SIGMA CH	POSITIVO
+PUB-038	F2 Hayabusa monitoring	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-005	T1569.002	Execution	Evaluar regla pública para Service Execution	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	4 high en ventana; 3 atribuibles semánticamente al servicio		high			Alto	Parcial	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\04_HayabusaMonitoring_CH\Windows.Hayabusa.Monitoring_REAL.json	TEC: 185 matches canónicos/187 filas raw; high=7, critical=0. FP: 4 high, 1 caso.	Sí	Sí CH	Sí CH	Windows.Hayabusa.Monitoring	No confirmada	DETECCIÓN SIGMA CH	POSITIVO
+PUB-039	F2 Hayabusa monitoring	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-006	T1518.001	Discovery	Evaluar regla pública para Security Discovery	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	0 high/critical específicos; niveles inferiores observados no forman campaña separada		N/A CH			Alto	Parcial	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\04_HayabusaMonitoring_CH\Windows.Hayabusa.Monitoring_REAL.json	TEC: 185 matches canónicos/187 filas raw; high=7, critical=0. FP: 4 high, 1 caso.	Sí	No CH	No CH	Windows.Hayabusa.Monitoring	No confirmada	DETECCIÓN SIGMA CH	POSITIVO
+PUB-040	F2 Hayabusa monitoring	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-007	T1486	Impact	Evaluar regla pública para Ransomware-like crypto	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	0 high/critical específicos; niveles inferiores observados no forman campaña separada		N/A CH			Alto	Parcial	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\04_HayabusaMonitoring_CH\Windows.Hayabusa.Monitoring_REAL.json	TEC: 185 matches canónicos/187 filas raw; high=7, critical=0. FP: 4 high, 1 caso.	Sí	No CH	No CH	Windows.Hayabusa.Monitoring	No confirmada	DETECCIÓN SIGMA CH	POSITIVO
+PUB-041	F2 Hayabusa monitoring	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-008	T1485	Impact	Evaluar regla pública para Data Destruction	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	0 high/critical específicos; niveles inferiores observados no forman campaña separada		N/A CH			Alto	Parcial	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\04_HayabusaMonitoring_CH\Windows.Hayabusa.Monitoring_REAL.json	TEC: 185 matches canónicos/187 filas raw; high=7, critical=0. FP: 4 high, 1 caso.	Sí	No CH	No CH	Windows.Hayabusa.Monitoring	No confirmada	DETECCIÓN SIGMA CH	POSITIVO
+PUB-042	F2 Hayabusa monitoring	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-009	T1074.001/T1560.001	Collection	Evaluar regla pública para Staging/Archive	RuleLevel=Critical,High; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	0 high/critical específicos; niveles inferiores observados no forman campaña separada		N/A CH			Alto	Parcial	CERRADO	46215	04_EVIDENCE\PRUEBAS_CON_ARTIFACTS_PUBLICOS\04_HayabusaMonitoring_CH\Windows.Hayabusa.Monitoring_REAL.json	TEC: 185 matches canónicos/187 filas raw; high=7, critical=0. FP: 4 high, 1 caso.	Sí	No CH	No CH	Windows.Hayabusa.Monitoring	No confirmada	DETECCIÓN SIGMA CH	POSITIVO
+PUB-043	F2 Hayabusa monitoring ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-001	T1059.001	Execution	Evaluar regla pública para PowerShell	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no existe campaña CHM separada					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-044	F2 Hayabusa monitoring ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-002	T1059.003	Execution	Evaluar regla pública para CMD	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no existe campaña CHM separada					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-045	F2 Hayabusa monitoring ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-003	T1053.005	Execution/Persistence	Evaluar regla pública para Scheduled Task	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no existe campaña CHM separada					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-046	F2 Hayabusa monitoring ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-004	T1547.001	Persistence	Evaluar regla pública para Run Keys	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no existe campaña CHM separada					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-047	F2 Hayabusa monitoring ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-005	T1569.002	Execution	Evaluar regla pública para Service Execution	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no existe campaña CHM separada					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-048	F2 Hayabusa monitoring ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-006	T1518.001	Discovery	Evaluar regla pública para Security Discovery	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no existe campaña CHM separada					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-049	F2 Hayabusa monitoring ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-007	T1486	Impact	Evaluar regla pública para Ransomware-like crypto	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no existe campaña CHM separada					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-050	F2 Hayabusa monitoring ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-008	T1485	Impact	Evaluar regla pública para Data Destruction	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no existe campaña CHM separada					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-051	F2 Hayabusa monitoring ampliado	P3 Medium	Obligatorio	Windows.Hayabusa.Monitoring	CLIENT_EVENT	EVTX/Sigma/Hayabusa	TEC-009	T1074.001/T1560.001	Collection	Evaluar regla pública para Staging/Archive	RuleLevel=Critical,High,Medium; RuleStatus=Stable	Ejecutar técnica; lanzar/observar artifact; registrar RuleTitle, Level, MITRE	NO EJECUTADA; no existe campaña CHM separada					Indeterminado	No evaluable	NO EJECUTADO				N/A	N/A	N/A	N/A	N/A	SIN CAMPAÑA CHM	NO EJECUTADO
+PUB-052	F3 Persistencia/Triage	P2 High	Recomendado	Windows.Packs.Persistence	Hunt post-ejecución	Persistencia Windows	TEC-003/004/005	Varios	Persistence/Execution	Evaluar persistencia general tras ejecutar técnica	Post-ejecución	Ejecutar técnica, lanzar artifact, registrar evidencia y ruido	No ejecutado en campaña final 12/07; conservado como plan/histórico					Indeterminado	No evaluable	FUERA DE CAMPAÑA				N/A	N/A	N/A	N/A	N/A	FUERA DE CAMPAÑA	FUERA DE CAMPAÑA
+PUB-053	F3 Persistencia/Triage	P2 High	Recomendado	Windows.Sys.StartupItems	Hunt post-ejecución	Persistencia Windows	TEC-004	Varios	Persistence/Execution	Evaluar Run Keys / Startup Folder tras ejecutar técnica	Post-ejecución	Ejecutar técnica, lanzar artifact, registrar evidencia y ruido	No ejecutado en campaña final 12/07; conservado como plan/histórico					Indeterminado	No evaluable	FUERA DE CAMPAÑA				N/A	N/A	N/A	N/A	N/A	FUERA DE CAMPAÑA	FUERA DE CAMPAÑA
+PUB-054	F3 Persistencia/Triage	P2 High	Recomendado	Windows.System.TaskScheduler	Hunt post-ejecución	Persistencia Windows	TEC-003	Varios	Persistence/Execution	Evaluar tareas programadas tras ejecutar técnica	Post-ejecución	Ejecutar técnica, lanzar artifact, registrar evidencia y ruido	No ejecutado en campaña final 12/07; conservado como plan/histórico					Indeterminado	No evaluable	FUERA DE CAMPAÑA				N/A	N/A	N/A	N/A	N/A	FUERA DE CAMPAÑA	FUERA DE CAMPAÑA
+PUB-055	F3 Persistencia/Triage	P2 High	Recomendado	Windows.Registry.ScheduledTasks	Hunt post-ejecución	Persistencia Windows	TEC-003	Varios	Persistence/Execution	Evaluar tareas desde registro tras ejecutar técnica	Post-ejecución	Ejecutar técnica, lanzar artifact, registrar evidencia y ruido	No ejecutado en campaña final 12/07; conservado como plan/histórico					Indeterminado	No evaluable	FUERA DE CAMPAÑA				N/A	N/A	N/A	N/A	N/A	FUERA DE CAMPAÑA	FUERA DE CAMPAÑA
+PUB-056	F3 Persistencia/Triage	P2 High	Recomendado	Windows.System.Services	Hunt post-ejecución	Persistencia Windows	TEC-005	Varios	Persistence/Execution	Evaluar servicios instalados tras ejecutar técnica	Post-ejecución	Ejecutar técnica, lanzar artifact, registrar evidencia y ruido	No ejecutado en campaña final 12/07; conservado como plan/histórico					Indeterminado	No evaluable	FUERA DE CAMPAÑA				N/A	N/A	N/A	N/A	N/A	FUERA DE CAMPAÑA	FUERA DE CAMPAÑA
+PUB-057	F3 Persistencia/Triage	P2 High	Recomendado	Windows.Sysinternals.Autoruns	Hunt post-ejecución	Persistencia Windows	TEC-003/004/005	Varios	Persistence/Execution	Evaluar autoruns/persistencia amplia tras ejecutar técnica	Post-ejecución	Ejecutar técnica, lanzar artifact, registrar evidencia y ruido	No ejecutado en campaña final 12/07; conservado como plan/histórico					Indeterminado	No evaluable	FUERA DE CAMPAÑA				N/A	N/A	N/A	N/A	N/A	FUERA DE CAMPAÑA	FUERA DE CAMPAÑA
+PUB-FINAL-01	Cierre	P4	Final	Windows.Events.ProcessCreation	CLIENT_EVENT	Process creation	TEC-001..009	Varios	Varias	Validar visibilidad	Monitoring	Filtrado por ventana	89 TEC / 18 FP	Evento crudo	N/A	N/A	CommandLine/parent/PID	Bajo	Sí	CERRADO	46215	...01_ProcessCreation...	Telemetría	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-FINAL-02	Cierre	P4/P2	Final	Windows.Events.ServiceCreation	CLIENT_EVENT	System 7045	TEC-005	T1569.002	Execution	Validar creación	Monitoring	Filtrado por ventana	1 TEC / 0 FP	7045	N/A	T1569.002	ServiceName/ImagePath	Bajo	Sí	CERRADO	46215	...02_ServiceCreation...	1053 esperado	Sí	No	No	N/A	No	VISIBILIDAD	POSITIVO
+PUB-FINAL-03	Cierre	P4/P2	Final	Windows.Sysinternals.SysmonLogForward	CLIENT_EVENT	Sysmon	TEC-001..009	Varios	Varias	Validar reenvío	IDs 1,3,11,12,13	Filtrado por ventana	113 TEC / 24 FP	IDs Sysmon	N/A	N/A	Forense	Bajo	Sí	CERRADO	46215	...03_SysmonLogForward...	Sin ID14/26	Sí	No	No	N/A	No	FORENSE	POSITIVO
+PUB-FINAL-04	Cierre	P3	Final	Windows.Hayabusa.Monitoring	CLIENT_EVENT	Sigma	TEC-001..009	Varios	Varias	Validar CH	Plan CH; config efectiva no acreditada	Filtrado/deduplicado	185 TEC / 73 FP	RuleTitle	high	Varios	7 high TEC; 4 high FP	Alto	Parcial	CERRADO	46215	...04_HayabusaMonitoring_CH...	187 raw; no CHM	Sí	Sí CH 3/9	Sí	Hayabusa.Monitoring	No	DETECCIÓN SIGMA	POSITIVO
+PUB-FINAL-05	Cierre	P3	Final	Windows.ETW.Monitoring	CLIENT_EVENT	ETW/Sigma	TEC-001..009	Varios	Varias	Validar ETW	No preservada	Ventanas y exports	0 TEC / 0 FP	Sin coincidencias	N/A	N/A	Exports vacíos	Indeterminado	No evaluable	NO CONCLUYENTE	46215	...05_ETWMonitoring...	Falta runner/config TEC	No acreditada	No	No	N/A	No	NO CONCLUYENTE	NO CONCLUYENTE
+PUB-FINAL-06	Cierre	P4/P2	Final	Generic.Events.TrackNetworkConnections	CLIENT_EVENT	Conexiones	TEC-009	T1048.003 contextual	Exfiltration	Validar destino	Diff + _ts	Filtrado por _ts	128 TEC / 12 FP	3 filas destino	N/A	Contextual	192.168.1.129:8088	Bajo	Sí	CERRADO	46215	...06_TrackNetworkConnections...	131 raw; PID0/ProcInfo vacío	Sí	No	No	N/A	No por artifact	VISIBILIDAD RED	POSITIVO
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														
+																														

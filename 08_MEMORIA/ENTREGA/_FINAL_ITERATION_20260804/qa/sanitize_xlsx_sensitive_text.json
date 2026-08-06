@@ -1,0 +1,30 @@
+﻿[
+    {
+        "WorkbookPath":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGA\\_FINAL_ITERATION_20260804\\TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_DEFINITIVO_20260712_WORK.xlsx",
+        "ChangedXmlEntries":  2,
+        "Replacements":  {
+                             "ProjectRootJulio":  86,
+                             "ProjectRootSeguridad":  2,
+                             "RemainingWindowsUserRoots":  0,
+                             "LinuxAdminRoots":  0,
+                             "DiscordWebhookUrls":  64,
+                             "PrivateIPv4":  0
+                         },
+        "TotalReplacements":  152,
+        "SHA256":  "933B0E2EB41F525F06A9709AF3ADE7CD4C63D2EA961D34C643E291370A7F495F"
+    },
+    {
+        "WorkbookPath":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGA\\_FINAL_ITERATION_20260804\\TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712_WORK.xlsx",
+        "ChangedXmlEntries":  2,
+        "Replacements":  {
+                             "ProjectRootJulio":  1,
+                             "ProjectRootSeguridad":  29,
+                             "RemainingWindowsUserRoots":  0,
+                             "LinuxAdminRoots":  0,
+                             "DiscordWebhookUrls":  0,
+                             "PrivateIPv4":  8
+                         },
+        "TotalReplacements":  38,
+        "SHA256":  "1C6E1EF60B01322BDB8C64CD13E688649E66D794781BBA3B5248AB0CCF5226E3"
+    }
+]

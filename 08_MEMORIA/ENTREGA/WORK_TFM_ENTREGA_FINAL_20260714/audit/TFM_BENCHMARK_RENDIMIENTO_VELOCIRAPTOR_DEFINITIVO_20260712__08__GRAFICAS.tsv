@@ -1,0 +1,54 @@
+Scenario	CPU media (%)		Scenario	CPU maxima (%)		Scenario	RAM media (MB)		Scenario	RAM maxima (MB)
+BASELINE_NO_VR	0		BASELINE_NO_VR	0		BASELINE_NO_VR	0		BASELINE_NO_VR	0
+VR_IDLE	0		VR_IDLE	0		VR_IDLE	57.48		VR_IDLE	57.92
+VR_TEC_RUNNER	0.95		VR_TEC_RUNNER	54		VR_TEC_RUNNER	57.42		VR_TEC_RUNNER	57.97
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+Scenario	Duracion media (s)		Scenario	AvgCPUPercent	AvgRAMMB	AvgDurationSeconds				
+BASELINE_NO_VR	182.69		BASELINE_NO_VR	0	0	182.69				
+VR_IDLE	181.57		VR_IDLE	0	57.48	181.57				
+VR_TEC_RUNNER	315.6		VR_TEC_RUNNER	0.95	57.42	315.6				
+										
+										
+Repetición	BASELINE_NO_VR (s)	VR_IDLE (s)	VR_TEC_RUNNER (s)							
+REP_01	183.49	182.97	304.94							
+REP_02	181.79	180.83	327.17							
+REP_03	182.78	180.91	314.68							
+										
+										
+										
+										
+										
+										
+										
+Check	Status	Severity								
+Fuente canonica XLSX disponible	OK	INFO								
+SchemaVersion 1.1 presente	OK	CRITICA								
+Exactamente 3 escenarios	OK	CRITICA								
+3 repeticiones por escenario	OK	CRITICA								
+9/9 runs validos	OK	CRITICA								
+Muestras CPU suficientes	OK	CRITICA								
+Muestras RAM suficientes	OK	CRITICA								
+BASELINE_NO_VR presente	OK	CRITICA								
+VR_IDLE presente	OK	CRITICA								
+VR_TEC_RUNNER presente	OK	CRITICA								
+SERVER_GUI excluido del calculo principal	OK	CRITICA								
+notepad.exe runner = 0	OK	CRITICA								
+RunnerStillRunningAtEnd evaluado	WARN	NO_BLOQUEANTE								
+ClientRows > 0 cuando aplica	OK	CRITICA								
+Duplicados e inconsistencias	OK	CRITICA								
+Graficas generables con datos reales	OK	CRITICA								
+Formula check final	OK	CRITICA								
+Chart population final	OK	CRITICA								
+Benchmark separado de deteccion	OK	CRITICA								

@@ -1,0 +1,13 @@
+Visibilidad del sistema por fuente y técnica													
+Los recuentos son filas de telemetría/evidencia en ventana, no técnicas detectadas. Receiver HTTP se mantiene separado de la telemetría host.													
+Fuente	TEC-001	TEC-002	TEC-003	TEC-004	TEC-005	TEC-006	TEC-007	TEC-008	TEC-009	Total fuente	Origen	Unidad	Observaciones metodológicas
+Sysmon ID 1	38	214	30	32	10	14	0	2	6	346	normalized/visibilidad_sistema.csv	Filas de evento en ventana	Telemetría visible; no equivale automáticamente a detección.
+Sysmon ID 3	0	0	0	0	0	0	0	0	8	8	normalized/visibilidad_sistema.csv	Filas de evento en ventana	Telemetría visible; no equivale automáticamente a detección.
+Sysmon ID 11	0	0	0	0	0	0	0	0	0	0	normalized/visibilidad_sistema.csv	Filas de evento en ventana	Telemetría visible; no equivale automáticamente a detección.
+Sysmon ID 12/13/14	0	0	0	5	0	0	0	0	0	5	normalized/visibilidad_sistema.csv	Filas de evento en ventana	Telemetría visible; no equivale automáticamente a detección.
+Sysmon ID 26	0	0	0	0	0	0	0	0	0	0	normalized/visibilidad_sistema.csv	Filas de evento en ventana	Evidencia forense; no alerta individual.
+PowerShell 4104	4	0	0	0	0	4	5	2	1	16	normalized/visibilidad_sistema.csv	Filas de evento en ventana	Telemetría visible; no equivale automáticamente a detección.
+System 7045	0	0	0	0	4	0	0	0	0	4	normalized/visibilidad_sistema.csv	Filas de evento en ventana	Telemetría visible; no equivale automáticamente a detección.
+receiver HTTP	0	0	0	0	0	0	0	0	1	1	summary/runner TEC-009	Confirmación externa	HTTP 200 del runner independiente; no detector host.
+TOTAL HOST (sin receiver)	42	214	30	37	14	18	5	4	15	379	Suma de telemetría host	Filas; fuentes pueden solaparse	Total por técnica y fuente; no combinar con conteos de técnicas detectadas.
+TOTAL GENERAL	42	214	30	37	14	18	5	4	16	380	Host + receiver	Niveles distintos	Se conserva solo para trazabilidad; receiver no se representa como fuente host.

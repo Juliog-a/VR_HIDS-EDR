@@ -1,0 +1,35 @@
+Resumen de Windows.Hayabusa.Rules filtrado			
+Resumen del CSV filtrado para separar detección útil de ruido y justificar ajuste/custom.			
+			
+Métrica	Valor		
+Total filas filtradas	3157		
+Títulos únicos	2		
+Nivel predominante	medium		
+Título predominante	File Deleted (Sysmon Alert)		
+Interpretación	Detección parcial, pero ruido alto si no se acota por fecha/regla		
+			
+Title	Filas	% sobre filtrado	Interpretación
+File Deleted (Sysmon Alert)	3000	95.03%	Ruido/alto volumen; evidencia forense, no alerta directa
+Potentially Malicious PwSh	157	4.97%	Detección PowerShell parcial; revisar detalle
+			
+Conclusión	Detalle		
+Hayabusa.Rules funciona	Sí: genera reglas sobre EVTX y ha producido resultados filtrados.		
+No equivale a alerta real-time	HISTÓRICO; NO RT. Es CLIENT/hunt y no CLIENT_EVENT.		
+Ruido detectado	File Deleted domina el resultado; no conviene usarlo como alerta directa por fichero.		
+Uso correcto	Acotar DateAfter/DateBefore, filtrar RuleTitle y comparar con Hayabusa.Monitoring.		
+			
+Campaña Windows.Hayabusa.Monitoring CH · 12/07/2026			
+Ventana TEC UTC	13:25:03.318–13:31:18.641		
+Matches TEC canónicos	185	187 filas raw	Se filtra por ventana y se deduplica con clave semántica.
+Niveles únicos TEC	informational=92; low=38; medium=48; high=7; critical=0		Anomalía: salida contiene niveles inferiores pese a control CH.
+Detección CH por TEC	3/9	TEC-001, TEC-003, TEC-005	Solo high/critical para el veredicto CH.
+Ventana FP UTC	13:41:00.378–13:41:29.197		
+Filas FP en ventana	73		Incluye niveles inferiores observados.
+FP CH	4 high; 0 critical	3 eventos subyacentes	Un caso benigno: FP-003 Scheduled Task.
+Campaña CHM	NO EJECUTADA		No existe campaña CHM independiente; no se incorpora a gráficos, totales ni cobertura final.
+Fuente REAL	...04_HayabusaMonitoring_CH\Windows.Hayabusa.Monitoring_REAL.json		
+Fuente FP	...04_HayabusaMonitoring_CH\Windows.Hayabusa.Monitoring_FP.json		
+Veredicto	POSITIVO CON FP		Detección Sigma CH 3/9 en CLIENT_EVENT; salida externa no evaluada como capacidad del artifact.
+Regla metodológica	Coincidencia Sigma=detec.; CLIENT_EVENT=unidad primaria		Discord/JSONL/SERVER_EVENT son transporte o salida; no sustituyen la detección.
+Limitación	Configuración efectiva no preservada fuera del control del workbook		Se reportan niveles realmente observados.
+Estado	CERRADO		Auditoría final 12/07/2026.

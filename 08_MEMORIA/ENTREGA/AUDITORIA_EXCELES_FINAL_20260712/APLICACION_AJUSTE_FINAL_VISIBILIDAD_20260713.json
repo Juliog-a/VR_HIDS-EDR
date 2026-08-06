@@ -1,0 +1,28 @@
+{
+    "Path":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGABLE\\TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx",
+    "PendingBefore":  0,
+    "PendingAfter":  0,
+    "Worksheets":  31,
+    "ChartsBefore":  11,
+    "ChartsAfter":  11,
+    "InsertedHttpColumn":  false,
+    "Calculation":  "Automatic + CalculateFullRebuild",
+    "Saved":  true,
+    "ChangedSheets":  [
+                          "01_Dashboard",
+                          "GRAFICAS",
+                          "04_Control_Publicos",
+                          "05_Matriz_Resultados",
+                          "08_Benignas_FP",
+                          "09_Benchmark_Plan",
+                          "12_Plan_Alertas",
+                          "99_Listas",
+                          "15_Publicos_Definitivo",
+                          "RESUMEN_EJECUTIVO",
+                          "11_Alertabilidad",
+                          "13_Hayabusa_Resumen",
+                          "17_Incoherencias_Cerradas",
+                          "COMPARACION_VR_WAZUH",
+                          "README"
+                      ]
+}

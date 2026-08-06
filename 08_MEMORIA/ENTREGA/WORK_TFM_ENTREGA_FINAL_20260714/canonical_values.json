@@ -1,0 +1,165 @@
+{
+  "sources": {
+    "visibility": {
+      "file": "TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx",
+      "sha256": "4877A0391822495DEC4EFF6C987964A6EC59B4D538B598860B5E6C7D508A6D0F"
+    },
+    "benchmark": {
+      "file": "TFM_BENCHMARK_RENDIMIENTO_VELOCIRAPTOR_DEFINITIVO_20260712.xlsx",
+      "sha256": "C2255C2563AACFA7F8CA56496EAE934843C411D89011539B9D167F8A13BE93D0"
+    }
+  },
+  "velociraptor_custom": {
+    "techniques_detected": 9,
+    "techniques_total": 9,
+    "client_event_alerts": 379,
+    "profiles": {
+      "P1": 19,
+      "P2": 118,
+      "P3": 109,
+      "P4": 133
+    },
+    "artifacts": [
+      {
+        "profile": "P1",
+        "name": "Custom.TFM.HIDS.P1.Critical.Priority.Event_v1",
+        "type": "CLIENT_EVENT",
+        "alerts": 19,
+        "role": "Señales críticas selectivas"
+      },
+      {
+        "profile": "P2",
+        "name": "Custom.TFM.HIDS.P2.High.Forensic.Event_v1",
+        "type": "CLIENT_EVENT",
+        "alerts": 118,
+        "role": "Contexto y evidencia forense"
+      },
+      {
+        "profile": "P3",
+        "name": "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1",
+        "type": "CLIENT_EVENT",
+        "alerts": 109,
+        "role": "Detección de comportamiento"
+      },
+      {
+        "profile": "P4",
+        "name": "Custom.TFM.HIDS.P4.Low.Basic_v2",
+        "type": "CLIENT_EVENT",
+        "alerts": 133,
+        "role": "Visibilidad básica"
+      },
+      {
+        "profile": "Router",
+        "name": "Custom.TFM.HIDS.Router.JSONL.Discord.SOC_v3",
+        "type": "SERVER_EVENT",
+        "alerts": null,
+        "role": "Enrutamiento, persistencia y notificación; no detector"
+      }
+    ]
+  },
+  "false_positives_custom": {
+    "tests_executed": 10,
+    "tests_ok": 10,
+    "hits": 0
+  },
+  "public_artifacts": {
+    "campaigns": 6,
+    "positive": 5,
+    "inconclusive": 1,
+    "hayabusa_ch_detected": 3,
+    "hayabusa_ch_total": 9,
+    "etw_result": "NO CONCLUYENTE",
+    "tracknetwork_process_attribution": "Sin atribución fiable de proceso",
+    "tec009_http": "HTTP 200 atribuido al runner independiente, no a una detección CLIENT_EVENT",
+    "rows": [
+      {
+        "artifact": "Windows.Hayabusa.Monitoring",
+        "visibility": "Sí",
+        "specific_detection": "3/9 (TEC-001, TEC-003 y TEC-005)",
+        "result": "POSITIVO",
+        "limitation": "4 coincidencias CH high en FP; un caso benigno FP-003. CHM no ejecutada."
+      },
+      {
+        "artifact": "Windows.Events.ServiceCreation",
+        "visibility": "Sí: System 7045",
+        "specific_detection": "No por sí solo",
+        "result": "POSITIVO",
+        "limitation": "El 7045 acredita creación de servicio, no malicia."
+      },
+      {
+        "artifact": "Windows.Events.ProcessCreation",
+        "visibility": "Sí",
+        "specific_detection": "No por sí solo",
+        "result": "POSITIVO",
+        "limitation": "Proceso observado no equivale a técnica detectada."
+      },
+      {
+        "artifact": "Windows.Sysinternals.SysmonLogForward",
+        "visibility": "Sí: telemetría Sysmon",
+        "specific_detection": "No por sí solo",
+        "result": "POSITIVO",
+        "limitation": "Telemetría/forense; Sysmon ID 26 nunca se usa como alerta individual."
+      },
+      {
+        "artifact": "Windows.ETW.Monitoring",
+        "visibility": "No acreditada",
+        "specific_detection": "No evaluable",
+        "result": "NO CONCLUYENTE",
+        "limitation": "Faltan runner, log/summary TEC y manifiesto de configuración."
+      },
+      {
+        "artifact": "Generic.Events.TrackNetworkConnections",
+        "visibility": "Sí: conexión al receptor",
+        "specific_detection": "No por sí solo",
+        "result": "POSITIVO",
+        "limitation": "PID=0 y ProcInfo vacío; sin atribución fiable. El HTTP 200 procede del runner independiente."
+      }
+    ]
+  },
+  "wazuh": {
+    "base_detected": 3,
+    "base_total": 9,
+    "base_techniques": ["TEC-002", "TEC-004", "TEC-006"],
+    "custom_detected": 4,
+    "custom_total": 9,
+    "custom_techniques": ["TEC-001", "TEC-005", "TEC-007", "TEC-008"],
+    "union_detected": 7,
+    "union_total": 9,
+    "base_alerts_context": 54,
+    "custom_110xxx_alerts_context": 56,
+    "custom_total_alerts_context": 110,
+    "gap": "110201=0 / TEC-009"
+  },
+  "benchmark": {
+    "valid_runs": 9,
+    "total_runs": 9,
+    "scenarios": [
+      {
+        "name": "BASELINE_NO_VR",
+        "repetitions": 3,
+        "avg_cpu_percent": 0.0,
+        "max_cpu_percent": 0.0,
+        "avg_ram_mb": 0.0,
+        "max_ram_mb": 0.0
+      },
+      {
+        "name": "VR_IDLE",
+        "repetitions": 3,
+        "avg_cpu_percent": 0.0,
+        "max_cpu_percent": 0.0,
+        "avg_ram_mb": 57.48,
+        "max_ram_mb": 57.92
+      },
+      {
+        "name": "VR_TEC_RUNNER",
+        "repetitions": 3,
+        "avg_cpu_percent": 0.95,
+        "max_cpu_percent": 54.0,
+        "avg_ram_mb": 57.42,
+        "max_ram_mb": 57.97
+      }
+    ],
+    "runner_still_running": "WARN no bloqueante",
+    "scope": "Coste operativo observado del cliente Velociraptor; no mide artifacts P1-P4 individualmente ni calidad de detección"
+  }
+}

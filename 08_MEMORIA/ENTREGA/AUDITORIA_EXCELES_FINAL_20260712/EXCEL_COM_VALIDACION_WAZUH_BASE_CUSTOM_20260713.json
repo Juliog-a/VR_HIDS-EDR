@@ -1,0 +1,853 @@
+{
+    "GeneratedAt":  "2026-07-13T18:23:16.0498970+02:00",
+    "Path":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGABLE\\TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx",
+    "Bytes":  328177,
+    "SHA256":  "FDA4501CB730058F2645F2A7FF5A80D66665AE933B45474833FFCB3ED2B86775",
+    "ExcelPid":  14044,
+    "CalculationModeRequested":  "Automatic",
+    "CalculateFullRebuildExecuted":  true,
+    "Saved":  true,
+    "ReopenedReadOnly":  true,
+    "ForcedProcessClose":  false,
+    "RemainingExcelProcesses":  0,
+    "Exception":  null,
+    "WriteInspection":  {
+                            "SheetCount":  31,
+                            "ChartCount":  11,
+                            "EmptyCharts":  0,
+                            "BrokenSeries":  0,
+                            "FormulaErrors":  0,
+                            "StoredErrors":  0,
+                            "FormulaRefErrors":  0,
+                            "ExternalLinks":  0,
+                            "PendingExact":  0,
+                            "AmbiguousWazuhLabelCount":  0,
+                            "RepairModeReadable":  true,
+                            "RepairMode":  false,
+                            "ReadOnly":  false,
+                            "Assertions":  [
+                                               {
+                                                   "Name":  "31 hojas",
+                                                   "Pass":  true,
+                                                   "Actual":  31
+                                               },
+                                               {
+                                                   "Name":  "11 graficos",
+                                                   "Pass":  true,
+                                                   "Actual":  11
+                                               },
+                                               {
+                                                   "Name":  "0 graficos vacios",
+                                                   "Pass":  true,
+                                                   "Actual":  0
+                                               },
+                                               {
+                                                   "Name":  "0 series rotas",
+                                                   "Pass":  true,
+                                                   "Actual":  0
+                                               },
+                                               {
+                                                   "Name":  "0 errores de formula",
+                                                   "Pass":  true,
+                                                   "Actual":  0
+                                               },
+                                               {
+                                                   "Name":  "0 errores almacenados",
+                                                   "Pass":  true,
+                                                   "Actual":  0
+                                               },
+                                               {
+                                                   "Name":  "0 referencias REF en formulas",
+                                                   "Pass":  true,
+                                                   "Actual":  0
+                                               },
+                                               {
+                                                   "Name":  "0 enlaces externos",
+                                                   "Pass":  true,
+                                                   "Actual":  0
+                                               },
+                                               {
+                                                   "Name":  "0 celdas Pendiente",
+                                                   "Pass":  true,
+                                                   "Actual":  0
+                                               },
+                                               {
+                                                   "Name":  "0 etiquetas Wazuh especifico ambiguas",
+                                                   "Pass":  true,
+                                                   "Actual":  0
+                                               },
+                                               {
+                                                   "Name":  "RepairMode false",
+                                                   "Pass":  true,
+                                                   "Actual":  false
+                                               },
+                                               {
+                                                   "Name":  "Dashboard: cuatro barras 9-3-3-4",
+                                                   "Pass":  true,
+                                                   "Actual":  "=SERIES(GRAFICAS!$G$60,GRAFICAS!$F$61:$F$64,GRAFICAS!$G$61:$G$64,1)"
+                                               },
+                                               {
+                                                   "Name":  "Dashboard: cobertura por TEC con cuatro series",
+                                                   "Pass":  true,
+                                                   "Actual":  4
+                                               },
+                                               {
+                                                   "Name":  "Dashboard: capas sin salida externa",
+                                                   "Pass":  true,
+                                                   "Actual":  "=SERIES(GRAFICAS!$I$61,GRAFICAS!$J$60:$L$60,GRAFICAS!$J$61:$L$61,1) | =SERIES(GRAFICAS!$I$62,GRAFICAS!$J$60:$L$60,GRAFICAS!$J$62:$L$62,2)"
+                                               },
+                                               {
+                                                   "Name":  "Fuente resumen: cuatro sistemas separados",
+                                                   "Pass":  true,
+                                                   "Actual":  "VR custom | Públicos CH | Wazuh base | Wazuh custom"
+                                               },
+                                               {
+                                                   "Name":  "Fuente resumen: 9-3-3-4",
+                                                   "Pass":  true,
+                                                   "Actual":  "9,3,3,4"
+                                               },
+                                               {
+                                                   "Name":  "Wazuh base = 3 TEC",
+                                                   "Pass":  true,
+                                                   "Actual":  "3"
+                                               },
+                                               {
+                                                   "Name":  "Wazuh custom = 4 TEC",
+                                                   "Pass":  true,
+                                                   "Actual":  "4"
+                                               },
+                                               {
+                                                   "Name":  "Vector Wazuh base TEC-002-004-006",
+                                                   "Pass":  true,
+                                                   "Actual":  "0,1,0,1,0,1,0,0,0"
+                                               },
+                                               {
+                                                   "Name":  "Vector Wazuh custom TEC-001-005-007-008",
+                                                   "Pass":  true,
+                                                   "Actual":  "1,0,0,0,1,0,1,1,0"
+                                               },
+                                               {
+                                                   "Name":  "Grafica Wazuh base/custom con dos series",
+                                                   "Pass":  true,
+                                                   "Actual":  {
+                                                                  "Series":  2,
+                                                                  "Legend":  true,
+                                                                  "Names":  "Wazuh base|Wazuh custom"
+                                                              }
+                                               },
+                                               {
+                                                   "Name":  "Escala binaria 0/1 legible",
+                                                   "Pass":  true,
+                                                   "Actual":  {
+                                                                  "Graficas":  1,
+                                                                  "Dashboard":  1
+                                                              }
+                                               },
+                                               {
+                                                   "Name":  "Heatmap: cuatro variantes separadas",
+                                                   "Pass":  true,
+                                                   "Actual":  "VR custom | Públicos CH | Wazuh base | Wazuh custom"
+                                               },
+                                               {
+                                                   "Name":  "Heatmap: cinco capacidades sin salida externa",
+                                                   "Pass":  true,
+                                                   "Actual":  "Visibilidad | Detección | Alerta RT | Evidencia forense | Ruido/FP"
+                                               },
+                                               {
+                                                   "Name":  "Runner FP custom diferenciado",
+                                                   "Pass":  true,
+                                                   "Actual":  "Resultado del runner FP custom: 10/10 OK y 0 hits"
+                                               },
+                                               {
+                                                   "Name":  "Matriz ampliada A4:Z13",
+                                                   "Pass":  true,
+                                                   "Actual":  "$A$4:$Z$13"
+                                               },
+                                               {
+                                                   "Name":  "Matriz: cabeceras Wazuh base/custom",
+                                                   "Pass":  true,
+                                                   "Actual":  {
+                                                                  "Base":  "Wazuh base",
+                                                                  "Custom":  "Wazuh custom"
+                                                              }
+                                               },
+                                               {
+                                                   "Name":  "Matriz: base 3 detectadas",
+                                                   "Pass":  true,
+                                                   "Actual":  "VISIBLE SIN DETECCIÓN | DETECTADA | VISIBLE SIN DETECCIÓN | DETECTADA | VISIBLE SIN DETECCIÓN | DETECTADA | VISIBLE SIN DETECCIÓN | VISIBLE SIN DETECCIÓN | VISIBLE SIN DETECCIÓN"
+                                               },
+                                               {
+                                                   "Name":  "Matriz: custom 4 detectadas",
+                                                   "Pass":  true,
+                                                   "Actual":  "DETECTADA | VISIBLE SIN DETECCIÓN | VISIBLE SIN DETECCIÓN | VISIBLE SIN DETECCIÓN | DETECTADA | VISIBLE SIN DETECCIÓN | DETECTADA | DETECTADA | VISIBLE SIN DETECCIÓN"
+                                               },
+                                               {
+                                                   "Name":  "Comparacion: deteccion 9/9-3/9-3/9-4/9",
+                                                   "Pass":  true,
+                                                   "Actual":  "9/9 | 3/9 | 3/9 | 4/9"
+                                               },
+                                               {
+                                                   "Name":  "Comparacion: alerta RT 9/9-3/9-3/9-4/9",
+                                                   "Pass":  true,
+                                                   "Actual":  "9/9 | 3/9 | 3/9 | 4/9"
+                                               },
+                                               {
+                                                   "Name":  "Union Wazuh solo complementaria 7/9",
+                                                   "Pass":  true,
+                                                   "Actual":  "7/9"
+                                               },
+                                               {
+                                                   "Name":  "Dashboard KPI Wazuh base/custom",
+                                                   "Pass":  true,
+                                                   "Actual":  {
+                                                                  "Custom":  "4/9",
+                                                                  "Base":  "3/9"
+                                                              }
+                                               },
+                                               {
+                                                   "Name":  "Rules base trazadas",
+                                                   "Pass":  true,
+                                                   "Actual":  "92032,92302,91835,92077,92307,110201,110202,110203,110301,110401,110402,110501"
+                                               },
+                                               {
+                                                   "Name":  "Rules custom trazadas",
+                                                   "Pass":  true,
+                                                   "Actual":  "92032,92302,91835,92077,92307,110201,110202,110203,110301,110401,110402,110501"
+                                               },
+                                               {
+                                                   "Name":  "Campanas publicas: cinco positivas y una no concluyente",
+                                                   "Pass":  true,
+                                                   "Actual":  "POSITIVO | POSITIVO | POSITIVO | POSITIVO | NO CONCLUYENTE | POSITIVO"
+                                               },
+                                               {
+                                                   "Name":  "Totales publicos 5-0-1-0-0",
+                                                   "Pass":  true,
+                                                   "Actual":  "5,0,1,0,0"
+                                               },
+                                               {
+                                                   "Name":  "Discord TrackNetwork = No",
+                                                   "Pass":  true,
+                                                   "Actual":  "No"
+                                               },
+                                               {
+                                                   "Name":  "HTTP separado y runner independiente",
+                                                   "Pass":  true,
+                                                   "Actual":  "Sí, acreditada por runner independiente; no atribuible al CLIENT_EVENT"
+                                               },
+                                               {
+                                                   "Name":  "SERVER_EVENT y Router separados",
+                                                   "Pass":  true,
+                                                   "Actual":  "Componentes históricos, de transporte y salida externa — no incluidos en la cobertura de los seis CLIENT_EVENT evaluados"
+                                               }
+                                           ],
+                            "FailedAssertions":  0,
+                            "Sheets":  [
+                                           {
+                                               "Name":  "00_Guia",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "01_Dashboard",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  6
+                                           },
+                                           {
+                                               "Name":  "02_Seleccion_Tecnicas",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "03_Evaluacion_VR",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "04_Control_Publicos",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "05_Matriz_Resultados",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "06_Resumen",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "07_Catalogo_Artifacts",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "08_Benignas_FP",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "09_Benchmark_Plan",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "10_Gaps_Custom_P1P4",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "99_Listas",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "11_Alertabilidad",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "12_Plan_Alertas",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "13_Hayabusa_Resumen",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "14_Arquitectura_Custom",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "15_Publicos_Definitivo",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "16_Scripts_Validados",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "17_Incoherencias_Cerradas",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "README",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "RESUMEN_EJECUTIVO",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "TECNICAS_REAL_VR",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "VISIBILIDAD_SISTEMA",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "ALERTAS_VR",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "FP_RUNNER",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "FP_HITS",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "COMPARACION_VR_WAZUH",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "WAZUH_DETALLE",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "DISCREPANCIAS",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "FUENTES",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  0
+                                           },
+                                           {
+                                               "Name":  "GRAFICAS",
+                                               "FormulaErrors":  0,
+                                               "StoredErrors":  0,
+                                               "ChartCount":  5
+                                           }
+                                       ]
+                        },
+    "ReopenInspection":  {
+                             "SheetCount":  31,
+                             "ChartCount":  11,
+                             "EmptyCharts":  0,
+                             "BrokenSeries":  0,
+                             "FormulaErrors":  0,
+                             "StoredErrors":  0,
+                             "FormulaRefErrors":  0,
+                             "ExternalLinks":  0,
+                             "PendingExact":  0,
+                             "AmbiguousWazuhLabelCount":  0,
+                             "RepairModeReadable":  true,
+                             "RepairMode":  false,
+                             "ReadOnly":  true,
+                             "Assertions":  [
+                                                {
+                                                    "Name":  "31 hojas",
+                                                    "Pass":  true,
+                                                    "Actual":  31
+                                                },
+                                                {
+                                                    "Name":  "11 graficos",
+                                                    "Pass":  true,
+                                                    "Actual":  11
+                                                },
+                                                {
+                                                    "Name":  "0 graficos vacios",
+                                                    "Pass":  true,
+                                                    "Actual":  0
+                                                },
+                                                {
+                                                    "Name":  "0 series rotas",
+                                                    "Pass":  true,
+                                                    "Actual":  0
+                                                },
+                                                {
+                                                    "Name":  "0 errores de formula",
+                                                    "Pass":  true,
+                                                    "Actual":  0
+                                                },
+                                                {
+                                                    "Name":  "0 errores almacenados",
+                                                    "Pass":  true,
+                                                    "Actual":  0
+                                                },
+                                                {
+                                                    "Name":  "0 referencias REF en formulas",
+                                                    "Pass":  true,
+                                                    "Actual":  0
+                                                },
+                                                {
+                                                    "Name":  "0 enlaces externos",
+                                                    "Pass":  true,
+                                                    "Actual":  0
+                                                },
+                                                {
+                                                    "Name":  "0 celdas Pendiente",
+                                                    "Pass":  true,
+                                                    "Actual":  0
+                                                },
+                                                {
+                                                    "Name":  "0 etiquetas Wazuh especifico ambiguas",
+                                                    "Pass":  true,
+                                                    "Actual":  0
+                                                },
+                                                {
+                                                    "Name":  "RepairMode false",
+                                                    "Pass":  true,
+                                                    "Actual":  false
+                                                },
+                                                {
+                                                    "Name":  "Dashboard: cuatro barras 9-3-3-4",
+                                                    "Pass":  true,
+                                                    "Actual":  "=SERIES(GRAFICAS!$G$60,GRAFICAS!$F$61:$F$64,GRAFICAS!$G$61:$G$64,1)"
+                                                },
+                                                {
+                                                    "Name":  "Dashboard: cobertura por TEC con cuatro series",
+                                                    "Pass":  true,
+                                                    "Actual":  4
+                                                },
+                                                {
+                                                    "Name":  "Dashboard: capas sin salida externa",
+                                                    "Pass":  true,
+                                                    "Actual":  "=SERIES(GRAFICAS!$I$61,GRAFICAS!$J$60:$L$60,GRAFICAS!$J$61:$L$61,1) | =SERIES(GRAFICAS!$I$62,GRAFICAS!$J$60:$L$60,GRAFICAS!$J$62:$L$62,2)"
+                                                },
+                                                {
+                                                    "Name":  "Fuente resumen: cuatro sistemas separados",
+                                                    "Pass":  true,
+                                                    "Actual":  "VR custom | Públicos CH | Wazuh base | Wazuh custom"
+                                                },
+                                                {
+                                                    "Name":  "Fuente resumen: 9-3-3-4",
+                                                    "Pass":  true,
+                                                    "Actual":  "9,3,3,4"
+                                                },
+                                                {
+                                                    "Name":  "Wazuh base = 3 TEC",
+                                                    "Pass":  true,
+                                                    "Actual":  "3"
+                                                },
+                                                {
+                                                    "Name":  "Wazuh custom = 4 TEC",
+                                                    "Pass":  true,
+                                                    "Actual":  "4"
+                                                },
+                                                {
+                                                    "Name":  "Vector Wazuh base TEC-002-004-006",
+                                                    "Pass":  true,
+                                                    "Actual":  "0,1,0,1,0,1,0,0,0"
+                                                },
+                                                {
+                                                    "Name":  "Vector Wazuh custom TEC-001-005-007-008",
+                                                    "Pass":  true,
+                                                    "Actual":  "1,0,0,0,1,0,1,1,0"
+                                                },
+                                                {
+                                                    "Name":  "Grafica Wazuh base/custom con dos series",
+                                                    "Pass":  true,
+                                                    "Actual":  {
+                                                                   "Series":  2,
+                                                                   "Legend":  true,
+                                                                   "Names":  "Wazuh base|Wazuh custom"
+                                                               }
+                                                },
+                                                {
+                                                    "Name":  "Escala binaria 0/1 legible",
+                                                    "Pass":  true,
+                                                    "Actual":  {
+                                                                   "Graficas":  1,
+                                                                   "Dashboard":  1
+                                                               }
+                                                },
+                                                {
+                                                    "Name":  "Heatmap: cuatro variantes separadas",
+                                                    "Pass":  true,
+                                                    "Actual":  "VR custom | Públicos CH | Wazuh base | Wazuh custom"
+                                                },
+                                                {
+                                                    "Name":  "Heatmap: cinco capacidades sin salida externa",
+                                                    "Pass":  true,
+                                                    "Actual":  "Visibilidad | Detección | Alerta RT | Evidencia forense | Ruido/FP"
+                                                },
+                                                {
+                                                    "Name":  "Runner FP custom diferenciado",
+                                                    "Pass":  true,
+                                                    "Actual":  "Resultado del runner FP custom: 10/10 OK y 0 hits"
+                                                },
+                                                {
+                                                    "Name":  "Matriz ampliada A4:Z13",
+                                                    "Pass":  true,
+                                                    "Actual":  "$A$4:$Z$13"
+                                                },
+                                                {
+                                                    "Name":  "Matriz: cabeceras Wazuh base/custom",
+                                                    "Pass":  true,
+                                                    "Actual":  {
+                                                                   "Base":  "Wazuh base",
+                                                                   "Custom":  "Wazuh custom"
+                                                               }
+                                                },
+                                                {
+                                                    "Name":  "Matriz: base 3 detectadas",
+                                                    "Pass":  true,
+                                                    "Actual":  "VISIBLE SIN DETECCIÓN | DETECTADA | VISIBLE SIN DETECCIÓN | DETECTADA | VISIBLE SIN DETECCIÓN | DETECTADA | VISIBLE SIN DETECCIÓN | VISIBLE SIN DETECCIÓN | VISIBLE SIN DETECCIÓN"
+                                                },
+                                                {
+                                                    "Name":  "Matriz: custom 4 detectadas",
+                                                    "Pass":  true,
+                                                    "Actual":  "DETECTADA | VISIBLE SIN DETECCIÓN | VISIBLE SIN DETECCIÓN | VISIBLE SIN DETECCIÓN | DETECTADA | VISIBLE SIN DETECCIÓN | DETECTADA | DETECTADA | VISIBLE SIN DETECCIÓN"
+                                                },
+                                                {
+                                                    "Name":  "Comparacion: deteccion 9/9-3/9-3/9-4/9",
+                                                    "Pass":  true,
+                                                    "Actual":  "9/9 | 3/9 | 3/9 | 4/9"
+                                                },
+                                                {
+                                                    "Name":  "Comparacion: alerta RT 9/9-3/9-3/9-4/9",
+                                                    "Pass":  true,
+                                                    "Actual":  "9/9 | 3/9 | 3/9 | 4/9"
+                                                },
+                                                {
+                                                    "Name":  "Union Wazuh solo complementaria 7/9",
+                                                    "Pass":  true,
+                                                    "Actual":  "7/9"
+                                                },
+                                                {
+                                                    "Name":  "Dashboard KPI Wazuh base/custom",
+                                                    "Pass":  true,
+                                                    "Actual":  {
+                                                                   "Custom":  "4/9",
+                                                                   "Base":  "3/9"
+                                                               }
+                                                },
+                                                {
+                                                    "Name":  "Rules base trazadas",
+                                                    "Pass":  true,
+                                                    "Actual":  "92032,92302,91835,92077,92307,110201,110202,110203,110301,110401,110402,110501"
+                                                },
+                                                {
+                                                    "Name":  "Rules custom trazadas",
+                                                    "Pass":  true,
+                                                    "Actual":  "92032,92302,91835,92077,92307,110201,110202,110203,110301,110401,110402,110501"
+                                                },
+                                                {
+                                                    "Name":  "Campanas publicas: cinco positivas y una no concluyente",
+                                                    "Pass":  true,
+                                                    "Actual":  "POSITIVO | POSITIVO | POSITIVO | POSITIVO | NO CONCLUYENTE | POSITIVO"
+                                                },
+                                                {
+                                                    "Name":  "Totales publicos 5-0-1-0-0",
+                                                    "Pass":  true,
+                                                    "Actual":  "5,0,1,0,0"
+                                                },
+                                                {
+                                                    "Name":  "Discord TrackNetwork = No",
+                                                    "Pass":  true,
+                                                    "Actual":  "No"
+                                                },
+                                                {
+                                                    "Name":  "HTTP separado y runner independiente",
+                                                    "Pass":  true,
+                                                    "Actual":  "Sí, acreditada por runner independiente; no atribuible al CLIENT_EVENT"
+                                                },
+                                                {
+                                                    "Name":  "SERVER_EVENT y Router separados",
+                                                    "Pass":  true,
+                                                    "Actual":  "Componentes históricos, de transporte y salida externa — no incluidos en la cobertura de los seis CLIENT_EVENT evaluados"
+                                                }
+                                            ],
+                             "FailedAssertions":  0,
+                             "Sheets":  [
+                                            {
+                                                "Name":  "00_Guia",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "01_Dashboard",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  6
+                                            },
+                                            {
+                                                "Name":  "02_Seleccion_Tecnicas",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "03_Evaluacion_VR",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "04_Control_Publicos",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "05_Matriz_Resultados",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "06_Resumen",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "07_Catalogo_Artifacts",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "08_Benignas_FP",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "09_Benchmark_Plan",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "10_Gaps_Custom_P1P4",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "99_Listas",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "11_Alertabilidad",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "12_Plan_Alertas",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "13_Hayabusa_Resumen",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "14_Arquitectura_Custom",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "15_Publicos_Definitivo",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "16_Scripts_Validados",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "17_Incoherencias_Cerradas",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "README",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "RESUMEN_EJECUTIVO",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "TECNICAS_REAL_VR",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "VISIBILIDAD_SISTEMA",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "ALERTAS_VR",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "FP_RUNNER",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "FP_HITS",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "COMPARACION_VR_WAZUH",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "WAZUH_DETALLE",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "DISCREPANCIAS",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "FUENTES",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  0
+                                            },
+                                            {
+                                                "Name":  "GRAFICAS",
+                                                "FormulaErrors":  0,
+                                                "StoredErrors":  0,
+                                                "ChartCount":  5
+                                            }
+                                        ]
+                         },
+    "Valid":  true
+}

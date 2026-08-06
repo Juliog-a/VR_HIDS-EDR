@@ -1,0 +1,26 @@
+﻿{
+    "GeneratedAt":  "2026-07-13T18:04:22.6270444+02:00",
+    "Path":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGABLE\\TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx",
+    "PreEditBytes":  317634,
+    "PreEditSha256":  "31A4EFC9DC0A412B97C7ACDF95F8ADDA55370C134247BEB41C9F7A836508F7FE",
+    "PostEditBytes":  328180,
+    "PostEditSha256":  "E35F5F16AAE7CBF9106776E0AF84A01613E22B530B6046211659FCD5F03D6CBE",
+    "Before":  {
+                   "Sheets":  31,
+                   "Charts":  11,
+                   "Pending":  0,
+                   "AmbiguousWazuhLabel":  4
+               },
+    "After":  {
+                  "Sheets":  31,
+                  "Charts":  11,
+                  "Pending":  0,
+                  "AmbiguousWazuhLabel":  0,
+                  "WazuhBaseDetected":  3,
+                  "WazuhCustomDetected":  4,
+                  "MatrixRange":  "$A$4:$Z$13"
+              },
+    "ExcelPid":  1292,
+    "ForcedProcessClose":  true,
+    "RemainingExcelProcesses":  0
+}

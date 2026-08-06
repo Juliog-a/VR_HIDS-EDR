@@ -1,0 +1,51 @@
+{
+    "generated_at":  "2026-07-14T19:47:10.4539294+02:00",
+    "phase":  "phase3",
+    "working_doc":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\WORK_TFM_ENTREGA_FINAL_20260714\\tmp\\TFM_ENTREGA_FINAL_PHASE2_SOURCES_FIXED.docx",
+    "output_doc":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGABLE\\ENTREGA_FINAL_EXCELES_TFM\\TFM_ENTREGA_FINAL.docx",
+    "word_version":  "16.0",
+    "word_build":  "16.0.20131",
+    "paragraph_replacements":  [
+
+                               ],
+    "literal_replacements":  [
+
+                             ],
+    "table_replacements":  [
+
+                           ],
+    "added_sections":  [
+
+                       ],
+    "references_inserted":  0,
+    "normalized_caption_colons":  0,
+    "normalized_versioning_cells":  0,
+    "caption_sources":  null,
+    "fields_updated":  1504,
+    "final_stats":  {
+                        "pages":  198,
+                        "words":  31913,
+                        "characters_with_spaces":  225929,
+                        "word_tables":  104,
+                        "inline_shapes":  71,
+                        "floating_shapes":  9,
+                        "sections":  3,
+                        "fields":  759,
+                        "tables_of_contents":  1,
+                        "tables_of_figures":  3,
+                        "bookmarks":  5,
+                        "comments":  0,
+                        "revisions":  0,
+                        "seq_tables":  68,
+                        "seq_figures":  52,
+                        "seq_code":  0
+                    },
+    "suspicious_text":  [
+
+                        ],
+    "source_sha256_before":  "E66A08D07D1F7A38607A99077538E367C071689A40636A85B1DE9ABD776C71E4",
+    "output_sha256":  "7C9D5C42FBEB3F8B074930A60FBE46BC4FD44026050B03C3094B106782635258",
+    "forced_process_cleanup":  [
+
+                               ]
+}

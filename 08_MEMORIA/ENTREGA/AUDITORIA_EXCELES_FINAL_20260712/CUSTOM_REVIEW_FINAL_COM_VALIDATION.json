@@ -1,0 +1,44 @@
+﻿{
+    "GeneratedAt":  "2026-07-13T20:41:36.3982861+02:00",
+    "Path":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGABLE\\TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx",
+    "Bytes":  311995,
+    "SHA256":  "4877A0391822495DEC4EFF6C987964A6EC59B4D538B598860B5E6C7D508A6D0F",
+    "BeforeExcelProcesses":  0,
+    "FirstOpen":  {
+                      "Calculation":  -4105,
+                      "Sheets":  30,
+                      "Charts":  11,
+                      "Pending":  0,
+                      "ErrorCells":  0,
+                      "ExternalLinks":  0,
+                      "ResultsSheetPresent":  true,
+                      "BenchmarkSheetPresent":  false,
+                      "CustomTotal":  379,
+                      "ProfileSum":  379,
+                      "WazuhBase":  3,
+                      "WazuhCustom":  4,
+                      "PublicCH":  3
+                  },
+    "OrphansAfterSave":  0,
+    "FallbackTerminatedAfterSave":  [
+
+                                    ],
+    "ReopenReadOnly":  {
+                           "ReadOnly":  true,
+                           "Sheets":  30,
+                           "Charts":  11,
+                           "Pending":  0,
+                           "ErrorCells":  0,
+                           "RepairMode":  false,
+                           "CorruptLoad":  "xlNormalLoad",
+                           "OpenedWithoutRepairPrompt":  true,
+                           "ResultsSheetPresent":  true,
+                           "BenchmarkSheetPresent":  false,
+                           "CustomTotal":  379
+                       },
+    "OrphansAfterReopen":  0,
+    "FallbackTerminatedAfterReopen":  [
+
+                                      ],
+    "Status":  "PASS"
+}

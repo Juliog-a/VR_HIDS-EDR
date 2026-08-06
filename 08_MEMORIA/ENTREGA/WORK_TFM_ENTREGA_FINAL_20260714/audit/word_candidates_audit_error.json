@@ -1,0 +1,7 @@
+{
+    "generated_at":  "2026-07-14T14:22:10.9616401+02:00",
+    "message":  "Error en la llamada a procedimiento remoto. (Excepción de HRESULT: 0x800706BE)",
+    "exception_type":  "System.Runtime.InteropServices.COMException",
+    "position":  "En C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\WORK_TFM_ENTREGA_FINAL_20260714\\audit\\Audit-WordCandidates.ps1: 131 Carácter: 21\r\n+                     $p = $paragraphs.Item($i)\r\n+                     ~~~~~~~~~~~~~~~~~~~~~~~~~",
+    "script_stack":  "en \u003cScriptBlock\u003e, C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\WORK_TFM_ENTREGA_FINAL_20260714\\audit\\Audit-WordCandidates.ps1: línea 131"
+}

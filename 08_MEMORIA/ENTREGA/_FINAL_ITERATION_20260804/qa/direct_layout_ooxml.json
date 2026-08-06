@@ -1,0 +1,281 @@
+{
+    "DocumentPath":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGA\\_FINAL_ITERATION_20260804\\TFM_ENTREGA_FINAL_WORK.docx",
+    "Corrections":  67,
+    "CaptionReplacements":  58,
+    "CaptionReplacementsMissing":  [
+
+                                   ],
+    "Changes":  [
+                    {
+                        "Category":  "Jerarquía",
+                        "Description":  "Eliminado encabezado vacío que generaba Capítulo I residual"
+                    },
+                    {
+                        "Category":  "Jerarquía",
+                        "Description":  "Normalizada la capitalización del capítulo de benchmark"
+                    },
+                    {
+                        "Category":  "Jerarquía",
+                        "Description":  "Separado el título 10.4 de su contenido narrativo"
+                    },
+                    {
+                        "Category":  "Jerarquía",
+                        "Description":  "Eliminado el título duplicado previo a las referencias"
+                    },
+                    {
+                        "Category":  "Jerarquía",
+                        "Description":  "Corregido el título del capítulo de referencias y anexos"
+                    },
+                    {
+                        "Category":  "Rutas",
+                        "Description":  "Neutralizada referencia interna: 00_CONTEXT/DECISIONS.md; 00_CONTEXT/TEST_MATRIX.md; 00_CONTEXT/EVIDENCE_INDEX.md",
+                        "Count":  1
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Tipos de artifacts -\u003e Tipos de artifacts según su modo de ejecución"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Planificación Cap.1 -\u003e Planificación del capítulo I"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Planificación Cap.2 -\u003e Planificación del capítulo II"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Planificación Cap.3 -\u003e Planificación del capítulo III"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Planificación Cap.4 -\u003e Planificación del capítulo IV"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Planificación Cap.5 -\u003e Planificación del capítulo V"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Planificación Cap.6 -\u003e Planificación del capítulo VI"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Planificación Cap.7 -\u003e Planificación del capítulo VII"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Planificación Cap.8 -\u003e Planificación del capítulo VIII"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Planificación Cap.9 -\u003e Planificación del capítulo IX"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Planificación Cap.10 -\u003e Planificación del capítulo X"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Diagrama Gantt General -\u003e Diagrama de Gantt general"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Diagrama Gantt Cap.1 y 2 -\u003e Planificación Gantt de los capítulos I y II"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Diagrama Gantt Cap.3 -\u003e Planificación Gantt del capítulo III"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Diagrama Gantt Cap. 4 -\u003e Planificación Gantt del capítulo IV"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Diagrama Gantt Cap.5 -\u003e Planificación Gantt del capítulo V"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Diagrama Gantt Cap.6 -\u003e Planificación Gantt del capítulo VI"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Diagrama Gantt Cap.7 -\u003e Planificación Gantt del capítulo VII"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Diagrama Gantt Cap.8 y 9 -\u003e Planificación Gantt de los capítulos VIII y IX"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "FUNCIONES, LIMITACIONES Y RIESGOS DEL ENFOQUE HIDS -\u003e Funciones, limitaciones y riesgos del enfoque HIDS"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "FUNCIONES, LIMITACIONES Y RIESGOS DEL ENFOQUE DFIR -\u003e Funciones, limitaciones y riesgos del enfoque DFIR"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "FUNCIONES, LIMITACIONES Y RIESGOS DEL ENFOQUE EDR -\u003e Funciones, limitaciones y riesgos del enfoque EDR"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Capa de componentes VR -\u003e Capas funcionales de la arquitectura de Velociraptor"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Envío de datos VR -\u003e Flujo de datos de Velociraptor"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Campos Artifacts -\u003e Campos principales de definición de artifacts"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Tipos de artifacts -\u003e Tipos de artifacts según el contexto de ejecución"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejemplo consulta VQL -\u003e Ejemplo de consulta VQL"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejemplo obtener info VQL -\u003e Ejemplo de obtención de información mediante VQL"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejemplo consulta de claves VQL -\u003e Ejemplo de consulta de claves del registro mediante VQL"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejemplo funcionamiento lazy evaluation -\u003e Ejemplo de evaluación diferida en VQL"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Parámetros iniciales VM -\u003e Parámetros iniciales de la máquina virtual"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Instalador de agente -\u003e Instalación del agente Velociraptor"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Datos provenientes de los agentes -\u003e Datos recibidos desde los agentes Velociraptor"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Directorio máquina física -\u003e Estructura de directorios de la máquina física"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "arquitectura de alertas -\u003e Arquitectura del flujo de alertas"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Escenarios de ataque -\u003e Escenarios de ataque evaluados"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejecución TEC-001 -\u003e Procedimiento de ejecución de TEC-001"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "TEC-001 ejecución -\u003e Evidencia de ejecución de TEC-001"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejecución TEC-002 -\u003e Procedimiento de ejecución de TEC-002"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "TEC002_OK -\u003e Evidencia de ejecución de TEC-002"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejecución TEC-003 -\u003e Procedimiento de ejecución de TEC-003"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Scheduled Task runner -\u003e Evidencia de la tarea programada TEC-003"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejecución TEC-004 -\u003e Procedimiento de ejecución de TEC-004"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Registry Run Key ejecución -\u003e Evidencia de persistencia mediante clave Run en TEC-004"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejecución TEC-005 -\u003e Procedimiento de ejecución de TEC-005"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Servicio ejecución -\u003e Evidencia de ejecución del servicio TEC-005"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejecución TEC-006-1 -\u003e Procedimiento de ejecución de TEC-006 mediante PowerShell"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Security Software Discovery ejecución -\u003e Evidencia de descubrimiento de software de seguridad en TEC-006"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejecución TEC-006-2 -\u003e Procedimiento de ejecución de TEC-006 mediante WMIC"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejecución TEC-007 -\u003e Procedimiento de ejecución de TEC-007"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Script Ransom ejecutado -\u003e Evidencia de cifrado controlado en TEC-007"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejecución TEC-008 -\u003e Procedimiento de ejecución de TEC-008"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Receiver -\u003e Ejecución del receptor HTTP controlado"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Script receiver -\u003e Evidencia del receptor HTTP controlado"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Ejecución TEC-009 -\u003e Procedimiento de ejecución de TEC-009"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Script TEC-009 ejecutada -\u003e Evidencia de ejecución de TEC-009"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Evidencias VR -\u003e Evidencias obtenidas en Velociraptor"
+                    },
+                    {
+                        "Category":  "Captions",
+                        "Description":  "Wazuh dashboard -\u003e Panel de acceso al dashboard de Wazuh"
+                    },
+                    {
+                        "Category":  "Maquetación",
+                        "Description":  "Compactada la continuación aislada de la sección de artifacts"
+                    },
+                    {
+                        "Category":  "Maquetación",
+                        "Description":  "Compactado el resumen para mantener sus palabras clave en la misma página"
+                    },
+                    {
+                        "Category":  "Maquetación",
+                        "Description":  "Normalizado y compactado el Anexo M para evitar una última página residual"
+                    }
+                ],
+    "UpdateFieldsOnOpen":  true,
+    "SHA256":  "07B19B6F4B7AD2F11EC374927546BA4B2F6E8683F48CF829DDA808F54589A54B"
+}

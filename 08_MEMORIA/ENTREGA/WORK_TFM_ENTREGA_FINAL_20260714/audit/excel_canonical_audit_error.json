@@ -1,0 +1,7 @@
+{
+    "generated_at":  "2026-07-14T14:34:16.0036487+02:00",
+    "message":  "No se puede obtener la propiedad Open de la clase Workbooks.",
+    "exception_type":  "System.Runtime.InteropServices.COMException",
+    "position":  "En C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\WORK_TFM_ENTREGA_FINAL_20260714\\audit\\Audit-CanonicalExcel.ps1: 84 Carácter: 13\r\n+             $wb = $workbooks.Open($fullPath, 0, $true, 5, \u0027\u0027, \u0027\u0027, $tr ...\r\n+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+    "script_stack":  "en \u003cScriptBlock\u003e, C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\WORK_TFM_ENTREGA_FINAL_20260714\\audit\\Audit-CanonicalExcel.ps1: línea 84"
+}

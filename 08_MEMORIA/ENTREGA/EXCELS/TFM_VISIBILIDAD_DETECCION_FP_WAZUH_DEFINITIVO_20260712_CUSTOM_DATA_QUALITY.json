@@ -1,0 +1,184 @@
+{
+  "generated_at": "2026-07-13T20:42:12.815584+02:00",
+  "workbook": "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGABLE\\TFM_VISIBILIDAD_DETECCION_FP_WAZUH_DEFINITIVO_20260712.xlsx",
+  "bytes": 311995,
+  "sha256": "4877A0391822495DEC4EFF6C987964A6EC59B4D538B598860B5E6C7D508A6D0F",
+  "status": "PASS",
+  "checks": {
+    "zip_openxml_valid": true,
+    "sheet_count_30": true,
+    "benchmark_sheet_absent": true,
+    "results_custom_sheet_present": true,
+    "pending_exact_zero": true,
+    "formula_errors_zero": true,
+    "external_links_zero": true,
+    "charts_11": true,
+    "chart_broken_refs_zero": true,
+    "chart_empty_sources_zero": true,
+    "forbidden_benchmark_analysis_zero": true,
+    "profile_counts_19_118_109_133": true,
+    "custom_total_379": true,
+    "custom_detection_9_of_9": true,
+    "custom_fp_hits_zero": true,
+    "tec_matrix_9_rows": true,
+    "tec_alert_counts_match_csv": true,
+    "alertas_vr_rows_379": true,
+    "alert_profile_counts_match_csv": true,
+    "tec_campaign_9_ok": true,
+    "fp_campaign_10_ok": true,
+    "dashboard_custom_9_of_9": true,
+    "dashboard_public_ch_3_of_9": true,
+    "dashboard_wazuh_base_3_of_9": true,
+    "dashboard_wazuh_custom_4_of_9": true,
+    "public_campaigns_5_positive_1_inconclusive": true,
+    "dashboard_internal_hyperlinks_10": true,
+    "guide_points_to_results_custom": true,
+    "catalog_custom_4_detectors": true,
+    "source_group_rows_35": true,
+    "receiver_http_separate": true,
+    "raw_alert_data_preserved": true,
+    "artifact_hashes_match": true
+  },
+  "counts": {
+    "sheets": 30,
+    "charts": 11,
+    "tables": 15,
+    "pending_exact": 0,
+    "formula_errors": 0,
+    "external_links": 0,
+    "chart_broken_refs": 0,
+    "chart_empty_sources": 0,
+    "forbidden_benchmark_hits": 0,
+    "hyperlinks_dashboard": 10,
+    "alerts": 379,
+    "source_result_rows": 35
+  },
+  "pending_cells": [],
+  "formula_error_cells": [],
+  "forbidden_benchmark_hits": [],
+  "chart_broken_refs": [],
+  "chart_empty_sources": [],
+  "artifact_hashes": {
+    "Custom.TFM.HIDS.P1.Critical.Priority.Event_v1.yaml": "8A1FF2654405AF9E4412D32EF0C2BE08A383924654AA764A04AB264BAA42EDD7",
+    "Custom.TFM.HIDS.P2.High.Forensic.Event_v1.yaml": "255C5F7CA39E362FE45106C662C4C35730EFF57A4063A1E9973FD11A6375FAA2",
+    "Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1.yaml": "C591CB849753194F6F87834C1E0F34EDE6CDFF6B31BC63650A1D281ADA1D410A",
+    "Custom.TFM.HIDS.P4.Low.Basic_v2.yaml": "1EBB29296A14475E38BCF34CA8DD9CC16572F4A8CA00A1AB0C3608E0B3097BC1",
+    "Custom.TFM.HIDS.Router.JSONL.Discord.SOC_v3.yaml": "574E3E8BC03E7C4D655400D5BB5527771E438CA67C413853A0AAAC7A10C5E33F"
+  },
+  "chart_details": [
+    {
+      "part": "xl/charts/chart1.xml",
+      "refs": [
+        "'01_Dashboard'!$S$29:$S$31",
+        "'01_Dashboard'!$T$29:$T$31"
+      ],
+      "empty_refs": []
+    },
+    {
+      "part": "xl/charts/chart10.xml",
+      "refs": [
+        "GRAFICAS!$M$16:$M$24",
+        "GRAFICAS!$N$16:$N$24",
+        "GRAFICAS!$M$16:$M$24",
+        "GRAFICAS!$O$16:$O$24"
+      ],
+      "empty_refs": []
+    },
+    {
+      "part": "xl/charts/chart11.xml",
+      "refs": [
+        "GRAFICAS!$A$4:$A$12",
+        "GRAFICAS!$F$4:$F$12"
+      ],
+      "empty_refs": []
+    },
+    {
+      "part": "xl/charts/chart2.xml",
+      "refs": [
+        "'01_Dashboard'!$S$10:$S$18",
+        "'01_Dashboard'!$T$10:$T$18",
+        "'01_Dashboard'!$S$10:$S$18",
+        "'01_Dashboard'!$U$10:$U$18",
+        "'01_Dashboard'!$S$10:$S$18",
+        "'01_Dashboard'!$V$10:$V$18",
+        "'01_Dashboard'!$S$10:$S$18",
+        "'01_Dashboard'!$W$10:$W$18"
+      ],
+      "empty_refs": []
+    },
+    {
+      "part": "xl/charts/chart3.xml",
+      "refs": [
+        "'01_Dashboard'!$S$3:$S$6",
+        "'01_Dashboard'!$T$3:$T$6"
+      ],
+      "empty_refs": []
+    },
+    {
+      "part": "xl/charts/chart4.xml",
+      "refs": [
+        "'01_Dashboard'!$S$22:$S$24",
+        "'01_Dashboard'!$T$22:$T$24",
+        "'01_Dashboard'!$S$22:$S$24",
+        "'01_Dashboard'!$U$22:$U$24"
+      ],
+      "empty_refs": []
+    },
+    {
+      "part": "xl/charts/chart5.xml",
+      "refs": [
+        "'01_Dashboard'!$S$36:$S$41",
+        "'01_Dashboard'!$T$36:$T$41",
+        "'01_Dashboard'!$S$36:$S$41",
+        "'01_Dashboard'!$U$36:$U$41"
+      ],
+      "empty_refs": []
+    },
+    {
+      "part": "xl/charts/chart6.xml",
+      "refs": [
+        "'01_Dashboard'!$S$45:$S$49",
+        "'01_Dashboard'!$T$45:$T$49"
+      ],
+      "empty_refs": []
+    },
+    {
+      "part": "xl/charts/chart7.xml",
+      "refs": [
+        "GRAFICAS!$B$15:$J$15",
+        "GRAFICAS!$B$16:$J$16",
+        "GRAFICAS!$B$15:$J$15",
+        "GRAFICAS!$B$17:$J$17",
+        "GRAFICAS!$B$15:$J$15",
+        "GRAFICAS!$B$18:$J$18",
+        "GRAFICAS!$B$15:$J$15",
+        "GRAFICAS!$B$19:$J$19",
+        "GRAFICAS!$B$15:$J$15",
+        "GRAFICAS!$B$20:$J$20",
+        "GRAFICAS!$B$15:$J$15",
+        "GRAFICAS!$B$21:$J$21",
+        "GRAFICAS!$B$15:$J$15",
+        "GRAFICAS!$B$22:$J$22"
+      ],
+      "empty_refs": []
+    },
+    {
+      "part": "xl/charts/chart8.xml",
+      "refs": [
+        "GRAFICAS!$I$4:$I$7",
+        "GRAFICAS!$J$4:$J$7"
+      ],
+      "empty_refs": []
+    },
+    {
+      "part": "xl/charts/chart9.xml",
+      "refs": [
+        "GRAFICAS!$L$4:$L$7",
+        "GRAFICAS!$M$4:$M$7",
+        "GRAFICAS!$L$4:$L$7",
+        "GRAFICAS!$N$4:$N$7"
+      ],
+      "empty_refs": []
+    }
+  ]
+}

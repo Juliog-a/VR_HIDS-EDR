@@ -1,0 +1,76 @@
+Gráficas de eficacia, cobertura y trazabilidad																				
+Todos los gráficos usan tablas fuente visibles. Volumen de alertas ≠ cobertura; salida externa queda fuera de las capacidades del detector.																				
+TEC	P1	P2	P3	P4	Total alertas	Estado		Perfil	Alertas		Estado	Campaña TEC	Campaña FP		Sistema	TEC detectadas				
+TEC-001	0	2	2	38	42	DETECTADA		P1	19		OK	9	10		VR custom	9				
+TEC-002	0	82	54	78	214	DETECTADA		P2	118		WARN	0	0		Públicos CH	3				
+TEC-003	0	6	16	8	30	DETECTADA		P3	109		FAIL	0	0		Wazuh base	3				
+TEC-004	4	13	12	8	37	DETECTADA		P4	133		HITS		0		Wazuh custom	4				
+TEC-005	5	7	1	1	14	DETECTADA					Denominadores separados: TEC=9; FP=10. HITS solo aplica a FP custom.									
+TEC-006	0	6	12	0	18	DETECTADA														
+TEC-007	1	0	4	0	5	DETECTADA														
+TEC-008	1	2	1	0	4	DETECTADA														
+TEC-009	8	0	7	0	15	DETECTADA														
+																				
+																				
+Fuente	TEC-001	TEC-002	TEC-003	TEC-004	TEC-005	TEC-006	TEC-007	TEC-008	TEC-009	Total		TEC	Wazuh base	Wazuh custom		Capacidad HIDS	VR custom	Públicos CH	Wazuh base	Wazuh custom
+Sysmon ID 1	38	214	30	32	10	14	0	2	6	346		TEC-001	0	1		Visibilidad	2	2	1	2
+Sysmon ID 3	0	0	0	0	0	0	0	0	8	8		TEC-002	1	0		Detección	2	1	1	2
+Sysmon ID 11	0	0	0	0	0	0	0	0	0	0		TEC-003	0	0		Alerta RT	2	1	1	2
+Sysmon ID 12/13/14	0	0	0	5	0	0	0	0	0	5		TEC-004	1	0		Evidencia forense	0	2	1	1
+Sysmon ID 26	0	0	0	0	0	0	0	0	0	0		TEC-005	0	1		Ruido/FP	2	1	1	1
+PowerShell 4104	4	0	0	0	0	4	5	2	1	16		TEC-006	1	0		Escala: 0=no acreditado; 1=parcial/contextual; 2=acreditado. La salida externa se evalúa aparte.				
+System 7045	0	0	0	0	4	0	0	0	0	4		TEC-007	0	1						
+												TEC-008	0	1						
+												TEC-009	0	0						
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+											Lectura metodológica: el volumen de alertas muestra intensidad de señal, no mayor cobertura. La matriz TEC × perfil y el heatmap de capacidades conservan visibilidad, detección, alerta, evidencia y FP como dimensiones distintas.									
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				

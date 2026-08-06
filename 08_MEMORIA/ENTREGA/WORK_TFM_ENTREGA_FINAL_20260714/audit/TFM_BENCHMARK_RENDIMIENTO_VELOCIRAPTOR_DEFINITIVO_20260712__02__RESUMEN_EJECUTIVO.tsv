@@ -1,0 +1,18 @@
+KPI	Valor	Observaciones
+runs totales	9	Esperado: 9
+runs validos	9	9/9
+escenarios	3	BASELINE_NO_VR, VR_IDLE, VR_TEC_RUNNER
+repeticiones por escenario	3/3	{"BASELINE_NO_VR":3,"VR_IDLE":3,"VR_TEC_RUNNER":3}
+CPU media BASELINE_NO_VR	0	%
+CPU media VR_IDLE	0	%
+CPU media VR_TEC_RUNNER	0.95	%
+RAM media BASELINE_NO_VR	0	MB
+RAM media VR_IDLE	57.48	MB
+RAM media VR_TEC_RUNNER	57.42	MB
+pico CPU cliente VR	54	%
+pico RAM cliente VR	57.97	MB
+duracion media BASELINE_NO_VR	182.69	segundos
+duracion media VR_IDLE	181.57	segundos
+duracion media VR_TEC_RUNNER	315.6	segundos
+estado global	APTO	Precheck sin fallos criticos
+observaciones	RunnerStillRunningAtEnd=True en VR_TEC_RUNNER	WARN no bloqueante

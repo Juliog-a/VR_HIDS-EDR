@@ -1,0 +1,50 @@
+{
+    "validated_at":  "2026-07-14T19:51:36.9709043+02:00",
+    "input":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\ENTREGABLE\\ENTREGA_FINAL_EXCELES_TFM\\TFM_ENTREGA_FINAL.docx",
+    "sha256":  "7C9D5C42FBEB3F8B074930A60FBE46BC4FD44026050B03C3094B106782635258",
+    "opened_no_repair_dialog":  true,
+    "read_only":  true,
+    "word_version":  "16.0",
+    "word_build":  "16.0.20131",
+    "compatibility_mode":  15,
+    "pages":  198,
+    "words":  31913,
+    "word_tables":  104,
+    "inline_shapes":  71,
+    "floating_shapes":  9,
+    "sections":  3,
+    "fields":  759,
+    "seq_tables":  68,
+    "seq_figures":  52,
+    "seq_code":  32,
+    "tables_of_contents":  1,
+    "tables_of_figures":  3,
+    "comments":  0,
+    "revisions":  0,
+    "key_controls":  {
+                         "custom_9_of_9":  true,
+                         "client_event_379":  true,
+                         "p1_19":  true,
+                         "p2_118":  true,
+                         "p3_109":  true,
+                         "p4_133":  true,
+                         "fp_10_of_10":  true,
+                         "fp_zero":  true,
+                         "hayabusa_3_of_9":  true,
+                         "wazuh_base_3_of_9":  true,
+                         "wazuh_custom_4_of_9":  true,
+                         "etw_inconclusive":  true,
+                         "tracknetwork_limit":  false,
+                         "http_runner":  true,
+                         "definitive_visibility_excel":  true,
+                         "definitive_benchmark_excel":  true
+                     },
+    "suspicious":  [
+                       "missing_control:tracknetwork_limit"
+                   ],
+    "pdf_exported":  true,
+    "pdf_path":  "C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\WORK_TFM_ENTREGA_FINAL_20260714\\tmp\\pdfs\\TFM_ENTREGA_FINAL_VALIDATION.pdf",
+    "forced_process_cleanup":  [
+
+                               ]
+}
