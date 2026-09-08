@@ -16,7 +16,7 @@ excepción de conversión `Generic.List` y no se escribió el summary global.
 La repetición `TEC_20260619_FINAL02` debe usar exclusivamente:
 
 ```text
-03_RUNNERS\TFM_Run_All_TEC_Tests_v6_PATCHED_4104.ps1
+03_RUNNERS\validate\TFM_Run_All_TEC_Tests_v6_PATCHED_4104.ps1
 ```
 
 Para desplegar el parche sin reutilizar el bundle anterior, ejecutar en host:
@@ -101,11 +101,11 @@ En la GUI, guardar/exportar primero la configuración actual. Después importar 
 confirmar exactamente estos ficheros de la VM:
 
 ```text
-C:\Users\seguridad\Desktop\TFM\01_ARTIFACTS\candidate\last_version\Custom.TFM.HIDS.P1.Critical.Priority.Event_v1.yaml
-C:\Users\seguridad\Desktop\TFM\01_ARTIFACTS\candidate\Custom.TFM.HIDS.P2.High.Forensic.Event_v1.yaml
-C:\Users\seguridad\Desktop\TFM\01_ARTIFACTS\candidate\Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1.yaml
-C:\Users\seguridad\Desktop\TFM\01_ARTIFACTS\candidate\Custom.TFM.HIDS.P4.Low.Basic_v2.yaml
-C:\Users\seguridad\Desktop\TFM\01_ARTIFACTS\candidate\last_version\Custom.TFM.HIDS.Router.JSONL.Discord.SOC_v3.yaml
+C:\Users\seguridad\Desktop\TFM\01_ARTIFACTS\validated\Custom.TFM.HIDS.P1.Critical.Priority.Event_v1.yaml
+C:\Users\seguridad\Desktop\TFM\01_ARTIFACTS\validated\Custom.TFM.HIDS.P2.High.Forensic.Event_v1.yaml
+C:\Users\seguridad\Desktop\TFM\01_ARTIFACTS\validated\Custom.TFM.HIDS.P3.Medium.Behavioral.Event_v1.yaml
+C:\Users\seguridad\Desktop\TFM\01_ARTIFACTS\validated\Custom.TFM.HIDS.P4.Low.Basic_v2.yaml
+C:\Users\seguridad\Desktop\TFM\01_ARTIFACTS\validated\Custom.TFM.HIDS.Router.JSONL.Discord.SOC_v3.yaml
 ```
 
 Configurar Client Event Monitoring:

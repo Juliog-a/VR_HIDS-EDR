@@ -1,7 +1,0 @@
-{
-    "generated_at":  "2026-07-14T14:25:13.4709430+02:00",
-    "message":  "No se encuentra ninguna sobrecarga para \"SelectNodes\" y el número de argumentos \"2\".",
-    "exception_type":  "System.Management.Automation.MethodException",
-    "position":  "En C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\WORK_TFM_ENTREGA_FINAL_20260714\\audit\\Audit-WordCandidates-Fast.ps1: 123 Carácter: 32\r\n+ ...  ($style in @($stylesXml.SelectNodes(\u0027//w:style[@w:type=\"paragraph\"]\u0027 ...\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-    "script_stack":  "en Get-OpenXmlAudit, C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\WORK_TFM_ENTREGA_FINAL_20260714\\audit\\Audit-WordCandidates-Fast.ps1: línea 123\r\nen \u003cScriptBlock\u003e, C:\\Users\\julio\\Desktop\\TFM\\08_MEMORIA\\WORK_TFM_ENTREGA_FINAL_20260714\\audit\\Audit-WordCandidates-Fast.ps1: línea 342"
-}

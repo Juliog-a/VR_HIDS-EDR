@@ -26,7 +26,7 @@ if ($CampaignId -notmatch '^BENCH_[A-Za-z0-9_-]+$') {
 }
 
 $root = Get-CRProjectRoot -RequestedRoot $ProjectRoot -PackageRoot $packageRoot
-$benchmark = Join-Path $root '03_RUNNERS\TFM_Benchmark_VR_Resource_Usage_v1.ps1'
+$benchmark = Join-Path $root '03_RUNNERS\validate\TFM_Benchmark_VR_Resource_Usage_v1.ps1'
 $loadRunner = Join-Path $packageRoot 'support\TFM_Benchmark_TEC_Load_v1.ps1'
 $campaignRoot = Join-Path $packageRoot ("OUTPUT\BENCHMARK\{0}" -f $CampaignId)
 if ((Test-Path -LiteralPath $campaignRoot) -and @(Get-ChildItem -LiteralPath $campaignRoot -Force).Count -gt 0) {

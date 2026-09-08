@@ -5,7 +5,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $packageRoot = Split-Path -Parent $PSScriptRoot
 $projectRoot = Split-Path -Parent $packageRoot
-$runner = Join-Path $projectRoot '03_RUNNERS\TFM_Run_All_TEC_Tests_v6_PATCHED_4104.ps1'
+$runner = Join-Path $projectRoot '03_RUNNERS\validate\TFM_Run_All_TEC_Tests_v6_PATCHED_4104.ps1'
 $basePath = Join-Path $projectRoot '01_ACTIVE_TESTS\Pruebas'
 if (-not (Test-Path -LiteralPath $runner -PathType Leaf)) {
     throw "No existe runner TEC v6 patched: $runner"

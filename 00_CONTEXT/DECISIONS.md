@@ -1,6 +1,13 @@
 # DECISIONS
 
-Actualizado: 2026-07-13 18:27 CEST.
+Actualizado: 2026-09-08 09:58 CEST.
+
+## D-FINAL-027 - Fuentes canónicas tras la limpieza
+
+El paquete de repetición controlada referencia exclusivamente artifacts en
+`01_ARTIFACTS/validated`, scripts auxiliares en `02_SCRIPTS/validated` y
+runners específicos en `03_RUNNERS/validate`. Las copias `candidate` y los
+runners de raíz reemplazados no son fuentes canónicas.
 
 Este fichero contiene solo decisiones metodológicas vigentes. La cronología
 histórica previa se ha archivado en `00_CONTEXT/OLD_CONTEXT_USELESS`.
@@ -112,6 +119,7 @@ La validación experimental corresponde al autor.
 
 Los artifacts públicos se interpretan por capacidad demostrada, no por nombre ni por volumen de filas.
 
+- Las seis campañas públicas ejecutadas quedan cerradas.
 - ProcessCreation, ServiceCreation, SysmonLogForward y TrackNetwork aportan visibilidad o evidencia forense según el caso.
 - ServiceCreation 7045 acredita creación observada; no atribuye actividad maliciosa por sí solo.
 - Hayabusa Monitoring CH puede acreditar detección por coincidencia Sigma; la cobertura específica final es 3/9.
@@ -119,9 +127,12 @@ Los artifacts públicos se interpretan por capacidad demostrada, no por nombre n
 
 ## D-FINAL-014 - ETW
 
-La campaña `Windows.ETW.Monitoring` queda `NO CONCLUYENTE`.
+La campaña `Windows.ETW.Monitoring` queda `CERRADA` y `CONCLUYENTE`.
 
-El resultado cero no se clasifica como negativo válido porque no se preservaron runner, log/summary TEC ni manifiesto de parámetros. Tampoco se concluye que ETW no funcione.
+En las ventanas ejecutadas produjo 0 filas TEC, 0 filas FP, 0 detecciones
+específicas y 0 alertas. Se clasifica como resultado negativo concluyente en la
+configuración evaluada. Este resultado no demuestra que ETW ni el artifact
+fallen con carácter general y no se extrapola a configuraciones no ejecutadas.
 
 ## D-FINAL-015 - TrackNetwork y salida HTTP
 
@@ -181,3 +192,101 @@ El maestro válido es la copia actual de `08_MEMORIA/ENTREGABLE`, respaldada ant
   `CURRENT_TASK.md`.
 - El informe de validación permanece fuera de la carpeta de subida.
 - Estado documental y técnico: `APTO PARA ENTREGA`.
+
+## D-FINAL-021 - Interpretación defendible del impacto en disco
+
+El capítulo VII separa obligatoriamente dos niveles de medición:
+
+- Los contadores de E/S del proceso cliente son la única métrica directamente
+  atribuible al agente. El dataset registra 0 B/s en 284/284 filas
+  `CLIENT_SERVICE`; este resultado describe el contador y el muestreo, pero no
+  demuestra ausencia física absoluta de acceso a disco.
+- `System_Disk_BytesSec` representa actividad global del sistema. Su incremento
+  durante `VR_TEC_RUNNER` incluye la carga del runner, Windows, servicios,
+  sistema de archivos y cachés; por tanto, no se atribuye exclusivamente a
+  Velociraptor.
+
+La conclusión permitida es que el dataset no acredita una sobrecarga de disco
+cuantificable y atribuible al cliente. Una futura campaña específica deberá usar
+contadores acumulativos por PID y, si procede, ETW/WPA o instrumentación
+equivalente.
+
+## D-FINAL-022 - Relación detección / coste
+
+La relación detección/coste se formula como síntesis de dos experimentos
+independientes, no como cociente entre unidades incompatibles.
+
+- El Excel de visibilidad acredita cobertura, `CLIENT_EVENT`, FP y Wazuh; no
+  acredita CPU, RAM ni E/S.
+- El Excel de benchmark acredita coste operativo del cliente; no acredita
+  cobertura, calidad de detección, FP ni salida externa.
+- El balance observado para Velociraptor custom es favorable dentro del
+  laboratorio: 9/9 técnicas junto con CPU media del 0,95 % bajo runner y
+  memoria próxima a 57 MB.
+- Esta lectura no demuestra superioridad universal, coste nulo ni coste por
+  alerta, técnica, artifact o perfil.
+- Wazuh se compara solo por cobertura —base 3/9, custom 4/9 y unión
+  complementaria 7/9— porque no existe un benchmark homólogo de recursos.
+- Las 379 filas `CLIENT_EVENT` incluyen emisiones repetidas y no son 379
+  incidentes únicos.
+- Los 10/10 escenarios FP OK y 0 hits reconciliados se limitan a la campaña
+  ejecutada; las 82 filas no reconciliadas permanecen excluidas.
+
+## D-FINAL-023 - Dictamen previo a entrega sobre los originales del 24/08/2026
+
+- La revisión de entrega se ancla a los hashes de `08_MEMORIA/TFM.docx`,
+  `TFM_BENCHMARK_RENDIMIENTO.xlsx` y
+  `Analisis_Tecnicas_TFM_Velociraptor.xlsx` registrados en la sesión
+  `20260824_2127`.
+- El dictamen aplicable a ese conjunto es `62/100 — NO ENTREGAR TODAVÍA`.
+- La decisión se fundamenta en contradicciones verificables de preguntas de
+  investigación, artifacts públicos, salida externa, Sysmon 26, filas FP,
+  cadencia de benchmark y validez de TEC-005.
+- Las afirmaciones no acreditadas no se corrigen por intuición: deben retirarse,
+  acotarse o marcarse `REQUIERE VERIFICACIÓN MANUAL`.
+- La validación experimental final corresponde al autor; Codex solo audita la
+  documentación y los datos disponibles.
+
+## D-FINAL-024 - Criterio de cierre del informe de última validación
+
+- El informe debe contener exactamente los mismos 66 hallazgos en DOCX y PDF.
+- El PDF se considera maquetado cuando sus 39 páginas se han renderizado y
+  revisado sin recortes, solapes ni objetos fuera de margen.
+- Los originales no se modifican; cualquier corrección posterior se realizará
+  sobre copias de trabajo o nuevas versiones derivadas autorizadas.
+
+## D-FINAL-025 - Enriquecimiento no destructivo del Excel de visibilidad
+
+El libro `Analisis_Tecnicas_TFM_Velociraptor.xlsx` prevalece como fuente de
+verdad para el enriquecimiento solicitado el 27/08/2026.
+
+- Los otros tres Excel de la carpeta se usan solo como contraste de estructura,
+  visualización y navegación.
+- No se recuperan hojas retiradas del maestro cuando puedan contener material
+  histórico, duplicado o contradictorio.
+- Los gráficos nuevos se alimentan mediante fórmulas desde hojas canónicas del
+  maestro; no incorporan cifras antiguas hardcodeadas.
+- El resultado se guarda exclusivamente como una copia nueva
+  `Analisis_Tecnicas_TFM_Velociraptor_2.xlsx`.
+- Las validaciones `#REF!` preexistentes se conservan y se documentan; no se
+  corrigen sin orden expresa porque forman parte del maestro recibido.
+
+## D-FINAL-026 - Consolidación final del Excel de visibilidad
+
+La orden expresa del autor del 27/08/2026 autoriza reestructurar libremente la
+copia `_2.xlsx`, corregir las validaciones `#REF!` cuando sea seguro y crear una
+versión `FINAL.xlsx` sin modificar los cuatro Excel originales.
+
+- La fuente de verdad de datos sigue siendo
+  `Analisis_Tecnicas_TFM_Velociraptor.xlsx`.
+- La estructura final se reduce de 30 a 17 hojas; solo se mantienen funciones
+  metodológicas o analíticas diferenciadas.
+- Las hojas históricas o preparatorias se fusionan únicamente cuando su
+  contenido único queda preservado; las redundantes se eliminan.
+- El dashboard utiliza cuatro gráficos alimentados por datos canónicos del
+  propio libro; el volumen de eventos no se interpreta como cobertura.
+- En `05_Publicos_Control` se reconstruyen categorías desde valores existentes;
+  en `04_Publicos_Matriz` se retira la validación rota de campos descriptivos
+  porque no existe un dominio fiable que permita reconstruirla.
+- D-FINAL-025 queda superada únicamente respecto a la conservación de esas
+  validaciones: la nueva orden expresa autoriza su resolución.

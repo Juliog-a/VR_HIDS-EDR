@@ -1,5 +1,5 @@
     User: admin
-    Password: zrGdN2LKQN*6i7Tk6sY8BKNb1*QlEcuB
+    Password: <REDACTED>
 
 
 
@@ -28,6 +28,6 @@ Status : Running
 
 Comprobar conectividad:
 
-Test-NetConnection 192.168.1.145 -Port 1514
-Test-NetConnection 192.168.1.145 -Port 1515
-Test-NetConnection 192.168.1.145 -Port 443
+Test-NetConnection <HOST_LAB> -Port 1514
+Test-NetConnection <HOST_LAB> -Port 1515
+Test-NetConnection <HOST_LAB> -Port 443

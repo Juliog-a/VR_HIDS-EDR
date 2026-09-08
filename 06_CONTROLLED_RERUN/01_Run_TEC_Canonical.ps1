@@ -19,7 +19,7 @@ if (-not $IConfirmMonitoringConfigured) {
 
 $root = Get-CRProjectRoot -RequestedRoot $ProjectRoot -PackageRoot $packageRoot
 $basePath = Join-Path $root '01_ACTIVE_TESTS\Pruebas'
-$runner = Join-Path $root '03_RUNNERS\TFM_Run_All_TEC_Tests_v6_PATCHED_4104.ps1'
+$runner = Join-Path $root '03_RUNNERS\validate\TFM_Run_All_TEC_Tests_v6_PATCHED_4104.ps1'
 $campaignRoot = Join-Path $packageRoot ("OUTPUT\TEC\{0}" -f $CampaignId)
 if ((Test-Path -LiteralPath $campaignRoot) -and @(Get-ChildItem -LiteralPath $campaignRoot -Force).Count -gt 0) {
     throw "La campaña ya existe y no se sobrescribe: $campaignRoot"

@@ -1,8 +1,167 @@
 # PROJECT_STATE
 
-Actualizado: 2026-08-05 16:27 CEST.
+Actualizado: 2026-09-08 09:58 CEST.
+
+## Limpieza final del repositorio — completada
+
+- Eliminados 5.217 archivos `DELETE` y liberados 1.236.425.453 bytes.
+- `KEEP`, `REVIEW` y `.git` preservados.
+- Entregables finales reunidos en `08_MEMORIA/ENTREGA_TFM_Julgarrei`.
+- Rutas del paquete reproducible reparadas hacia fuentes canónicas validadas.
+- Self-test: PASS (17 scripts, 9 hashes, matriz TEC 9/9).
+- Archivos actuales sin webhooks, credenciales, tokens ni claves privadas publicables.
+- Informe: `CLEANUP_REPORT.md`.
+
+---
+
+Actualizado: 2026-09-07 12:00 CEST.
+
+## Limpieza final del repositorio — en curso
+
+- Inventario previo: 6.889 archivos, 681 directorios y 125,626 GiB fuera de
+  `.git`; 127 GiB pertenecen a la VM local ignorada.
+- Clasificación propuesta: 342 archivos `KEEP`, 5.217 `DELETE` y 1.330
+  `REVIEW`; estos últimos son material local no publicable conservado por
+  precaución.
+- Duplicados SHA-256: 1.546 grupos antes de la limpieza.
+- Se han neutralizado credenciales, webhooks, rutas personales e IP privadas
+  en los entregables y fuentes de benchmark afectados, sin cambiar métricas ni
+  fórmulas.
+- La eliminación de 5.217 archivos está pendiente de confirmación explícita
+  tras el bloqueo preventivo de la plataforma.
+- No se ha ejecutado `git add`, commit ni push.
+- Existe riesgo de secretos en el historial Git; no se ha reescrito ni borrado
+  el historial.
+- Detalle: `00_CONTEXT/SESSION_LOGS/session_20260907_1200.md`.
+
+---
+
+Actualizado: 2026-09-02 09:58 CEST.
+
+## Presentación de defensa TFM — 2026-09-02 09:58 CEST
+
+- Nuevo entregable:
+  `08_MEMORIA/ENTREGA/DEFENSA_TFM_Julio_Garcia_Amorena.pptx`.
+- 12 diapositivas 16:9, diseño académico y visual, con notas del orador en
+  12/12 diapositivas y duración prevista próxima a 11 minutos.
+- Contenido limitado a `TFM.docx`,
+  `Analisis_Tecnicas_TFM_Velociraptor.xlsx` y
+  `TFM_BENCHMARK_RENDIMIENTO.xlsx` de `08_MEMORIA`.
+- Las rutas equivalentes de `08_MEMORIA/ENTREGA_TFM_Julgarrei` son
+  binariamente idénticas; las rutas solicitadas bajo `08_MEMORIA/ENTREGA` no
+  existían al iniciar la sesión.
+- QA: reapertura PowerPoint sin reparación, revisión visual 12/12 a
+  1920x1080, 0 XML inválidos, 0 vínculos externos y 0 mojibake.
+- SHA-256:
+  `0F4851DCE2783E826C5E008D1421961FD07B430AEA4C1C42E81D631F12208891`.
+- Se preserva la semántica: 379 filas `CLIENT_EVENT`, no alertas únicas;
+  ETW como telemetría sin detección específica; TrackNetwork como contexto;
+  Router/JSONL/Discord como salida; Velociraptor no se presenta como EDR.
+- Detalle: `00_CONTEXT/SESSION_LOGS/session_20260902_0958.md`.
+
+## Excel de visibilidad final consolidado — 2026-08-27 16:01 CEST
+
+- Entregables actualizados:
+  `Analisis_Tecnicas_TFM_Velociraptor_2.xlsx` y
+  `Analisis_Tecnicas_TFM_Velociraptor_FINAL.xlsx`.
+- Estructura final: 17 hojas, 22 tablas y 4 gráficos; los dos ficheros son
+  binariamente idénticos.
+- Arquitectura reorganizada por metodología, evaluación, resultados públicos,
+  resultados custom, FP, alertabilidad, gaps, Wazuh y trazabilidad.
+- Las dos validaciones `#REF!` heredadas fueron corregidas o retiradas de forma
+  segura, sin modificar resultados experimentales ni inventar categorías.
+- QA: 25/25 PASS, 33 hipervínculos internos, 0 vínculos externos, 0 errores de
+  celda, 0 XML inválidos y 0 partes de recuperación.
+- SHA-256:
+  `93F74E4BC7F2EC371C6342E5191F1068E500620505456A7733EA601BF78B6F82`.
+- Detalle: `00_CONTEXT/SESSION_LOGS/session_20260827_1601.md`.
+
+## Excel de visibilidad enriquecido — 2026-08-27 10:44 CEST
+
+- Nuevo entregable no destructivo:
+  `08_MEMORIA/Excel_visibilidad_FP/Analisis_Tecnicas_TFM_Velociraptor_2.xlsx`.
+- Fuente de verdad preservada:
+  `Analisis_Tecnicas_TFM_Velociraptor.xlsx`; los otros tres libros se usaron
+  solo como contraste de estructura y presentación.
+- Estructura final: 30 hojas, 15 tablas y 15 gráficos.
+- Añadidos: dashboard ampliado con cuatro gráficos enlazados, guía de lectura,
+  índice navegable completo y numeración de las 30 hojas.
+- No se reintrodujeron `09_Benchmark_Plan`, `99_Listas`, `FP_HITS` ni
+  `DISCREPANCIAS`.
+- QA: 49.339 celdas/fórmulas preservadas con 0 diferencias, 0 XML inválidos,
+  15/15 gráficos con series y revisión visual de 5/5 páginas de presentación.
+- Incidencia heredada: dos validaciones `#REF!` del maestro en
+  `04_Control_Publicos` y `05_Matriz_Resultados`; no se generaron errores
+  nuevos.
+- SHA-256:
+  `D7D08CB61FB316B7F15F374C87374D61D31080537D3860FB5752A47BA91C8F1E`.
+- Detalle: `00_CONTEXT/SESSION_LOGS/session_20260827_1044.md`.
+
+## Rectificación ETW y control de campañas públicas — 2026-08-26 14:37 CEST
+
+- Criterio vigente: `Windows.ETW.Monitoring` tiene campaña `CERRADA` y
+  `CONCLUYENTE`.
+- Resultado observado: 0 filas TEC, 0 filas FP, 0 detecciones específicas y
+  0 alertas en la configuración ejecutada.
+- Interpretación: resultado negativo concluyente limitado a esa configuración;
+  no demuestra que ETW ni el artifact fallen con carácter general.
+- Las seis campañas de artifacts públicos están cerradas: cinco acreditan
+  visibilidad positiva y ETW aporta el resultado negativo concluyente anterior.
+- Solo Hayabusa Monitoring CH acredita detección específica: 3/9 técnicas.
+- Se actualizaron `08_MEMORIA/Ultima_validacion/Ultima_iteracion.docx`, su PDF y
+  `ULTIMAS_CORRECCIONES.docx` para imponer este criterio en REV-002, REV-013,
+  REV-027 y el checklist final.
+- Los maestros `08_MEMORIA/TFM.docx` y
+  `08_MEMORIA/Analisis_Tecnicas_TFM_Velociraptor.xlsx` todavía requieren que el
+  autor aplique esas sustituciones. El benchmark no contiene una valoración de
+  cierre ETW que corregir.
+- Detalle: `00_CONTEXT/SESSION_LOGS/session_20260826_1437.md`.
+
+## Guía de aplicación de correcciones — 2026-08-25 14:57 CEST
+
+- Entregable: `08_MEMORIA/Ultima_validacion/ULTIMAS_CORRECCIONES.docx`.
+- Alcance: 66/66 hallazgos de `Ultima_iteracion.pdf`, de `REV-001` a
+  `REV-066`, con localización y corrección concreta.
+- Formato: 14 páginas, agrupación por prioridades y estilo visual coherente con
+  el informe de auditoría.
+- QA: secuencia completa, auditoría OOXML, 0 incidencias altas de accesibilidad
+  y revisión visual 14/14.
+- SHA-256: `CED832C236145E12AAF1B6CF7D26B7251976AC7D57C71A320D8763F0893D9EC8`.
+- `08_MEMORIA/TFM.docx` y `Ultima_iteracion.pdf` permanecen sin cambios.
+- Estado: guía cerrada; aplicación de correcciones pendiente del autor sobre
+  una copia de trabajo.
+- Detalle: `00_CONTEXT/SESSION_LOGS/session_20260825_1457.md`.
 
 ## Estado global
+
+Revisión cohesionada del capítulo VII cerrada el 18/08/2026:
+
+- Entregable vigente para revisión:
+  `08_MEMORIA/ENTREGA/TFM_CAPITULO_7_BENCHMARK_RENDIMIENTO_CERRADO_7_6_COHESIONADO.docx`.
+- El original de 12 páginas se conserva sin cambios.
+- 15 páginas, 3.936 palabras, 26 encabezados, 10 tablas y 5 figuras.
+- 7.5 sintetiza exclusivamente el coste operativo y 7.6 relaciona detección y
+  coste sin mezclar unidades ni experimentos.
+- Conclusión: balance favorable observado para Velociraptor custom en el
+  laboratorio —9/9 técnicas, CPU media 0,95 % bajo runner y memoria próxima a
+  57 MB—, sin afirmar superioridad universal ni eficiencia frente a Wazuh.
+- Wazuh se compara por cobertura: base 3/9, custom 4/9 y unión complementaria
+  7/9; no existe benchmark homólogo de recursos.
+- QA estructural, geometría, campos, accesibilidad y privacidad: `PASS`.
+- Limitación de QA: render visual no disponible por falta de `pdf2image` y
+  bloqueo de la exportación PDF de Word reproducible también con el original.
+- Detalle: `00_CONTEXT/SESSION_LOGS/session_20260818_1416.md`.
+
+Capítulo VII independiente cerrado el 17/08/2026:
+
+- `08_MEMORIA/ENTREGA/TFM_CAPITULO_7_BENCHMARK_RENDIMIENTO_CERRADO.docx`.
+- Estado documental: `APTO` para revisión/integración posterior por el autor.
+- Alcance: solo capítulo VII; no sustituye ni modifica `08_MEMORIA/TFM.docx`.
+- Extensión: 12 páginas, 9 tablas y 5 figuras.
+- QA: accesibilidad 0 incidencias; geometría 9/9 tablas; revisión visual 12/12.
+- CPU, memoria y disco ampliados con separación explícita entre métricas de
+  proceso y actividad contextual del sistema.
+- Detalle: `00_CONTEXT/SESSION_LOGS/session_20260817_1152.md`.
 
 Estado de los entregables Excel:
 
@@ -18,7 +177,8 @@ Ajuste final quirúrgico del libro de visibilidad cerrado el 13/07/2026:
 
 - Gráfico de capas limitado a Visibilidad, Detección y Alerta RT; salida externa separada de CLIENT_EVENT.
 - Detección específica acreditada: Velociraptor custom 9/9, Hayabusa CH 3/9, Wazuh base 3/9 y Wazuh custom 4/9.
-- Seis campañas públicas: 5 positivas y 1 no concluyente; CHM no ejecutada.
+- Seis campañas públicas cerradas: 5 con visibilidad positiva y ETW con
+  resultado negativo concluyente; CHM no ejecutada.
 - TrackNetwork acredita visibilidad de conexión; el HTTP 200 de TEC-009 se atribuye solo al runner independiente.
 - Discord, HTTP, Router, SERVER_EVENT y transporte quedan separados de los detectores CLIENT_EVENT.
 - Valores exactos `Pendiente`: 0 al abrir el maestro manual vigente y 0 al cerrar la integración Wazuh base/custom.
@@ -125,7 +285,9 @@ TEC-009:
 - Hayabusa Monitoring CH: 185 matches canónicos, 7 high, 0 critical y detección específica 3/9.
 - Hayabusa FP: 4 high, 3 eventos subyacentes y un caso benigno FP-003.
 - Hayabusa CHM: no ejecutada; no existe campaña Medium separada.
-- ETW: no concluyente por falta de runner/log/summary TEC y manifiesto de configuración.
+- ETW: campaña cerrada y concluyente; 0 filas TEC, 0 filas FP, 0 detecciones
+  específicas y 0 alertas en la configuración evaluada. El resultado no se
+  extrapola a otras configuraciones.
 - TrackNetwork: 128 eventos canónicos; tres filas a 192.168.1.129:8088 con PID=0/ProcInfo vacío; sin atribución fiable.
 - TEC-009 independiente: HTTP 200, UploadSucceeded=True, ZIP 6.245 B y SHA-256 coincidente.
 
@@ -329,3 +491,50 @@ No leer por defecto:
   revisión. No se recreó ni sobrescribió.
 - Estado de coherencia documental: `APTO`.
 - Detalle: `00_CONTEXT/SESSION_LOGS/session_20260805_1923.md`.
+
+## Revisión final de los originales actuales — 2026-08-24 21:27 CEST
+
+- Fuente revisada: `08_MEMORIA/TFM.docx` y los dos Excel maestros indicados por
+  el autor, todos en modo de solo lectura.
+- Informe definitivo: `08_MEMORIA/Ultima_validacion/Ultima_iteracion.docx` y
+  `Ultima_iteracion.pdf`.
+- Resultado: `62/100`; estado `NO ENTREGAR TODAVÍA`.
+- Hallazgos: 66 cambios trazables (`REV-001`–`REV-066`), con 16 críticos.
+- Control: DOCX/PDF equivalentes, 39 páginas, 66/66 REV y revisión visual 39/39.
+- Los hashes de los tres originales permanecen sin cambios.
+- Este dictamen se aplica al `08_MEMORIA/TFM.docx` actual de 24/08/2026 y no
+  reescribe el estado histórico de paquetes derivados anteriores.
+- Detalle: `00_CONTEXT/SESSION_LOGS/session_20260824_2127.md`.
+
+## Auditoría de prioridad del maestro Excel — 2026-08-28 09:12 CEST
+
+- Libros auditados en modo de solo lectura:
+  `08_MEMORIA/Analisis_Tecnicas_TFM_Velociraptor.xlsx` y
+  `08_MEMORIA/Analisis_Tecnicas_TFM_Velociraptor_FINAL.xlsx`.
+- Las métricas experimentales principales permanecen alineadas con el maestro.
+- Estado de trazabilidad: corrección pendiente. Se localizaron 25 celdas en las
+  que cuatro nombres/rutas de CSV reales fueron sustituidos indebidamente por
+  nombres derivados de hojas; las rutas introducidas no existen.
+- Las divergencias ID 26 y 521/516 proceden de contradicciones internas del
+  propio maestro; FINAL aplicó las evidencias específicas y definitivas: ID 26
+  no observado y 516 filas públicas.
+- Los Excel no fueron modificados durante esta auditoría.
+- Detalle: `00_CONTEXT/SESSION_LOGS/session_20260828_0912.md`.
+
+## Última validación independiente del Excel de visibilidad — 2026-08-28 13:28 CEST
+
+- Archivo auditado sin modificar:
+  `08_MEMORIA/Ultima_validacion/Analisis_Tecnicas_TFM_Velociraptor.xlsx`.
+- Dictamen: `NO-GO — CORREGIR ANTES DE ENTREGAR`; nota `6,2/10`.
+- Integridad positiva: 0 errores de celda, 0 XML inválidos, 0 vínculos
+  externos, 0 series rotas y 238/238 hashes de evidencia coincidentes.
+- Coherencia positiva: ETW 143/16 y POSITIVO, ID 26=0/no observado, TEC-009
+  correctamente estratificada, custom 379 filas/9 de 9, FP=0 y Wazuh
+  base/custom 3/9 y 4/9.
+- Bloqueantes: referencias internas `ChatGPT` en el tema OOXML, 238 fechas
+  mostradas como seriales y maquetación de impresión no finalizada con 241
+  páginas.
+- SHA-256 antes y después:
+  `0EA74CBF5FEF395662D4C5B28BDEE4E3E0BFDEB59284271B90E23DFBCA1C99E5`.
+- El benchmark no formó parte de esta revisión.
+- Detalle: `00_CONTEXT/SESSION_LOGS/session_20260828_1328.md`.

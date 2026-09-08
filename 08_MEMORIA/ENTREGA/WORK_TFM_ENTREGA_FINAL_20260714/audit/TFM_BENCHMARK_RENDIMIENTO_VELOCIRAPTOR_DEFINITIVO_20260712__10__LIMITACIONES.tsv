@@ -1,8 +1,0 @@
-Limitacion	Impacto
-Laboratorio Windows 10 virtualizado	Las mediciones reflejan esta VM/laboratorio, no una poblacion de endpoints productivos.
-Metricas relativas	CPU/RAM no deben presentarse como medida universal extrapolable directamente.
-Foco en agente cliente Velociraptor	SERVER_GUI queda excluido del calculo principal.
-RunnerStillRunningAtEnd	Se conserva como WARN no bloqueante porque la ventana de muestreo del cliente existe y es valida.
-No mide deteccion	El benchmark no evalua calidad de deteccion, alertas, evidencia ni falsos positivos.
-Numero limitado de repeticiones	Tres repeticiones por escenario; adecuado para TFM, limitado para inferencia estadistica amplia.
-Ruido residual del sistema operativo	Puede afectar a CPU/RAM observadas en una VM Windows.

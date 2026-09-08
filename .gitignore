@@ -15,6 +15,9 @@ Thumbs.db
 venv/
 __pycache__/
 *.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 # =========================
 # ISOS / MÁQUINAS / IMÁGENES GRANDES
@@ -34,6 +37,7 @@ __pycache__/
 *.tar
 *.tar.gz
 *.tgz
+!10_WAZUH/TFM_WAZUH_VISIBILIDAD_EVIDENCE.tar.gz
 
 # =========================
 # ONENOTE / BINARIOS DE NOTAS
@@ -59,6 +63,9 @@ upload_*.zip
 *.tmp
 *.bak
 *.old
+*.swp
+*.swo
+~$*
 99_REVIEW_CLEANUP_*/
 
 # =========================
@@ -76,11 +83,4 @@ Carpeta_Compartida_TFM/
 lab/
 05_LOGS/
 ultima_iteracion/
-~$*.docx
-~$*.xlsx
-*.tmp
-~$*.docx
-~$*.xlsx
-*.tmp
-
 tmp/

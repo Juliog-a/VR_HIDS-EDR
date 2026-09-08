@@ -12,7 +12,7 @@ $ErrorActionPreference = 'Stop'
 $packageRoot = $PSScriptRoot
 . (Join-Path $packageRoot 'lib\ControlledRerun.Common.ps1')
 $root = Get-CRProjectRoot -RequestedRoot $ProjectRoot -PackageRoot $packageRoot
-$receiver = Join-Path $root '02_SCRIPTS\candidate\receiver_tfm_v4.py'
+$receiver = Join-Path $root '02_SCRIPTS\validated\receiver_tfm_v4.py'
 $expectedHash = 'D61A86270EA822D2D4195E8C506738D9544D7964C23CB174D9F09EE52DD84CF6'
 if ((Get-CRSha256 -Path $receiver) -ne $expectedHash) {
     throw "Receiver ausente o con hash distinto: $receiver"

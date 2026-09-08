@@ -5,7 +5,7 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
-$runner = Join-Path $ProjectRoot '03_RUNNERS\TFM_Run_All_TEC_Tests_v6_PATCHED_4104.ps1'
+$runner = Join-Path $ProjectRoot '03_RUNNERS\validate\TFM_Run_All_TEC_Tests_v6_PATCHED_4104.ps1'
 $expectedHash = 'C023F8F7DC4D90977C4F6C76C8147A90C3558D62E14D9E1A265358DCDFF68367'
 if (-not (Test-Path -LiteralPath $runner -PathType Leaf)) {
     throw "No existe runner patched: $runner"
