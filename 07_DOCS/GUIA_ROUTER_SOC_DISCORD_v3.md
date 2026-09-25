@@ -64,7 +64,7 @@ DiscordWebhook=<pegar_webhook_al_desplegar>
 3. Confirmar que los Client Events anteriores estan activos en Label All.
 4. Activar `SOC_v3` como Server Event Monitoring.
 5. Limpiar o renombrar `soc_alerts.jsonl`.
-6. Ejecutar `TFM_Run_All_TEC_Tests_v6.ps1`.
+6. Ejecutar `03_RUNNERS/validate/TFM_Run_All_TEC_Tests_v6_PATCHED_4104.ps1`.
 7. Esperar 1-2 minutos tras terminar la campana.
 8. Comprobar perfiles, artifacts y tecnicas.
 9. Guardar JSONL, hash y capturas.

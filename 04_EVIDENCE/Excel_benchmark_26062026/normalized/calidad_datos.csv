@@ -1,5 +1,5 @@
 Check,Status,Evidence,Severity,Decision
-Fuente canonica XLSX disponible,OK,C:\Users\julio\Desktop\TFM\04_EVIDENCE\ENTREGA_MEMORIA_EXCELES_REGENERADOS\02_BENCHMARK_RENDIMIENTO_VALIDACION_DATOS_REGENERADO.xlsx,INFO,Debe existir; no se usa Analisis_Benchmark.xlsx como resultado definitivo.
+Fuente canonica XLSX disponible,OK,<RAIZ_TFM>\04_EVIDENCE\ENTREGA_MEMORIA_EXCELES_REGENERADOS\02_BENCHMARK_RENDIMIENTO_VALIDACION_DATOS_REGENERADO.xlsx,INFO,Debe existir; no se usa Analisis_Benchmark.xlsx como resultado definitivo.
 SchemaVersion 1.1 presente,OK,1.1,CRITICA,Todos los runs validos deben estar en schema 1.1.
 Exactamente 3 escenarios,OK,"{""BASELINE_NO_VR"":3,""VR_IDLE"":3,""VR_TEC_RUNNER"":3}",CRITICA,"Escenarios esperados: BASELINE_NO_VR, VR_IDLE, VR_TEC_RUNNER."
 3 repeticiones por escenario,OK,"{""BASELINE_NO_VR"":3,""VR_IDLE"":3,""VR_TEC_RUNNER"":3}",CRITICA,"Cada escenario debe tener REP_01, REP_02 y REP_03."

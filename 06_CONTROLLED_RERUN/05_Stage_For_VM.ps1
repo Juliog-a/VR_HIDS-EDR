@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [string]$DestinationRoot = 'C:\Users\julio\Desktop\TFM\Carpeta_Compartida_TFM\controlled_rerun_bundle'
+    [string]$DestinationRoot = "${PSScriptRoot}\..\Carpeta_Compartida_TFM\controlled_rerun_bundle"
 )
 
 Set-StrictMode -Version Latest

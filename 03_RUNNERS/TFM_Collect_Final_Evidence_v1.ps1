@@ -6,7 +6,7 @@ techniques and does not modify receiver, router, artifacts or attack scripts.
 #>
 
 param(
-    [string]$ProjectRoot = "C:\Users\julio\Desktop\TFM",
+    [string]$ProjectRoot = "${PSScriptRoot}\..",
     [string]$CampaignLogDir = "C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\Logs_Pruebas_TFM",
     [string]$Tec009Dir = "C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion",
     [string]$ReceiverIP = "192.168.1.129",

@@ -157,7 +157,7 @@ cd C:\Users\seguridad\Desktop\TFM\06_CONTROLLED_RERUN
 En el host:
 
 ```powershell
-cd C:\Users\julio\Desktop\TFM\06_CONTROLLED_RERUN
+cd <RAIZ_TFM>\06_CONTROLLED_RERUN
 .\08_Import_VM_Results.ps1 -TransferId "RERUN_20260619_FINAL02"
 ```
 

@@ -1,4 +1,4 @@
-cd C:\Users\julio\Desktop\TFM\02_SCRIPTS\candidate
+cd <RAIZ_TFM>\02_SCRIPTS\validated
 
 python .\receiver_tfm_v4.py `
   --host 0.0.0.0 `

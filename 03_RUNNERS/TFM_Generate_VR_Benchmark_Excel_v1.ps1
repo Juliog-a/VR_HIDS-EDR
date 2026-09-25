@@ -8,14 +8,14 @@ for traceability, but are not used for final client-agent conclusions.
 
 [CmdletBinding()]
 param(
-    [string]$HostBenchmarkDir = "C:\Users\julio\Desktop\TFM\05_LOGS\BENCHMARKS",
+    [string]$HostBenchmarkDir = "${PSScriptRoot}\..\05_LOGS\BENCHMARKS",
     [string]$VmBenchmarkDir = "C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\Logs_Pruebas_TFM\BENCHMARKS",
-    [string]$OutputXlsx = "C:\Users\julio\Desktop\TFM\VR_RESOURCE_BENCHMARK.xlsx",
-    [string]$SummaryTxt = "C:\Users\julio\Desktop\TFM\VR_RESOURCE_BENCHMARK_RESUMEN.txt",
-    [string]$ConclusionsMd = "C:\Users\julio\Desktop\TFM\VR_RESOURCE_BENCHMARK_CONCLUSIONES.md",
-    [string]$ContextMd = "C:\Users\julio\Desktop\TFM\00_CONTEXT\VR_RESOURCE_BENCHMARK_CONTEXT.md",
-    [string]$ReadmeMd = "C:\Users\julio\Desktop\TFM\05_LOGS\BENCHMARKS\README_BENCHMARKS.md",
-    [string]$HashFile = "C:\Users\julio\Desktop\TFM\SHA256SUMS_VR_RESOURCE_BENCHMARK.txt"
+    [string]$OutputXlsx = "${PSScriptRoot}\..\VR_RESOURCE_BENCHMARK.xlsx",
+    [string]$SummaryTxt = "${PSScriptRoot}\..\VR_RESOURCE_BENCHMARK_RESUMEN.txt",
+    [string]$ConclusionsMd = "${PSScriptRoot}\..\VR_RESOURCE_BENCHMARK_CONCLUSIONES.md",
+    [string]$ContextMd = "${PSScriptRoot}\..\00_CONTEXT\VR_RESOURCE_BENCHMARK_CONTEXT.md",
+    [string]$ReadmeMd = "${PSScriptRoot}\..\05_LOGS\BENCHMARKS\README_BENCHMARKS.md",
+    [string]$HashFile = "${PSScriptRoot}\..\SHA256SUMS_VR_RESOURCE_BENCHMARK.txt"
 )
 
 Set-StrictMode -Version 2.0

@@ -1,5 +1,5 @@
 param(
-    [string]$Root = "C:\Users\julio\Desktop\TFM"
+    [string]$Root = "${PSScriptRoot}\..\..\.."
 )
 
 $ErrorActionPreference = "Stop"

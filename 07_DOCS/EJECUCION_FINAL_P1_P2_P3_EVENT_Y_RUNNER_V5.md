@@ -21,7 +21,7 @@ Recogida de evidencia:
 En el host donde esta el receiver:
 
 ```powershell
-cd C:\Users\julio\Desktop\TFM\02_SCRIPTS\candidate
+cd <RAIZ_TFM>\02_SCRIPTS\candidate
 .\Start-TFMReceiver_v4.ps1
 ```
 
@@ -201,7 +201,7 @@ Exportar desde Velociraptor:
 Guardar en:
 
 ```text
-C:\Users\julio\Desktop\TFM\05_LOGS\FINAL_RUN_<timestamp>
+<RAIZ_TFM>\05_LOGS\FINAL_RUN_<timestamp>
 ```
 
 ## 11. Recoger evidencia local automatizada
@@ -209,9 +209,9 @@ C:\Users\julio\Desktop\TFM\05_LOGS\FINAL_RUN_<timestamp>
 En el host/proyecto:
 
 ```powershell
-cd C:\Users\julio\Desktop\TFM
+cd <RAIZ_TFM>
 .\03_RUNNERS\TFM_Collect_Final_Evidence_v1.ps1 `
-  -ProjectRoot "C:\Users\julio\Desktop\TFM" `
+  -ProjectRoot "<RAIZ_TFM>" `
   -CampaignLogDir "C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\Logs_Pruebas_TFM" `
   -Tec009Dir "C:\Users\seguridad\Desktop\TFM\01_ACTIVE_TESTS\Pruebas\TEC-009_Exfiltracion" `
   -ReceiverIP "192.168.1.129" `

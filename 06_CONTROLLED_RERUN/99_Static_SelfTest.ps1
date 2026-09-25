@@ -31,9 +31,9 @@ foreach($record in $csvManifest){
     }
 }
 
-$testMatrix = Join-Path $projectRoot '00_CONTEXT\TEST_MATRIX.md'
+$testMatrix = Join-Path $projectRoot '07_DOCS\TEST_MATRIX.md'
 if(-not (Test-Path -LiteralPath $testMatrix -PathType Leaf)){
-    $failures += 'Falta 00_CONTEXT/TEST_MATRIX.md'
+    $failures += 'Falta 07_DOCS/TEST_MATRIX.md'
 } else {
     $matrixText = Get-Content -LiteralPath $testMatrix -Raw -Encoding UTF8
     foreach($tec in (1..9 | ForEach-Object {'TEC-{0:D3}' -f $_})){

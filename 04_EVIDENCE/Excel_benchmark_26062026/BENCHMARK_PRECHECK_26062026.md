@@ -6,14 +6,14 @@ Decision: **APTO**
 
 ## Fuente canonica
 
-- C:\Users\julio\Desktop\TFM\04_EVIDENCE\ENTREGA_MEMORIA_EXCELES_REGENERADOS\02_BENCHMARK_RENDIMIENTO_VALIDACION_DATOS_REGENERADO.xlsx
+- <RAIZ_TFM>\04_EVIDENCE\ENTREGA_MEMORIA_EXCELES_REGENERADOS\02_BENCHMARK_RENDIMIENTO_VALIDACION_DATOS_REGENERADO.xlsx
 - Analisis_Benchmark.xlsx queda limitado a referencia historica/formato.
 
 ## Validaciones obligatorias
 
 | Check | Status | Evidence | Severity | Decision |
 | --- | --- | --- | --- | --- |
-| Fuente canonica XLSX disponible | OK | C:\Users\julio\Desktop\TFM\04_EVIDENCE\ENTREGA_MEMORIA_EXCELES_REGENERADOS\02_BENCHMARK_RENDIMIENTO_VALIDACION_DATOS_REGENERADO.xlsx | INFO | Debe existir; no se usa Analisis_Benchmark.xlsx como resultado definitivo. |
+| Fuente canonica XLSX disponible | OK | <RAIZ_TFM>\04_EVIDENCE\ENTREGA_MEMORIA_EXCELES_REGENERADOS\02_BENCHMARK_RENDIMIENTO_VALIDACION_DATOS_REGENERADO.xlsx | INFO | Debe existir; no se usa Analisis_Benchmark.xlsx como resultado definitivo. |
 | SchemaVersion 1.1 presente | OK | 1.1 | CRITICA | Todos los runs validos deben estar en schema 1.1. |
 | Exactamente 3 escenarios | OK | {"BASELINE_NO_VR":3,"VR_IDLE":3,"VR_TEC_RUNNER":3} | CRITICA | Escenarios esperados: BASELINE_NO_VR, VR_IDLE, VR_TEC_RUNNER. |
 | 3 repeticiones por escenario | OK | {"BASELINE_NO_VR":3,"VR_IDLE":3,"VR_TEC_RUNNER":3} | CRITICA | Cada escenario debe tener REP_01, REP_02 y REP_03. |
@@ -59,9 +59,9 @@ Decision: **APTO**
 
 | Tipo | Ambito | Detalle | Decision | Fuente |
 | --- | --- | --- | --- | --- |
-| WARN_NO_BLOQUEANTE | VR_TEC_RUNNER | RunnerStillRunningAtEnd=True en runs VR_TEC_RUNNER. | Se conserva como advertencia metodologica; no invalida el benchmark porque no afecta a CPU/RAM del cliente Velociraptor ya muestreadas. | C:\Users\julio\Desktop\TFM\06_CONTROLLED_RERUN\OUTPUT\BENCHMARK\BENCH_20260619_FINAL01\REP_01\VR_TEC_RUNNER\TFM_BENCH_VR_TEC_RUNNER_20260619_131620\summary.json \| C:\Users\julio\Desktop\TFM\06_CONTROLLED_RERUN\OUTPUT\BENCHMARK\BENCH_20260619_FINAL01\REP_02\VR_TEC_RUNNER\TFM_BENCH_VR_TEC_RUNNER_20260619_132936\summary.json \| C:\Users\julio\Desktop\TFM\06_CONTROLLED_RERUN\OUTPUT\BENCHMARK\BENCH_20260619_FINAL01\REP_03\VR_TEC_RUNNER\TFM_BENCH_VR_TEC_RUNNER_20260619_134315\summary.json |
-| INFO_METODOLOGICA | SERVER_GUI | SERVER_GUI detectado en process_samples. | Excluido del calculo principal mediante IncludeServerGuiInTotal=False y ServerGuiExcludedFromClientMetrics=True. | C:\Users\julio\Desktop\TFM\06_CONTROLLED_RERUN\OUTPUT\BENCHMARK\BENCH_20260619_FINAL01 |
-| INFO_REFERENCIA | Analisis_Benchmark.xlsx | Excel historico localizado. | Usado solo como referencia historica/formato, no como resultado definitivo. | C:\Users\julio\Desktop\TFM\04_EVIDENCE\Analisis_Benchmark.xlsx |
+| WARN_NO_BLOQUEANTE | VR_TEC_RUNNER | RunnerStillRunningAtEnd=True en runs VR_TEC_RUNNER. | Se conserva como advertencia metodologica; no invalida el benchmark porque no afecta a CPU/RAM del cliente Velociraptor ya muestreadas. | <RAIZ_TFM>\06_CONTROLLED_RERUN\OUTPUT\BENCHMARK\BENCH_20260619_FINAL01\REP_01\VR_TEC_RUNNER\TFM_BENCH_VR_TEC_RUNNER_20260619_131620\summary.json \| <RAIZ_TFM>\06_CONTROLLED_RERUN\OUTPUT\BENCHMARK\BENCH_20260619_FINAL01\REP_02\VR_TEC_RUNNER\TFM_BENCH_VR_TEC_RUNNER_20260619_132936\summary.json \| <RAIZ_TFM>\06_CONTROLLED_RERUN\OUTPUT\BENCHMARK\BENCH_20260619_FINAL01\REP_03\VR_TEC_RUNNER\TFM_BENCH_VR_TEC_RUNNER_20260619_134315\summary.json |
+| INFO_METODOLOGICA | SERVER_GUI | SERVER_GUI detectado en process_samples. | Excluido del calculo principal mediante IncludeServerGuiInTotal=False y ServerGuiExcludedFromClientMetrics=True. | <RAIZ_TFM>\06_CONTROLLED_RERUN\OUTPUT\BENCHMARK\BENCH_20260619_FINAL01 |
+| INFO_REFERENCIA | Analisis_Benchmark.xlsx | Excel historico localizado. | Usado solo como referencia historica/formato, no como resultado definitivo. | <RAIZ_TFM>\04_EVIDENCE\Analisis_Benchmark.xlsx |
 
 ## Decision metodologica
 

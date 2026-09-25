@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory=$true)][string]$TransferId,
-    [string]$SourceRoot = 'C:\Users\julio\Desktop\TFM\Carpeta_Compartida_TFM\controlled_rerun_results'
+    [string]$SourceRoot = "${PSScriptRoot}\..\Carpeta_Compartida_TFM\controlled_rerun_results"
 )
 
 Set-StrictMode -Version Latest

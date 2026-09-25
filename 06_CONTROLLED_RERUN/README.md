@@ -22,9 +22,9 @@ La repetición `TEC_20260619_FINAL02` debe usar exclusivamente:
 Para desplegar el parche sin reutilizar el bundle anterior, ejecutar en host:
 
 ```powershell
-cd C:\Users\julio\Desktop\TFM\06_CONTROLLED_RERUN
+cd <RAIZ_TFM>\06_CONTROLLED_RERUN
 .\05_Stage_For_VM.ps1 `
-  -DestinationRoot "C:\Users\julio\Desktop\TFM\Carpeta_Compartida_TFM\controlled_rerun_bundle_patch_4104"
+  -DestinationRoot "<RAIZ_TFM>\Carpeta_Compartida_TFM\controlled_rerun_bundle_patch_4104"
 ```
 
 Y en la VM, como administrador:
@@ -64,7 +64,7 @@ Abrir PowerShell en el host:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
-cd C:\Users\julio\Desktop\TFM\06_CONTROLLED_RERUN
+cd <RAIZ_TFM>\06_CONTROLLED_RERUN
 .\05_Stage_For_VM.ps1
 ```
 
@@ -155,7 +155,7 @@ TEC_20260619_FINAL02
 En una consola del host, que debe permanecer abierta:
 
 ```powershell
-cd C:\Users\julio\Desktop\TFM\06_CONTROLLED_RERUN
+cd <RAIZ_TFM>\06_CONTROLLED_RERUN
 .\00_Start_TEC_Receiver.ps1 -CampaignId "TEC_20260619_FINAL02"
 ```
 
@@ -277,7 +277,7 @@ cd C:\Users\seguridad\Desktop\TFM\06_CONTROLLED_RERUN
 En el host:
 
 ```powershell
-cd C:\Users\julio\Desktop\TFM\06_CONTROLLED_RERUN
+cd <RAIZ_TFM>\06_CONTROLLED_RERUN
 .\08_Import_VM_Results.ps1 -TransferId "RERUN_20260619_FINAL02"
 ```
 
@@ -286,7 +286,7 @@ El receiver ya está en el host y no se importa desde la VM.
 ## 10. Validación final en el host
 
 ```powershell
-cd C:\Users\julio\Desktop\TFM\06_CONTROLLED_RERUN
+cd <RAIZ_TFM>\06_CONTROLLED_RERUN
 .\04_Validate_Controlled_Rerun.ps1 `
   -TecCampaignId "TEC_20260619_FINAL02" `
   -FpCampaignId "FP_20260619_FINAL01" `
